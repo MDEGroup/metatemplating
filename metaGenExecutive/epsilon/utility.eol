@@ -1,0 +1,192 @@
+/*
+	SuperTypes
+*/
+operation Any getSuperList(): String {
+	if (self.getESuperTypes().size() > 0) {
+		var size = self.getESuperTypes().size();
+		var output = ": public ";
+		
+		for (p in self.getESuperTypes()) {
+			output += p.name;
+			if (size > 1) { output += ", "; }
+			size -= 1;
+		}
+	
+		return output;
+	} else {
+		return "";
+	}
+}
+
+/*
+	Element Types
+*/
+operation MAX_ARRAY_SIZE(): Integer { return 256; }
+operation Any getArraySize(): Integer {
+	if (self.upperBound == -1) return MAX_ARRAY_SIZE();
+	else return self.upperBound;
+}
+
+operation Any isString(): Boolean {
+	if (self.EType == null) return false;
+	else return self.EType.name == "EString";
+}
+
+operation Any isExtType(): Boolean {
+	if (self.EType == null) return false;
+	else {
+		switch (self.EType.name) {		
+			case "EBoolean": return false;
+			case "EInt": return false;
+			case "ELong": return false;
+			case "EFloat": return false;
+			case "EString": return false;
+			default: return true;		
+		}
+	}
+}
+
+operation Any getType(): String {
+	if (self.EType == null) return "void";
+	else {
+		switch (self.EType.name) {		
+			case "EBoolean": return "bool";
+			case "EInt": return "int";
+			case "ELong": return "long int";
+			case "EFloat": return "float";
+			case "EString": return "String";
+			default: return self.EType.name;		
+		}
+	}
+}
+
+operation Any getParList(): String {
+	var size = self.getEParameters().size();
+	var output = "";
+	
+	for (p in self.getEParameters()) {
+		output += p.getType() + " " + p.name;
+		if (size > 1) { output += ", "; }
+		size -= 1;
+	}
+
+	return output;
+}
+
+operation Any getParListNames(ref: String): List {
+	var out = new List;
+	for (p in self.getEParameters()) {
+		out.add(ref + p.name);
+	}
+	return out;
+}
+
+
+operation Any getExtTypes(): Set {
+	var output = new Set;
+	
+	for (a in self.getEAttributes()) { 
+		if (a.isExtType()) {
+			output.add(a.getType());			
+		}
+	}
+	
+	for (a in self.getEReferences()) { 
+		if (a.isExtType()) {
+			output.add(a.getType());
+		}
+	}
+	
+	for (a in self.getEOperations()) { 
+		if (a.isExtType()) {
+			output.add(a.getType());
+		}
+		for (p in a.getEParameters()) { 
+			if (p.isExtType()) {
+				output.add(p.getType());
+			}
+		}
+	}
+	
+	return output;
+}
+
+/*
+	Operations
+*/
+
+operation Any isSetter(cls: Any): Boolean {
+	var tot = self.getEParameters().size();
+	var found = 0;	
+	
+	for (p in self.getEParameters()) { 
+		for (a in cls.getEAttributes()) { 
+			if (a.name == p.name) {
+				found += 1;
+			}
+		}
+	}
+	
+	var mandatory = (self.lowerBound == 1) and (self.upperBound == 1);
+	return (self.EType == null) and (tot == found) and (mandatory);
+}
+
+operation Any getSetters(): List {
+	var output = new List;
+	
+	for (op in self.getEOperations()) { 
+		if (op.isSetter(self)) {
+			output.add(op);
+		}
+	}
+	
+	return output;
+}
+
+/*
+	Enumerations
+*/
+
+operation Any getLitList(): String {
+	var size = self.getELiterals().size();
+	var output = "";
+	
+	for (p in self.getELiterals()) {
+		output += p.name.toUpperCase();
+		if (size > 1) { output += ", "; }
+		size -= 1;
+	}
+
+	return output;
+}
+
+/*
+	Utility
+*/
+operation String truncateList(): String {
+	if (self.length() == 0) return "";
+	if (self.characterAt(self.length() - 1) == ',') {
+		return self.substring(0, self.length() - 1);
+	}
+	else return self;
+}
+
+operation Any getClassName(): String {
+	return self.getClassName('');
+}
+
+operation Any getClassName(suffix: String): String {
+	return self.name.firstToUpperCase() + suffix;
+}
+
+operation Any getObjName(): String {
+	return self.getObjName('');
+}
+
+operation Any getObjName(suffix: String): String {
+	return self.name.firstToLowerCase() + suffix;
+}
+
+operation commentLine(c: String): String {
+	return "//" + c;
+}

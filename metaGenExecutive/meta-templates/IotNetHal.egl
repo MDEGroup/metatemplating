@@ -1,0 +1,126 @@
+[%import "../epsilon/utility.eol";
+import "../epsilon/metaEngine.eol";%]
+[*
+	Meta Template for Generic Network Adapter Generator
+*]
+[%=insStat('import "../epsilon/utility.eol";')%]
+[%=insComment('\n\tTemplate for Specific Network Adapter Generator\n')%]
+
+[*-Network Data Formatters*]
+[%=insMarker('Network Data Formatters')%]
+// Data Formatters
+
+[%for (net_df in EEnum.all.getWanted("net_df")) { %]
+	[%for (df in net_df.eLiterals.getWanted("df_lib")) { %]
+#include "[%=df.getExtraInfo("df_lib")%].h"
+	[%}%]	
+[%}%]
+
+[*-Controller Networks*]
+[%=insMarker('Controller Networks')%]
+// Controller network implementation
+
+[%for (mc in EClass.all.getWanted(_source, "ecu")) { %]
+[%=insFor('ecu', mc.name)%]
+	[%for (mc_name in mc.getAllAttributes().getWanted(_source, "naming")) { %]
+void [%=insPh('ecu.' + mc_name.name)%]networkUploader(String data);
+String [%=insPh('ecu.' + mc_name.name)%]networkDownloader();
+	[%}%]
+
+[%=insEnd()%]	
+[%}%]
+
+// ***
+
+[*-Network Adapters*]
+[%=insMarker('Network Adapters')%]
+[%for (mc in EClass.all.getWanted(_source, "net_adapter")) { %]
+[%=insFor('c', mc.name)%]
+	[%for (mc_name in mc.getAllAttributes().getWanted(_source, "naming")) { %]
+/* Adapter for - [%=insPh('c.' + mc_name.name)%] */		
+class [%=insPh('c.' + mc_name.name)%]NetAdapter {
+	public:
+
+	[*-Related Object*]
+	[%=insMarker('Related Object')%]
+		[%for (mc_obj in mc.getAllReferences().getWanted(_source, "net_data")) { %]
+			[%for (mc_objname in mc_obj.eType.getAllAttributes().getWanted(_source, "naming")) { %]
+	[%=insPh('c.'+mc_obj.name+'.'+mc_objname.name)%]* [%=insPh('c.'+mc_obj.name+'.'+mc_objname.name)%]_ptr;
+	
+	[*-Uplink/Downlink managers*]
+				[%for (mc_ecu in mc.getAllReferences().getWanted(_source, "net_ecu")) { %]
+					[%for (mc_ecuname in mc_obj.eType.getAllAttributes().getWanted(_source, "naming")) { %]
+						[%for (mc_dir in mc.getAllAttributes().getWanted(_source, "net_verse")) { %]
+	[%=insMarker('Uplink managers')%]
+							[%for (mc_updir in mc_dir.eType.eLiterals.getWanted(_source, "up")) { %]
+	[%=insIf('c.'+ mc_dir.name +'.literal == '+insStr(mc_updir.literal))%]
+	// Uplink
+	void uplink () {
+								[%for (mc_coding in mc.getAllAttributes().getWanted(_source, "net_coding")) { %]
+									[%for (mc_codingtype in mc_coding.eType.eLiterals.getWanted(_source, "json")) { %]
+		[%=insIf('c.'+mc_coding.name+'.literal == '+insStr(mc_codingtype.literal))%]
+		// JSON
+		String data = JsonBuilder([%=insPh('c.'+mc_obj.name+'.'+mc_objname.name)%]_ptr);
+		[%=insPh('c.'+mc_ecu.name+'.'+mc_ecuname.name)%]networkUploader(data);
+		[%=insEnd()%]
+									[%}%]
+									[%for (mc_codingtype in mc_coding.eType.eLiterals.getWanted(_source, "xml")) { %]
+		[%=insIf('c.'+mc_coding.name+'.literal == '+insStr(mc_codingtype.literal))%]
+		// XML
+		String data = XmlBuilder([%=insPh('c.'+mc_obj.name+'.'+mc_objname.name)%]_ptr);
+		[%=insPh('c.'+mc_ecu.name+'.'+mc_ecuname.name)%]networkUploader(data);
+		[%=insEnd()%]
+									[%}%]
+									[%for (mc_codingtype in mc_coding.eType.eLiterals.getWanted(_source, "xmi")) { %]
+		[%=insIf('c.'+mc_coding.name+'.literal == '+insStr(mc_codingtype.literal))%]
+		// XMI
+		String data = XmiBuilder([%=insPh('c.'+mc_obj.name+'.'+mc_objname.name)%]_ptr);
+		[%=insPh('c.'+mc_ecu.name+'.'+mc_ecuname.name)%]networkUploader(data);
+		[%=insEnd()%]
+									[%}%]
+								[%}%]						
+	}
+	[%=insEnd()%]
+							[%}%]
+	[%=insMarker('Downlink managers')%]
+							[%for (mc_downdir in mc_dir.eType.eLiterals.getWanted(_source, "down")) { %]
+	[%=insIf('c.'+ mc_dir.name +'.literal == '+insStr(mc_downdir.literal))%]
+	// Downlink
+	void downlink () {
+								[%for (mc_coding in mc.getAllAttributes().getWanted(_source, "net_coding")) { %]
+									[%for (mc_codingtype in mc_coding.eType.eLiterals.getWanted(_source, "json")) { %]
+		[%=insIf('c.'+mc_coding.name+'.literal == '+insStr(mc_codingtype.literal))%]
+		// JSON
+		String data = [%=insPh('c.'+mc_ecu.name+'.'+mc_ecuname.name)%]networkDownloader();
+		JsonParser(data, [%=insPh('c.'+mc_obj.name+'.'+mc_objname.name)%]_ptr);		
+		[%=insEnd()%]
+									[%}%]
+									[%for (mc_codingtype in mc_coding.eType.eLiterals.getWanted(_source, "xml")) { %]
+		[%=insIf('c.'+mc_coding.name+'.literal == '+insStr(mc_codingtype.literal))%]
+		// XML
+		String data = [%=insPh('c.'+mc_ecu.name+'.'+mc_ecuname.name)%]networkDownloader();
+		XmlParser(data, [%=insPh('c.'+mc_obj.name+'.'+mc_objname.name)%]_ptr);
+		[%=insEnd()%]
+									[%}%]
+									[%for (mc_codingtype in mc_coding.eType.eLiterals.getWanted(_source, "xmi")) { %]
+		[%=insIf('c.'+mc_coding.name+'.literal == '+insStr(mc_codingtype.literal))%]
+		// XMI
+		String data = [%=insPh('c.'+mc_ecu.name+'.'+mc_ecuname.name)%]networkDownloader();
+		XmiParser(data, [%=insPh('c.'+mc_obj.name+'.'+mc_objname.name)%]_ptr);
+		[%=insEnd()%]
+									[%}%]
+								[%}%]						
+	}	
+	[%=insEnd()%]
+							[%}%]
+						[%}%]
+					[%}%]
+				[%}%]
+				
+};		
+			[%}%]
+		[%}%]	
+	[%}%]
+	
+[%=insEnd()%]	
+[%}%]

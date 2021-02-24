@@ -1,0 +1,47 @@
+import "../epsilon/utility.eol";
+
+/*
+	Initialization
+*/
+pre {
+	"Generating...".println();
+	/*
+	var templatePath = "../templates/";
+	var outPath = "../output/";*/
+}
+
+
+/*
+	Matching Rules
+*/
+rule Adapters 
+	transform s : source!System {
+
+	template : templatePath + s.eClass.ePackage.eSuperPackage.name + tHal /*"IotHal.egl"*/
+
+	parameters : Map{
+		"_me" = s
+	}
+
+	target : outPath + s.name+ outHal /*"Adapters.cpp"*/
+}
+
+rule StartupControllers 
+	transform s : source!System {
+
+	template : templatePath + s.eClass.ePackage.eSuperPackage.name + tStartup /*"IotStartup.egl"*/
+
+	parameters : Map{
+		"_me" = s
+	}
+
+	target : outPath + s.name + outStartup /*"Startup.cpp"*/
+}
+
+
+/*
+	Finalization
+*/
+post {
+	"Done.".println();
+}

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="IoTsystems" nsURI="http://johnbrown.me/iotsys2" nsPrefix="iotsys">
+  <eSubpackages name="General" nsURI="http://johnbrown.me/iotsysgeneral2" nsPrefix="iotgeneral">
+    <eClassifiers xsi:type="ecore:EClass" name="UUID" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="IotHal">
+          <details key="naming"/>
+        </eAnnotations>
+        <eAnnotations source="IotStartup">
+          <details key="naming"/>
+        </eAnnotations>
+        <eAnnotations source="IotDs">
+          <details key="naming"/>
+        </eAnnotations>
+        <eAnnotations source="IotNetHal">
+          <details key="naming"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Details">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="MultiSystem" eSuperTypes="#//General/UUID #//General/Details">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="systems" upperBound="-1"
+          eType="#//General/System" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="networks" upperBound="-1"
+          eType="#//General/NetworkLink" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dataStructures" upperBound="-1"
+          eType="#//SwData/Object" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//General/UUID #//General/Details">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sensors" upperBound="-1"
+          eType="#//General/Sensor" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="actuators" upperBound="-1"
+          eType="#//General/Actuator" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="controllers" upperBound="-1"
+          eType="#//General/Controller" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="adapters" upperBound="-1"
+          eType="#//General/Adapter" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Sensor" abstract="true" eSuperTypes="#//General/UUID #//General/Details"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Actuator" abstract="true" eSuperTypes="#//General/UUID #//General/Details"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Controller" abstract="true" eSuperTypes="#//General/UUID #//General/Details">
+      <eAnnotations source="IotNetHal">
+        <details key="ecu"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ports" upperBound="-1"
+          eType="#//General/Port" containment="true">
+        <eAnnotations source="IotStartup">
+          <details key="ports"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="pins" upperBound="-1"
+          eType="#//General/Pin" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dataStructures" upperBound="-1"
+          eType="#//SwData/Object"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true" eSuperTypes="#//General/UUID">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="pins" lowerBound="1"
+          upperBound="-1" eType="#//General/Pin">
+        <eAnnotations source="IotHal">
+          <details key="pin"/>
+        </eAnnotations>
+        <eAnnotations source="IotStartup">
+          <details key="pins"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Pin" abstract="true" eSuperTypes="#//General/UUID"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Adapter" abstract="true" eSuperTypes="#//General/UUID"/>
+    <eClassifiers xsi:type="ecore:EClass" name="HardwareAdapter" abstract="true" eSuperTypes="#//General/Adapter">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="coding" lowerBound="1"
+          eType="#//General/Coding">
+        <eAnnotations source="IotHal">
+          <details key="coding"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="port" lowerBound="1"
+          eType="#//General/Port">
+        <eAnnotations source="IotHal">
+          <details key="port"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SoftwareAdapter" abstract="true" eSuperTypes="#//General/Adapter">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="coding" lowerBound="1"
+          eType="#//General/DataFormat">
+        <eAnnotations source="IotNetHal">
+          <details key="net_coding"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SensorAdapter" eSuperTypes="#//General/HardwareAdapter">
+      <eAnnotations source="IotHal">
+        <details key="in_adapter"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sensor" lowerBound="1"
+          eType="#//General/Sensor"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="controller" lowerBound="1"
+          eType="#//General/Controller"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ActuatorAdapter" eSuperTypes="#//General/HardwareAdapter">
+      <eAnnotations source="IotHal">
+        <details key="out_adapter"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="actuator" lowerBound="1"
+          eType="#//General/Actuator"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="controller" lowerBound="1"
+          eType="#//General/Controller"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NetworkAdapter" eSuperTypes="#//General/SoftwareAdapter">
+      <eAnnotations source="IotNetHal">
+        <details key="net_adapter"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="controller" lowerBound="1"
+          eType="#//General/Controller">
+        <eAnnotations source="IotNetHal">
+          <details key="net_ecu"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="data" lowerBound="1"
+          eType="#//SwData/Object">
+        <eAnnotations source="IotNetHal">
+          <details key="net_data"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" lowerBound="1"
+          eType="#//General/NetworkDirection">
+        <eAnnotations source="IotNetHal">
+          <details key="net_verse"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="Coding">
+      <eAnnotations source="IotHal">
+        <details key="comm_modes"/>
+      </eAnnotations>
+      <eLiterals name="raw" literal="raw">
+        <eAnnotations source="IotHal">
+          <details key="raw"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="byte" value="1" literal="byte">
+        <eAnnotations source="IotHal">
+          <details key="parallel"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="one_wire" value="2">
+        <eAnnotations source="IotHal">
+          <details key="proto" value="Wire"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="i2c" value="3">
+        <eAnnotations source="IotHal">
+          <details key="proto" value="I2C"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="spi" value="4">
+        <eAnnotations source="IotHal">
+          <details key="proto" value="SPI"/>
+        </eAnnotations>
+      </eLiterals>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="DataFormat">
+      <eAnnotations source="IotNetHal">
+        <details key="net_df"/>
+      </eAnnotations>
+      <eLiterals name="json">
+        <eAnnotations source="IotNetHal">
+          <details key="json"/>
+          <details key="df_lib" value="JsonFormatter"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="xml" value="1">
+        <eAnnotations source="IotNetHal">
+          <details key="xml"/>
+          <details key="df_lib" value="XmlFormatter"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="xmi" value="2">
+        <eAnnotations source="IotNetHal">
+          <details key="xmi"/>
+          <details key="df_lib" value="XmiFormatter"/>
+        </eAnnotations>
+      </eLiterals>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="NetworkDirection">
+      <eLiterals name="uplink">
+        <eAnnotations source="IotNetHal">
+          <details key="up"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="downlink" value="1">
+        <eAnnotations source="IotNetHal">
+          <details key="down"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="bidirectional" value="2">
+        <eAnnotations source="IotNetHal">
+          <details key="up"/>
+        </eAnnotations>
+        <eAnnotations source="IotNetHal">
+          <details key="down"/>
+        </eAnnotations>
+      </eLiterals>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NetworkLink" eSuperTypes="#//General/UUID">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="adapters" upperBound="-1"
+          eType="#//General/NetworkAdapter"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="IoTarduino" nsURI="http://johnbrown.me/iotsysarduino2" nsPrefix="iotarduino">
+    <eClassifiers xsi:type="ecore:EClass" name="Temperature" eSuperTypes="#//General/Sensor">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasTemperature" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasHumidity" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Keypad" eSuperTypes="#//General/Sensor">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="buttons" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Relay" eSuperTypes="#//General/Actuator">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="channels" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Display" eSuperTypes="#//General/Actuator">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lines" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="rows" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Arduino" eSuperTypes="#//General/Controller">
+      <eAnnotations source="IotStartup">
+        <details key="controller"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ArduinoPin" eSuperTypes="#//General/Pin">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+        <eAnnotations source="IotHal">
+          <details key="number"/>
+        </eAnnotations>
+        <eAnnotations source="IotStartup">
+          <details key="number"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1"
+          eType="#//IoTarduino/PinType">
+        <eAnnotations source="IotHal">
+          <details key="type"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" lowerBound="1"
+          eType="#//IoTarduino/PinDirection">
+        <eAnnotations source="IotStartup">
+          <details key="direction"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="PinType">
+      <eLiterals name="digital">
+        <eAnnotations source="IotHal">
+          <details key="bool"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="analog" value="1">
+        <eAnnotations source="IotHal">
+          <details key="int"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="pwm" value="2">
+        <eAnnotations source="IotHal">
+          <details key="int"/>
+        </eAnnotations>
+      </eLiterals>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="PinDirection">
+      <eLiterals name="output">
+        <eAnnotations source="IotStartup">
+          <details key="out"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="input" value="1">
+        <eAnnotations source="IotStartup">
+          <details key="in"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="bidirectional" value="2">
+        <eAnnotations source="IotStartup">
+          <details key="both"/>
+        </eAnnotations>
+      </eLiterals>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ArduinoPort" eSuperTypes="#//General/Port"/>
+  </eSubpackages>
+  <eSubpackages name="SwData" nsURI="http://johnbrown.me/swdata2" nsPrefix="swdata">
+    <eClassifiers xsi:type="ecore:EClass" name="Object" eSuperTypes="#//General/UUID #//General/Details">
+      <eAnnotations source="IotDs">
+        <details key="net_obj"/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
+          eType="#//SwData/Field" containment="true">
+        <eAnnotations source="IotDs">
+          <details key="fields"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Field">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="IotDs">
+          <details key="name"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1"
+          eType="#//SwData/DataTypes">
+        <eAnnotations source="IotDs">
+          <details key="type"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="DataTypes">
+      <eLiterals name="bool">
+        <eAnnotations source="IotDs">
+          <details key="bool"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="int" value="1">
+        <eAnnotations source="IotDs">
+          <details key="int"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="float" value="2">
+        <eAnnotations source="IotDs">
+          <details key="float"/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="string" value="3">
+        <eAnnotations source="IotDs">
+          <details key="string"/>
+        </eAnnotations>
+      </eLiterals>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

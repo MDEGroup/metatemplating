@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iotgeneral:System
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:iotarduino="http://johnbrown.me/iotsysarduino"
+    xmlns:iotgeneral="http://johnbrown.me/iotsysgeneral"
+    xsi:schemaLocation="http://johnbrown.me/iotsysgeneral http://johnbrown.me/iotsysarduino#//General"
+    name="SYS_02">
+  <sensors xsi:type="iotarduino:Keypad"
+      name="KP_01"
+      buttons="4"/>
+  <controllers
+      xsi:type="iotarduino:Arduino"
+      name="ECU_02">
+    <ports xsi:type="iotarduino:ArduinoPort"
+        name="KeypadPort"
+        pins="//@controllers.0/@pins.0 //@controllers.0/@pins.1 //@controllers.0/@pins.2 //@controllers.0/@pins.3"/>
+    <pins xsi:type="iotarduino:ArduinoPin"
+        name="btn_1"
+        number="2"
+        direction="input"/>
+    <pins xsi:type="iotarduino:ArduinoPin"
+        name="btn_2"
+        number="3"
+        direction="input"/>
+    <pins xsi:type="iotarduino:ArduinoPin"
+        name="btn_3"
+        number="4"
+        direction="input"/>
+    <pins xsi:type="iotarduino:ArduinoPin"
+        name="btn_4"
+        number="5"
+        direction="input"/>
+  </controllers>
+  <adapters
+      xsi:type="iotgeneral:SensorAdapter"
+      name="KeypadInterface"
+      port="//@controllers.0/@ports.0"
+      sensor="//@sensors.0"
+      controller="//@controllers.0"/>
+</iotgeneral:System>

@@ -1,0 +1,255 @@
+/*
+	MetaGeneration
+*/
+
+// *** Constants ***
+operation SRC_MODEL(): String { return "source!"; }
+operation INST_PLACEHOLDER(): String { return "<x>"; }
+
+// *** Basic ***
+operation insLine(id: Integer, st: String): String {
+	var ident = "";
+	if (id > 0) {
+		for (i in Sequence{1..id}) {
+			ident += "\t";
+		}
+	}
+	return ident + st + "\n";
+}
+
+operation insLine(st: String): String {
+	return insLine(0, st);
+}
+
+operation insComment(st: String): String {
+	return '[*'+st+'*]';
+}
+
+operation insMarker(st: String): String {
+	return '\n[*-'+st+'*]';
+} 
+
+operation insStat(st: String): String {
+	return '[%'+st+'%]';
+}
+
+operation insPh(ph: String): String {
+	return '[%='+ph+'%]';
+}
+
+operation insPhList(phlist: List, sep: String): String {
+	var size = phlist.size();
+	var output = "";
+	for (p in phlist) {
+		output += insPh(p);
+		if (size > 1) { output += sep; }
+		size -= 1;
+	}
+	return output;
+}
+
+// *** Advanced ***
+operation insSwitch(it: String): String {
+	return insStat('switch ('+it+') {');
+}
+
+operation insCase(val: String): String {
+	return insStat('case '+val+': {');
+}
+
+operation insDefCase(): String {
+	return insStat('default: {');
+}
+
+operation insFor(it: String, list: String): String {
+	return insStat('for ('+it+' in '+list+') {');
+}
+
+operation insIf(cond: String): String {
+	return insStat('if ('+cond+') {');
+}
+
+operation insElse(): String {
+	return insStat('} else {');
+}
+
+operation insEnd(): String {
+	return insStat('}');
+}
+
+operation insStr(st: String): String {
+	return '"' + st + '"';
+} 
+
+operation insVar(name: String, init: String): String {
+	return insStat('var ' + name + ' = ' + init + ';');
+}
+
+// *** Instances ***
+operation varInstances(name: String): String {
+	return insVar(name, '0');
+}
+
+operation loopInstances(cnt: String, el: Any, elName: String, tab: Integer, istr: String): String {
+	return loopInstnces(cnt, el, elName, tab, List{istr});
+}
+
+operation loopInstances(cnt: String, el: Any, elName: String, tab: Integer, istr: List<String>): String {
+	var out = insLine(insStat(cnt + ' = 0;'));
+	out += insLine(insFor(elName, SRC_MODEL() + el.getClassName()));
+	for (i in istr) {
+		out += insLine(tab, i.replace(INST_PLACEHOLDER(), "_" + insPh(cnt)));
+	}
+	out += insLine(insStat(cnt + ' += 1;'));
+	out += insLine(insStat('}'));
+	return out;
+}
+
+/*
+	Check wanted Metamodel element
+*/
+operation Any isWanted(source: String, key: String): Boolean {	
+	for (a in self.getEAnnotations())
+		if (a.source == source)
+			for (d in a.details)
+				if (d.key == key) return true;	
+	return false;
+}
+
+operation Collection<Any> existsWanted(source: String, key: String): Boolean {
+	return self.getWanted(source, key).size() > 0;
+}
+
+operation Collection<Any> getWanted(source: String, key: String): Collection {
+	var res = new List;
+	for (e in self) {
+		if (e.isWanted(source, key)) res.add(e);
+	}
+	return res;
+}
+
+operation Collection<Any> getUnwanted(source: String, key: String): Collection {
+	var res = new List;
+	for (e in self) {
+		if (not e.isWanted(source, key)) res.add(e);
+	}
+	return res;
+}
+
+operation Any getExtraInfo(source: String, key: String): String {	
+	for (a in self.getEAnnotations())
+		if (a.source == source)
+			for (d in a.details)
+				if (d.key == key) return d.value;	
+	return "";
+}
+
+
+operation Any isWanted(key: String): Boolean {	
+	for (a in self.getEAnnotations())
+		for (d in a.details)
+			if (d.key == key) return true;	
+	return false;
+}
+
+operation Collection<Any> existsWanted(key: String): Boolean {
+	return self.getWanted(key).size() > 0;
+}
+
+operation Collection<Any> getWanted(key: String): Collection {
+	var res = new List;
+	for (e in self) {
+		if (e.isWanted(key)) res.add(e);
+	}
+	return res;
+}
+
+operation Collection<Any> getUnwanted(key: String): Collection {
+	var res = new List;
+	for (e in self) {
+		if (not e.isWanted(key)) res.add(e);
+	}
+	return res;
+}
+
+operation Any getExtraInfo(key: String): String {
+	if (self.getEAnnotations().first() <> null) {
+		for (a in self.getEAnnotations())
+			for (d in a.details)
+				if (d.key == key) return d.value;
+	}
+	return "";
+}
+
+/*
+	Check element properties
+*/
+operation Any getAllReferences(): OrderedSet {
+	var out = new OrderedSet;
+	out.addAll(self.getEReferences());
+	for (p in self.eSuperTypes) {
+		out.addAll(p.getAllReferences());
+	}
+	return out;
+}
+
+operation Any getAllAttributes(): OrderedSet {
+	var out = new OrderedSet;
+	out.addAll(self.getEAttributes());
+	for (p in self.eSuperTypes) {
+		out.addAll(p.getAllAttributes());
+	}
+	return out;
+}
+
+operation Collection<Any> getAllReferencesFromAll(): OrderedSet {
+	var out = new OrderedSet;
+	for (e in self) {
+		out.addAll(e.getAllReferences());
+	}
+	return out;
+}
+
+operation Collection<Any> getAllAttributesFromAll(): OrderedSet {
+	var out = new OrderedSet;
+	for (e in self) {
+		out.addAll(e.getAllAttributes());
+	}
+	return out;
+}
+
+operation Any hasParent(cls: Any): Boolean {
+	if (self == cls) return true; 
+	for (p in self.eSuperTypes) {
+		return p.hasParent(cls);
+	}
+	return false;
+}
+
+operation Any getAllSubTypes(): OrderedSet {
+	var out = OrderedSet{self.eType};
+	for (c in EClass.all) {
+		if (c.hasParent(self.eType)) out.add(c);
+	}
+	return out;
+}
+
+operation Any existAttribute(name: String): Boolean {
+	if (self.getEAttributes()->exists(a|a.name == name)) return true;
+	else {
+		for (p in self.getESuperTypes()) {
+			if (p.existAttribute(name)) return true;
+		}
+		return false;
+	}
+}
+
+operation Any existReference(name: String): Boolean {
+	if (self.getEReferences()->exists(a|a.name == name)) return true;
+	else {
+		for (p in self.getESuperTypes()) {
+			if (p.existReference(name)) return true;
+		}
+		return false;
+	}
+}

@@ -1,0 +1,52 @@
+[%import "../epsilon/utility.eol";
+import "../epsilon/metaEngine.eol";%]
+[*
+	Meta Template for Generic Network Adapter Generator
+*]
+[%=insStat('import "../epsilon/utility.eol";')%]
+[%=insComment('\n\tTemplate for Specific Network Adapter Generator\n')%]
+
+[*-Network Objects*]
+[%=insMarker('Network Objects')%]
+[%for (mc in EClass.all.getWanted(_source, "net_obj")) { %]
+[%=insFor('obj', mc.name)%]
+	[%for (obj_name in mc.getAllAttributes().getWanted(_source, "naming")) { %]
+/* [%=mc.name%] - [%=insPh('obj.' + obj_name.name)%] */
+class [%=insPh('obj.' + obj_name.name)%] {
+	public:
+	
+	[*-Fields*]
+	[%=insMarker('Fields')%]
+		[%for (fields in mc.getAllReferences().getWanted(_source, "fields")) { %]
+	[%=insFor('f', 'obj.' + fields.name)%]
+			[%for (f_name in fields.eType.getAllAttributes().getWanted(_source, "name")) { %]
+				[%for (f_typing in fields.eType.getAllAttributes().getWanted(_source, "type")) { %]
+					[%for (f_type in f_typing.eType.eLiterals.getWanted(_source, "bool")) { %]
+		[%=insIf('f.'+f_typing.name+'.literal == '+insStr(f_type.literal))%]
+	bool [%=insPh('f.' + f_name.name)%];
+		[%=insEnd()%]					
+					[%}%]
+					[%for (f_type in f_typing.eType.eLiterals.getWanted(_source, "int")) { %]
+		[%=insIf('f.'+f_typing.name+'.literal == '+insStr(f_type.literal))%]
+	int [%=insPh('f.' + f_name.name)%];
+		[%=insEnd()%]					
+					[%}%]
+					[%for (f_type in f_typing.eType.eLiterals.getWanted(_source, "float")) { %]
+		[%=insIf('f.'+f_typing.name+'.literal == '+insStr(f_type.literal))%]
+	float [%=insPh('f.' + f_name.name)%];
+		[%=insEnd()%]					
+					[%}%]
+					[%for (f_type in f_typing.eType.eLiterals.getWanted(_source, "string")) { %]
+		[%=insIf('f.'+f_typing.name+'.literal == '+insStr(f_type.literal))%]
+	String [%=insPh('f.' + f_name.name)%];
+		[%=insEnd()%]					
+					[%}%]
+				[%}%]
+			[%}%]	
+		[%}%]
+	[%=insEnd()%]
+};		
+
+	[%}%]
+[%=insEnd()%]
+[%}%]

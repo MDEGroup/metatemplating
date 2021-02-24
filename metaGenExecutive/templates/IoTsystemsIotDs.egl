@@ -1,0 +1,30 @@
+[%import "../epsilon/utility.eol";%]
+[*
+	Template for Specific Network Adapter Generator
+*]
+
+[*-Network Objects*]
+[%for (obj in Object) {%]
+/* Object - [%=obj.id%] */
+class [%=obj.id%] {
+	public:
+	
+	[*-Fields*]
+	[%for (f in obj.fields) {%]
+		[%if (f.type.literal == "bool") {%]
+	bool [%=f.name%];
+		[%}%]					
+		[%if (f.type.literal == "int") {%]
+	int [%=f.name%];
+		[%}%]					
+		[%if (f.type.literal == "float") {%]
+	float [%=f.name%];
+		[%}%]					
+		[%if (f.type.literal == "string") {%]
+	String [%=f.name%];
+		[%}%]					
+	
+	[%}%]
+};		
+
+[%}%]

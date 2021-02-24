@@ -1,0 +1,232 @@
+[%import "../epsilon/utility.eol";%]
+[*
+	Template for Specific Adapter Generator
+*]
+
+[*-Protocols libraries*]
+#include "Wire.h"
+#include "I2C.h"
+#include "SPI.h"
+
+[*-Static code*]
+// Static code - Pin access Interface
+
+void writeAnalog(int pin, int value);
+int readAnalog(int pin);
+void writeDigital(int pin, bool value);
+bool readDigital(int pin);
+
+// ***
+
+[*-Adapter for SensorAdapter*]
+[%for (c in SensorAdapter) {%]
+
+/* Reading Adapter - [%=c.id%] */
+class [%=c.id%]Adapter {
+	public:
+		
+		[*-Fields*]
+		[%if (c.coding.literal == "raw") {%]
+			[%for (port in c.port) {%]
+				[%for (field in port.pins) {%]
+							
+					[%if (field.type.literal == "analog") {%]
+		int [%=field.id%];
+					[%}%]							
+							
+					[%if (field.type.literal == "pwm") {%]
+		int [%=field.id%];
+					[%}%]							
+							
+					[%if (field.type.literal == "digital") {%]
+		bool [%=field.id%];
+					[%}%]
+				[%}%]
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "byte") {%]
+			[%for (port in c.port) {%]
+		bool [%=port.id%][[%=port.pins.size()%]];
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "one_wire") {%]
+				
+			[%for (port in c.port) {%]
+		Wire* [%=port.id%];
+				[%for (pin in port.pins) {%]
+							
+		const int [%=port.id%]_[%=pin.id%] = [%=pin.number%];
+				[%}%]
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "i2c") {%]
+				
+			[%for (port in c.port) {%]
+		I2C* [%=port.id%];
+				[%for (pin in port.pins) {%]
+							
+		const int [%=port.id%]_[%=pin.id%] = [%=pin.number%];
+				[%}%]
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "spi") {%]
+				
+			[%for (port in c.port) {%]
+		SPI* [%=port.id%];
+				[%for (pin in port.pins) {%]
+							
+		const int [%=port.id%]_[%=pin.id%] = [%=pin.number%];
+				[%}%]
+			[%}%]
+		[%}%]
+		
+	void run() {
+		
+		[*-Reading*]
+		[%if (c.coding.literal == "raw") {%]
+			[%for (port in c.port) {%]
+				[%for (field in port.pins) {%]
+				[%if (field.type.literal == "analog") {%]
+		[%=field.id%] = readAnalog([%=field.number%]);
+				[%}%]
+				[%if (field.type.literal == "pwm") {%]
+		[%=field.id%] = readAnalog([%=field.number%]);
+				[%}%]
+				[%if (field.type.literal == "digital") {%]
+		[%=field.id%] = readDigital([%=field.number%]);
+				[%}%]
+	
+				[%}%]
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "byte") {%]
+			[%for (port in c.port) {%]
+				[%for (i in Sequence{0..port.pins.size() -1}) {%]
+		[%=port.id%][[%=i%]] = readDigital([%=port.pins.at(i).number%]);
+				[%}%]
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "one_wire") {%]
+			[%for (port in c.port) {%]
+		[%=port.id%]->read();
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "i2c") {%]
+			[%for (port in c.port) {%]
+		[%=port.id%]->read();
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "spi") {%]
+			[%for (port in c.port) {%]
+		[%=port.id%]->read();
+			[%}%]
+		[%}%]
+	}
+
+};	
+[%}%]
+
+[*-Adapter for ActuatorAdapter*]
+[%for (c in ActuatorAdapter) {%]
+
+/* Writing Adapter - [%=c.id%] */
+class [%=c.id%]Adapter {
+	public:
+		
+		[*-Fields*]
+		[%if (c.coding.literal == "raw") {%]
+			[%for (port in c.port) {%]
+				[%for (field in port.pins) {%]
+					[%if (field.type.literal == "analog") {%]
+		int [%=field.id%];
+					[%}%]
+					[%if (field.type.literal == "pwm") {%]
+		int [%=field.id%];
+					[%}%]
+					[%if (field.type.literal == "digital") {%]
+		bool [%=field.id%];
+					[%}%]
+				[%}%]
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "byte") {%]
+			[%for (port in c.port) {%]
+		bool [%=port.id%][[%=port.pins.size()%]];
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "one_wire") {%]
+				
+			[%for (port in c.port) {%]
+		Wire* [%=port.id%];
+				[%for (pin in port.pins) {%]
+							
+		const int [%=port.id%]_[%=pin.id%] = [%=pin.number%];
+				[%}%]
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "i2c") {%]
+				
+			[%for (port in c.port) {%]
+		I2C* [%=port.id%];
+				[%for (pin in port.pins) {%]
+							
+		const int [%=port.id%]_[%=pin.id%] = [%=pin.number%];
+				[%}%]
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "spi") {%]
+				
+			[%for (port in c.port) {%]
+		SPI* [%=port.id%];
+				[%for (pin in port.pins) {%]
+							
+		const int [%=port.id%]_[%=pin.id%] = [%=pin.number%];
+				[%}%]
+			[%}%]
+		[%}%]
+		
+	void run() {
+		
+		[*-Writing*]
+		[%if (c.coding.literal == "raw") {%]
+			[%for (port in c.port) {%]
+				[%for (field in port.pins) {%]
+				[%if (field.type.literal == "analog") {%]
+		writeAnalog([%=field.number%], [%=field.id%]);
+				[%}%]
+				[%if (field.type.literal == "pwm") {%]
+		writeAnalog([%=field.number%], [%=field.id%]);
+				[%}%]
+				[%if (field.type.literal == "digital") {%]
+		writeDigital([%=field.number%], [%=field.id%]);
+				[%}%]
+	
+				[%}%]
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "byte") {%]
+			[%for (port in c.port) {%]
+				[%for (i in Sequence{0..port.pins.size() -1}) {%]
+		writeDigital([%=port.pins.at(i).number%], [%=port.id%][[%=i%]]);
+				[%}%]
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "one_wire") {%]
+			[%for (port in c.port) {%]
+		[%=port.id%]->write();
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "i2c") {%]
+			[%for (port in c.port) {%]
+		[%=port.id%]->write();
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "spi") {%]
+			[%for (port in c.port) {%]
+		[%=port.id%]->write();
+			[%}%]
+		[%}%]
+	}
+
+};
+[%}%]

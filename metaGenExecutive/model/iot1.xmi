@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iotgeneral:System
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:iotarduino="http://johnbrown.me/iotsysarduino"
+    xmlns:iotgeneral="http://johnbrown.me/iotsysgeneral"
+    xsi:schemaLocation="http://johnbrown.me/iotsysgeneral http://johnbrown.me/iotsysarduino#//General"
+    name="SYS_01">
+  <sensors xsi:type="iotarduino:Temperature"
+      name="TS_01"
+      hasTemperature="true"
+      hasHumidity="true"/>
+  <actuators
+      xsi:type="iotarduino:Relay"
+      name="RL_01"
+      channels="2"/>
+  <controllers
+      xsi:type="iotarduino:Arduino"
+      name="ECU_01">
+    <ports xsi:type="iotarduino:ArduinoPort"
+        name="DhtBus"
+        pins="//@controllers.0/@pins.0"/>
+    <ports xsi:type="iotarduino:ArduinoPort"
+        name="RelayCommand"
+        pins="//@controllers.0/@pins.1"/>
+    <pins xsi:type="iotarduino:ArduinoPin"
+        name="dht_data"
+        number="3"
+        direction="bidirectional"/>
+    <pins xsi:type="iotarduino:ArduinoPin"
+        name="heater_cmd"
+        number="2"/>
+  </controllers>
+  <adapters
+      xsi:type="iotgeneral:SensorAdapter"
+      name="TempSens"
+      coding="one_wire"
+      port="//@controllers.0/@ports.0"
+      sensor="//@sensors.0"
+      controller="//@controllers.0"/>
+  <adapters
+      xsi:type="iotgeneral:ActuatorAdapter"
+      name="RelayDriver"
+      port="//@controllers.0/@ports.1"
+      actuator="//@actuators.0"
+      controller="//@controllers.0"/>
+</iotgeneral:System>

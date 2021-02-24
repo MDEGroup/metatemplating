@@ -1,0 +1,72 @@
+[%import "../epsilon/utility.eol";
+import "../epsilon/metaEngine.eol";%]
+[*
+	Meta Template for Generic Pin Initializator Generator
+*]
+[%=insStat('import "../epsilon/utility.eol";')%]
+[%=insComment('\n\tTemplate for Specific Pin Initializator Generator\n')%]
+
+[*-Controller Startup*]
+[%for (mc in EClass.all.getWanted(_source, "controller")) { %]
+[%=insMarker(mc.name + ' Controller Startup')%]
+[%=insFor('c', mc.name)%]
+	[%for (c_name in mc.getAllAttributes().getWanted(_source, "naming")) { %]
+class [%=insPh('c.' + c_name.name)%]Startup {
+	private:
+	
+	[*-Ports*]
+	[%=insMarker('Ports')%]
+	[%for (port in mc.getAllReferences().getWanted(_source, "ports")) { %]
+	[%=insFor('port', 'c.' + port.name)%]
+		[%for (port_name in port.eType.getAllAttributes().getWanted(_source, "naming")) { %]
+	void startup[%=insPh('port.' + port_name.name)%]() {
+	
+			[%for (pin in port.eType.getAllReferences().getWanted(_source, "pins")) { %]
+				[%for (p_num in pin.getAllSubTypes().getAllAttributesFromAll().getWanted(_source, "number")) { %]
+					[%for (p_name in pin.getAllSubTypes().getAllAttributesFromAll().getWanted(_source, "naming")) { %]
+		[%=insFor('pin', 'port.' + pin.name)%]
+						[%for (p_typing in pin.getAllSubTypes().getAllAttributesFromAll().getWanted(_source, "direction")) { %]
+							[%for (p_type in p_typing.eType.eLiterals.getWanted(_source, "out")) { %]
+			[%=insIf('pin.'+p_typing.name+'.literal == ' + insStr(p_type.literal))%]
+		pinMode([%=insPh('pin.' + p_num.name)%], OUTPUT); // [%=insPh('pin.' + p_name.name)%]
+			[%=insEnd()%]
+							[%}%]
+							[%for (p_type in p_typing.eType.eLiterals.getWanted(_source, "in")) { %]
+			[%=insIf('pin.'+p_typing.name+'.literal == ' + insStr(p_type.literal))%]
+		pinMode([%=insPh('pin.' + p_num.name)%], INPUT); // [%=insPh('pin.' + p_name.name)%]
+			[%=insEnd()%]					
+							[%}%]
+							[%for (p_type in p_typing.eType.eLiterals.getWanted(_source, "both")) { %]
+			[%=insIf('pin.'+p_typing.name+'.literal == ' + insStr(p_type.literal))%]
+		// Bi-directional Pin [%=insPh('pin.' + p_name.name)%] #[%=insPh('pin.' + p_num.name)%] not initialized!
+			[%=insEnd()%]					
+							[%}%]
+						[%}%]		
+		[%=insEnd()%]	
+					[%}%]
+				[%}%]									
+			[%}%]
+	}
+		[%}%]
+	[%=insEnd()%]	
+	[%}%]
+	
+	public:
+	
+	[*-Startup*]
+	[%=insMarker('Startup')%]
+	void run() {	
+	[%for (port in mc.getAllReferences().getWanted(_source, "ports")) { %]
+	[%=insFor('port', 'c.' + port.name)%]
+		[%for (port_name in port.eType.getAllAttributes().getWanted(_source, "naming")) { %]
+		startup[%=insPh('port.' + port_name.name)%]();
+		[%}%]
+	[%=insEnd()%]
+	[%}%]
+	}
+	
+};
+
+	[%}%]
+[%=insEnd()%]
+[%}%]

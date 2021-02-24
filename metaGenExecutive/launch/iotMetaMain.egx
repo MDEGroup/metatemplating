@@ -1,0 +1,53 @@
+import "../epsilon/utility.eol";
+
+/*
+	Initialization
+*/
+pre {
+	"Generating...".println();
+	/*
+	var templatePath = "../meta-templates/";
+	var outPath = "../templates/";*/
+}
+
+
+/*
+	Matching Rules
+*/
+rule Adapters 
+	transform s : source!EPackage {
+
+	template : templatePath + mtHal/*"IotHal.egl"*/
+	
+	guard: s.eSuperPackage == null
+
+	parameters : Map{
+		"_me" = s,
+		"_source" = annHal /*"IotHal"*/
+	}
+
+	target : outPath + s.name + mtHal /*"IotHal.egl"*/
+}
+
+rule StartupControllers 
+	transform s : source!EPackage {
+
+	template : templatePath + mtStartup /*"IotStartup.egl"*/
+	
+	guard: s.eSuperPackage == null
+
+	parameters : Map{
+		"_me" = s,
+		"_source" = annStartup /*"IotStartup"*/
+	}
+
+	target : outPath + s.name + mtStartup /*"IotStartup.egl"*/
+}
+
+
+/*
+	Finalization
+*/
+post {
+	"Done.".println();
+}

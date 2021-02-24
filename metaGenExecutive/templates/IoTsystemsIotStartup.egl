@@ -1,0 +1,42 @@
+[%import "../epsilon/utility.eol";%]
+[*
+	Template for Specific Pin Initializator Generator
+*]
+
+[*-Arduino Controller Startup*]
+[%for (c in Arduino) {%]
+class [%=c.id%]Startup {
+	private:
+	
+	[*-Ports*]
+	[%for (port in c.ports) {%]
+	void startup[%=port.id%]() {
+	
+		[%for (pin in port.pins) {%]
+			[%if (pin.direction.literal == "output") {%]
+		pinMode([%=pin.number%], OUTPUT); // [%=pin.id%]
+			[%}%]
+			[%if (pin.direction.literal == "input") {%]
+		pinMode([%=pin.number%], INPUT); // [%=pin.id%]
+			[%}%]					
+			[%if (pin.direction.literal == "bidirectional") {%]
+		// Bi-directional Pin [%=pin.id%] #[%=pin.number%] not initialized!
+			[%}%]					
+		
+		[%}%]	
+									
+	}
+	[%}%]	
+	
+	public:
+	
+	[*-Startup*]
+	void run() {	
+	[%for (port in c.ports) {%]
+		startup[%=port.id%]();
+	[%}%]
+	}
+	
+};
+
+[%}%]
