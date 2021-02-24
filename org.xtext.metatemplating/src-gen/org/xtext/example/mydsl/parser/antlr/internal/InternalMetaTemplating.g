@@ -558,103 +558,6 @@ ruleStatement returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRulePh
-entryRulePh returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getPhRule()); }
-	iv_rulePh=rulePh
-	{ $current=$iv_rulePh.current; }
-	EOF;
-
-// Rule Ph
-rulePh returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			otherlv_0='[['
-			{
-				newLeafNode(otherlv_0, grammarAccess.getPhAccess().getLeftSquareBracketLeftSquareBracketKeyword_0_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getPhAccess().getPropertyPropertyParserRuleCall_0_1_0());
-					}
-					lv_property_1_0=ruleProperty
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getPhRule());
-						}
-						set(
-							$current,
-							"property",
-							lv_property_1_0,
-							"org.xtext.example.mydsl.MetaTemplating.Property");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			otherlv_2=']]'
-			{
-				newLeafNode(otherlv_2, grammarAccess.getPhAccess().getRightSquareBracketRightSquareBracketKeyword_0_2());
-			}
-		)
-		    |
-		(
-			otherlv_3='[['
-			{
-				newLeafNode(otherlv_3, grammarAccess.getPhAccess().getLeftSquareBracketLeftSquareBracketKeyword_1_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getPhAccess().getPropertyPropertyParserRuleCall_1_1_0());
-					}
-					lv_property_4_0=ruleProperty
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getPhRule());
-						}
-						set(
-							$current,
-							"property",
-							lv_property_4_0,
-							"org.xtext.example.mydsl.MetaTemplating.Property");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getPhAccess().getMetaPropertyMetaPropertyParserRuleCall_1_2_0());
-					}
-					lv_metaProperty_5_0=ruleMetaProperty
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getPhRule());
-						}
-						set(
-							$current,
-							"metaProperty",
-							lv_metaProperty_5_0,
-							"org.xtext.example.mydsl.MetaTemplating.MetaProperty");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			otherlv_6=']]'
-			{
-				newLeafNode(otherlv_6, grammarAccess.getPhAccess().getRightSquareBracketRightSquareBracketKeyword_1_3());
-			}
-		)
-	)
-;
-
 // Entry rule entryRuleRule
 entryRuleRule returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getRuleRule()); }
@@ -825,55 +728,36 @@ ruleIterator returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getIteratorAccess().getMetaElementMetaPhParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getIteratorAccess().getQueryQueryParserRuleCall_4_0());
 				}
-				lv_metaElement_4_0=ruleMetaPh
+				lv_query_4_0=ruleQuery
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getIteratorRule());
 					}
 					set(
 						$current,
-						"metaElement",
-						lv_metaElement_4_0,
-						"org.xtext.example.mydsl.MetaTemplating.MetaPh");
+						"query",
+						lv_query_4_0,
+						"org.xtext.example.mydsl.MetaTemplating.Query");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getIteratorAccess().getSubPropertiesSubPropertyParserRuleCall_5_0());
-				}
-				lv_subProperties_5_0=ruleSubProperty
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getIteratorRule());
-					}
-					add(
-						$current,
-						"subProperties",
-						lv_subProperties_5_0,
-						"org.xtext.example.mydsl.MetaTemplating.SubProperty");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)*
-		otherlv_6=')'
+		otherlv_5=')'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getIteratorAccess().getRightParenthesisKeyword_6());
+			newLeafNode(otherlv_5, grammarAccess.getIteratorAccess().getRightParenthesisKeyword_5());
 		}
-		otherlv_7='{'
+		otherlv_6='{'
 		{
-			newLeafNode(otherlv_7, grammarAccess.getIteratorAccess().getLeftCurlyBracketKeyword_7());
+			newLeafNode(otherlv_6, grammarAccess.getIteratorAccess().getLeftCurlyBracketKeyword_6());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getIteratorAccess().getBodyInstructionsParserRuleCall_8_0());
+					newCompositeNode(grammarAccess.getIteratorAccess().getBodyInstructionsParserRuleCall_7_0());
 				}
-				lv_body_8_0=ruleInstructions
+				lv_body_7_0=ruleInstructions
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getIteratorRule());
@@ -881,15 +765,227 @@ ruleIterator returns [EObject current=null]
 					add(
 						$current,
 						"body",
-						lv_body_8_0,
+						lv_body_7_0,
 						"org.xtext.example.mydsl.MetaTemplating.Instructions");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		otherlv_9='}'
+		otherlv_8='}'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getIteratorAccess().getRightCurlyBracketKeyword_9());
+			newLeafNode(otherlv_8, grammarAccess.getIteratorAccess().getRightCurlyBracketKeyword_8());
+		}
+	)
+;
+
+// Entry rule entryRuleQuery
+entryRuleQuery returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getQueryRule()); }
+	iv_ruleQuery=ruleQuery
+	{ $current=$iv_ruleQuery.current; }
+	EOF;
+
+// Rule Query
+ruleQuery returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				(
+					lv_item_0_0=RULE_ID
+					{
+						newLeafNode(lv_item_0_0, grammarAccess.getQueryAccess().getItemIDTerminalRuleCall_0_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getQueryRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"item",
+							lv_item_0_0,
+							"org.eclipse.xtext.common.Terminals.ID");
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getQueryAccess().getRefMetaPhParserRuleCall_0_1_0());
+					}
+					lv_ref_1_0=ruleMetaPh
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getQueryRule());
+						}
+						set(
+							$current,
+							"ref",
+							lv_ref_1_0,
+							"org.xtext.example.mydsl.MetaTemplating.MetaPh");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getQueryAccess().getSubQuerySubQueryParserRuleCall_1_0());
+				}
+				lv_subQuery_2_0=ruleSubQuery
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getQueryRule());
+					}
+					add(
+						$current,
+						"subQuery",
+						lv_subQuery_2_0,
+						"org.xtext.example.mydsl.MetaTemplating.SubQuery");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleSubQuery
+entryRuleSubQuery returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSubQueryRule()); }
+	iv_ruleSubQuery=ruleSubQuery
+	{ $current=$iv_ruleSubQuery.current; }
+	EOF;
+
+// Rule SubQuery
+ruleSubQuery returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='.'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getSubQueryAccess().getFullStopKeyword_0());
+		}
+		(
+			(
+				(
+					lv_item_1_0=RULE_ID
+					{
+						newLeafNode(lv_item_1_0, grammarAccess.getSubQueryAccess().getItemIDTerminalRuleCall_1_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getSubQueryRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"item",
+							lv_item_1_0,
+							"org.eclipse.xtext.common.Terminals.ID");
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getSubQueryAccess().getRefMetaPhParserRuleCall_1_1_0());
+					}
+					lv_ref_2_0=ruleMetaPh
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getSubQueryRule());
+						}
+						set(
+							$current,
+							"ref",
+							lv_ref_2_0,
+							"org.xtext.example.mydsl.MetaTemplating.MetaPh");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		(
+			otherlv_3='()'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getSubQueryAccess().getLeftParenthesisRightParenthesisKeyword_2());
+			}
+		)?
+	)
+;
+
+// Entry rule entryRulePh
+entryRulePh returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getPhRule()); }
+	iv_rulePh=rulePh
+	{ $current=$iv_rulePh.current; }
+	EOF;
+
+// Rule Ph
+rulePh returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='[['
+		{
+			newLeafNode(otherlv_0, grammarAccess.getPhAccess().getLeftSquareBracketLeftSquareBracketKeyword_0());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPhAccess().getPropertyPropertyParserRuleCall_1_0());
+				}
+				lv_property_1_0=ruleProperty
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPhRule());
+					}
+					set(
+						$current,
+						"property",
+						lv_property_1_0,
+						"org.xtext.example.mydsl.MetaTemplating.Property");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getPhAccess().getMetaPropertyMetaPropertyParserRuleCall_2_0());
+				}
+				lv_metaProperty_2_0=ruleMetaProperty
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getPhRule());
+					}
+					set(
+						$current,
+						"metaProperty",
+						lv_metaProperty_2_0,
+						"org.xtext.example.mydsl.MetaTemplating.MetaProperty");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		otherlv_3=']]'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getPhAccess().getRightSquareBracketRightSquareBracketKeyword_3());
 		}
 	)
 ;
@@ -910,125 +1006,57 @@ ruleMetaPh returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			otherlv_0='['
-			{
-				newLeafNode(otherlv_0, grammarAccess.getMetaPhAccess().getLeftSquareBracketKeyword_0_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getMetaPhAccess().getPropertyPropertyParserRuleCall_0_1_0());
-					}
-					lv_property_1_0=ruleProperty
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getMetaPhRule());
-						}
-						set(
-							$current,
-							"property",
-							lv_property_1_0,
-							"org.xtext.example.mydsl.MetaTemplating.Property");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			otherlv_2=']'
-			{
-				newLeafNode(otherlv_2, grammarAccess.getMetaPhAccess().getRightSquareBracketKeyword_0_2());
-			}
-		)
-		    |
-		(
-			otherlv_3='['
-			{
-				newLeafNode(otherlv_3, grammarAccess.getMetaPhAccess().getLeftSquareBracketKeyword_1_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getMetaPhAccess().getPropertyPropertyParserRuleCall_1_1_0());
-					}
-					lv_property_4_0=ruleProperty
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getMetaPhRule());
-						}
-						set(
-							$current,
-							"property",
-							lv_property_4_0,
-							"org.xtext.example.mydsl.MetaTemplating.Property");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getMetaPhAccess().getInfoTagInfoParserRuleCall_1_2_0());
-					}
-					lv_info_5_0=ruleTagInfo
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getMetaPhRule());
-						}
-						set(
-							$current,
-							"info",
-							lv_info_5_0,
-							"org.xtext.example.mydsl.MetaTemplating.TagInfo");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			otherlv_6=']'
-			{
-				newLeafNode(otherlv_6, grammarAccess.getMetaPhAccess().getRightSquareBracketKeyword_1_3());
-			}
-		)
-	)
-;
-
-// Entry rule entryRuleTagInfo
-entryRuleTagInfo returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getTagInfoRule()); }
-	iv_ruleTagInfo=ruleTagInfo
-	{ $current=$iv_ruleTagInfo.current; }
-	EOF;
-
-// Rule TagInfo
-ruleTagInfo returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='TAGINFO'
+		otherlv_0='['
 		{
-			newLeafNode(otherlv_0, grammarAccess.getTagInfoAccess().getTAGINFOKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getMetaPhAccess().getLeftSquareBracketKeyword_0());
 		}
 		(
 			(
-				lv_tag_1_0=RULE_STRING
 				{
-					newLeafNode(lv_tag_1_0, grammarAccess.getTagInfoAccess().getTagSTRINGTerminalRuleCall_1_0());
+					newCompositeNode(grammarAccess.getMetaPhAccess().getPropertyPropertyParserRuleCall_1_0());
 				}
+				lv_property_1_0=ruleProperty
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getTagInfoRule());
+						$current = createModelElementForParent(grammarAccess.getMetaPhRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
-						"tag",
-						lv_tag_1_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"property",
+						lv_property_1_0,
+						"org.xtext.example.mydsl.MetaTemplating.Property");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+		(
+			otherlv_2='TAGINFO'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getMetaPhAccess().getTAGINFOKeyword_2_0());
+			}
+			(
+				(
+					lv_tag_3_0=RULE_STRING
+					{
+						newLeafNode(lv_tag_3_0, grammarAccess.getMetaPhAccess().getTagSTRINGTerminalRuleCall_2_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMetaPhRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"tag",
+							lv_tag_3_0,
+							"org.eclipse.xtext.common.Terminals.STRING");
+					}
+				)
+			)
+		)?
+		otherlv_4=']'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getMetaPhAccess().getRightSquareBracketKeyword_3());
+		}
 	)
 ;
 
@@ -1150,59 +1178,34 @@ ruleSubProperty returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		otherlv_0='.'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getSubPropertyAccess().getFullStopKeyword_0());
+		}
 		(
-			otherlv_0='.'
-			{
-				newLeafNode(otherlv_0, grammarAccess.getSubPropertyAccess().getFullStopKeyword_0_0());
-			}
 			(
-				(
-					lv_property_1_0=RULE_ID
-					{
-						newLeafNode(lv_property_1_0, grammarAccess.getSubPropertyAccess().getPropertyIDTerminalRuleCall_0_1_0());
+				lv_property_1_0=RULE_ID
+				{
+					newLeafNode(lv_property_1_0, grammarAccess.getSubPropertyAccess().getPropertyIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getSubPropertyRule());
 					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getSubPropertyRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"property",
-							lv_property_1_0,
-							"org.eclipse.xtext.common.Terminals.ID");
-					}
-				)
+					setWithLastConsumed(
+						$current,
+						"property",
+						lv_property_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
 			)
 		)
-		    |
 		(
-			otherlv_2='.'
+			otherlv_2='()'
 			{
-				newLeafNode(otherlv_2, grammarAccess.getSubPropertyAccess().getFullStopKeyword_1_0());
+				newLeafNode(otherlv_2, grammarAccess.getSubPropertyAccess().getLeftParenthesisRightParenthesisKeyword_2());
 			}
-			(
-				(
-					lv_property_3_0=RULE_ID
-					{
-						newLeafNode(lv_property_3_0, grammarAccess.getSubPropertyAccess().getPropertyIDTerminalRuleCall_1_1_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getSubPropertyRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"property",
-							lv_property_3_0,
-							"org.eclipse.xtext.common.Terminals.ID");
-					}
-				)
-			)
-			otherlv_4='()'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getSubPropertyAccess().getLeftParenthesisRightParenthesisKeyword_1_2());
-			}
-		)
+		)?
 	)
 ;
 

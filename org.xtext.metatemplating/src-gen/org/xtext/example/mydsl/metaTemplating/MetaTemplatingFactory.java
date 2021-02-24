@@ -87,15 +87,6 @@ public interface MetaTemplatingFactory extends EFactory
   Statement createStatement();
 
   /**
-   * Returns a new object of class '<em>Ph</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Ph</em>'.
-   * @generated
-   */
-  Ph createPh();
-
-  /**
    * Returns a new object of class '<em>Rule</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -114,6 +105,33 @@ public interface MetaTemplatingFactory extends EFactory
   Iterator createIterator();
 
   /**
+   * Returns a new object of class '<em>Query</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Query</em>'.
+   * @generated
+   */
+  Query createQuery();
+
+  /**
+   * Returns a new object of class '<em>Sub Query</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Sub Query</em>'.
+   * @generated
+   */
+  SubQuery createSubQuery();
+
+  /**
+   * Returns a new object of class '<em>Ph</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Ph</em>'.
+   * @generated
+   */
+  Ph createPh();
+
+  /**
    * Returns a new object of class '<em>Meta Ph</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -121,15 +139,6 @@ public interface MetaTemplatingFactory extends EFactory
    * @generated
    */
   MetaPh createMetaPh();
-
-  /**
-   * Returns a new object of class '<em>Tag Info</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Tag Info</em>'.
-   * @generated
-   */
-  TagInfo createTagInfo();
 
   /**
    * Returns a new object of class '<em>Meta Property</em>'.

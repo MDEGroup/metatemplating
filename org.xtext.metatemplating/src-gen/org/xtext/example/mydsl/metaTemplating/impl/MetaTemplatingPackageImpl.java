@@ -25,10 +25,11 @@ import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
 import org.xtext.example.mydsl.metaTemplating.Model;
 import org.xtext.example.mydsl.metaTemplating.Ph;
 import org.xtext.example.mydsl.metaTemplating.Property;
+import org.xtext.example.mydsl.metaTemplating.Query;
 import org.xtext.example.mydsl.metaTemplating.Rule;
 import org.xtext.example.mydsl.metaTemplating.Statement;
 import org.xtext.example.mydsl.metaTemplating.SubProperty;
-import org.xtext.example.mydsl.metaTemplating.TagInfo;
+import org.xtext.example.mydsl.metaTemplating.SubQuery;
 
 /**
  * <!-- begin-user-doc -->
@@ -92,13 +93,6 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass phEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass ruleEClass = null;
 
   /**
@@ -113,14 +107,28 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass metaPhEClass = null;
+  private EClass queryEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass tagInfoEClass = null;
+  private EClass subQueryEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass phEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass metaPhEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -479,39 +487,6 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EClass getPh()
-  {
-    return phEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getPh_Property()
-  {
-    return (EReference)phEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getPh_MetaProperty()
-  {
-    return (EReference)phEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getRule()
   {
     return ruleEClass;
@@ -589,7 +564,7 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EReference getIterator_MetaElement()
+  public EReference getIterator_Query()
   {
     return (EReference)iteratorEClass.getEStructuralFeatures().get(1);
   }
@@ -600,7 +575,7 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EReference getIterator_SubProperties()
+  public EReference getIterator_Body()
   {
     return (EReference)iteratorEClass.getEStructuralFeatures().get(2);
   }
@@ -611,9 +586,108 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EReference getIterator_Body()
+  public EClass getQuery()
   {
-    return (EReference)iteratorEClass.getEStructuralFeatures().get(3);
+    return queryEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getQuery_Item()
+  {
+    return (EAttribute)queryEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getQuery_Ref()
+  {
+    return (EReference)queryEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getQuery_SubQuery()
+  {
+    return (EReference)queryEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSubQuery()
+  {
+    return subQueryEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSubQuery_Item()
+  {
+    return (EAttribute)subQueryEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSubQuery_Ref()
+  {
+    return (EReference)subQueryEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPh()
+  {
+    return phEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPh_Property()
+  {
+    return (EReference)phEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPh_MetaProperty()
+  {
+    return (EReference)phEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -644,31 +718,9 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EReference getMetaPh_Info()
+  public EAttribute getMetaPh_Tag()
   {
-    return (EReference)metaPhEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getTagInfo()
-  {
-    return tagInfoEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getTagInfo_Tag()
-  {
-    return (EAttribute)tagInfoEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)metaPhEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -853,10 +905,6 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
     createEReference(statementEClass, STATEMENT__PLACEHOLDER);
     createEReference(statementEClass, STATEMENT__META_PLACEHOLDER);
 
-    phEClass = createEClass(PH);
-    createEReference(phEClass, PH__PROPERTY);
-    createEReference(phEClass, PH__META_PROPERTY);
-
     ruleEClass = createEClass(RULE);
     createEAttribute(ruleEClass, RULE__ELEMENT);
     createEReference(ruleEClass, RULE__PROPERTY);
@@ -865,16 +913,25 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
 
     iteratorEClass = createEClass(ITERATOR);
     createEAttribute(iteratorEClass, ITERATOR__ELEMENT);
-    createEReference(iteratorEClass, ITERATOR__META_ELEMENT);
-    createEReference(iteratorEClass, ITERATOR__SUB_PROPERTIES);
+    createEReference(iteratorEClass, ITERATOR__QUERY);
     createEReference(iteratorEClass, ITERATOR__BODY);
+
+    queryEClass = createEClass(QUERY);
+    createEAttribute(queryEClass, QUERY__ITEM);
+    createEReference(queryEClass, QUERY__REF);
+    createEReference(queryEClass, QUERY__SUB_QUERY);
+
+    subQueryEClass = createEClass(SUB_QUERY);
+    createEAttribute(subQueryEClass, SUB_QUERY__ITEM);
+    createEReference(subQueryEClass, SUB_QUERY__REF);
+
+    phEClass = createEClass(PH);
+    createEReference(phEClass, PH__PROPERTY);
+    createEReference(phEClass, PH__META_PROPERTY);
 
     metaPhEClass = createEClass(META_PH);
     createEReference(metaPhEClass, META_PH__PROPERTY);
-    createEReference(metaPhEClass, META_PH__INFO);
-
-    tagInfoEClass = createEClass(TAG_INFO);
-    createEAttribute(tagInfoEClass, TAG_INFO__TAG);
+    createEAttribute(metaPhEClass, META_PH__TAG);
 
     metaPropertyEClass = createEClass(META_PROPERTY);
     createEReference(metaPropertyEClass, META_PROPERTY__PROPERTY);
@@ -954,10 +1011,6 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
     initEReference(getStatement_Placeholder(), this.getPh(), null, "placeholder", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getStatement_MetaPlaceholder(), this.getMetaPh(), null, "metaPlaceholder", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(phEClass, Ph.class, "Ph", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPh_Property(), this.getProperty(), null, "property", null, 0, 1, Ph.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPh_MetaProperty(), this.getMetaProperty(), null, "metaProperty", null, 0, 1, Ph.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(ruleEClass, Rule.class, "Rule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRule_Element(), ecorePackage.getEString(), "element", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRule_Property(), this.getProperty(), null, "property", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -966,16 +1019,25 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
 
     initEClass(iteratorEClass, Iterator.class, "Iterator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getIterator_Element(), ecorePackage.getEString(), "element", null, 0, 1, Iterator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getIterator_MetaElement(), this.getMetaPh(), null, "metaElement", null, 0, 1, Iterator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getIterator_SubProperties(), this.getSubProperty(), null, "subProperties", null, 0, -1, Iterator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIterator_Query(), this.getQuery(), null, "query", null, 0, 1, Iterator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIterator_Body(), this.getInstructions(), null, "body", null, 0, -1, Iterator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(queryEClass, Query.class, "Query", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getQuery_Item(), ecorePackage.getEString(), "item", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getQuery_Ref(), this.getMetaPh(), null, "ref", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getQuery_SubQuery(), this.getSubQuery(), null, "subQuery", null, 0, -1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(subQueryEClass, SubQuery.class, "SubQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSubQuery_Item(), ecorePackage.getEString(), "item", null, 0, 1, SubQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSubQuery_Ref(), this.getMetaPh(), null, "ref", null, 0, 1, SubQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(phEClass, Ph.class, "Ph", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPh_Property(), this.getProperty(), null, "property", null, 0, 1, Ph.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPh_MetaProperty(), this.getMetaProperty(), null, "metaProperty", null, 0, 1, Ph.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(metaPhEClass, MetaPh.class, "MetaPh", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMetaPh_Property(), this.getProperty(), null, "property", null, 0, 1, MetaPh.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMetaPh_Info(), this.getTagInfo(), null, "info", null, 0, 1, MetaPh.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(tagInfoEClass, TagInfo.class, "TagInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTagInfo_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, TagInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMetaPh_Tag(), ecorePackage.getEString(), "tag", null, 0, 1, MetaPh.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(metaPropertyEClass, MetaProperty.class, "MetaProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMetaProperty_Property(), this.getProperty(), null, "property", null, 0, 1, MetaProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

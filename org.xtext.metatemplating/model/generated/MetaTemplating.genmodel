@@ -36,10 +36,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Statement/placeholder"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Statement/metaPlaceholder"/>
     </genClasses>
-    <genClasses ecoreClass="MetaTemplating.ecore#//Ph">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Ph/property"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Ph/metaProperty"/>
-    </genClasses>
     <genClasses ecoreClass="MetaTemplating.ecore#//Rule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//Rule/element"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Rule/property"/>
@@ -48,16 +44,25 @@
     </genClasses>
     <genClasses ecoreClass="MetaTemplating.ecore#//Iterator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//Iterator/element"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Iterator/metaElement"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Iterator/subProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Iterator/query"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Iterator/body"/>
+    </genClasses>
+    <genClasses ecoreClass="MetaTemplating.ecore#//Query">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//Query/item"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Query/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Query/subQuery"/>
+    </genClasses>
+    <genClasses ecoreClass="MetaTemplating.ecore#//SubQuery">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//SubQuery/item"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//SubQuery/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="MetaTemplating.ecore#//Ph">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Ph/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Ph/metaProperty"/>
     </genClasses>
     <genClasses ecoreClass="MetaTemplating.ecore#//MetaPh">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//MetaPh/property"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//MetaPh/info"/>
-    </genClasses>
-    <genClasses ecoreClass="MetaTemplating.ecore#//TagInfo">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//TagInfo/tag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//MetaPh/tag"/>
     </genClasses>
     <genClasses ecoreClass="MetaTemplating.ecore#//MetaProperty">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//MetaProperty/property"/>

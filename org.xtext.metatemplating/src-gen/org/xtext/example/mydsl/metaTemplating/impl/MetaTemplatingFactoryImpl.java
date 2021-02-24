@@ -72,11 +72,12 @@ public class MetaTemplatingFactoryImpl extends EFactoryImpl implements MetaTempl
       case MetaTemplatingPackage.COMMENT: return createComment();
       case MetaTemplatingPackage.INSTRUCTIONS: return createInstructions();
       case MetaTemplatingPackage.STATEMENT: return createStatement();
-      case MetaTemplatingPackage.PH: return createPh();
       case MetaTemplatingPackage.RULE: return createRule();
       case MetaTemplatingPackage.ITERATOR: return createIterator();
+      case MetaTemplatingPackage.QUERY: return createQuery();
+      case MetaTemplatingPackage.SUB_QUERY: return createSubQuery();
+      case MetaTemplatingPackage.PH: return createPh();
       case MetaTemplatingPackage.META_PH: return createMetaPh();
-      case MetaTemplatingPackage.TAG_INFO: return createTagInfo();
       case MetaTemplatingPackage.META_PROPERTY: return createMetaProperty();
       case MetaTemplatingPackage.PROPERTY: return createProperty();
       case MetaTemplatingPackage.SUB_PROPERTY: return createSubProperty();
@@ -177,18 +178,6 @@ public class MetaTemplatingFactoryImpl extends EFactoryImpl implements MetaTempl
    * @generated
    */
   @Override
-  public Ph createPh()
-  {
-    PhImpl ph = new PhImpl();
-    return ph;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Rule createRule()
   {
     RuleImpl rule = new RuleImpl();
@@ -213,10 +202,10 @@ public class MetaTemplatingFactoryImpl extends EFactoryImpl implements MetaTempl
    * @generated
    */
   @Override
-  public MetaPh createMetaPh()
+  public Query createQuery()
   {
-    MetaPhImpl metaPh = new MetaPhImpl();
-    return metaPh;
+    QueryImpl query = new QueryImpl();
+    return query;
   }
 
   /**
@@ -225,10 +214,34 @@ public class MetaTemplatingFactoryImpl extends EFactoryImpl implements MetaTempl
    * @generated
    */
   @Override
-  public TagInfo createTagInfo()
+  public SubQuery createSubQuery()
   {
-    TagInfoImpl tagInfo = new TagInfoImpl();
-    return tagInfo;
+    SubQueryImpl subQuery = new SubQueryImpl();
+    return subQuery;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Ph createPh()
+  {
+    PhImpl ph = new PhImpl();
+    return ph;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MetaPh createMetaPh()
+  {
+    MetaPhImpl metaPh = new MetaPhImpl();
+    return metaPh;
   }
 
   /**

@@ -43,11 +43,6 @@ Statement:
 	placeholder=Ph | metaPlaceholder=MetaPh
 ;
 
-Ph:
-	'[[' property=Property ']]' |
-	'[[' property=Property metaProperty=MetaProperty ']]'
-;
-
 /* Rules */
 	
 Rule:
@@ -57,19 +52,26 @@ Rule:
 /* Iterators */
 	
 Iterator:
-	'foreach' '(' element=ID 'in' metaElement=MetaPh subProperties+=SubProperty* ')'
+	'foreach' '(' element=ID 'in' query=Query ')'
 	'{' body+=Instructions* '}'
 ;	
 
-/* Placeholder */
-
-MetaPh:
-	'[' property=Property ']' |
-	'[' property=Property info=TagInfo ']'
+Query:
+	(item=ID | ref=MetaPh) subQuery+=SubQuery*
 ;
 
-TagInfo:
-	'TAGINFO' tag=STRING
+SubQuery:
+	'.' (item=ID | ref=MetaPh) '()'?
+;
+
+/* Placeholder */
+
+Ph:
+	'[[' property=Property (metaProperty=MetaProperty)? ']]'
+;
+
+MetaPh:
+	'[' property=Property ('TAGINFO' tag=STRING)? ']'
 ;
 
 MetaProperty:
@@ -83,9 +85,10 @@ Property:
 ;
 
 SubProperty:	
-	'.' property=ID |
-	'.' property=ID '()'
+	'.' property=ID '()'?
 ; 
+
+/* Escaping */
 
 EscapedString:
 	'@{' str=STRING '}@'

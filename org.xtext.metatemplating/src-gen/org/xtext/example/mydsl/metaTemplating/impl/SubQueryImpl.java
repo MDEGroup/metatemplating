@@ -14,60 +14,60 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.metaTemplating.MetaPh;
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
-import org.xtext.example.mydsl.metaTemplating.Property;
+import org.xtext.example.mydsl.metaTemplating.SubQuery;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Meta Ph</b></em>'.
+ * An implementation of the model object '<em><b>Sub Query</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.MetaPhImpl#getProperty <em>Property</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.MetaPhImpl#getTag <em>Tag</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.SubQueryImpl#getItem <em>Item</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.SubQueryImpl#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MetaPhImpl extends MinimalEObjectImpl.Container implements MetaPh
+public class SubQueryImpl extends MinimalEObjectImpl.Container implements SubQuery
 {
   /**
-   * The cached value of the '{@link #getProperty() <em>Property</em>}' containment reference.
+   * The default value of the '{@link #getItem() <em>Item</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getProperty()
+   * @see #getItem()
    * @generated
    * @ordered
    */
-  protected Property property;
+  protected static final String ITEM_EDEFAULT = null;
 
   /**
-   * The default value of the '{@link #getTag() <em>Tag</em>}' attribute.
+   * The cached value of the '{@link #getItem() <em>Item</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTag()
+   * @see #getItem()
    * @generated
    * @ordered
    */
-  protected static final String TAG_EDEFAULT = null;
+  protected String item = ITEM_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' attribute.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTag()
+   * @see #getRef()
    * @generated
    * @ordered
    */
-  protected String tag = TAG_EDEFAULT;
+  protected MetaPh ref;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected MetaPhImpl()
+  protected SubQueryImpl()
   {
     super();
   }
@@ -80,7 +80,7 @@ public class MetaPhImpl extends MinimalEObjectImpl.Container implements MetaPh
   @Override
   protected EClass eStaticClass()
   {
-    return MetaTemplatingPackage.Literals.META_PH;
+    return MetaTemplatingPackage.Literals.SUB_QUERY;
   }
 
   /**
@@ -89,9 +89,9 @@ public class MetaPhImpl extends MinimalEObjectImpl.Container implements MetaPh
    * @generated
    */
   @Override
-  public Property getProperty()
+  public String getItem()
   {
-    return property;
+    return item;
   }
 
   /**
@@ -99,13 +99,38 @@ public class MetaPhImpl extends MinimalEObjectImpl.Container implements MetaPh
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetProperty(Property newProperty, NotificationChain msgs)
+  @Override
+  public void setItem(String newItem)
   {
-    Property oldProperty = property;
-    property = newProperty;
+    String oldItem = item;
+    item = newItem;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.SUB_QUERY__ITEM, oldItem, item));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MetaPh getRef()
+  {
+    return ref;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRef(MetaPh newRef, NotificationChain msgs)
+  {
+    MetaPh oldRef = ref;
+    ref = newRef;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.META_PH__PROPERTY, oldProperty, newProperty);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.SUB_QUERY__REF, oldRef, newRef);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -117,45 +142,20 @@ public class MetaPhImpl extends MinimalEObjectImpl.Container implements MetaPh
    * @generated
    */
   @Override
-  public void setProperty(Property newProperty)
+  public void setRef(MetaPh newRef)
   {
-    if (newProperty != property)
+    if (newRef != ref)
     {
       NotificationChain msgs = null;
-      if (property != null)
-        msgs = ((InternalEObject)property).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.META_PH__PROPERTY, null, msgs);
-      if (newProperty != null)
-        msgs = ((InternalEObject)newProperty).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.META_PH__PROPERTY, null, msgs);
-      msgs = basicSetProperty(newProperty, msgs);
+      if (ref != null)
+        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.SUB_QUERY__REF, null, msgs);
+      if (newRef != null)
+        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.SUB_QUERY__REF, null, msgs);
+      msgs = basicSetRef(newRef, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.META_PH__PROPERTY, newProperty, newProperty));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getTag()
-  {
-    return tag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setTag(String newTag)
-  {
-    String oldTag = tag;
-    tag = newTag;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.META_PH__TAG, oldTag, tag));
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.SUB_QUERY__REF, newRef, newRef));
   }
 
   /**
@@ -168,8 +168,8 @@ public class MetaPhImpl extends MinimalEObjectImpl.Container implements MetaPh
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.META_PH__PROPERTY:
-        return basicSetProperty(null, msgs);
+      case MetaTemplatingPackage.SUB_QUERY__REF:
+        return basicSetRef(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -184,10 +184,10 @@ public class MetaPhImpl extends MinimalEObjectImpl.Container implements MetaPh
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.META_PH__PROPERTY:
-        return getProperty();
-      case MetaTemplatingPackage.META_PH__TAG:
-        return getTag();
+      case MetaTemplatingPackage.SUB_QUERY__ITEM:
+        return getItem();
+      case MetaTemplatingPackage.SUB_QUERY__REF:
+        return getRef();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -202,11 +202,11 @@ public class MetaPhImpl extends MinimalEObjectImpl.Container implements MetaPh
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.META_PH__PROPERTY:
-        setProperty((Property)newValue);
+      case MetaTemplatingPackage.SUB_QUERY__ITEM:
+        setItem((String)newValue);
         return;
-      case MetaTemplatingPackage.META_PH__TAG:
-        setTag((String)newValue);
+      case MetaTemplatingPackage.SUB_QUERY__REF:
+        setRef((MetaPh)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -222,11 +222,11 @@ public class MetaPhImpl extends MinimalEObjectImpl.Container implements MetaPh
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.META_PH__PROPERTY:
-        setProperty((Property)null);
+      case MetaTemplatingPackage.SUB_QUERY__ITEM:
+        setItem(ITEM_EDEFAULT);
         return;
-      case MetaTemplatingPackage.META_PH__TAG:
-        setTag(TAG_EDEFAULT);
+      case MetaTemplatingPackage.SUB_QUERY__REF:
+        setRef((MetaPh)null);
         return;
     }
     super.eUnset(featureID);
@@ -242,10 +242,10 @@ public class MetaPhImpl extends MinimalEObjectImpl.Container implements MetaPh
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.META_PH__PROPERTY:
-        return property != null;
-      case MetaTemplatingPackage.META_PH__TAG:
-        return TAG_EDEFAULT == null ? tag != null : !TAG_EDEFAULT.equals(tag);
+      case MetaTemplatingPackage.SUB_QUERY__ITEM:
+        return ITEM_EDEFAULT == null ? item != null : !ITEM_EDEFAULT.equals(item);
+      case MetaTemplatingPackage.SUB_QUERY__REF:
+        return ref != null;
     }
     return super.eIsSet(featureID);
   }
@@ -261,10 +261,10 @@ public class MetaPhImpl extends MinimalEObjectImpl.Container implements MetaPh
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (tag: ");
-    result.append(tag);
+    result.append(" (item: ");
+    result.append(item);
     result.append(')');
     return result.toString();
   }
 
-} //MetaPhImpl
+} //SubQueryImpl

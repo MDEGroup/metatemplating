@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.MetaPh#getProperty <em>Property</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.MetaPh#getInfo <em>Info</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.MetaPh#getTag <em>Tag</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getMetaPh()
@@ -47,25 +47,25 @@ public interface MetaPh extends EObject
   void setProperty(Property value);
 
   /**
-   * Returns the value of the '<em><b>Info</b></em>' containment reference.
+   * Returns the value of the '<em><b>Tag</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Info</em>' containment reference.
-   * @see #setInfo(TagInfo)
-   * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getMetaPh_Info()
-   * @model containment="true"
+   * @return the value of the '<em>Tag</em>' attribute.
+   * @see #setTag(String)
+   * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getMetaPh_Tag()
+   * @model
    * @generated
    */
-  TagInfo getInfo();
+  String getTag();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.metaTemplating.MetaPh#getInfo <em>Info</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.metaTemplating.MetaPh#getTag <em>Tag</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Info</em>' containment reference.
-   * @see #getInfo()
+   * @param value the new value of the '<em>Tag</em>' attribute.
+   * @see #getTag()
    * @generated
    */
-  void setInfo(TagInfo value);
+  void setTag(String value);
 
 } // MetaPh

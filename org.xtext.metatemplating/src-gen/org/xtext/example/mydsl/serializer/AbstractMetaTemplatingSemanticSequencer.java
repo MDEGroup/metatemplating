@@ -28,10 +28,11 @@ import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
 import org.xtext.example.mydsl.metaTemplating.Model;
 import org.xtext.example.mydsl.metaTemplating.Ph;
 import org.xtext.example.mydsl.metaTemplating.Property;
+import org.xtext.example.mydsl.metaTemplating.Query;
 import org.xtext.example.mydsl.metaTemplating.Rule;
 import org.xtext.example.mydsl.metaTemplating.Statement;
 import org.xtext.example.mydsl.metaTemplating.SubProperty;
-import org.xtext.example.mydsl.metaTemplating.TagInfo;
+import org.xtext.example.mydsl.metaTemplating.SubQuery;
 import org.xtext.example.mydsl.services.MetaTemplatingGrammarAccess;
 
 @SuppressWarnings("all")
@@ -87,6 +88,9 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 			case MetaTemplatingPackage.PROPERTY:
 				sequence_Property(context, (Property) semanticObject); 
 				return; 
+			case MetaTemplatingPackage.QUERY:
+				sequence_Query(context, (Query) semanticObject); 
+				return; 
 			case MetaTemplatingPackage.RULE:
 				sequence_Rule(context, (Rule) semanticObject); 
 				return; 
@@ -96,8 +100,8 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 			case MetaTemplatingPackage.SUB_PROPERTY:
 				sequence_SubProperty(context, (SubProperty) semanticObject); 
 				return; 
-			case MetaTemplatingPackage.TAG_INFO:
-				sequence_TagInfo(context, (TagInfo) semanticObject); 
+			case MetaTemplatingPackage.SUB_QUERY:
+				sequence_SubQuery(context, (SubQuery) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -207,7 +211,7 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 	 *     Iterator returns Iterator
 	 *
 	 * Constraint:
-	 *     (element=ID metaElement=MetaPh subProperties+=SubProperty* body+=Instructions*)
+	 *     (element=ID query=Query body+=Instructions*)
 	 */
 	protected void sequence_Iterator(ISerializationContext context, Iterator semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -237,7 +241,7 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 	 *     MetaPh returns MetaPh
 	 *
 	 * Constraint:
-	 *     (property=Property | (property=Property info=TagInfo))
+	 *     (property=Property tag=STRING?)
 	 */
 	protected void sequence_MetaPh(ISerializationContext context, MetaPh semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -279,7 +283,7 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 	 *     Ph returns Ph
 	 *
 	 * Constraint:
-	 *     (property=Property | (property=Property metaProperty=MetaProperty))
+	 *     (property=Property metaProperty=MetaProperty?)
 	 */
 	protected void sequence_Ph(ISerializationContext context, Ph semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -294,6 +298,18 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 	 *     (property=ID subProperties+=SubProperty*)
 	 */
 	protected void sequence_Property(ISerializationContext context, Property semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Query returns Query
+	 *
+	 * Constraint:
+	 *     ((item=ID | ref=MetaPh) subQuery+=SubQuery*)
+	 */
+	protected void sequence_Query(ISerializationContext context, Query semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -327,28 +343,28 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 	 *     SubProperty returns SubProperty
 	 *
 	 * Constraint:
-	 *     (property=ID | property=ID)
+	 *     property=ID
 	 */
 	protected void sequence_SubProperty(ISerializationContext context, SubProperty semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MetaTemplatingPackage.Literals.SUB_PROPERTY__PROPERTY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MetaTemplatingPackage.Literals.SUB_PROPERTY__PROPERTY));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSubPropertyAccess().getPropertyIDTerminalRuleCall_1_0(), semanticObject.getProperty());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     TagInfo returns TagInfo
+	 *     SubQuery returns SubQuery
 	 *
 	 * Constraint:
-	 *     tag=STRING
+	 *     (item=ID | ref=MetaPh)
 	 */
-	protected void sequence_TagInfo(ISerializationContext context, TagInfo semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MetaTemplatingPackage.Literals.TAG_INFO__TAG) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MetaTemplatingPackage.Literals.TAG_INFO__TAG));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTagInfoAccess().getTagSTRINGTerminalRuleCall_1_0(), semanticObject.getTag());
-		feeder.finish();
+	protected void sequence_SubQuery(ISerializationContext context, SubQuery semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

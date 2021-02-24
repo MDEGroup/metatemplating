@@ -44,12 +44,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="metaPlaceholder" eType="#//MetaPh"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Ph">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//Property"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="metaProperty" eType="#//MetaProperty"
-        containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Rule">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="element" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//Property"
@@ -60,20 +54,32 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Iterator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="element" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="metaElement" eType="#//MetaPh"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//Query"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subProperties" upperBound="-1"
-        eType="#//SubProperty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="body" upperBound="-1" eType="#//Instructions"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Query">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="item" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//MetaPh"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subQuery" upperBound="-1"
+        eType="#//SubQuery" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SubQuery">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="item" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//MetaPh"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Ph">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//Property"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metaProperty" eType="#//MetaProperty"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MetaPh">
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//Property"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="info" eType="#//TagInfo"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TagInfo">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MetaProperty">

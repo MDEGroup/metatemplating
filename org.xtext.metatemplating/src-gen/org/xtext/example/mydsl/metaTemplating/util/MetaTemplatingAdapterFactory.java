@@ -111,11 +111,6 @@ public class MetaTemplatingAdapterFactory extends AdapterFactoryImpl
         return createStatementAdapter();
       }
       @Override
-      public Adapter casePh(Ph object)
-      {
-        return createPhAdapter();
-      }
-      @Override
       public Adapter caseRule(Rule object)
       {
         return createRuleAdapter();
@@ -126,14 +121,24 @@ public class MetaTemplatingAdapterFactory extends AdapterFactoryImpl
         return createIteratorAdapter();
       }
       @Override
+      public Adapter caseQuery(Query object)
+      {
+        return createQueryAdapter();
+      }
+      @Override
+      public Adapter caseSubQuery(SubQuery object)
+      {
+        return createSubQueryAdapter();
+      }
+      @Override
+      public Adapter casePh(Ph object)
+      {
+        return createPhAdapter();
+      }
+      @Override
       public Adapter caseMetaPh(MetaPh object)
       {
         return createMetaPhAdapter();
-      }
-      @Override
-      public Adapter caseTagInfo(TagInfo object)
-      {
-        return createTagInfoAdapter();
       }
       @Override
       public Adapter caseMetaProperty(MetaProperty object)
@@ -288,21 +293,6 @@ public class MetaTemplatingAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.metaTemplating.Ph <em>Ph</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.metaTemplating.Ph
-   * @generated
-   */
-  public Adapter createPhAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.metaTemplating.Rule <em>Rule</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -333,6 +323,51 @@ public class MetaTemplatingAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.metaTemplating.Query <em>Query</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.metaTemplating.Query
+   * @generated
+   */
+  public Adapter createQueryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.metaTemplating.SubQuery <em>Sub Query</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.metaTemplating.SubQuery
+   * @generated
+   */
+  public Adapter createSubQueryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.metaTemplating.Ph <em>Ph</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.metaTemplating.Ph
+   * @generated
+   */
+  public Adapter createPhAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.metaTemplating.MetaPh <em>Meta Ph</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -343,21 +378,6 @@ public class MetaTemplatingAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMetaPhAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.metaTemplating.TagInfo <em>Tag Info</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl.metaTemplating.TagInfo
-   * @generated
-   */
-  public Adapter createTagInfoAdapter()
   {
     return null;
   }

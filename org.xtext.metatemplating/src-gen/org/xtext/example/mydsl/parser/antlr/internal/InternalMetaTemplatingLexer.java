@@ -194,10 +194,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:17:7: ( '[[' )
-            // InternalMetaTemplating.g:17:9: '[['
+            // InternalMetaTemplating.g:17:7: ( 'FORALL' )
+            // InternalMetaTemplating.g:17:9: 'FORALL'
             {
-            match("[["); 
+            match("FORALL"); 
 
 
             }
@@ -215,11 +215,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:18:7: ( ']]' )
-            // InternalMetaTemplating.g:18:9: ']]'
+            // InternalMetaTemplating.g:18:7: ( '(' )
+            // InternalMetaTemplating.g:18:9: '('
             {
-            match("]]"); 
-
+            match('('); 
 
             }
 
@@ -236,11 +235,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:19:7: ( 'FORALL' )
-            // InternalMetaTemplating.g:19:9: 'FORALL'
+            // InternalMetaTemplating.g:19:7: ( ':' )
+            // InternalMetaTemplating.g:19:9: ':'
             {
-            match("FORALL"); 
-
+            match(':'); 
 
             }
 
@@ -257,10 +255,11 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:20:7: ( '(' )
-            // InternalMetaTemplating.g:20:9: '('
+            // InternalMetaTemplating.g:20:7: ( 'TAGGED' )
+            // InternalMetaTemplating.g:20:9: 'TAGGED'
             {
-            match('('); 
+            match("TAGGED"); 
+
 
             }
 
@@ -277,10 +276,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:21:7: ( ':' )
-            // InternalMetaTemplating.g:21:9: ':'
+            // InternalMetaTemplating.g:21:7: ( ')' )
+            // InternalMetaTemplating.g:21:9: ')'
             {
-            match(':'); 
+            match(')'); 
 
             }
 
@@ -297,11 +296,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:22:7: ( 'TAGGED' )
-            // InternalMetaTemplating.g:22:9: 'TAGGED'
+            // InternalMetaTemplating.g:22:7: ( '{' )
+            // InternalMetaTemplating.g:22:9: '{'
             {
-            match("TAGGED"); 
-
+            match('{'); 
 
             }
 
@@ -318,10 +316,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:23:7: ( ')' )
-            // InternalMetaTemplating.g:23:9: ')'
+            // InternalMetaTemplating.g:23:7: ( '}' )
+            // InternalMetaTemplating.g:23:9: '}'
             {
-            match(')'); 
+            match('}'); 
 
             }
 
@@ -338,10 +336,11 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:24:7: ( '{' )
-            // InternalMetaTemplating.g:24:9: '{'
+            // InternalMetaTemplating.g:24:7: ( 'foreach' )
+            // InternalMetaTemplating.g:24:9: 'foreach'
             {
-            match('{'); 
+            match("foreach"); 
+
 
             }
 
@@ -358,10 +357,11 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:25:7: ( '}' )
-            // InternalMetaTemplating.g:25:9: '}'
+            // InternalMetaTemplating.g:25:7: ( 'in' )
+            // InternalMetaTemplating.g:25:9: 'in'
             {
-            match('}'); 
+            match("in"); 
+
 
             }
 
@@ -378,11 +378,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:26:7: ( 'foreach' )
-            // InternalMetaTemplating.g:26:9: 'foreach'
+            // InternalMetaTemplating.g:26:7: ( '.' )
+            // InternalMetaTemplating.g:26:9: '.'
             {
-            match("foreach"); 
-
+            match('.'); 
 
             }
 
@@ -399,10 +398,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:27:7: ( 'in' )
-            // InternalMetaTemplating.g:27:9: 'in'
+            // InternalMetaTemplating.g:27:7: ( '()' )
+            // InternalMetaTemplating.g:27:9: '()'
             {
-            match("in"); 
+            match("()"); 
 
 
             }
@@ -420,10 +419,11 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:28:7: ( '[' )
-            // InternalMetaTemplating.g:28:9: '['
+            // InternalMetaTemplating.g:28:7: ( '[[' )
+            // InternalMetaTemplating.g:28:9: '[['
             {
-            match('['); 
+            match("[["); 
+
 
             }
 
@@ -440,10 +440,11 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:29:7: ( ']' )
-            // InternalMetaTemplating.g:29:9: ']'
+            // InternalMetaTemplating.g:29:7: ( ']]' )
+            // InternalMetaTemplating.g:29:9: ']]'
             {
-            match(']'); 
+            match("]]"); 
+
 
             }
 
@@ -460,11 +461,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:30:7: ( 'TAGINFO' )
-            // InternalMetaTemplating.g:30:9: 'TAGINFO'
+            // InternalMetaTemplating.g:30:7: ( '[' )
+            // InternalMetaTemplating.g:30:9: '['
             {
-            match("TAGINFO"); 
-
+            match('['); 
 
             }
 
@@ -481,10 +481,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:31:7: ( '.{' )
-            // InternalMetaTemplating.g:31:9: '.{'
+            // InternalMetaTemplating.g:31:7: ( 'TAGINFO' )
+            // InternalMetaTemplating.g:31:9: 'TAGINFO'
             {
-            match(".{"); 
+            match("TAGINFO"); 
 
 
             }
@@ -502,10 +502,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:32:7: ( '.' )
-            // InternalMetaTemplating.g:32:9: '.'
+            // InternalMetaTemplating.g:32:7: ( ']' )
+            // InternalMetaTemplating.g:32:9: ']'
             {
-            match('.'); 
+            match(']'); 
 
             }
 
@@ -522,10 +522,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:33:7: ( '()' )
-            // InternalMetaTemplating.g:33:9: '()'
+            // InternalMetaTemplating.g:33:7: ( '.{' )
+            // InternalMetaTemplating.g:33:9: '.{'
             {
-            match("()"); 
+            match(".{"); 
 
 
             }
@@ -685,10 +685,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:1425:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalMetaTemplating.g:1425:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalMetaTemplating.g:1428:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalMetaTemplating.g:1428:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalMetaTemplating.g:1425:11: ( '^' )?
+            // InternalMetaTemplating.g:1428:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -697,7 +697,7 @@ public class InternalMetaTemplatingLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalMetaTemplating.g:1425:11: '^'
+                    // InternalMetaTemplating.g:1428:11: '^'
                     {
                     match('^'); 
 
@@ -715,7 +715,7 @@ public class InternalMetaTemplatingLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalMetaTemplating.g:1425:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalMetaTemplating.g:1428:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -764,10 +764,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:1427:10: ( ( '0' .. '9' )+ )
-            // InternalMetaTemplating.g:1427:12: ( '0' .. '9' )+
+            // InternalMetaTemplating.g:1430:10: ( ( '0' .. '9' )+ )
+            // InternalMetaTemplating.g:1430:12: ( '0' .. '9' )+
             {
-            // InternalMetaTemplating.g:1427:12: ( '0' .. '9' )+
+            // InternalMetaTemplating.g:1430:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -781,7 +781,7 @@ public class InternalMetaTemplatingLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalMetaTemplating.g:1427:13: '0' .. '9'
+            	    // InternalMetaTemplating.g:1430:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -813,10 +813,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:1429:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalMetaTemplating.g:1429:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalMetaTemplating.g:1432:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalMetaTemplating.g:1432:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalMetaTemplating.g:1429:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalMetaTemplating.g:1432:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -834,10 +834,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalMetaTemplating.g:1429:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalMetaTemplating.g:1432:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalMetaTemplating.g:1429:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalMetaTemplating.g:1432:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -853,7 +853,7 @@ public class InternalMetaTemplatingLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // InternalMetaTemplating.g:1429:21: '\\\\' .
+                    	    // InternalMetaTemplating.g:1432:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -861,7 +861,7 @@ public class InternalMetaTemplatingLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalMetaTemplating.g:1429:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalMetaTemplating.g:1432:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -886,10 +886,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalMetaTemplating.g:1429:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalMetaTemplating.g:1432:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalMetaTemplating.g:1429:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalMetaTemplating.g:1432:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -905,7 +905,7 @@ public class InternalMetaTemplatingLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalMetaTemplating.g:1429:54: '\\\\' .
+                    	    // InternalMetaTemplating.g:1432:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -913,7 +913,7 @@ public class InternalMetaTemplatingLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalMetaTemplating.g:1429:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalMetaTemplating.g:1432:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -956,12 +956,12 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:1431:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalMetaTemplating.g:1431:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalMetaTemplating.g:1434:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalMetaTemplating.g:1434:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalMetaTemplating.g:1431:24: ( options {greedy=false; } : . )*
+            // InternalMetaTemplating.g:1434:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -986,7 +986,7 @@ public class InternalMetaTemplatingLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalMetaTemplating.g:1431:52: .
+            	    // InternalMetaTemplating.g:1434:52: .
             	    {
             	    matchAny(); 
 
@@ -1016,12 +1016,12 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:1433:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalMetaTemplating.g:1433:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalMetaTemplating.g:1436:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalMetaTemplating.g:1436:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalMetaTemplating.g:1433:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalMetaTemplating.g:1436:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -1034,7 +1034,7 @@ public class InternalMetaTemplatingLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalMetaTemplating.g:1433:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalMetaTemplating.g:1436:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1054,7 +1054,7 @@ public class InternalMetaTemplatingLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalMetaTemplating.g:1433:40: ( ( '\\r' )? '\\n' )?
+            // InternalMetaTemplating.g:1436:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1063,9 +1063,9 @@ public class InternalMetaTemplatingLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalMetaTemplating.g:1433:41: ( '\\r' )? '\\n'
+                    // InternalMetaTemplating.g:1436:41: ( '\\r' )? '\\n'
                     {
-                    // InternalMetaTemplating.g:1433:41: ( '\\r' )?
+                    // InternalMetaTemplating.g:1436:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -1074,7 +1074,7 @@ public class InternalMetaTemplatingLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalMetaTemplating.g:1433:41: '\\r'
+                            // InternalMetaTemplating.g:1436:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1106,10 +1106,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:1435:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalMetaTemplating.g:1435:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalMetaTemplating.g:1438:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalMetaTemplating.g:1438:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalMetaTemplating.g:1435:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalMetaTemplating.g:1438:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -1163,8 +1163,8 @@ public class InternalMetaTemplatingLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMetaTemplating.g:1437:16: ( . )
-            // InternalMetaTemplating.g:1437:18: .
+            // InternalMetaTemplating.g:1440:16: ( . )
+            // InternalMetaTemplating.g:1440:18: .
             {
             matchAny(); 
 
@@ -1450,34 +1450,34 @@ public class InternalMetaTemplatingLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\1\37\1\uffff\1\37\2\34\1\46\1\50\1\37\1\53\1\uffff\1\37\2\uffff\1\61\1\37\1\64\1\34\4\uffff\1\72\1\34\2\uffff\1\34\2\uffff\1\37\1\77\2\uffff\1\37\1\102\1\103\5\uffff\1\37\3\uffff\1\37\4\uffff\1\37\13\uffff\1\37\1\uffff\1\37\4\uffff\17\37\1\132\1\133\1\134\1\135\2\37\4\uffff\1\140\1\141\2\uffff";
+        "\1\uffff\1\37\1\uffff\1\37\2\34\1\37\1\47\1\uffff\1\37\2\uffff\1\55\1\37\1\60\1\62\1\64\1\34\4\uffff\1\72\1\34\2\uffff\1\34\2\uffff\1\37\1\77\2\uffff\1\37\1\102\1\103\1\uffff\1\37\3\uffff\1\37\4\uffff\1\37\17\uffff\1\37\1\uffff\1\37\4\uffff\17\37\1\132\1\133\1\134\1\135\2\37\4\uffff\1\140\1\141\2\uffff";
     static final String DFA12_eofS =
         "\142\uffff";
     static final String DFA12_minS =
-        "\1\0\1\155\1\uffff\1\115\1\52\1\57\1\133\1\135\1\117\1\51\1\uffff\1\101\2\uffff\1\100\1\157\2\173\4\uffff\1\0\1\101\2\uffff\1\0\2\uffff\1\160\1\60\2\uffff\1\120\2\0\5\uffff\1\122\3\uffff\1\107\4\uffff\1\162\13\uffff\1\157\1\uffff\1\117\4\uffff\1\101\1\107\1\145\1\162\1\122\1\114\1\105\1\116\1\141\1\164\1\124\1\114\1\104\1\106\1\143\4\60\1\117\1\150\4\uffff\2\60\2\uffff";
+        "\1\0\1\155\1\uffff\1\115\1\52\1\57\1\117\1\51\1\uffff\1\101\2\uffff\1\100\1\157\1\173\1\133\1\135\1\173\4\uffff\1\0\1\101\2\uffff\1\0\2\uffff\1\160\1\60\2\uffff\1\120\2\0\1\uffff\1\122\3\uffff\1\107\4\uffff\1\162\17\uffff\1\157\1\uffff\1\117\4\uffff\1\101\1\107\1\145\1\162\1\122\1\114\1\105\1\116\1\141\1\164\1\124\1\114\1\104\1\106\1\143\4\60\1\117\1\150\4\uffff\2\60\2\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\156\1\uffff\1\115\2\57\1\133\1\135\1\117\1\51\1\uffff\1\101\2\uffff\1\100\1\157\2\173\4\uffff\1\uffff\1\172\2\uffff\1\uffff\2\uffff\1\160\1\172\2\uffff\1\120\2\uffff\5\uffff\1\122\3\uffff\1\107\4\uffff\1\162\13\uffff\1\157\1\uffff\1\117\4\uffff\1\101\1\111\1\145\1\162\1\122\1\114\1\105\1\116\1\141\1\164\1\124\1\114\1\104\1\106\1\143\4\172\1\117\1\150\4\uffff\2\172\2\uffff";
+        "\1\uffff\1\156\1\uffff\1\115\2\57\1\117\1\51\1\uffff\1\101\2\uffff\1\100\1\157\1\173\1\133\1\135\1\173\4\uffff\1\uffff\1\172\2\uffff\1\uffff\2\uffff\1\160\1\172\2\uffff\1\120\2\uffff\1\uffff\1\122\3\uffff\1\107\4\uffff\1\162\17\uffff\1\157\1\uffff\1\117\4\uffff\1\101\1\111\1\145\1\162\1\122\1\114\1\105\1\116\1\141\1\164\1\124\1\114\1\104\1\106\1\143\4\172\1\117\1\150\4\uffff\2\172\2\uffff";
     static final String DFA12_acceptS =
-        "\2\uffff\1\2\7\uffff\1\13\1\uffff\1\15\1\16\4\uffff\1\32\1\33\1\34\1\35\2\uffff\1\37\1\40\1\uffff\1\44\1\45\2\uffff\1\37\1\2\3\uffff\1\6\1\7\1\22\1\10\1\23\1\uffff\1\27\1\12\1\13\1\uffff\1\15\1\16\1\31\1\17\1\uffff\1\25\1\26\1\30\1\32\1\33\1\34\1\35\1\36\1\41\1\40\1\44\1\uffff\1\21\1\uffff\1\43\1\4\1\5\1\42\25\uffff\1\1\1\3\1\11\1\14\2\uffff\1\24\1\20";
+        "\2\uffff\1\2\5\uffff\1\11\1\uffff\1\13\1\14\6\uffff\1\32\1\33\1\34\1\35\2\uffff\1\37\1\40\1\uffff\1\44\1\45\2\uffff\1\37\1\2\3\uffff\1\6\1\uffff\1\21\1\10\1\11\1\uffff\1\13\1\14\1\31\1\15\1\uffff\1\27\1\20\1\22\1\24\1\23\1\26\1\30\1\32\1\33\1\34\1\35\1\36\1\41\1\40\1\44\1\uffff\1\17\1\uffff\1\43\1\4\1\5\1\42\25\uffff\1\1\1\3\1\7\1\12\2\uffff\1\25\1\16";
     static final String DFA12_specialS =
-        "\1\1\25\uffff\1\2\3\uffff\1\0\7\uffff\1\3\1\4\76\uffff}>";
+        "\1\3\25\uffff\1\1\3\uffff\1\0\7\uffff\1\2\1\4\76\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\11\34\2\33\2\34\1\33\22\34\1\33\1\34\1\32\1\22\3\34\1\26\1\11\1\14\1\5\1\34\1\23\1\34\1\20\1\4\12\31\1\12\1\2\1\24\1\34\1\25\1\34\1\21\5\30\1\10\2\30\1\3\12\30\1\13\6\30\1\6\1\34\1\7\1\27\1\30\1\34\5\30\1\17\2\30\1\1\21\30\1\15\1\34\1\16\uff82\34",
+            "\11\34\2\33\2\34\1\33\22\34\1\33\1\34\1\32\1\22\3\34\1\26\1\7\1\12\1\5\1\34\1\23\1\34\1\16\1\4\12\31\1\10\1\2\1\24\1\34\1\25\1\34\1\21\5\30\1\6\2\30\1\3\12\30\1\11\6\30\1\17\1\34\1\20\1\27\1\30\1\34\5\30\1\15\2\30\1\1\21\30\1\13\1\34\1\14\uff82\34",
             "\1\35\1\36",
             "",
             "\1\41",
             "\1\43\4\uffff\1\42",
             "\1\44",
             "\1\45",
-            "\1\47",
+            "\1\46",
+            "",
             "\1\51",
-            "\1\52",
-            "",
-            "\1\55",
             "",
             "",
-            "\1\60",
-            "\1\62",
+            "\1\54",
+            "\1\56",
+            "\1\57",
+            "\1\61",
             "\1\63",
             "\1\65",
             "",
@@ -1499,10 +1499,6 @@ public class InternalMetaTemplatingLexer extends Lexer {
             "\0\101",
             "\0\104",
             "",
-            "",
-            "",
-            "",
-            "",
             "\1\105",
             "",
             "",
@@ -1513,6 +1509,10 @@ public class InternalMetaTemplatingLexer extends Lexer {
             "",
             "",
             "\1\107",
+            "",
+            "",
+            "",
+            "",
             "",
             "",
             "",
@@ -1609,6 +1609,26 @@ public class InternalMetaTemplatingLexer extends Lexer {
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
+                        int LA12_22 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_22>='\u0000' && LA12_22<='\uFFFF')) ) {s = 59;}
+
+                        else s = 58;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA12_34 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_34>='\u0000' && LA12_34<='\uFFFF')) ) {s = 65;}
+
+                        else s = 66;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 3 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
@@ -1622,27 +1642,27 @@ public class InternalMetaTemplatingLexer extends Lexer {
 
                         else if ( (LA12_0=='*') ) {s = 5;}
 
-                        else if ( (LA12_0=='[') ) {s = 6;}
+                        else if ( (LA12_0=='F') ) {s = 6;}
 
-                        else if ( (LA12_0==']') ) {s = 7;}
+                        else if ( (LA12_0=='(') ) {s = 7;}
 
-                        else if ( (LA12_0=='F') ) {s = 8;}
+                        else if ( (LA12_0==':') ) {s = 8;}
 
-                        else if ( (LA12_0=='(') ) {s = 9;}
+                        else if ( (LA12_0=='T') ) {s = 9;}
 
-                        else if ( (LA12_0==':') ) {s = 10;}
+                        else if ( (LA12_0==')') ) {s = 10;}
 
-                        else if ( (LA12_0=='T') ) {s = 11;}
+                        else if ( (LA12_0=='{') ) {s = 11;}
 
-                        else if ( (LA12_0==')') ) {s = 12;}
+                        else if ( (LA12_0=='}') ) {s = 12;}
 
-                        else if ( (LA12_0=='{') ) {s = 13;}
+                        else if ( (LA12_0=='f') ) {s = 13;}
 
-                        else if ( (LA12_0=='}') ) {s = 14;}
+                        else if ( (LA12_0=='.') ) {s = 14;}
 
-                        else if ( (LA12_0=='f') ) {s = 15;}
+                        else if ( (LA12_0=='[') ) {s = 15;}
 
-                        else if ( (LA12_0=='.') ) {s = 16;}
+                        else if ( (LA12_0==']') ) {s = 16;}
 
                         else if ( (LA12_0=='@') ) {s = 17;}
 
@@ -1667,26 +1687,6 @@ public class InternalMetaTemplatingLexer extends Lexer {
                         else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 27;}
 
                         else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='$' && LA12_0<='&')||LA12_0=='+'||LA12_0=='-'||LA12_0=='='||LA12_0=='?'||LA12_0=='\\'||LA12_0=='`'||LA12_0=='|'||(LA12_0>='~' && LA12_0<='\uFFFF')) ) {s = 28;}
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA12_22 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_22>='\u0000' && LA12_22<='\uFFFF')) ) {s = 59;}
-
-                        else s = 58;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 3 : 
-                        int LA12_34 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_34>='\u0000' && LA12_34<='\uFFFF')) ) {s = 65;}
-
-                        else s = 66;
 
                         if ( s>=0 ) return s;
                         break;

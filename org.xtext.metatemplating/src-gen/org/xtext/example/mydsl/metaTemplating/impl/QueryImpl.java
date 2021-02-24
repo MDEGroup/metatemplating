@@ -19,74 +19,74 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.xtext.example.mydsl.metaTemplating.Instructions;
-import org.xtext.example.mydsl.metaTemplating.Iterator;
+import org.xtext.example.mydsl.metaTemplating.MetaPh;
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
 import org.xtext.example.mydsl.metaTemplating.Query;
+import org.xtext.example.mydsl.metaTemplating.SubQuery;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Iterator</b></em>'.
+ * An implementation of the model object '<em><b>Query</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.IteratorImpl#getElement <em>Element</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.IteratorImpl#getQuery <em>Query</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.IteratorImpl#getBody <em>Body</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.QueryImpl#getItem <em>Item</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.QueryImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.QueryImpl#getSubQuery <em>Sub Query</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class IteratorImpl extends MinimalEObjectImpl.Container implements Iterator
+public class QueryImpl extends MinimalEObjectImpl.Container implements Query
 {
   /**
-   * The default value of the '{@link #getElement() <em>Element</em>}' attribute.
+   * The default value of the '{@link #getItem() <em>Item</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getElement()
+   * @see #getItem()
    * @generated
    * @ordered
    */
-  protected static final String ELEMENT_EDEFAULT = null;
+  protected static final String ITEM_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getElement() <em>Element</em>}' attribute.
+   * The cached value of the '{@link #getItem() <em>Item</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getElement()
+   * @see #getItem()
    * @generated
    * @ordered
    */
-  protected String element = ELEMENT_EDEFAULT;
+  protected String item = ITEM_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getQuery() <em>Query</em>}' containment reference.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getQuery()
+   * @see #getRef()
    * @generated
    * @ordered
    */
-  protected Query query;
+  protected MetaPh ref;
 
   /**
-   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference list.
+   * The cached value of the '{@link #getSubQuery() <em>Sub Query</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBody()
+   * @see #getSubQuery()
    * @generated
    * @ordered
    */
-  protected EList<Instructions> body;
+  protected EList<SubQuery> subQuery;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected IteratorImpl()
+  protected QueryImpl()
   {
     super();
   }
@@ -99,7 +99,7 @@ public class IteratorImpl extends MinimalEObjectImpl.Container implements Iterat
   @Override
   protected EClass eStaticClass()
   {
-    return MetaTemplatingPackage.Literals.ITERATOR;
+    return MetaTemplatingPackage.Literals.QUERY;
   }
 
   /**
@@ -108,9 +108,9 @@ public class IteratorImpl extends MinimalEObjectImpl.Container implements Iterat
    * @generated
    */
   @Override
-  public String getElement()
+  public String getItem()
   {
-    return element;
+    return item;
   }
 
   /**
@@ -119,12 +119,12 @@ public class IteratorImpl extends MinimalEObjectImpl.Container implements Iterat
    * @generated
    */
   @Override
-  public void setElement(String newElement)
+  public void setItem(String newItem)
   {
-    String oldElement = element;
-    element = newElement;
+    String oldItem = item;
+    item = newItem;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.ITERATOR__ELEMENT, oldElement, element));
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.QUERY__ITEM, oldItem, item));
   }
 
   /**
@@ -133,9 +133,9 @@ public class IteratorImpl extends MinimalEObjectImpl.Container implements Iterat
    * @generated
    */
   @Override
-  public Query getQuery()
+  public MetaPh getRef()
   {
-    return query;
+    return ref;
   }
 
   /**
@@ -143,13 +143,13 @@ public class IteratorImpl extends MinimalEObjectImpl.Container implements Iterat
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetQuery(Query newQuery, NotificationChain msgs)
+  public NotificationChain basicSetRef(MetaPh newRef, NotificationChain msgs)
   {
-    Query oldQuery = query;
-    query = newQuery;
+    MetaPh oldRef = ref;
+    ref = newRef;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.ITERATOR__QUERY, oldQuery, newQuery);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.QUERY__REF, oldRef, newRef);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -161,20 +161,20 @@ public class IteratorImpl extends MinimalEObjectImpl.Container implements Iterat
    * @generated
    */
   @Override
-  public void setQuery(Query newQuery)
+  public void setRef(MetaPh newRef)
   {
-    if (newQuery != query)
+    if (newRef != ref)
     {
       NotificationChain msgs = null;
-      if (query != null)
-        msgs = ((InternalEObject)query).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.ITERATOR__QUERY, null, msgs);
-      if (newQuery != null)
-        msgs = ((InternalEObject)newQuery).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.ITERATOR__QUERY, null, msgs);
-      msgs = basicSetQuery(newQuery, msgs);
+      if (ref != null)
+        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.QUERY__REF, null, msgs);
+      if (newRef != null)
+        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.QUERY__REF, null, msgs);
+      msgs = basicSetRef(newRef, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.ITERATOR__QUERY, newQuery, newQuery));
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.QUERY__REF, newRef, newRef));
   }
 
   /**
@@ -183,13 +183,13 @@ public class IteratorImpl extends MinimalEObjectImpl.Container implements Iterat
    * @generated
    */
   @Override
-  public EList<Instructions> getBody()
+  public EList<SubQuery> getSubQuery()
   {
-    if (body == null)
+    if (subQuery == null)
     {
-      body = new EObjectContainmentEList<Instructions>(Instructions.class, this, MetaTemplatingPackage.ITERATOR__BODY);
+      subQuery = new EObjectContainmentEList<SubQuery>(SubQuery.class, this, MetaTemplatingPackage.QUERY__SUB_QUERY);
     }
-    return body;
+    return subQuery;
   }
 
   /**
@@ -202,10 +202,10 @@ public class IteratorImpl extends MinimalEObjectImpl.Container implements Iterat
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.ITERATOR__QUERY:
-        return basicSetQuery(null, msgs);
-      case MetaTemplatingPackage.ITERATOR__BODY:
-        return ((InternalEList<?>)getBody()).basicRemove(otherEnd, msgs);
+      case MetaTemplatingPackage.QUERY__REF:
+        return basicSetRef(null, msgs);
+      case MetaTemplatingPackage.QUERY__SUB_QUERY:
+        return ((InternalEList<?>)getSubQuery()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -220,12 +220,12 @@ public class IteratorImpl extends MinimalEObjectImpl.Container implements Iterat
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.ITERATOR__ELEMENT:
-        return getElement();
-      case MetaTemplatingPackage.ITERATOR__QUERY:
-        return getQuery();
-      case MetaTemplatingPackage.ITERATOR__BODY:
-        return getBody();
+      case MetaTemplatingPackage.QUERY__ITEM:
+        return getItem();
+      case MetaTemplatingPackage.QUERY__REF:
+        return getRef();
+      case MetaTemplatingPackage.QUERY__SUB_QUERY:
+        return getSubQuery();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -241,15 +241,15 @@ public class IteratorImpl extends MinimalEObjectImpl.Container implements Iterat
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.ITERATOR__ELEMENT:
-        setElement((String)newValue);
+      case MetaTemplatingPackage.QUERY__ITEM:
+        setItem((String)newValue);
         return;
-      case MetaTemplatingPackage.ITERATOR__QUERY:
-        setQuery((Query)newValue);
+      case MetaTemplatingPackage.QUERY__REF:
+        setRef((MetaPh)newValue);
         return;
-      case MetaTemplatingPackage.ITERATOR__BODY:
-        getBody().clear();
-        getBody().addAll((Collection<? extends Instructions>)newValue);
+      case MetaTemplatingPackage.QUERY__SUB_QUERY:
+        getSubQuery().clear();
+        getSubQuery().addAll((Collection<? extends SubQuery>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -265,14 +265,14 @@ public class IteratorImpl extends MinimalEObjectImpl.Container implements Iterat
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.ITERATOR__ELEMENT:
-        setElement(ELEMENT_EDEFAULT);
+      case MetaTemplatingPackage.QUERY__ITEM:
+        setItem(ITEM_EDEFAULT);
         return;
-      case MetaTemplatingPackage.ITERATOR__QUERY:
-        setQuery((Query)null);
+      case MetaTemplatingPackage.QUERY__REF:
+        setRef((MetaPh)null);
         return;
-      case MetaTemplatingPackage.ITERATOR__BODY:
-        getBody().clear();
+      case MetaTemplatingPackage.QUERY__SUB_QUERY:
+        getSubQuery().clear();
         return;
     }
     super.eUnset(featureID);
@@ -288,12 +288,12 @@ public class IteratorImpl extends MinimalEObjectImpl.Container implements Iterat
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.ITERATOR__ELEMENT:
-        return ELEMENT_EDEFAULT == null ? element != null : !ELEMENT_EDEFAULT.equals(element);
-      case MetaTemplatingPackage.ITERATOR__QUERY:
-        return query != null;
-      case MetaTemplatingPackage.ITERATOR__BODY:
-        return body != null && !body.isEmpty();
+      case MetaTemplatingPackage.QUERY__ITEM:
+        return ITEM_EDEFAULT == null ? item != null : !ITEM_EDEFAULT.equals(item);
+      case MetaTemplatingPackage.QUERY__REF:
+        return ref != null;
+      case MetaTemplatingPackage.QUERY__SUB_QUERY:
+        return subQuery != null && !subQuery.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -309,10 +309,10 @@ public class IteratorImpl extends MinimalEObjectImpl.Container implements Iterat
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (element: ");
-    result.append(element);
+    result.append(" (item: ");
+    result.append(item);
     result.append(')');
     return result.toString();
   }
 
-} //IteratorImpl
+} //QueryImpl

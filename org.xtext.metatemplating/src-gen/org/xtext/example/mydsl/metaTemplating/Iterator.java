@@ -17,8 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.Iterator#getElement <em>Element</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.Iterator#getMetaElement <em>Meta Element</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.Iterator#getSubProperties <em>Sub Properties</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.Iterator#getQuery <em>Query</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.Iterator#getBody <em>Body</em>}</li>
  * </ul>
  *
@@ -51,38 +50,26 @@ public interface Iterator extends EObject
   void setElement(String value);
 
   /**
-   * Returns the value of the '<em><b>Meta Element</b></em>' containment reference.
+   * Returns the value of the '<em><b>Query</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Meta Element</em>' containment reference.
-   * @see #setMetaElement(MetaPh)
-   * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getIterator_MetaElement()
+   * @return the value of the '<em>Query</em>' containment reference.
+   * @see #setQuery(Query)
+   * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getIterator_Query()
    * @model containment="true"
    * @generated
    */
-  MetaPh getMetaElement();
+  Query getQuery();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.metaTemplating.Iterator#getMetaElement <em>Meta Element</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.example.mydsl.metaTemplating.Iterator#getQuery <em>Query</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Meta Element</em>' containment reference.
-   * @see #getMetaElement()
+   * @param value the new value of the '<em>Query</em>' containment reference.
+   * @see #getQuery()
    * @generated
    */
-  void setMetaElement(MetaPh value);
-
-  /**
-   * Returns the value of the '<em><b>Sub Properties</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mydsl.metaTemplating.SubProperty}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Sub Properties</em>' containment reference list.
-   * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getIterator_SubProperties()
-   * @model containment="true"
-   * @generated
-   */
-  EList<SubProperty> getSubProperties();
+  void setQuery(Query value);
 
   /**
    * Returns the value of the '<em><b>Body</b></em>' containment reference list.
