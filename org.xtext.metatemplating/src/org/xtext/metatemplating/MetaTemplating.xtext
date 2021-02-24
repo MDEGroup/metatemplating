@@ -1,0 +1,96 @@
+grammar org.xtext.example.mydsl.MetaTemplating with org.eclipse.xtext.common.Terminals
+
+generate metaTemplating "http://www.xtext.org/example/mydsl/MetaTemplating"
+
+Model:
+	header=Header
+	content+=Instructions*
+;
+
+/* Header */
+
+Header:
+	{Header} libs+=Libraries*
+	imports+=Import*
+;
+
+Import:
+	'import' path=STRING ';'
+;
+
+Libraries:
+	'IMPORT' path=STRING ';'
+;
+
+/* Comments */
+
+Comment:
+	'//' word+=ID |
+	'/*' word+=ID '*/'
+;
+
+/* Instructions */
+
+Instructions:	
+	statement=Statement |
+	iterator=Iterator | 
+	rule=Rule |
+	comment=Comment
+;
+
+Statement:
+	text=ID | char=Escaped | string=EscapedString |
+	placeholder=Ph | metaPlaceholder=MetaPh
+;
+
+Ph:
+	'[[' property=Property ']]' |
+	'[[' property=Property metaProperty=MetaProperty ']]'
+;
+
+/* Rules */
+	
+Rule:
+	'FORALL' '(' element=ID ':' property=Property 'TAGGED' tag=ID ')' '{' body+=Instructions* '}'
+;
+
+/* Iterators */
+	
+Iterator:
+	'foreach' '(' element=ID 'in' metaElement=MetaPh subProperties+=SubProperty* ')'
+	'{' body+=Instructions* '}'
+;	
+
+/* Placeholder */
+
+MetaPh:
+	'[' property=Property ']' |
+	'[' property=Property info=TagInfo ']'
+;
+
+TagInfo:
+	'TAGINFO' tag=STRING
+;
+
+MetaProperty:
+	'.{' property=Property '}'	
+;
+
+/* Properties */
+
+Property:
+	property=ID subProperties+=SubProperty*
+;
+
+SubProperty:	
+	'.' property=ID |
+	'.' property=ID '()'
+; 
+
+EscapedString:
+	'@{' str=STRING '}@'
+;
+
+Escaped:
+	'#' char=('#' | '{' | '}' | '[' | ']' | ',' | ';' | '(' | ')' | ':' | '<' | '>' | "'")
+;
