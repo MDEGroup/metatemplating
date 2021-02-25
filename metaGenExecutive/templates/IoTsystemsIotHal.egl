@@ -3,10 +3,18 @@
 	Template for Specific Adapter Generator
 *]
 
+
+
 [*-Protocols libraries*]
 #include "Wire.h"
 #include "I2C.h"
 #include "SPI.h"
+	
+#include "JsonFormatter.h"
+#include "XmlConnector.h"
+	
+
+
 
 [*-Static code*]
 // Static code - Pin access Interface
@@ -18,12 +26,15 @@ bool readDigital(int pin);
 
 // ***
 
+
+
 [*-Adapter for SensorAdapter*]
 [%for (c in SensorAdapter) {%]
 
 /* Reading Adapter - [%=c.id%] */
-class [%=c.id%]Adapter {
+class [%=c.id%]ReadingAdapter {
 	public:
+		
 		
 		[*-Fields*]
 		[%if (c.coding.literal == "raw") {%]
@@ -80,7 +91,9 @@ class [%=c.id%]Adapter {
 			[%}%]
 		[%}%]
 		
+		
 	void run() {
+		
 		
 		[*-Reading*]
 		[%if (c.coding.literal == "raw") {%]
@@ -126,12 +139,65 @@ class [%=c.id%]Adapter {
 };	
 [%}%]
 
+[*-Adapter for DownlinkAdapter*]
+[%for (c in DownlinkAdapter) {%]
+
+/* Reading Adapter - [%=c.id%] */
+class [%=c.id%]ReadingAdapter {
+	public:
+		
+		
+		[*-Fields*]
+		[%if (c.coding.literal == "json") {%]
+				
+			[%for (port in c.port) {%]
+		JsonFormatter* [%=port.id%];
+				[%for (pin in port.pins) {%]
+							
+		const int [%=port.id%]_[%=pin.id%] = [%=pin.number%];
+				[%}%]
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "xml") {%]
+				
+			[%for (port in c.port) {%]
+		XmlConnector* [%=port.id%];
+				[%for (pin in port.pins) {%]
+							
+		const int [%=port.id%]_[%=pin.id%] = [%=pin.number%];
+				[%}%]
+			[%}%]
+		[%}%]
+		
+		
+	void run() {
+		
+		
+		[*-Reading*]
+		[%if (c.coding.literal == "json") {%]
+			[%for (port in c.port) {%]
+		[%=port.id%]->read();
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "xml") {%]
+			[%for (port in c.port) {%]
+		[%=port.id%]->read();
+			[%}%]
+		[%}%]
+	}
+
+};	
+[%}%]
+
+
+
 [*-Adapter for ActuatorAdapter*]
 [%for (c in ActuatorAdapter) {%]
 
 /* Writing Adapter - [%=c.id%] */
-class [%=c.id%]Adapter {
+class [%=c.id%]WritingAdapter {
 	public:
+		
 		
 		[*-Fields*]
 		[%if (c.coding.literal == "raw") {%]
@@ -187,6 +253,7 @@ class [%=c.id%]Adapter {
 		
 	void run() {
 		
+		
 		[*-Writing*]
 		[%if (c.coding.literal == "raw") {%]
 			[%for (port in c.port) {%]
@@ -222,6 +289,55 @@ class [%=c.id%]Adapter {
 			[%}%]
 		[%}%]
 		[%if (c.coding.literal == "spi") {%]
+			[%for (port in c.port) {%]
+		[%=port.id%]->write();
+			[%}%]
+		[%}%]
+	}
+
+};
+[%}%]
+
+[*-Adapter for UplinkAdapter*]
+[%for (c in UplinkAdapter) {%]
+
+/* Writing Adapter - [%=c.id%] */
+class [%=c.id%]WritingAdapter {
+	public:
+		
+		
+		[*-Fields*]
+		[%if (c.coding.literal == "json") {%]
+				
+			[%for (port in c.port) {%]
+		JsonFormatter* [%=port.id%];
+				[%for (pin in port.pins) {%]
+							
+		const int [%=port.id%]_[%=pin.id%] = [%=pin.number%];
+				[%}%]
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "xml") {%]
+				
+			[%for (port in c.port) {%]
+		XmlConnector* [%=port.id%];
+				[%for (pin in port.pins) {%]
+							
+		const int [%=port.id%]_[%=pin.id%] = [%=pin.number%];
+				[%}%]
+			[%}%]
+		[%}%]
+		
+	void run() {
+		
+		
+		[*-Writing*]
+		[%if (c.coding.literal == "json") {%]
+			[%for (port in c.port) {%]
+		[%=port.id%]->write();
+			[%}%]
+		[%}%]
+		[%if (c.coding.literal == "xml") {%]
 			[%for (port in c.port) {%]
 		[%=port.id%]->write();
 			[%}%]

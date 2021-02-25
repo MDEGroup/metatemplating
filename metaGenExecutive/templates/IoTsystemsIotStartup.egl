@@ -3,10 +3,14 @@
 	Template for Specific Pin Initializator Generator
 *]
 
+
+
 [*-Arduino Controller Startup*]
 [%for (c in Arduino) {%]
 class [%=c.id%]Startup {
 	private:
+	
+	
 	
 	[*-Ports*]
 	[%for (port in c.ports) {%]
@@ -29,6 +33,8 @@ class [%=c.id%]Startup {
 	[%}%]	
 	
 	public:
+	
+	
 	
 	[*-Startup*]
 	void run() {	

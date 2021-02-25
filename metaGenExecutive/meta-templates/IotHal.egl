@@ -33,7 +33,7 @@ bool readDigital(int pin);
 
 	[%for (mc_name in mc.getAllAttributes().getWanted(_source, "naming")) { %]
 /* Reading Adapter - [%=insPh('c.' + mc_name.name)%] */
-class [%=insPh('c.' + mc_name.name)%]Adapter {
+class [%=insPh('c.' + mc_name.name)%]ReadingAdapter {
 	public:
 		[*-Fields*]
 		[%=insMarker('Fields')%]
@@ -181,7 +181,7 @@ class [%=insPh('c.' + mc_name.name)%]Adapter {
 
 	[%for (mc_name in mc.getAllAttributes().getWanted(_source, "naming")) { %]
 /* Writing Adapter - [%=insPh('c.' + mc_name.name)%] */
-class [%=insPh('c.' + mc_name.name)%]Adapter {
+class [%=insPh('c.' + mc_name.name)%]WritingAdapter {
 	public:
 		[*-Fields*]
 		[%=insMarker('Fields')%]

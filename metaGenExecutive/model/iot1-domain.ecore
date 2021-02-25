@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="IoTsystems" nsURI="http://johnbrown.me/iotsys" nsPrefix="iotsys">
-  <eSubpackages name="General" nsURI="http://johnbrown.me/iotsysgeneral" nsPrefix="iotgeneral">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="IoTsystems" nsURI="http://johnbrown.me/iotsys-domain" nsPrefix="iotsys">
+  <eSubpackages name="General" nsURI="http://johnbrown.me/iotsysgeneral-domain" nsPrefix="iotgeneral">
     <eClassifiers xsi:type="ecore:EClass" name="Named" abstract="true">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -54,7 +54,8 @@
       <eLiterals name="i2c" value="3"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="IoTarduino" nsURI="http://johnbrown.me/iotsysarduino" nsPrefix="iotarduino">
+  <eSubpackages name="IoTarduino" nsURI="http://johnbrown.me/iotsysarduino-domain"
+      nsPrefix="iotarduino">
     <eClassifiers xsi:type="ecore:EClass" name="Temperature" eSuperTypes="#//General/Sensor">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasTemperature" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

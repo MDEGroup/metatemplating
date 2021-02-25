@@ -13,6 +13,8 @@
     <listAttribute key="parameters">
         <listEntry value="name=templatePath&#10;type=String&#10;value=../meta-templates/"/>
         <listEntry value="name=outPath&#10;type=String&#10;value=../templates/"/>
+        <listEntry value="name=mtEntryPoint&#10;type=String&#10;value=IotMain.egl"/>
+        <listEntry value="name=tEntryPoint&#10;type=String&#10;value=IotMain.egx"/>
         <listEntry value="name=mtHal&#10;type=String&#10;value=IotHal.egl"/>
         <listEntry value="name=annHal&#10;type=String&#10;value=IotHal"/>
         <listEntry value="name=mtStartup&#10;type=String&#10;value=IotStartup.egl"/>

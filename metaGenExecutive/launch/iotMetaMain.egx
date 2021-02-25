@@ -5,15 +5,28 @@ import "../epsilon/utility.eol";
 */
 pre {
 	"Generating...".println();
-	/*
-	var templatePath = "../meta-templates/";
-	var outPath = "../templates/";*/
 }
 
 
 /*
 	Matching Rules
 */
+rule EntryPoint 
+	transform s : source!EPackage {
+
+	template : templatePath + mtEntryPoint/*"IotMain.egl"*/
+	
+	guard: s.eSuperPackage == null
+
+	parameters : Map{
+		"_me" = s,
+		"_hal" = annHal, /*"IotHal"*/
+		"_startup" = annStartup /*"IotStartup"*/
+	}
+
+	target : outPath + s.name + tEntryPoint /*"IotMain.egx"*/
+}
+
 rule Adapters 
 	transform s : source!EPackage {
 

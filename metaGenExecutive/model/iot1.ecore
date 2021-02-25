@@ -14,6 +14,12 @@
       </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="System" eSuperTypes="#//General/Named">
+      <eAnnotations source="IotHal">
+        <details key="root_element"/>
+      </eAnnotations>
+      <eAnnotations source="IotStartup">
+        <details key="root_element"/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="sensors" upperBound="-1"
           eType="#//General/Sensor" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="actuators" upperBound="-1"

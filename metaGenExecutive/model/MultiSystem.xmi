@@ -33,6 +33,10 @@
           xsi:type="iotarduino:ArduinoPort"
           id="RelayCommand"
           pins="//@systems.0/@controllers.0/@pins.1"/>
+      <ports
+          xsi:type="iotarduino:ArduinoPort"
+          id="WifiSerial"
+          pins="//@systems.0/@controllers.0/@pins.2 //@systems.0/@controllers.0/@pins.3"/>
       <pins
           xsi:type="iotarduino:ArduinoPin"
           id="dht_data"
@@ -42,12 +46,20 @@
           xsi:type="iotarduino:ArduinoPin"
           id="heater_cmd"
           number="2"/>
+      <pins
+          xsi:type="iotarduino:ArduinoPin"
+          id="uart_tx"/>
+      <pins
+          xsi:type="iotarduino:ArduinoPin"
+          id="uart_rx"
+          number="1"
+          direction="input"/>
     </controllers>
     <adapters
         xsi:type="iotgeneral:SensorAdapter"
         id="TempSens"
-        coding="one_wire"
         port="//@systems.0/@controllers.0/@ports.0"
+        coding="one_wire"
         sensor="//@systems.0/@sensors.0"
         controller="//@systems.0/@controllers.0"/>
     <adapters
@@ -57,16 +69,17 @@
         actuator="//@systems.0/@actuators.0"
         controller="//@systems.0/@controllers.0"/>
     <adapters
-        xsi:type="iotgeneral:NetworkAdapter"
+        xsi:type="iotgeneral:UplinkAdapter"
         id="TempSend"
+        port="//@systems.0/@controllers.0/@ports.2"
         controller="//@systems.0/@controllers.0"
         data="//@dataStructures.0"/>
     <adapters
-        xsi:type="iotgeneral:NetworkAdapter"
+        xsi:type="iotgeneral:DownlinkAdapter"
         id="CmdRcv"
+        port="//@systems.0/@controllers.0/@ports.2"
         controller="//@systems.0/@controllers.0"
-        data="//@dataStructures.1"
-        direction="downlink"/>
+        data="//@dataStructures.1"/>
   </systems>
   <systems id="SYS_02"
       description="CentralUnit">
@@ -94,6 +107,10 @@
           xsi:type="iotarduino:ArduinoPort"
           id="ExternalBus"
           pins="//@systems.1/@controllers.0/@pins.4 //@systems.1/@controllers.0/@pins.5"/>
+      <ports
+          xsi:type="iotarduino:ArduinoPort"
+          id="WifiSerial"
+          pins="//@systems.1/@controllers.0/@pins.6 //@systems.1/@controllers.0/@pins.7"/>
       <pins
           xsi:type="iotarduino:ArduinoPin"
           id="btn_1"
@@ -123,6 +140,14 @@
           xsi:type="iotarduino:ArduinoPin"
           id="i2c_scl"
           number="7"/>
+      <pins
+          xsi:type="iotarduino:ArduinoPin"
+          id="uart_tx"/>
+      <pins
+          xsi:type="iotarduino:ArduinoPin"
+          id="uart_rx"
+          number="1"
+          direction="input"/>
     </controllers>
     <adapters
         xsi:type="iotgeneral:SensorAdapter"
@@ -133,31 +158,29 @@
     <adapters
         xsi:type="iotgeneral:ActuatorAdapter"
         id="DisplayInterface"
-        coding="i2c"
         port="//@systems.1/@controllers.0/@ports.1"
+        coding="i2c"
         actuator="//@systems.1/@actuators.0"
         controller="//@systems.1/@controllers.0"/>
     <adapters
-        xsi:type="iotgeneral:NetworkAdapter"
+        xsi:type="iotgeneral:UplinkAdapter"
         id="CmdSend"
+        port="//@systems.1/@controllers.0/@ports.2"
         controller="//@systems.1/@controllers.0"
         data="//@dataStructures.1"/>
     <adapters
-        xsi:type="iotgeneral:NetworkAdapter"
+        xsi:type="iotgeneral:DownlinkAdapter"
         id="TempRcv"
+        port="//@systems.1/@controllers.0/@ports.2"
         controller="//@systems.1/@controllers.0"
-        data="//@dataStructures.0"
-        direction="downlink"/>
+        data="//@dataStructures.0"/>
   </systems>
   <networks
-      id="CmdLink"
-      adapters="//@systems.0/@adapters.3 //@systems.1/@adapters.2"/>
+      id="CmdLink"/>
   <networks
-      id="TempLink"
-      adapters="//@systems.0/@adapters.2 //@systems.1/@adapters.3"/>
+      id="TempLink"/>
   <dataStructures
-      id="TempData"
-      description="Data Structure for temperature exchange">
+      id="TempData">
     <fields
         name="temperature"
         type="float"/>
@@ -166,8 +189,7 @@
         type="float"/>
   </dataStructures>
   <dataStructures
-      id="CmdData"
-      description="Data Structure for remote control">
+      id="CmdData">
     <fields
         name="command"
         type="int"/>

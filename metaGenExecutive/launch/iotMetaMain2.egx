@@ -5,15 +5,29 @@ import "../epsilon/utility.eol";
 */
 pre {
 	"Generating...".println();
-	/*
-	var templatePath = "../meta-templates/";
-	var outPath = "../templates/";*/
 }
 
 
 /*
 	Matching Rules
 */
+rule EntryPoint 
+	transform s : source!EPackage {
+
+	template : templatePath + mtEntryPoint/*"IotMain.egl"*/
+	
+	guard: s.eSuperPackage == null
+
+	parameters : Map{
+		"_me" = s,
+		"_hal" = annHal, /*"IotHal"*/
+		"_startup" = annStartup, /*"IotStartup"*/
+		"_datastructure" = annDataStructure /*"IotDs"*/
+	}
+
+	target : outPath + s.name + tEntryPoint /*"IotMain.egx"*/
+}
+
 rule Adapters 
 	transform s : source!EPackage {
 
@@ -44,7 +58,7 @@ rule StartupControllers
 	target : outPath + s.name + mtStartup /*"IotStartup.egl"*/
 }
 
-rule NetworkDataStructures 
+rule DataStructures 
 	transform s : source!EPackage {
 
 	template : templatePath + mtDataStructure /*"IotDs.egl"*/
@@ -58,22 +72,6 @@ rule NetworkDataStructures
 
 	target : outPath + s.name + mtDataStructure /*"IotDs.egl"*/
 }
-
-rule NetworkAdapters 
-	transform s : source!EPackage {
-
-	template : templatePath + mtNetHal /*"IotNetHal.egl"*/
-	
-	guard: s.eSuperPackage == null
-
-	parameters : Map{
-		"_me" = s,
-		"_source" = annNetHal /*"IotNetHal"*/
-	}
-
-	target : outPath + s.name + mtNetHal /*"IotNetHal.egl"*/
-}
-
 
 /*
 	Finalization

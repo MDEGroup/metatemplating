@@ -4,10 +4,7 @@ import "../epsilon/utility.eol";
 	Initialization
 */
 pre {
-	"Generating...".println();
-	/*
-	var templatePath = "../templates/";
-	var outPath = "../output/";*/
+	"Generating...".println();	
 }
 
 
@@ -22,8 +19,7 @@ rule Adapters
 	parameters : Map{
 		"_me" = s
 	}
-
-	target : outPath + s.name+ outHal /*"Adapters.cpp"*/
+	target : outPath + s.id + outHal /*"Adapters.cpp"*/	
 }
 
 rule StartupControllers 
@@ -34,10 +30,8 @@ rule StartupControllers
 	parameters : Map{
 		"_me" = s
 	}
-
-	target : outPath + s.name + outStartup /*"Startup.cpp"*/
+	target : outPath + s.id + outStartup /*"Startup.cpp"*/
 }
-
 
 /*
 	Finalization

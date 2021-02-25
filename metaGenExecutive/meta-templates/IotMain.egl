@@ -1,0 +1,54 @@
+[%import "../epsilon/utility.eol";
+import "../epsilon/metaEngine.eol";%]
+[*
+	Meta Template for EGX Entry point
+*]
+import "../epsilon/utility.eol";
+
+/*
+	Initialization
+*/
+pre {
+	"Generating...".println();	
+}
+
+
+/*
+	Matching Rules
+*/
+[%for (mc in EClass.all.getWanted(_hal, "root_element")) { %]
+rule Adapters 
+	transform s : source![%=mc.name%] {
+
+	template : templatePath + s.eClass.ePackage.eSuperPackage.name + tHal /*"IotHal.egl"*/
+
+	parameters : Map{
+		"_me" = s
+	}
+	[%for (mc_name in mc.getAllAttributes().getWanted(_hal, "naming")) { %]
+	target : outPath + s.[%=mc_name.name%] + outHal /*"Adapters.cpp"*/	
+	[%}%]
+}
+[%}%]
+
+[%for (mc in EClass.all.getWanted(_startup, "root_element")) { %]
+rule StartupControllers 
+	transform s : source![%=mc.name%] {
+
+	template : templatePath + s.eClass.ePackage.eSuperPackage.name + tStartup /*"IotStartup.egl"*/
+
+	parameters : Map{
+		"_me" = s
+	}
+	[%for (mc_name in mc.getAllAttributes().getWanted(_startup, "naming")) { %]
+	target : outPath + s.[%=mc_name.name%] + outStartup /*"Startup.cpp"*/
+	[%}%]
+}
+[%}%]
+
+/*
+	Finalization
+*/
+post {
+	"Done.".println();
+}

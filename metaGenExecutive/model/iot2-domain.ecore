@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="IoTsystems" nsURI="http://johnbrown.me/iotsys2" nsPrefix="iotsys">
-  <eSubpackages name="General" nsURI="http://johnbrown.me/iotsysgeneral2" nsPrefix="iotgeneral">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="IoTsystems" nsURI="http://johnbrown.me/iotsys2-domain" nsPrefix="iotsys">
+  <eSubpackages name="General" nsURI="http://johnbrown.me/iotsysgeneral2-domain" nsPrefix="iotgeneral">
     <eClassifiers xsi:type="ecore:EClass" name="UUID" abstract="true">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
@@ -41,12 +41,13 @@
           upperBound="-1" eType="#//General/Pin"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Pin" abstract="true" eSuperTypes="#//General/UUID"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Adapter" abstract="true" eSuperTypes="#//General/UUID"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Adapter" abstract="true" eSuperTypes="#//General/UUID">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="port" lowerBound="1"
+          eType="#//General/Port"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="HardwareAdapter" abstract="true" eSuperTypes="#//General/Adapter">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="coding" lowerBound="1"
           eType="#//General/Coding"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="port" lowerBound="1"
-          eType="#//General/Port"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="SoftwareAdapter" abstract="true" eSuperTypes="#//General/Adapter">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="coding" lowerBound="1"
@@ -64,14 +65,6 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="controller" lowerBound="1"
           eType="#//General/Controller"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="NetworkAdapter" eSuperTypes="#//General/SoftwareAdapter">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="controller" lowerBound="1"
-          eType="#//General/Controller"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="data" lowerBound="1"
-          eType="#//SwData/Object"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" lowerBound="1"
-          eType="#//General/NetworkDirection"/>
-    </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="Coding">
       <eLiterals name="raw" literal="raw"/>
       <eLiterals name="byte" value="1" literal="byte"/>
@@ -80,21 +73,24 @@
       <eLiterals name="spi" value="4"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="DataFormat">
-      <eLiterals name="json"/>
-      <eLiterals name="xml" value="1"/>
-      <eLiterals name="xmi" value="2"/>
+      <eLiterals name="json" value="5"/>
+      <eLiterals name="xml" value="6"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EEnum" name="NetworkDirection">
-      <eLiterals name="uplink"/>
-      <eLiterals name="downlink" value="1"/>
-      <eLiterals name="bidirectional" value="2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NetworkAdapter" abstract="true" eSuperTypes="#//General/SoftwareAdapter">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="controller" lowerBound="1"
+          eType="#//General/Controller"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="data" lowerBound="1"
+          eType="#//SwData/Object"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="UplinkAdapter" eSuperTypes="#//General/NetworkAdapter"/>
+    <eClassifiers xsi:type="ecore:EClass" name="DownlinkAdapter" eSuperTypes="#//General/NetworkAdapter"/>
     <eClassifiers xsi:type="ecore:EClass" name="NetworkLink" eSuperTypes="#//General/UUID">
       <eStructuralFeatures xsi:type="ecore:EReference" name="adapters" upperBound="-1"
           eType="#//General/NetworkAdapter"/>
     </eClassifiers>
   </eSubpackages>
-  <eSubpackages name="IoTarduino" nsURI="http://johnbrown.me/iotsysarduino2" nsPrefix="iotarduino">
+  <eSubpackages name="IoTarduino" nsURI="http://johnbrown.me/iotsysarduino2-domain"
+      nsPrefix="iotarduino">
     <eClassifiers xsi:type="ecore:EClass" name="Temperature" eSuperTypes="#//General/Sensor">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="hasTemperature" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -135,7 +131,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ArduinoPort" eSuperTypes="#//General/Port"/>
   </eSubpackages>
-  <eSubpackages name="SwData" nsURI="http://johnbrown.me/swdata2" nsPrefix="swdata">
+  <eSubpackages name="SwData" nsURI="http://johnbrown.me/swdata2-domain" nsPrefix="swdata">
     <eClassifiers xsi:type="ecore:EClass" name="Object" eSuperTypes="#//General/UUID #//General/Details">
       <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
           eType="#//SwData/Field" containment="true"/>
