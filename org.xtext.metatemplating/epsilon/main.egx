@@ -1,0 +1,20 @@
+/*
+	Generation Engine
+*/
+
+rule MetaTemplateGeneration 
+	transform s : src!Model {
+
+	template : "template.egl"
+
+	parameters : Map{
+		"root" = s,
+		"fileName" = outputName
+	}
+
+	target : outputName
+}
+
+post {
+	("Generated: " + outputName).println();
+}

@@ -188,14 +188,14 @@ public interface MetaTemplatingPackage extends EPackage
   int LIBRARIES_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.mydsl.metaTemplating.impl.CommentImpl <em>Comment</em>}' class.
+   * The meta object id for the '{@link org.xtext.example.mydsl.metaTemplating.impl.NoteImpl <em>Note</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl.metaTemplating.impl.CommentImpl
-   * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getComment()
+   * @see org.xtext.example.mydsl.metaTemplating.impl.NoteImpl
+   * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getNote()
    * @generated
    */
-  int COMMENT = 4;
+  int NOTE = 4;
 
   /**
    * The feature id for the '<em><b>Word</b></em>' attribute list.
@@ -204,16 +204,16 @@ public interface MetaTemplatingPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMMENT__WORD = 0;
+  int NOTE__WORD = 0;
 
   /**
-   * The number of structural features of the '<em>Comment</em>' class.
+   * The number of structural features of the '<em>Note</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMMENT_FEATURE_COUNT = 1;
+  int NOTE_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.metaTemplating.impl.InstructionsImpl <em>Instructions</em>}' class.
@@ -226,13 +226,22 @@ public interface MetaTemplatingPackage extends EPackage
   int INSTRUCTIONS = 5;
 
   /**
+   * The feature id for the '<em><b>Note</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INSTRUCTIONS__NOTE = 0;
+
+  /**
    * The feature id for the '<em><b>Statement</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSTRUCTIONS__STATEMENT = 0;
+  int INSTRUCTIONS__STATEMENT = 1;
 
   /**
    * The feature id for the '<em><b>Iterator</b></em>' containment reference.
@@ -241,7 +250,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INSTRUCTIONS__ITERATOR = 1;
+  int INSTRUCTIONS__ITERATOR = 2;
 
   /**
    * The feature id for the '<em><b>Rule</b></em>' containment reference.
@@ -250,16 +259,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INSTRUCTIONS__RULE = 2;
-
-  /**
-   * The feature id for the '<em><b>Comment</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INSTRUCTIONS__COMMENT = 3;
+  int INSTRUCTIONS__RULE = 3;
 
   /**
    * The number of structural features of the '<em>Instructions</em>' class.
@@ -492,13 +492,31 @@ public interface MetaTemplatingPackage extends EPackage
   int SUB_QUERY = 10;
 
   /**
+   * The feature id for the '<em><b>Meth Item</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUB_QUERY__METH_ITEM = 0;
+
+  /**
+   * The feature id for the '<em><b>Meth Ref</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUB_QUERY__METH_REF = 1;
+
+  /**
    * The feature id for the '<em><b>Item</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SUB_QUERY__ITEM = 0;
+  int SUB_QUERY__ITEM = 2;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' containment reference.
@@ -507,7 +525,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SUB_QUERY__REF = 1;
+  int SUB_QUERY__REF = 3;
 
   /**
    * The number of structural features of the '<em>Sub Query</em>' class.
@@ -516,7 +534,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SUB_QUERY_FEATURE_COUNT = 2;
+  int SUB_QUERY_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.metaTemplating.impl.PhImpl <em>Ph</em>}' class.
@@ -668,13 +686,22 @@ public interface MetaTemplatingPackage extends EPackage
   int SUB_PROPERTY = 15;
 
   /**
+   * The feature id for the '<em><b>Method</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUB_PROPERTY__METHOD = 0;
+
+  /**
    * The feature id for the '<em><b>Property</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SUB_PROPERTY__PROPERTY = 0;
+  int SUB_PROPERTY__PROPERTY = 1;
 
   /**
    * The number of structural features of the '<em>Sub Property</em>' class.
@@ -683,7 +710,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SUB_PROPERTY_FEATURE_COUNT = 1;
+  int SUB_PROPERTY_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.metaTemplating.impl.EscapedStringImpl <em>Escaped String</em>}' class.
@@ -849,25 +876,25 @@ public interface MetaTemplatingPackage extends EPackage
   EAttribute getLibraries_Path();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.example.mydsl.metaTemplating.Comment <em>Comment</em>}'.
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.metaTemplating.Note <em>Note</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Comment</em>'.
-   * @see org.xtext.example.mydsl.metaTemplating.Comment
+   * @return the meta object for class '<em>Note</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.Note
    * @generated
    */
-  EClass getComment();
+  EClass getNote();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.xtext.example.mydsl.metaTemplating.Comment#getWord <em>Word</em>}'.
+   * Returns the meta object for the attribute list '{@link org.xtext.example.mydsl.metaTemplating.Note#getWord <em>Word</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Word</em>'.
-   * @see org.xtext.example.mydsl.metaTemplating.Comment#getWord()
-   * @see #getComment()
+   * @see org.xtext.example.mydsl.metaTemplating.Note#getWord()
+   * @see #getNote()
    * @generated
    */
-  EAttribute getComment_Word();
+  EAttribute getNote_Word();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.metaTemplating.Instructions <em>Instructions</em>}'.
@@ -878,6 +905,17 @@ public interface MetaTemplatingPackage extends EPackage
    * @generated
    */
   EClass getInstructions();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.metaTemplating.Instructions#getNote <em>Note</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Note</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.Instructions#getNote()
+   * @see #getInstructions()
+   * @generated
+   */
+  EReference getInstructions_Note();
 
   /**
    * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.metaTemplating.Instructions#getStatement <em>Statement</em>}'.
@@ -911,17 +949,6 @@ public interface MetaTemplatingPackage extends EPackage
    * @generated
    */
   EReference getInstructions_Rule();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.metaTemplating.Instructions#getComment <em>Comment</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Comment</em>'.
-   * @see org.xtext.example.mydsl.metaTemplating.Instructions#getComment()
-   * @see #getInstructions()
-   * @generated
-   */
-  EReference getInstructions_Comment();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.metaTemplating.Statement <em>Statement</em>}'.
@@ -1139,6 +1166,28 @@ public interface MetaTemplatingPackage extends EPackage
   EClass getSubQuery();
 
   /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.metaTemplating.SubQuery#getMethItem <em>Meth Item</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Meth Item</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.SubQuery#getMethItem()
+   * @see #getSubQuery()
+   * @generated
+   */
+  EAttribute getSubQuery_MethItem();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.metaTemplating.SubQuery#getMethRef <em>Meth Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Meth Ref</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.SubQuery#getMethRef()
+   * @see #getSubQuery()
+   * @generated
+   */
+  EReference getSubQuery_MethRef();
+
+  /**
    * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.metaTemplating.SubQuery#getItem <em>Item</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1286,6 +1335,17 @@ public interface MetaTemplatingPackage extends EPackage
    * @generated
    */
   EClass getSubProperty();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.metaTemplating.SubProperty#getMethod <em>Method</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Method</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.SubProperty#getMethod()
+   * @see #getSubProperty()
+   * @generated
+   */
+  EAttribute getSubProperty_Method();
 
   /**
    * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.metaTemplating.SubProperty#getProperty <em>Property</em>}'.
@@ -1452,14 +1512,14 @@ public interface MetaTemplatingPackage extends EPackage
     EAttribute LIBRARIES__PATH = eINSTANCE.getLibraries_Path();
 
     /**
-     * The meta object literal for the '{@link org.xtext.example.mydsl.metaTemplating.impl.CommentImpl <em>Comment</em>}' class.
+     * The meta object literal for the '{@link org.xtext.example.mydsl.metaTemplating.impl.NoteImpl <em>Note</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.example.mydsl.metaTemplating.impl.CommentImpl
-     * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getComment()
+     * @see org.xtext.example.mydsl.metaTemplating.impl.NoteImpl
+     * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getNote()
      * @generated
      */
-    EClass COMMENT = eINSTANCE.getComment();
+    EClass NOTE = eINSTANCE.getNote();
 
     /**
      * The meta object literal for the '<em><b>Word</b></em>' attribute list feature.
@@ -1467,7 +1527,7 @@ public interface MetaTemplatingPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COMMENT__WORD = eINSTANCE.getComment_Word();
+    EAttribute NOTE__WORD = eINSTANCE.getNote_Word();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.metaTemplating.impl.InstructionsImpl <em>Instructions</em>}' class.
@@ -1478,6 +1538,14 @@ public interface MetaTemplatingPackage extends EPackage
      * @generated
      */
     EClass INSTRUCTIONS = eINSTANCE.getInstructions();
+
+    /**
+     * The meta object literal for the '<em><b>Note</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INSTRUCTIONS__NOTE = eINSTANCE.getInstructions_Note();
 
     /**
      * The meta object literal for the '<em><b>Statement</b></em>' containment reference feature.
@@ -1502,14 +1570,6 @@ public interface MetaTemplatingPackage extends EPackage
      * @generated
      */
     EReference INSTRUCTIONS__RULE = eINSTANCE.getInstructions_Rule();
-
-    /**
-     * The meta object literal for the '<em><b>Comment</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference INSTRUCTIONS__COMMENT = eINSTANCE.getInstructions_Comment();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.metaTemplating.impl.StatementImpl <em>Statement</em>}' class.
@@ -1682,6 +1742,22 @@ public interface MetaTemplatingPackage extends EPackage
     EClass SUB_QUERY = eINSTANCE.getSubQuery();
 
     /**
+     * The meta object literal for the '<em><b>Meth Item</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SUB_QUERY__METH_ITEM = eINSTANCE.getSubQuery_MethItem();
+
+    /**
+     * The meta object literal for the '<em><b>Meth Ref</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUB_QUERY__METH_REF = eINSTANCE.getSubQuery_MethRef();
+
+    /**
      * The meta object literal for the '<em><b>Item</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1802,6 +1878,14 @@ public interface MetaTemplatingPackage extends EPackage
      * @generated
      */
     EClass SUB_PROPERTY = eINSTANCE.getSubProperty();
+
+    /**
+     * The meta object literal for the '<em><b>Method</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SUB_PROPERTY__METHOD = eINSTANCE.getSubProperty_Method();
 
     /**
      * The meta object literal for the '<em><b>Property</b></em>' attribute feature.

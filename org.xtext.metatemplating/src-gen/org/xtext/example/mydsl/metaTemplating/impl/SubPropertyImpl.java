@@ -21,6 +21,7 @@ import org.xtext.example.mydsl.metaTemplating.SubProperty;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.SubPropertyImpl#getMethod <em>Method</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.SubPropertyImpl#getProperty <em>Property</em>}</li>
  * </ul>
  *
@@ -28,6 +29,26 @@ import org.xtext.example.mydsl.metaTemplating.SubProperty;
  */
 public class SubPropertyImpl extends MinimalEObjectImpl.Container implements SubProperty
 {
+  /**
+   * The default value of the '{@link #getMethod() <em>Method</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMethod()
+   * @generated
+   * @ordered
+   */
+  protected static final String METHOD_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getMethod() <em>Method</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMethod()
+   * @generated
+   * @ordered
+   */
+  protected String method = METHOD_EDEFAULT;
+
   /**
    * The default value of the '{@link #getProperty() <em>Property</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -75,6 +96,31 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
    * @generated
    */
   @Override
+  public String getMethod()
+  {
+    return method;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMethod(String newMethod)
+  {
+    String oldMethod = method;
+    method = newMethod;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.SUB_PROPERTY__METHOD, oldMethod, method));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public String getProperty()
   {
     return property;
@@ -104,6 +150,8 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
   {
     switch (featureID)
     {
+      case MetaTemplatingPackage.SUB_PROPERTY__METHOD:
+        return getMethod();
       case MetaTemplatingPackage.SUB_PROPERTY__PROPERTY:
         return getProperty();
     }
@@ -120,6 +168,9 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
   {
     switch (featureID)
     {
+      case MetaTemplatingPackage.SUB_PROPERTY__METHOD:
+        setMethod((String)newValue);
+        return;
       case MetaTemplatingPackage.SUB_PROPERTY__PROPERTY:
         setProperty((String)newValue);
         return;
@@ -137,6 +188,9 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
   {
     switch (featureID)
     {
+      case MetaTemplatingPackage.SUB_PROPERTY__METHOD:
+        setMethod(METHOD_EDEFAULT);
+        return;
       case MetaTemplatingPackage.SUB_PROPERTY__PROPERTY:
         setProperty(PROPERTY_EDEFAULT);
         return;
@@ -154,6 +208,8 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
   {
     switch (featureID)
     {
+      case MetaTemplatingPackage.SUB_PROPERTY__METHOD:
+        return METHOD_EDEFAULT == null ? method != null : !METHOD_EDEFAULT.equals(method);
       case MetaTemplatingPackage.SUB_PROPERTY__PROPERTY:
         return PROPERTY_EDEFAULT == null ? property != null : !PROPERTY_EDEFAULT.equals(property);
     }
@@ -171,7 +227,9 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (property: ");
+    result.append(" (method: ");
+    result.append(method);
+    result.append(", property: ");
     result.append(property);
     result.append(')');
     return result.toString();

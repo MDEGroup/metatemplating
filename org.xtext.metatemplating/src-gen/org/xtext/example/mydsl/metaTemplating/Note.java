@@ -9,21 +9,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Comment</b></em>'.
+ * A representation of the model object '<em><b>Note</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.Comment#getWord <em>Word</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.Note#getWord <em>Word</em>}</li>
  * </ul>
  *
- * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getComment()
+ * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getNote()
  * @model
  * @generated
  */
-public interface Comment extends EObject
+public interface Note extends EObject
 {
   /**
    * Returns the value of the '<em><b>Word</b></em>' attribute list.
@@ -31,10 +31,10 @@ public interface Comment extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Word</em>' attribute list.
-   * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getComment_Word()
+   * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getNote_Word()
    * @model unique="false"
    * @generated
    */
   EList<String> getWord();
 
-} // Comment
+} // Note

@@ -1,0 +1,80 @@
+import "metaEngine.eol";
+
+/*
+	Meta-MetaGeneration
+*/
+
+operation insMetaComment(st: String): String {
+	return insPh('insComment(' + st + ')');
+} 
+
+operation insMetaMarker(st: String): String {
+	return insPh('insMarker(' + st + ')');
+}
+
+operation insMetaStat(st: String): String {
+	return insPh('insStat(' + st + ')');
+}
+
+operation insMetaPh(st: String): String {
+	return insPh('insPh(' + st + ')');
+}
+
+operation insMetaPhList(phlist: List, sep: String): String {
+	var size = phlist.size();
+	var output = "";
+	for (p in phlist) {
+		output += insMetaPh(p);
+		if (size > 1) { output += sep; }
+		size -= 1;
+	}
+	return output;
+}
+
+// *** Advanced
+operation insMetaSwitch(it: String): String {
+	return insPh('insSwitch(' + it + ')');
+}
+
+operation insMetaCase(val: String): String {
+	return insPh('insCase(' + val + ')');
+}
+
+operation insMetaDefCase(): String {
+	return insPh('insDefCase()');
+}
+
+operation insMetaFor(it: String, list: String): String {
+	return insPh('insFor(' + it + ', ' + list  +')');
+}
+
+operation insMetaIf(cond: String): String {
+	return insPh('insIf(' + cond + ')');
+}
+
+operation insMetaElse(): String {
+	return insPh('insElse()');
+}
+
+operation insMetaEnd(): String {
+	return insPh('insEnd()');
+}
+
+operation insMetaStr(st: String): String {
+	return '\\\"' + st + '\\\"';
+}
+
+operation insMetaVar(name: String, init: String): String {
+	return insPh('insVar(' + name + ', ' + init + ')');
+}
+
+// **** Utils
+operation strFromList(list: Collection): String {
+	var out = ""; var cnt = 0;
+	for (s in list) {
+		cnt++;
+		out += s;
+		if (cnt < list.size()) out += " ";
+	}
+	return out;
+}

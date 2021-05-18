@@ -16,6 +16,8 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class MetaTemplatingGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		
+		RunEgxEngine.run(resource, fsa);
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
 //			resource.allContents
 //				.filter(Greeting)

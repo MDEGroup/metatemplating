@@ -24,6 +24,8 @@ import org.xtext.example.mydsl.metaTemplating.SubQuery;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.SubQueryImpl#getMethItem <em>Meth Item</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.SubQueryImpl#getMethRef <em>Meth Ref</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.SubQueryImpl#getItem <em>Item</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.SubQueryImpl#getRef <em>Ref</em>}</li>
  * </ul>
@@ -32,6 +34,36 @@ import org.xtext.example.mydsl.metaTemplating.SubQuery;
  */
 public class SubQueryImpl extends MinimalEObjectImpl.Container implements SubQuery
 {
+  /**
+   * The default value of the '{@link #getMethItem() <em>Meth Item</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMethItem()
+   * @generated
+   * @ordered
+   */
+  protected static final String METH_ITEM_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getMethItem() <em>Meth Item</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMethItem()
+   * @generated
+   * @ordered
+   */
+  protected String methItem = METH_ITEM_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getMethRef() <em>Meth Ref</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMethRef()
+   * @generated
+   * @ordered
+   */
+  protected MetaPh methRef;
+
   /**
    * The default value of the '{@link #getItem() <em>Item</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -81,6 +113,81 @@ public class SubQueryImpl extends MinimalEObjectImpl.Container implements SubQue
   protected EClass eStaticClass()
   {
     return MetaTemplatingPackage.Literals.SUB_QUERY;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getMethItem()
+  {
+    return methItem;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMethItem(String newMethItem)
+  {
+    String oldMethItem = methItem;
+    methItem = newMethItem;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.SUB_QUERY__METH_ITEM, oldMethItem, methItem));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MetaPh getMethRef()
+  {
+    return methRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetMethRef(MetaPh newMethRef, NotificationChain msgs)
+  {
+    MetaPh oldMethRef = methRef;
+    methRef = newMethRef;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.SUB_QUERY__METH_REF, oldMethRef, newMethRef);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMethRef(MetaPh newMethRef)
+  {
+    if (newMethRef != methRef)
+    {
+      NotificationChain msgs = null;
+      if (methRef != null)
+        msgs = ((InternalEObject)methRef).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.SUB_QUERY__METH_REF, null, msgs);
+      if (newMethRef != null)
+        msgs = ((InternalEObject)newMethRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.SUB_QUERY__METH_REF, null, msgs);
+      msgs = basicSetMethRef(newMethRef, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.SUB_QUERY__METH_REF, newMethRef, newMethRef));
   }
 
   /**
@@ -168,6 +275,8 @@ public class SubQueryImpl extends MinimalEObjectImpl.Container implements SubQue
   {
     switch (featureID)
     {
+      case MetaTemplatingPackage.SUB_QUERY__METH_REF:
+        return basicSetMethRef(null, msgs);
       case MetaTemplatingPackage.SUB_QUERY__REF:
         return basicSetRef(null, msgs);
     }
@@ -184,6 +293,10 @@ public class SubQueryImpl extends MinimalEObjectImpl.Container implements SubQue
   {
     switch (featureID)
     {
+      case MetaTemplatingPackage.SUB_QUERY__METH_ITEM:
+        return getMethItem();
+      case MetaTemplatingPackage.SUB_QUERY__METH_REF:
+        return getMethRef();
       case MetaTemplatingPackage.SUB_QUERY__ITEM:
         return getItem();
       case MetaTemplatingPackage.SUB_QUERY__REF:
@@ -202,6 +315,12 @@ public class SubQueryImpl extends MinimalEObjectImpl.Container implements SubQue
   {
     switch (featureID)
     {
+      case MetaTemplatingPackage.SUB_QUERY__METH_ITEM:
+        setMethItem((String)newValue);
+        return;
+      case MetaTemplatingPackage.SUB_QUERY__METH_REF:
+        setMethRef((MetaPh)newValue);
+        return;
       case MetaTemplatingPackage.SUB_QUERY__ITEM:
         setItem((String)newValue);
         return;
@@ -222,6 +341,12 @@ public class SubQueryImpl extends MinimalEObjectImpl.Container implements SubQue
   {
     switch (featureID)
     {
+      case MetaTemplatingPackage.SUB_QUERY__METH_ITEM:
+        setMethItem(METH_ITEM_EDEFAULT);
+        return;
+      case MetaTemplatingPackage.SUB_QUERY__METH_REF:
+        setMethRef((MetaPh)null);
+        return;
       case MetaTemplatingPackage.SUB_QUERY__ITEM:
         setItem(ITEM_EDEFAULT);
         return;
@@ -242,6 +367,10 @@ public class SubQueryImpl extends MinimalEObjectImpl.Container implements SubQue
   {
     switch (featureID)
     {
+      case MetaTemplatingPackage.SUB_QUERY__METH_ITEM:
+        return METH_ITEM_EDEFAULT == null ? methItem != null : !METH_ITEM_EDEFAULT.equals(methItem);
+      case MetaTemplatingPackage.SUB_QUERY__METH_REF:
+        return methRef != null;
       case MetaTemplatingPackage.SUB_QUERY__ITEM:
         return ITEM_EDEFAULT == null ? item != null : !ITEM_EDEFAULT.equals(item);
       case MetaTemplatingPackage.SUB_QUERY__REF:
@@ -261,7 +390,9 @@ public class SubQueryImpl extends MinimalEObjectImpl.Container implements SubQue
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (item: ");
+    result.append(" (methItem: ");
+    result.append(methItem);
+    result.append(", item: ");
     result.append(item);
     result.append(')');
     return result.toString();

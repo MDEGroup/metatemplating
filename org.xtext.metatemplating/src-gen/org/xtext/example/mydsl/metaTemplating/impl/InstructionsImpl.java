@@ -12,10 +12,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.xtext.example.mydsl.metaTemplating.Comment;
 import org.xtext.example.mydsl.metaTemplating.Instructions;
 import org.xtext.example.mydsl.metaTemplating.Iterator;
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
+import org.xtext.example.mydsl.metaTemplating.Note;
 import org.xtext.example.mydsl.metaTemplating.Rule;
 import org.xtext.example.mydsl.metaTemplating.Statement;
 
@@ -27,16 +27,26 @@ import org.xtext.example.mydsl.metaTemplating.Statement;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.InstructionsImpl#getNote <em>Note</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.InstructionsImpl#getStatement <em>Statement</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.InstructionsImpl#getIterator <em>Iterator</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.InstructionsImpl#getRule <em>Rule</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.InstructionsImpl#getComment <em>Comment</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class InstructionsImpl extends MinimalEObjectImpl.Container implements Instructions
 {
+  /**
+   * The cached value of the '{@link #getNote() <em>Note</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getNote()
+   * @generated
+   * @ordered
+   */
+  protected Note note;
+
   /**
    * The cached value of the '{@link #getStatement() <em>Statement</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -68,16 +78,6 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
   protected Rule rule;
 
   /**
-   * The cached value of the '{@link #getComment() <em>Comment</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getComment()
-   * @generated
-   * @ordered
-   */
-  protected Comment comment;
-
-  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -96,6 +96,56 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
   protected EClass eStaticClass()
   {
     return MetaTemplatingPackage.Literals.INSTRUCTIONS;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Note getNote()
+  {
+    return note;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetNote(Note newNote, NotificationChain msgs)
+  {
+    Note oldNote = note;
+    note = newNote;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.INSTRUCTIONS__NOTE, oldNote, newNote);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setNote(Note newNote)
+  {
+    if (newNote != note)
+    {
+      NotificationChain msgs = null;
+      if (note != null)
+        msgs = ((InternalEObject)note).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.INSTRUCTIONS__NOTE, null, msgs);
+      if (newNote != null)
+        msgs = ((InternalEObject)newNote).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.INSTRUCTIONS__NOTE, null, msgs);
+      msgs = basicSetNote(newNote, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.INSTRUCTIONS__NOTE, newNote, newNote));
   }
 
   /**
@@ -254,68 +304,18 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
    * @generated
    */
   @Override
-  public Comment getComment()
-  {
-    return comment;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetComment(Comment newComment, NotificationChain msgs)
-  {
-    Comment oldComment = comment;
-    comment = newComment;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.INSTRUCTIONS__COMMENT, oldComment, newComment);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setComment(Comment newComment)
-  {
-    if (newComment != comment)
-    {
-      NotificationChain msgs = null;
-      if (comment != null)
-        msgs = ((InternalEObject)comment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.INSTRUCTIONS__COMMENT, null, msgs);
-      if (newComment != null)
-        msgs = ((InternalEObject)newComment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.INSTRUCTIONS__COMMENT, null, msgs);
-      msgs = basicSetComment(newComment, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.INSTRUCTIONS__COMMENT, newComment, newComment));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
+      case MetaTemplatingPackage.INSTRUCTIONS__NOTE:
+        return basicSetNote(null, msgs);
       case MetaTemplatingPackage.INSTRUCTIONS__STATEMENT:
         return basicSetStatement(null, msgs);
       case MetaTemplatingPackage.INSTRUCTIONS__ITERATOR:
         return basicSetIterator(null, msgs);
       case MetaTemplatingPackage.INSTRUCTIONS__RULE:
         return basicSetRule(null, msgs);
-      case MetaTemplatingPackage.INSTRUCTIONS__COMMENT:
-        return basicSetComment(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -330,14 +330,14 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
   {
     switch (featureID)
     {
+      case MetaTemplatingPackage.INSTRUCTIONS__NOTE:
+        return getNote();
       case MetaTemplatingPackage.INSTRUCTIONS__STATEMENT:
         return getStatement();
       case MetaTemplatingPackage.INSTRUCTIONS__ITERATOR:
         return getIterator();
       case MetaTemplatingPackage.INSTRUCTIONS__RULE:
         return getRule();
-      case MetaTemplatingPackage.INSTRUCTIONS__COMMENT:
-        return getComment();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -352,6 +352,9 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
   {
     switch (featureID)
     {
+      case MetaTemplatingPackage.INSTRUCTIONS__NOTE:
+        setNote((Note)newValue);
+        return;
       case MetaTemplatingPackage.INSTRUCTIONS__STATEMENT:
         setStatement((Statement)newValue);
         return;
@@ -360,9 +363,6 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
         return;
       case MetaTemplatingPackage.INSTRUCTIONS__RULE:
         setRule((Rule)newValue);
-        return;
-      case MetaTemplatingPackage.INSTRUCTIONS__COMMENT:
-        setComment((Comment)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -378,6 +378,9 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
   {
     switch (featureID)
     {
+      case MetaTemplatingPackage.INSTRUCTIONS__NOTE:
+        setNote((Note)null);
+        return;
       case MetaTemplatingPackage.INSTRUCTIONS__STATEMENT:
         setStatement((Statement)null);
         return;
@@ -386,9 +389,6 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
         return;
       case MetaTemplatingPackage.INSTRUCTIONS__RULE:
         setRule((Rule)null);
-        return;
-      case MetaTemplatingPackage.INSTRUCTIONS__COMMENT:
-        setComment((Comment)null);
         return;
     }
     super.eUnset(featureID);
@@ -404,14 +404,14 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
   {
     switch (featureID)
     {
+      case MetaTemplatingPackage.INSTRUCTIONS__NOTE:
+        return note != null;
       case MetaTemplatingPackage.INSTRUCTIONS__STATEMENT:
         return statement != null;
       case MetaTemplatingPackage.INSTRUCTIONS__ITERATOR:
         return iterator != null;
       case MetaTemplatingPackage.INSTRUCTIONS__RULE:
         return rule != null;
-      case MetaTemplatingPackage.INSTRUCTIONS__COMMENT:
-        return comment != null;
     }
     return super.eIsSet(featureID);
   }

@@ -13,23 +13,23 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 
-import org.xtext.example.mydsl.metaTemplating.Comment;
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
+import org.xtext.example.mydsl.metaTemplating.Note;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Comment</b></em>'.
+ * An implementation of the model object '<em><b>Note</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.CommentImpl#getWord <em>Word</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.NoteImpl#getWord <em>Word</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CommentImpl extends MinimalEObjectImpl.Container implements Comment
+public class NoteImpl extends MinimalEObjectImpl.Container implements Note
 {
   /**
    * The cached value of the '{@link #getWord() <em>Word</em>}' attribute list.
@@ -46,7 +46,7 @@ public class CommentImpl extends MinimalEObjectImpl.Container implements Comment
    * <!-- end-user-doc -->
    * @generated
    */
-  protected CommentImpl()
+  protected NoteImpl()
   {
     super();
   }
@@ -59,7 +59,7 @@ public class CommentImpl extends MinimalEObjectImpl.Container implements Comment
   @Override
   protected EClass eStaticClass()
   {
-    return MetaTemplatingPackage.Literals.COMMENT;
+    return MetaTemplatingPackage.Literals.NOTE;
   }
 
   /**
@@ -72,7 +72,7 @@ public class CommentImpl extends MinimalEObjectImpl.Container implements Comment
   {
     if (word == null)
     {
-      word = new EDataTypeEList<String>(String.class, this, MetaTemplatingPackage.COMMENT__WORD);
+      word = new EDataTypeEList<String>(String.class, this, MetaTemplatingPackage.NOTE__WORD);
     }
     return word;
   }
@@ -87,7 +87,7 @@ public class CommentImpl extends MinimalEObjectImpl.Container implements Comment
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.COMMENT__WORD:
+      case MetaTemplatingPackage.NOTE__WORD:
         return getWord();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -104,7 +104,7 @@ public class CommentImpl extends MinimalEObjectImpl.Container implements Comment
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.COMMENT__WORD:
+      case MetaTemplatingPackage.NOTE__WORD:
         getWord().clear();
         getWord().addAll((Collection<? extends String>)newValue);
         return;
@@ -122,7 +122,7 @@ public class CommentImpl extends MinimalEObjectImpl.Container implements Comment
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.COMMENT__WORD:
+      case MetaTemplatingPackage.NOTE__WORD:
         getWord().clear();
         return;
     }
@@ -139,7 +139,7 @@ public class CommentImpl extends MinimalEObjectImpl.Container implements Comment
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.COMMENT__WORD:
+      case MetaTemplatingPackage.NOTE__WORD:
         return word != null && !word.isEmpty();
     }
     return super.eIsSet(featureID);
@@ -162,4 +162,4 @@ public class CommentImpl extends MinimalEObjectImpl.Container implements Comment
     return result.toString();
   }
 
-} //CommentImpl
+} //NoteImpl

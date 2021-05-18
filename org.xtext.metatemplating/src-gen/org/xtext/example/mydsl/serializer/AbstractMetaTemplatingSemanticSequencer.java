@@ -14,7 +14,6 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import org.xtext.example.mydsl.metaTemplating.Comment;
 import org.xtext.example.mydsl.metaTemplating.Escaped;
 import org.xtext.example.mydsl.metaTemplating.EscapedString;
 import org.xtext.example.mydsl.metaTemplating.Header;
@@ -26,6 +25,7 @@ import org.xtext.example.mydsl.metaTemplating.MetaPh;
 import org.xtext.example.mydsl.metaTemplating.MetaProperty;
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
 import org.xtext.example.mydsl.metaTemplating.Model;
+import org.xtext.example.mydsl.metaTemplating.Note;
 import org.xtext.example.mydsl.metaTemplating.Ph;
 import org.xtext.example.mydsl.metaTemplating.Property;
 import org.xtext.example.mydsl.metaTemplating.Query;
@@ -49,9 +49,6 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == MetaTemplatingPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case MetaTemplatingPackage.COMMENT:
-				sequence_Comment(context, (Comment) semanticObject); 
-				return; 
 			case MetaTemplatingPackage.ESCAPED:
 				sequence_Escaped(context, (Escaped) semanticObject); 
 				return; 
@@ -82,6 +79,9 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 			case MetaTemplatingPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
 				return; 
+			case MetaTemplatingPackage.NOTE:
+				sequence_Note(context, (Note) semanticObject); 
+				return; 
 			case MetaTemplatingPackage.PH:
 				sequence_Ph(context, (Ph) semanticObject); 
 				return; 
@@ -110,18 +110,6 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 	
 	/**
 	 * Contexts:
-	 *     Comment returns Comment
-	 *
-	 * Constraint:
-	 *     (word+=ID | word+=ID)
-	 */
-	protected void sequence_Comment(ISerializationContext context, Comment semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     EscapedString returns EscapedString
 	 *
 	 * Constraint:
@@ -144,6 +132,9 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 	 *
 	 * Constraint:
 	 *     (
+	 *         char='n' | 
+	 *         char='s' | 
+	 *         char='t' | 
 	 *         char='#' | 
 	 *         char='{' | 
 	 *         char='}' | 
@@ -199,7 +190,7 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 	 *     Instructions returns Instructions
 	 *
 	 * Constraint:
-	 *     (statement=Statement | iterator=Iterator | rule=Rule | comment=Comment)
+	 *     (note=Note | statement=Statement | iterator=Iterator | rule=Rule)
 	 */
 	protected void sequence_Instructions(ISerializationContext context, Instructions semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -280,6 +271,18 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 	
 	/**
 	 * Contexts:
+	 *     Note returns Note
+	 *
+	 * Constraint:
+	 *     word+=ID+
+	 */
+	protected void sequence_Note(ISerializationContext context, Note semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Ph returns Ph
 	 *
 	 * Constraint:
@@ -343,16 +346,10 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 	 *     SubProperty returns SubProperty
 	 *
 	 * Constraint:
-	 *     property=ID
+	 *     (method=ID | property=ID)
 	 */
 	protected void sequence_SubProperty(ISerializationContext context, SubProperty semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MetaTemplatingPackage.Literals.SUB_PROPERTY__PROPERTY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MetaTemplatingPackage.Literals.SUB_PROPERTY__PROPERTY));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getSubPropertyAccess().getPropertyIDTerminalRuleCall_1_0(), semanticObject.getProperty());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -361,7 +358,7 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 	 *     SubQuery returns SubQuery
 	 *
 	 * Constraint:
-	 *     (item=ID | ref=MetaPh)
+	 *     (methItem=ID | methRef=MetaPh | item=ID | ref=MetaPh)
 	 */
 	protected void sequence_SubQuery(ISerializationContext context, SubQuery semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

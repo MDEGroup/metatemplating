@@ -69,7 +69,7 @@ public class MetaTemplatingFactoryImpl extends EFactoryImpl implements MetaTempl
       case MetaTemplatingPackage.HEADER: return createHeader();
       case MetaTemplatingPackage.IMPORT: return createImport();
       case MetaTemplatingPackage.LIBRARIES: return createLibraries();
-      case MetaTemplatingPackage.COMMENT: return createComment();
+      case MetaTemplatingPackage.NOTE: return createNote();
       case MetaTemplatingPackage.INSTRUCTIONS: return createInstructions();
       case MetaTemplatingPackage.STATEMENT: return createStatement();
       case MetaTemplatingPackage.RULE: return createRule();
@@ -142,10 +142,10 @@ public class MetaTemplatingFactoryImpl extends EFactoryImpl implements MetaTempl
    * @generated
    */
   @Override
-  public Comment createComment()
+  public Note createNote()
   {
-    CommentImpl comment = new CommentImpl();
-    return comment;
+    NoteImpl note = new NoteImpl();
+    return note;
   }
 
   /**

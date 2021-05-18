@@ -24,18 +24,17 @@ Libraries:
 
 /* Comments */
 
-Comment:
-	'//' word+=ID |
-	'/*' word+=ID '*/'
+Note:
+	'#*' word+=ID+ '*#'
 ;
 
 /* Instructions */
 
 Instructions:	
+	note=Note |
 	statement=Statement |
 	iterator=Iterator | 
-	rule=Rule |
-	comment=Comment
+	rule=Rule
 ;
 
 Statement:
@@ -61,7 +60,8 @@ Query:
 ;
 
 SubQuery:
-	'.' (item=ID | ref=MetaPh) '()'?
+	'.' (methItem=ID | methRef=MetaPh) '()' |
+	'.' (item=ID | ref=MetaPh)
 ;
 
 /* Placeholder */
@@ -85,7 +85,8 @@ Property:
 ;
 
 SubProperty:	
-	'.' property=ID '()'?
+	'.' method=ID '()' | 
+	'.' property=ID 
 ; 
 
 /* Escaping */
@@ -95,5 +96,5 @@ EscapedString:
 ;
 
 Escaped:
-	'#' char=('#' | '{' | '}' | '[' | ']' | ',' | ';' | '(' | ')' | ':' | '<' | '>' | "'")
+	'#' char=('n' | 's' | 't' | '#' | '{' | '}' | '[' | ']' | ',' | ';' | '(' | ')' | ':' | '<' | '>' | "'")
 ;

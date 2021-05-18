@@ -10,7 +10,6 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.xtext.example.mydsl.metaTemplating.Comment;
 import org.xtext.example.mydsl.metaTemplating.Escaped;
 import org.xtext.example.mydsl.metaTemplating.EscapedString;
 import org.xtext.example.mydsl.metaTemplating.Header;
@@ -23,6 +22,7 @@ import org.xtext.example.mydsl.metaTemplating.MetaProperty;
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingFactory;
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
 import org.xtext.example.mydsl.metaTemplating.Model;
+import org.xtext.example.mydsl.metaTemplating.Note;
 import org.xtext.example.mydsl.metaTemplating.Ph;
 import org.xtext.example.mydsl.metaTemplating.Property;
 import org.xtext.example.mydsl.metaTemplating.Query;
@@ -72,7 +72,7 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass commentEClass = null;
+  private EClass noteEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -344,9 +344,9 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EClass getComment()
+  public EClass getNote()
   {
-    return commentEClass;
+    return noteEClass;
   }
 
   /**
@@ -355,9 +355,9 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EAttribute getComment_Word()
+  public EAttribute getNote_Word()
   {
-    return (EAttribute)commentEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)noteEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -377,7 +377,7 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EReference getInstructions_Statement()
+  public EReference getInstructions_Note()
   {
     return (EReference)instructionsEClass.getEStructuralFeatures().get(0);
   }
@@ -388,7 +388,7 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EReference getInstructions_Iterator()
+  public EReference getInstructions_Statement()
   {
     return (EReference)instructionsEClass.getEStructuralFeatures().get(1);
   }
@@ -399,7 +399,7 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EReference getInstructions_Rule()
+  public EReference getInstructions_Iterator()
   {
     return (EReference)instructionsEClass.getEStructuralFeatures().get(2);
   }
@@ -410,7 +410,7 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EReference getInstructions_Comment()
+  public EReference getInstructions_Rule()
   {
     return (EReference)instructionsEClass.getEStructuralFeatures().get(3);
   }
@@ -641,7 +641,7 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EAttribute getSubQuery_Item()
+  public EAttribute getSubQuery_MethItem()
   {
     return (EAttribute)subQueryEClass.getEStructuralFeatures().get(0);
   }
@@ -652,9 +652,31 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EReference getSubQuery_Ref()
+  public EReference getSubQuery_MethRef()
   {
     return (EReference)subQueryEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSubQuery_Item()
+  {
+    return (EAttribute)subQueryEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSubQuery_Ref()
+  {
+    return (EReference)subQueryEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -795,9 +817,20 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EAttribute getSubProperty_Property()
+  public EAttribute getSubProperty_Method()
   {
     return (EAttribute)subPropertyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSubProperty_Property()
+  {
+    return (EAttribute)subPropertyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -889,14 +922,14 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
     librariesEClass = createEClass(LIBRARIES);
     createEAttribute(librariesEClass, LIBRARIES__PATH);
 
-    commentEClass = createEClass(COMMENT);
-    createEAttribute(commentEClass, COMMENT__WORD);
+    noteEClass = createEClass(NOTE);
+    createEAttribute(noteEClass, NOTE__WORD);
 
     instructionsEClass = createEClass(INSTRUCTIONS);
+    createEReference(instructionsEClass, INSTRUCTIONS__NOTE);
     createEReference(instructionsEClass, INSTRUCTIONS__STATEMENT);
     createEReference(instructionsEClass, INSTRUCTIONS__ITERATOR);
     createEReference(instructionsEClass, INSTRUCTIONS__RULE);
-    createEReference(instructionsEClass, INSTRUCTIONS__COMMENT);
 
     statementEClass = createEClass(STATEMENT);
     createEAttribute(statementEClass, STATEMENT__TEXT);
@@ -922,6 +955,8 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
     createEReference(queryEClass, QUERY__SUB_QUERY);
 
     subQueryEClass = createEClass(SUB_QUERY);
+    createEAttribute(subQueryEClass, SUB_QUERY__METH_ITEM);
+    createEReference(subQueryEClass, SUB_QUERY__METH_REF);
     createEAttribute(subQueryEClass, SUB_QUERY__ITEM);
     createEReference(subQueryEClass, SUB_QUERY__REF);
 
@@ -941,6 +976,7 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
     createEReference(propertyEClass, PROPERTY__SUB_PROPERTIES);
 
     subPropertyEClass = createEClass(SUB_PROPERTY);
+    createEAttribute(subPropertyEClass, SUB_PROPERTY__METHOD);
     createEAttribute(subPropertyEClass, SUB_PROPERTY__PROPERTY);
 
     escapedStringEClass = createEClass(ESCAPED_STRING);
@@ -995,14 +1031,14 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
     initEClass(librariesEClass, Libraries.class, "Libraries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLibraries_Path(), ecorePackage.getEString(), "path", null, 0, 1, Libraries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(commentEClass, Comment.class, "Comment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getComment_Word(), ecorePackage.getEString(), "word", null, 0, -1, Comment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(noteEClass, Note.class, "Note", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNote_Word(), ecorePackage.getEString(), "word", null, 0, -1, Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(instructionsEClass, Instructions.class, "Instructions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getInstructions_Note(), this.getNote(), null, "note", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstructions_Statement(), this.getStatement(), null, "statement", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstructions_Iterator(), this.getIterator(), null, "iterator", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstructions_Rule(), this.getRule(), null, "rule", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInstructions_Comment(), this.getComment(), null, "comment", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStatement_Text(), ecorePackage.getEString(), "text", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1028,6 +1064,8 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
     initEReference(getQuery_SubQuery(), this.getSubQuery(), null, "subQuery", null, 0, -1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(subQueryEClass, SubQuery.class, "SubQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSubQuery_MethItem(), ecorePackage.getEString(), "methItem", null, 0, 1, SubQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSubQuery_MethRef(), this.getMetaPh(), null, "methRef", null, 0, 1, SubQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSubQuery_Item(), ecorePackage.getEString(), "item", null, 0, 1, SubQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSubQuery_Ref(), this.getMetaPh(), null, "ref", null, 0, 1, SubQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1047,6 +1085,7 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
     initEReference(getProperty_SubProperties(), this.getSubProperty(), null, "subProperties", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(subPropertyEClass, SubProperty.class, "SubProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSubProperty_Method(), ecorePackage.getEString(), "method", null, 0, 1, SubProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSubProperty_Property(), ecorePackage.getEString(), "property", null, 0, 1, SubProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(escapedStringEClass, EscapedString.class, "EscapedString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

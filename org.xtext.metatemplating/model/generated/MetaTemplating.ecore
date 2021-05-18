@@ -20,18 +20,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="Libraries">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Comment">
+  <eClassifiers xsi:type="ecore:EClass" name="Note">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="word" unique="false" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Instructions">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="note" eType="#//Note" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="statement" eType="#//Statement"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="iterator" eType="#//Iterator"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rule" eType="#//Rule" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="comment" eType="#//Comment"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Statement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -67,6 +66,9 @@
         eType="#//SubQuery" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SubQuery">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="methItem" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="methRef" eType="#//MetaPh"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="item" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//MetaPh"
         containment="true"/>
@@ -92,6 +94,7 @@
         eType="#//SubProperty" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SubProperty">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="method" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="property" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EscapedString">

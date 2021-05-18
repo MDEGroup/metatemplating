@@ -60,13 +60,13 @@ public interface MetaTemplatingFactory extends EFactory
   Libraries createLibraries();
 
   /**
-   * Returns a new object of class '<em>Comment</em>'.
+   * Returns a new object of class '<em>Note</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Comment</em>'.
+   * @return a new object of class '<em>Note</em>'.
    * @generated
    */
-  Comment createComment();
+  Note createNote();
 
   /**
    * Returns a new object of class '<em>Instructions</em>'.

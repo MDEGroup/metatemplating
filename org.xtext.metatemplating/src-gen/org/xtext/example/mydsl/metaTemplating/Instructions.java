@@ -14,10 +14,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.Instructions#getNote <em>Note</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.Instructions#getStatement <em>Statement</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.Instructions#getIterator <em>Iterator</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.Instructions#getRule <em>Rule</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.Instructions#getComment <em>Comment</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getInstructions()
@@ -26,6 +26,28 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Instructions extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Note</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Note</em>' containment reference.
+   * @see #setNote(Note)
+   * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getInstructions_Note()
+   * @model containment="true"
+   * @generated
+   */
+  Note getNote();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.metaTemplating.Instructions#getNote <em>Note</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Note</em>' containment reference.
+   * @see #getNote()
+   * @generated
+   */
+  void setNote(Note value);
+
   /**
    * Returns the value of the '<em><b>Statement</b></em>' containment reference.
    * <!-- begin-user-doc -->
@@ -91,27 +113,5 @@ public interface Instructions extends EObject
    * @generated
    */
   void setRule(Rule value);
-
-  /**
-   * Returns the value of the '<em><b>Comment</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Comment</em>' containment reference.
-   * @see #setComment(Comment)
-   * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getInstructions_Comment()
-   * @model containment="true"
-   * @generated
-   */
-  Comment getComment();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.mydsl.metaTemplating.Instructions#getComment <em>Comment</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Comment</em>' containment reference.
-   * @see #getComment()
-   * @generated
-   */
-  void setComment(Comment value);
 
 } // Instructions

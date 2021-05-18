@@ -1,0 +1,127 @@
+[%import "metaMetaEngine.eol";%]
+
+[*-Header*]
+[%if (s.header <> null) {%]
+	[%for (imp in s.header.imports) { %]
+[%=insStat("import \"" + imp.path + "\";")%]
+	[%}%]
+	[%for (lib in s.header.libs) { %]
+[%=insMetaStat(insStr("import \\\"") + " + " + lib.path + " + " + insStr("\\\";"))%]
+	[%}%]
+[%}%]
+
+[%=insComment("Meta-template generated for " + fileName)%]
+
+[*-Content*]
+[%for (istr in s.content) { %]
+[%=istr.parseInstructions(0)%]
+[%}%]
+
+[*-Instructions*]
+[%operation Any parseInstructions(id: Integer): String {
+	var out = "";
+	if (self.note <> null) {
+		out += insComment(strFromList(self.note.word)) + "\n";
+	}
+	if (self.statement <> null) {
+		out += self.statement.parseStatement();
+	}
+	if (self.iterator <> null) {
+		out += insLine(id, insMetaFor("'" + self.iterator.element + "'", self.iterator.query.parseQuery()));
+		for (istr in self.iterator.body) {
+			out += istr.parseInstructions(id + 1);
+		}
+		out += insLine(id, insMetaEnd());
+	}
+	if (self.rule <> null) {
+		out += insLine(id, insFor(self.rule.element, self.rule.property.parseProperty() + self.rule.tag.parseTagged()));
+		for (istr in self.rule.body) {
+			out += istr.parseInstructions(id + 1);
+		}
+		out += insLine(id, insEnd());
+	}
+	return out;
+}%]
+
+[*-Property*]
+[%operation Any parseProperty(): String {
+	var out = self.property;
+	for (subp in self.subProperties) { 
+		out += subp.parseSubProperty();
+	}
+	return out;
+}%]
+
+[*-SubProperty*]
+[%operation Any parseSubProperty(): String {
+	if (self.property <> null) return '.' + self.property;
+	else if (self.method <> null) return '.' + self.method + '()';
+}%]
+
+[*-Tag*]
+[%operation Any parseTagged(): String {
+	return '.getWanted(_source, "' + self + '")';
+}%]
+
+[*-Query*]
+[%operation Any parseQuery(): String {
+	var out = "";
+	if (self.item <> null) out += self.item;
+	if (self.ref <> null) out += self.ref.parseMetaPh();
+	for (subq in self.subQuery) {
+		out += subq.parseSubQuery();
+	}
+	return out;
+}%]
+
+[*-SubQuery*]
+[%operation Any parseSubQuery(): String {
+	var out = ".";
+	if (self.item <> null) out += self.item;
+	if (self.ref <> null) out += self.ref.parseMetaPh();
+	if (self.methItem <> null) out += self.methItem + '()';
+	if (self.methRef <> null) out += self.parseMetaPh() + '()';
+	return out;
+}%]
+
+[*-MetaPh*]
+[%operation Any parseMetaPh(): String {
+	var out = self.property.parseProperty();
+	if (self.tag <> null) out += '.getExtraInfo(' + self.tag + ')';
+	return out;
+}%]
+
+[*-Statement*]
+[%operation Any parseStatement(): String {
+	if (self.text <> null) return self.text;
+	if (self.char <> null) return self.char.parseEscaped();
+	if (self.string <> null) return self.string.string;
+	if (self.placeholder <> null) return insMetaPh(self.placeholder.parsePh());
+	if (self.metaPlaceholder <> null) return self.metaPlaceholder.parseMetaPh();
+}%]
+
+[*-Escaped*]
+[%operation Any parseEscaped(): String {
+	if (self.char == 'n') return "\n";
+	else if (self.char == 's') return " ";
+	else if (self.char == 't') return "\t";
+	else return self.char;
+}%]
+
+[*-Ph*]
+[%operation Any parsePh(): String {
+	var out = "";
+	if (self.metaProperty == null) {
+		out += "'" + self.property.parseProperty() + "'";
+	}
+	else {
+		out += "'" + self.property.parseProperty() + ".' + "
+			+ self.metaProperty.parseMetaProperty();
+	} 
+	return out;
+}%]
+
+[*-MetaProperty*]
+[%operation Any parseMetaProperty(): String {
+	return self.property.parseProperty();
+}%]

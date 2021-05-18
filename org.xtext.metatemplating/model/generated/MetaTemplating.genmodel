@@ -20,14 +20,14 @@
     <genClasses ecoreClass="MetaTemplating.ecore#//Libraries">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//Libraries/path"/>
     </genClasses>
-    <genClasses ecoreClass="MetaTemplating.ecore#//Comment">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//Comment/word"/>
+    <genClasses ecoreClass="MetaTemplating.ecore#//Note">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//Note/word"/>
     </genClasses>
     <genClasses ecoreClass="MetaTemplating.ecore#//Instructions">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Instructions/note"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Instructions/statement"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Instructions/iterator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Instructions/rule"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Instructions/comment"/>
     </genClasses>
     <genClasses ecoreClass="MetaTemplating.ecore#//Statement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//Statement/text"/>
@@ -53,6 +53,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Query/subQuery"/>
     </genClasses>
     <genClasses ecoreClass="MetaTemplating.ecore#//SubQuery">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//SubQuery/methItem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//SubQuery/methRef"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//SubQuery/item"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//SubQuery/ref"/>
     </genClasses>
@@ -72,6 +74,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Property/subProperties"/>
     </genClasses>
     <genClasses ecoreClass="MetaTemplating.ecore#//SubProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//SubProperty/method"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//SubProperty/property"/>
     </genClasses>
     <genClasses ecoreClass="MetaTemplating.ecore#//EscapedString">

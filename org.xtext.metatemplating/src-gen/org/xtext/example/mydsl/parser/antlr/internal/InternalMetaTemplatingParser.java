@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'import'", "';'", "'IMPORT'", "'//'", "'/*'", "'*/'", "'FORALL'", "'('", "':'", "'TAGGED'", "')'", "'{'", "'}'", "'foreach'", "'in'", "'.'", "'()'", "'[['", "']]'", "'['", "'TAGINFO'", "']'", "'.{'", "'@{'", "'}@'", "'#'", "','", "'<'", "'>'", "'\\''"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'import'", "';'", "'IMPORT'", "'#*'", "'*#'", "'FORALL'", "'('", "':'", "'TAGGED'", "')'", "'{'", "'}'", "'foreach'", "'in'", "'.'", "'()'", "'[['", "']]'", "'['", "'TAGINFO'", "']'", "'.{'", "'@{'", "'}@'", "'#'", "'n'", "'s'", "'t'", "','", "'<'", "'>'", "'\\''"
     };
     public static final int RULE_STRING=4;
     public static final int RULE_SL_COMMENT=8;
@@ -59,7 +59,9 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
     public static final int T__24=24;
     public static final int T__25=25;
     public static final int T__40=40;
+    public static final int T__41=41;
     public static final int T__20=20;
+    public static final int T__42=42;
     public static final int T__21=21;
 
     // delegates
@@ -194,7 +196,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==RULE_ID||(LA1_0>=14 && LA1_0<=15)||LA1_0==17||LA1_0==24||LA1_0==28||LA1_0==30||LA1_0==34||LA1_0==36) ) {
+                if ( (LA1_0==RULE_ID||LA1_0==14||LA1_0==16||LA1_0==23||LA1_0==27||LA1_0==29||LA1_0==33||LA1_0==35) ) {
                     alt1=1;
                 }
 
@@ -668,25 +670,25 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleLibraries"
 
 
-    // $ANTLR start "entryRuleComment"
-    // InternalMetaTemplating.g:275:1: entryRuleComment returns [EObject current=null] : iv_ruleComment= ruleComment EOF ;
-    public final EObject entryRuleComment() throws RecognitionException {
+    // $ANTLR start "entryRuleNote"
+    // InternalMetaTemplating.g:275:1: entryRuleNote returns [EObject current=null] : iv_ruleNote= ruleNote EOF ;
+    public final EObject entryRuleNote() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleComment = null;
+        EObject iv_ruleNote = null;
 
 
         try {
-            // InternalMetaTemplating.g:275:48: (iv_ruleComment= ruleComment EOF )
-            // InternalMetaTemplating.g:276:2: iv_ruleComment= ruleComment EOF
+            // InternalMetaTemplating.g:275:45: (iv_ruleNote= ruleNote EOF )
+            // InternalMetaTemplating.g:276:2: iv_ruleNote= ruleNote EOF
             {
-             newCompositeNode(grammarAccess.getCommentRule()); 
+             newCompositeNode(grammarAccess.getNoteRule()); 
             pushFollow(FOLLOW_1);
-            iv_ruleComment=ruleComment();
+            iv_ruleNote=ruleNote();
 
             state._fsp--;
 
-             current =iv_ruleComment; 
+             current =iv_ruleNote; 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -701,132 +703,85 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleComment"
+    // $ANTLR end "entryRuleNote"
 
 
-    // $ANTLR start "ruleComment"
-    // InternalMetaTemplating.g:282:1: ruleComment returns [EObject current=null] : ( (otherlv_0= '//' ( (lv_word_1_0= RULE_ID ) ) ) | (otherlv_2= '/*' ( (lv_word_3_0= RULE_ID ) ) otherlv_4= '*/' ) ) ;
-    public final EObject ruleComment() throws RecognitionException {
+    // $ANTLR start "ruleNote"
+    // InternalMetaTemplating.g:282:1: ruleNote returns [EObject current=null] : (otherlv_0= '#*' ( (lv_word_1_0= RULE_ID ) )+ otherlv_2= '*#' ) ;
+    public final EObject ruleNote() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token lv_word_1_0=null;
         Token otherlv_2=null;
-        Token lv_word_3_0=null;
-        Token otherlv_4=null;
 
 
         	enterRule();
 
         try {
-            // InternalMetaTemplating.g:288:2: ( ( (otherlv_0= '//' ( (lv_word_1_0= RULE_ID ) ) ) | (otherlv_2= '/*' ( (lv_word_3_0= RULE_ID ) ) otherlv_4= '*/' ) ) )
-            // InternalMetaTemplating.g:289:2: ( (otherlv_0= '//' ( (lv_word_1_0= RULE_ID ) ) ) | (otherlv_2= '/*' ( (lv_word_3_0= RULE_ID ) ) otherlv_4= '*/' ) )
+            // InternalMetaTemplating.g:288:2: ( (otherlv_0= '#*' ( (lv_word_1_0= RULE_ID ) )+ otherlv_2= '*#' ) )
+            // InternalMetaTemplating.g:289:2: (otherlv_0= '#*' ( (lv_word_1_0= RULE_ID ) )+ otherlv_2= '*#' )
             {
-            // InternalMetaTemplating.g:289:2: ( (otherlv_0= '//' ( (lv_word_1_0= RULE_ID ) ) ) | (otherlv_2= '/*' ( (lv_word_3_0= RULE_ID ) ) otherlv_4= '*/' ) )
-            int alt4=2;
-            int LA4_0 = input.LA(1);
+            // InternalMetaTemplating.g:289:2: (otherlv_0= '#*' ( (lv_word_1_0= RULE_ID ) )+ otherlv_2= '*#' )
+            // InternalMetaTemplating.g:290:3: otherlv_0= '#*' ( (lv_word_1_0= RULE_ID ) )+ otherlv_2= '*#'
+            {
+            otherlv_0=(Token)match(input,14,FOLLOW_8); 
 
-            if ( (LA4_0==14) ) {
-                alt4=1;
-            }
-            else if ( (LA4_0==15) ) {
-                alt4=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 4, 0, input);
+            			newLeafNode(otherlv_0, grammarAccess.getNoteAccess().getNumberSignAsteriskKeyword_0());
+            		
+            // InternalMetaTemplating.g:294:3: ( (lv_word_1_0= RULE_ID ) )+
+            int cnt4=0;
+            loop4:
+            do {
+                int alt4=2;
+                int LA4_0 = input.LA(1);
 
-                throw nvae;
-            }
-            switch (alt4) {
-                case 1 :
-                    // InternalMetaTemplating.g:290:3: (otherlv_0= '//' ( (lv_word_1_0= RULE_ID ) ) )
-                    {
-                    // InternalMetaTemplating.g:290:3: (otherlv_0= '//' ( (lv_word_1_0= RULE_ID ) ) )
-                    // InternalMetaTemplating.g:291:4: otherlv_0= '//' ( (lv_word_1_0= RULE_ID ) )
-                    {
-                    otherlv_0=(Token)match(input,14,FOLLOW_8); 
-
-                    				newLeafNode(otherlv_0, grammarAccess.getCommentAccess().getSolidusSolidusKeyword_0_0());
-                    			
-                    // InternalMetaTemplating.g:295:4: ( (lv_word_1_0= RULE_ID ) )
-                    // InternalMetaTemplating.g:296:5: (lv_word_1_0= RULE_ID )
-                    {
-                    // InternalMetaTemplating.g:296:5: (lv_word_1_0= RULE_ID )
-                    // InternalMetaTemplating.g:297:6: lv_word_1_0= RULE_ID
-                    {
-                    lv_word_1_0=(Token)match(input,RULE_ID,FOLLOW_2); 
-
-                    						newLeafNode(lv_word_1_0, grammarAccess.getCommentAccess().getWordIDTerminalRuleCall_0_1_0());
-                    					
-
-                    						if (current==null) {
-                    							current = createModelElement(grammarAccess.getCommentRule());
-                    						}
-                    						addWithLastConsumed(
-                    							current,
-                    							"word",
-                    							lv_word_1_0,
-                    							"org.eclipse.xtext.common.Terminals.ID");
-                    					
-
-                    }
+                if ( (LA4_0==RULE_ID) ) {
+                    alt4=1;
+                }
 
 
-                    }
+                switch (alt4) {
+            	case 1 :
+            	    // InternalMetaTemplating.g:295:4: (lv_word_1_0= RULE_ID )
+            	    {
+            	    // InternalMetaTemplating.g:295:4: (lv_word_1_0= RULE_ID )
+            	    // InternalMetaTemplating.g:296:5: lv_word_1_0= RULE_ID
+            	    {
+            	    lv_word_1_0=(Token)match(input,RULE_ID,FOLLOW_9); 
+
+            	    					newLeafNode(lv_word_1_0, grammarAccess.getNoteAccess().getWordIDTerminalRuleCall_1_0());
+            	    				
+
+            	    					if (current==null) {
+            	    						current = createModelElement(grammarAccess.getNoteRule());
+            	    					}
+            	    					addWithLastConsumed(
+            	    						current,
+            	    						"word",
+            	    						lv_word_1_0,
+            	    						"org.eclipse.xtext.common.Terminals.ID");
+            	    				
+
+            	    }
 
 
-                    }
+            	    }
+            	    break;
 
+            	default :
+            	    if ( cnt4 >= 1 ) break loop4;
+                        EarlyExitException eee =
+                            new EarlyExitException(4, input);
+                        throw eee;
+                }
+                cnt4++;
+            } while (true);
 
-                    }
-                    break;
-                case 2 :
-                    // InternalMetaTemplating.g:315:3: (otherlv_2= '/*' ( (lv_word_3_0= RULE_ID ) ) otherlv_4= '*/' )
-                    {
-                    // InternalMetaTemplating.g:315:3: (otherlv_2= '/*' ( (lv_word_3_0= RULE_ID ) ) otherlv_4= '*/' )
-                    // InternalMetaTemplating.g:316:4: otherlv_2= '/*' ( (lv_word_3_0= RULE_ID ) ) otherlv_4= '*/'
-                    {
-                    otherlv_2=(Token)match(input,15,FOLLOW_8); 
+            otherlv_2=(Token)match(input,15,FOLLOW_2); 
 
-                    				newLeafNode(otherlv_2, grammarAccess.getCommentAccess().getSolidusAsteriskKeyword_1_0());
-                    			
-                    // InternalMetaTemplating.g:320:4: ( (lv_word_3_0= RULE_ID ) )
-                    // InternalMetaTemplating.g:321:5: (lv_word_3_0= RULE_ID )
-                    {
-                    // InternalMetaTemplating.g:321:5: (lv_word_3_0= RULE_ID )
-                    // InternalMetaTemplating.g:322:6: lv_word_3_0= RULE_ID
-                    {
-                    lv_word_3_0=(Token)match(input,RULE_ID,FOLLOW_9); 
-
-                    						newLeafNode(lv_word_3_0, grammarAccess.getCommentAccess().getWordIDTerminalRuleCall_1_1_0());
-                    					
-
-                    						if (current==null) {
-                    							current = createModelElement(grammarAccess.getCommentRule());
-                    						}
-                    						addWithLastConsumed(
-                    							current,
-                    							"word",
-                    							lv_word_3_0,
-                    							"org.eclipse.xtext.common.Terminals.ID");
-                    					
-
-                    }
-
-
-                    }
-
-                    otherlv_4=(Token)match(input,16,FOLLOW_2); 
-
-                    				newLeafNode(otherlv_4, grammarAccess.getCommentAccess().getAsteriskSolidusKeyword_1_2());
-                    			
-
-                    }
-
-
-                    }
-                    break;
+            			newLeafNode(otherlv_2, grammarAccess.getNoteAccess().getAsteriskNumberSignKeyword_2());
+            		
 
             }
 
@@ -846,11 +801,11 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleComment"
+    // $ANTLR end "ruleNote"
 
 
     // $ANTLR start "entryRuleInstructions"
-    // InternalMetaTemplating.g:347:1: entryRuleInstructions returns [EObject current=null] : iv_ruleInstructions= ruleInstructions EOF ;
+    // InternalMetaTemplating.g:320:1: entryRuleInstructions returns [EObject current=null] : iv_ruleInstructions= ruleInstructions EOF ;
     public final EObject entryRuleInstructions() throws RecognitionException {
         EObject current = null;
 
@@ -858,8 +813,8 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMetaTemplating.g:347:53: (iv_ruleInstructions= ruleInstructions EOF )
-            // InternalMetaTemplating.g:348:2: iv_ruleInstructions= ruleInstructions EOF
+            // InternalMetaTemplating.g:320:53: (iv_ruleInstructions= ruleInstructions EOF )
+            // InternalMetaTemplating.g:321:2: iv_ruleInstructions= ruleInstructions EOF
             {
              newCompositeNode(grammarAccess.getInstructionsRule()); 
             pushFollow(FOLLOW_1);
@@ -886,50 +841,49 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInstructions"
-    // InternalMetaTemplating.g:354:1: ruleInstructions returns [EObject current=null] : ( ( (lv_statement_0_0= ruleStatement ) ) | ( (lv_iterator_1_0= ruleIterator ) ) | ( (lv_rule_2_0= ruleRule ) ) | ( (lv_comment_3_0= ruleComment ) ) ) ;
+    // InternalMetaTemplating.g:327:1: ruleInstructions returns [EObject current=null] : ( ( (lv_note_0_0= ruleNote ) ) | ( (lv_statement_1_0= ruleStatement ) ) | ( (lv_iterator_2_0= ruleIterator ) ) | ( (lv_rule_3_0= ruleRule ) ) ) ;
     public final EObject ruleInstructions() throws RecognitionException {
         EObject current = null;
 
-        EObject lv_statement_0_0 = null;
+        EObject lv_note_0_0 = null;
 
-        EObject lv_iterator_1_0 = null;
+        EObject lv_statement_1_0 = null;
 
-        EObject lv_rule_2_0 = null;
+        EObject lv_iterator_2_0 = null;
 
-        EObject lv_comment_3_0 = null;
+        EObject lv_rule_3_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalMetaTemplating.g:360:2: ( ( ( (lv_statement_0_0= ruleStatement ) ) | ( (lv_iterator_1_0= ruleIterator ) ) | ( (lv_rule_2_0= ruleRule ) ) | ( (lv_comment_3_0= ruleComment ) ) ) )
-            // InternalMetaTemplating.g:361:2: ( ( (lv_statement_0_0= ruleStatement ) ) | ( (lv_iterator_1_0= ruleIterator ) ) | ( (lv_rule_2_0= ruleRule ) ) | ( (lv_comment_3_0= ruleComment ) ) )
+            // InternalMetaTemplating.g:333:2: ( ( ( (lv_note_0_0= ruleNote ) ) | ( (lv_statement_1_0= ruleStatement ) ) | ( (lv_iterator_2_0= ruleIterator ) ) | ( (lv_rule_3_0= ruleRule ) ) ) )
+            // InternalMetaTemplating.g:334:2: ( ( (lv_note_0_0= ruleNote ) ) | ( (lv_statement_1_0= ruleStatement ) ) | ( (lv_iterator_2_0= ruleIterator ) ) | ( (lv_rule_3_0= ruleRule ) ) )
             {
-            // InternalMetaTemplating.g:361:2: ( ( (lv_statement_0_0= ruleStatement ) ) | ( (lv_iterator_1_0= ruleIterator ) ) | ( (lv_rule_2_0= ruleRule ) ) | ( (lv_comment_3_0= ruleComment ) ) )
+            // InternalMetaTemplating.g:334:2: ( ( (lv_note_0_0= ruleNote ) ) | ( (lv_statement_1_0= ruleStatement ) ) | ( (lv_iterator_2_0= ruleIterator ) ) | ( (lv_rule_3_0= ruleRule ) ) )
             int alt5=4;
             switch ( input.LA(1) ) {
-            case RULE_ID:
-            case 28:
-            case 30:
-            case 34:
-            case 36:
+            case 14:
                 {
                 alt5=1;
                 }
                 break;
-            case 24:
+            case RULE_ID:
+            case 27:
+            case 29:
+            case 33:
+            case 35:
                 {
                 alt5=2;
                 }
                 break;
-            case 17:
+            case 23:
                 {
                 alt5=3;
                 }
                 break;
-            case 14:
-            case 15:
+            case 16:
                 {
                 alt5=4;
                 }
@@ -943,19 +897,19 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             switch (alt5) {
                 case 1 :
-                    // InternalMetaTemplating.g:362:3: ( (lv_statement_0_0= ruleStatement ) )
+                    // InternalMetaTemplating.g:335:3: ( (lv_note_0_0= ruleNote ) )
                     {
-                    // InternalMetaTemplating.g:362:3: ( (lv_statement_0_0= ruleStatement ) )
-                    // InternalMetaTemplating.g:363:4: (lv_statement_0_0= ruleStatement )
+                    // InternalMetaTemplating.g:335:3: ( (lv_note_0_0= ruleNote ) )
+                    // InternalMetaTemplating.g:336:4: (lv_note_0_0= ruleNote )
                     {
-                    // InternalMetaTemplating.g:363:4: (lv_statement_0_0= ruleStatement )
-                    // InternalMetaTemplating.g:364:5: lv_statement_0_0= ruleStatement
+                    // InternalMetaTemplating.g:336:4: (lv_note_0_0= ruleNote )
+                    // InternalMetaTemplating.g:337:5: lv_note_0_0= ruleNote
                     {
 
-                    					newCompositeNode(grammarAccess.getInstructionsAccess().getStatementStatementParserRuleCall_0_0());
+                    					newCompositeNode(grammarAccess.getInstructionsAccess().getNoteNoteParserRuleCall_0_0());
                     				
                     pushFollow(FOLLOW_2);
-                    lv_statement_0_0=ruleStatement();
+                    lv_note_0_0=ruleNote();
 
                     state._fsp--;
 
@@ -965,9 +919,9 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     					}
                     					set(
                     						current,
-                    						"statement",
-                    						lv_statement_0_0,
-                    						"org.xtext.example.mydsl.MetaTemplating.Statement");
+                    						"note",
+                    						lv_note_0_0,
+                    						"org.xtext.example.mydsl.MetaTemplating.Note");
                     					afterParserOrEnumRuleCall();
                     				
 
@@ -980,19 +934,19 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalMetaTemplating.g:382:3: ( (lv_iterator_1_0= ruleIterator ) )
+                    // InternalMetaTemplating.g:355:3: ( (lv_statement_1_0= ruleStatement ) )
                     {
-                    // InternalMetaTemplating.g:382:3: ( (lv_iterator_1_0= ruleIterator ) )
-                    // InternalMetaTemplating.g:383:4: (lv_iterator_1_0= ruleIterator )
+                    // InternalMetaTemplating.g:355:3: ( (lv_statement_1_0= ruleStatement ) )
+                    // InternalMetaTemplating.g:356:4: (lv_statement_1_0= ruleStatement )
                     {
-                    // InternalMetaTemplating.g:383:4: (lv_iterator_1_0= ruleIterator )
-                    // InternalMetaTemplating.g:384:5: lv_iterator_1_0= ruleIterator
+                    // InternalMetaTemplating.g:356:4: (lv_statement_1_0= ruleStatement )
+                    // InternalMetaTemplating.g:357:5: lv_statement_1_0= ruleStatement
                     {
 
-                    					newCompositeNode(grammarAccess.getInstructionsAccess().getIteratorIteratorParserRuleCall_1_0());
+                    					newCompositeNode(grammarAccess.getInstructionsAccess().getStatementStatementParserRuleCall_1_0());
                     				
                     pushFollow(FOLLOW_2);
-                    lv_iterator_1_0=ruleIterator();
+                    lv_statement_1_0=ruleStatement();
 
                     state._fsp--;
 
@@ -1002,9 +956,9 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     					}
                     					set(
                     						current,
-                    						"iterator",
-                    						lv_iterator_1_0,
-                    						"org.xtext.example.mydsl.MetaTemplating.Iterator");
+                    						"statement",
+                    						lv_statement_1_0,
+                    						"org.xtext.example.mydsl.MetaTemplating.Statement");
                     					afterParserOrEnumRuleCall();
                     				
 
@@ -1017,19 +971,19 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalMetaTemplating.g:402:3: ( (lv_rule_2_0= ruleRule ) )
+                    // InternalMetaTemplating.g:375:3: ( (lv_iterator_2_0= ruleIterator ) )
                     {
-                    // InternalMetaTemplating.g:402:3: ( (lv_rule_2_0= ruleRule ) )
-                    // InternalMetaTemplating.g:403:4: (lv_rule_2_0= ruleRule )
+                    // InternalMetaTemplating.g:375:3: ( (lv_iterator_2_0= ruleIterator ) )
+                    // InternalMetaTemplating.g:376:4: (lv_iterator_2_0= ruleIterator )
                     {
-                    // InternalMetaTemplating.g:403:4: (lv_rule_2_0= ruleRule )
-                    // InternalMetaTemplating.g:404:5: lv_rule_2_0= ruleRule
+                    // InternalMetaTemplating.g:376:4: (lv_iterator_2_0= ruleIterator )
+                    // InternalMetaTemplating.g:377:5: lv_iterator_2_0= ruleIterator
                     {
 
-                    					newCompositeNode(grammarAccess.getInstructionsAccess().getRuleRuleParserRuleCall_2_0());
+                    					newCompositeNode(grammarAccess.getInstructionsAccess().getIteratorIteratorParserRuleCall_2_0());
                     				
                     pushFollow(FOLLOW_2);
-                    lv_rule_2_0=ruleRule();
+                    lv_iterator_2_0=ruleIterator();
 
                     state._fsp--;
 
@@ -1039,9 +993,9 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     					}
                     					set(
                     						current,
-                    						"rule",
-                    						lv_rule_2_0,
-                    						"org.xtext.example.mydsl.MetaTemplating.Rule");
+                    						"iterator",
+                    						lv_iterator_2_0,
+                    						"org.xtext.example.mydsl.MetaTemplating.Iterator");
                     					afterParserOrEnumRuleCall();
                     				
 
@@ -1054,19 +1008,19 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalMetaTemplating.g:422:3: ( (lv_comment_3_0= ruleComment ) )
+                    // InternalMetaTemplating.g:395:3: ( (lv_rule_3_0= ruleRule ) )
                     {
-                    // InternalMetaTemplating.g:422:3: ( (lv_comment_3_0= ruleComment ) )
-                    // InternalMetaTemplating.g:423:4: (lv_comment_3_0= ruleComment )
+                    // InternalMetaTemplating.g:395:3: ( (lv_rule_3_0= ruleRule ) )
+                    // InternalMetaTemplating.g:396:4: (lv_rule_3_0= ruleRule )
                     {
-                    // InternalMetaTemplating.g:423:4: (lv_comment_3_0= ruleComment )
-                    // InternalMetaTemplating.g:424:5: lv_comment_3_0= ruleComment
+                    // InternalMetaTemplating.g:396:4: (lv_rule_3_0= ruleRule )
+                    // InternalMetaTemplating.g:397:5: lv_rule_3_0= ruleRule
                     {
 
-                    					newCompositeNode(grammarAccess.getInstructionsAccess().getCommentCommentParserRuleCall_3_0());
+                    					newCompositeNode(grammarAccess.getInstructionsAccess().getRuleRuleParserRuleCall_3_0());
                     				
                     pushFollow(FOLLOW_2);
-                    lv_comment_3_0=ruleComment();
+                    lv_rule_3_0=ruleRule();
 
                     state._fsp--;
 
@@ -1076,9 +1030,9 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     					}
                     					set(
                     						current,
-                    						"comment",
-                    						lv_comment_3_0,
-                    						"org.xtext.example.mydsl.MetaTemplating.Comment");
+                    						"rule",
+                    						lv_rule_3_0,
+                    						"org.xtext.example.mydsl.MetaTemplating.Rule");
                     					afterParserOrEnumRuleCall();
                     				
 
@@ -1113,7 +1067,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStatement"
-    // InternalMetaTemplating.g:445:1: entryRuleStatement returns [EObject current=null] : iv_ruleStatement= ruleStatement EOF ;
+    // InternalMetaTemplating.g:418:1: entryRuleStatement returns [EObject current=null] : iv_ruleStatement= ruleStatement EOF ;
     public final EObject entryRuleStatement() throws RecognitionException {
         EObject current = null;
 
@@ -1121,8 +1075,8 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMetaTemplating.g:445:50: (iv_ruleStatement= ruleStatement EOF )
-            // InternalMetaTemplating.g:446:2: iv_ruleStatement= ruleStatement EOF
+            // InternalMetaTemplating.g:418:50: (iv_ruleStatement= ruleStatement EOF )
+            // InternalMetaTemplating.g:419:2: iv_ruleStatement= ruleStatement EOF
             {
              newCompositeNode(grammarAccess.getStatementRule()); 
             pushFollow(FOLLOW_1);
@@ -1149,7 +1103,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStatement"
-    // InternalMetaTemplating.g:452:1: ruleStatement returns [EObject current=null] : ( ( (lv_text_0_0= RULE_ID ) ) | ( (lv_char_1_0= ruleEscaped ) ) | ( (lv_string_2_0= ruleEscapedString ) ) | ( (lv_placeholder_3_0= rulePh ) ) | ( (lv_metaPlaceholder_4_0= ruleMetaPh ) ) ) ;
+    // InternalMetaTemplating.g:425:1: ruleStatement returns [EObject current=null] : ( ( (lv_text_0_0= RULE_ID ) ) | ( (lv_char_1_0= ruleEscaped ) ) | ( (lv_string_2_0= ruleEscapedString ) ) | ( (lv_placeholder_3_0= rulePh ) ) | ( (lv_metaPlaceholder_4_0= ruleMetaPh ) ) ) ;
     public final EObject ruleStatement() throws RecognitionException {
         EObject current = null;
 
@@ -1167,10 +1121,10 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMetaTemplating.g:458:2: ( ( ( (lv_text_0_0= RULE_ID ) ) | ( (lv_char_1_0= ruleEscaped ) ) | ( (lv_string_2_0= ruleEscapedString ) ) | ( (lv_placeholder_3_0= rulePh ) ) | ( (lv_metaPlaceholder_4_0= ruleMetaPh ) ) ) )
-            // InternalMetaTemplating.g:459:2: ( ( (lv_text_0_0= RULE_ID ) ) | ( (lv_char_1_0= ruleEscaped ) ) | ( (lv_string_2_0= ruleEscapedString ) ) | ( (lv_placeholder_3_0= rulePh ) ) | ( (lv_metaPlaceholder_4_0= ruleMetaPh ) ) )
+            // InternalMetaTemplating.g:431:2: ( ( ( (lv_text_0_0= RULE_ID ) ) | ( (lv_char_1_0= ruleEscaped ) ) | ( (lv_string_2_0= ruleEscapedString ) ) | ( (lv_placeholder_3_0= rulePh ) ) | ( (lv_metaPlaceholder_4_0= ruleMetaPh ) ) ) )
+            // InternalMetaTemplating.g:432:2: ( ( (lv_text_0_0= RULE_ID ) ) | ( (lv_char_1_0= ruleEscaped ) ) | ( (lv_string_2_0= ruleEscapedString ) ) | ( (lv_placeholder_3_0= rulePh ) ) | ( (lv_metaPlaceholder_4_0= ruleMetaPh ) ) )
             {
-            // InternalMetaTemplating.g:459:2: ( ( (lv_text_0_0= RULE_ID ) ) | ( (lv_char_1_0= ruleEscaped ) ) | ( (lv_string_2_0= ruleEscapedString ) ) | ( (lv_placeholder_3_0= rulePh ) ) | ( (lv_metaPlaceholder_4_0= ruleMetaPh ) ) )
+            // InternalMetaTemplating.g:432:2: ( ( (lv_text_0_0= RULE_ID ) ) | ( (lv_char_1_0= ruleEscaped ) ) | ( (lv_string_2_0= ruleEscapedString ) ) | ( (lv_placeholder_3_0= rulePh ) ) | ( (lv_metaPlaceholder_4_0= ruleMetaPh ) ) )
             int alt6=5;
             switch ( input.LA(1) ) {
             case RULE_ID:
@@ -1178,22 +1132,22 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                 alt6=1;
                 }
                 break;
-            case 36:
+            case 35:
                 {
                 alt6=2;
                 }
                 break;
-            case 34:
+            case 33:
                 {
                 alt6=3;
                 }
                 break;
-            case 28:
+            case 27:
                 {
                 alt6=4;
                 }
                 break;
-            case 30:
+            case 29:
                 {
                 alt6=5;
                 }
@@ -1207,13 +1161,13 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             switch (alt6) {
                 case 1 :
-                    // InternalMetaTemplating.g:460:3: ( (lv_text_0_0= RULE_ID ) )
+                    // InternalMetaTemplating.g:433:3: ( (lv_text_0_0= RULE_ID ) )
                     {
-                    // InternalMetaTemplating.g:460:3: ( (lv_text_0_0= RULE_ID ) )
-                    // InternalMetaTemplating.g:461:4: (lv_text_0_0= RULE_ID )
+                    // InternalMetaTemplating.g:433:3: ( (lv_text_0_0= RULE_ID ) )
+                    // InternalMetaTemplating.g:434:4: (lv_text_0_0= RULE_ID )
                     {
-                    // InternalMetaTemplating.g:461:4: (lv_text_0_0= RULE_ID )
-                    // InternalMetaTemplating.g:462:5: lv_text_0_0= RULE_ID
+                    // InternalMetaTemplating.g:434:4: (lv_text_0_0= RULE_ID )
+                    // InternalMetaTemplating.g:435:5: lv_text_0_0= RULE_ID
                     {
                     lv_text_0_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -1239,13 +1193,13 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalMetaTemplating.g:479:3: ( (lv_char_1_0= ruleEscaped ) )
+                    // InternalMetaTemplating.g:452:3: ( (lv_char_1_0= ruleEscaped ) )
                     {
-                    // InternalMetaTemplating.g:479:3: ( (lv_char_1_0= ruleEscaped ) )
-                    // InternalMetaTemplating.g:480:4: (lv_char_1_0= ruleEscaped )
+                    // InternalMetaTemplating.g:452:3: ( (lv_char_1_0= ruleEscaped ) )
+                    // InternalMetaTemplating.g:453:4: (lv_char_1_0= ruleEscaped )
                     {
-                    // InternalMetaTemplating.g:480:4: (lv_char_1_0= ruleEscaped )
-                    // InternalMetaTemplating.g:481:5: lv_char_1_0= ruleEscaped
+                    // InternalMetaTemplating.g:453:4: (lv_char_1_0= ruleEscaped )
+                    // InternalMetaTemplating.g:454:5: lv_char_1_0= ruleEscaped
                     {
 
                     					newCompositeNode(grammarAccess.getStatementAccess().getCharEscapedParserRuleCall_1_0());
@@ -1276,13 +1230,13 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalMetaTemplating.g:499:3: ( (lv_string_2_0= ruleEscapedString ) )
+                    // InternalMetaTemplating.g:472:3: ( (lv_string_2_0= ruleEscapedString ) )
                     {
-                    // InternalMetaTemplating.g:499:3: ( (lv_string_2_0= ruleEscapedString ) )
-                    // InternalMetaTemplating.g:500:4: (lv_string_2_0= ruleEscapedString )
+                    // InternalMetaTemplating.g:472:3: ( (lv_string_2_0= ruleEscapedString ) )
+                    // InternalMetaTemplating.g:473:4: (lv_string_2_0= ruleEscapedString )
                     {
-                    // InternalMetaTemplating.g:500:4: (lv_string_2_0= ruleEscapedString )
-                    // InternalMetaTemplating.g:501:5: lv_string_2_0= ruleEscapedString
+                    // InternalMetaTemplating.g:473:4: (lv_string_2_0= ruleEscapedString )
+                    // InternalMetaTemplating.g:474:5: lv_string_2_0= ruleEscapedString
                     {
 
                     					newCompositeNode(grammarAccess.getStatementAccess().getStringEscapedStringParserRuleCall_2_0());
@@ -1313,13 +1267,13 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalMetaTemplating.g:519:3: ( (lv_placeholder_3_0= rulePh ) )
+                    // InternalMetaTemplating.g:492:3: ( (lv_placeholder_3_0= rulePh ) )
                     {
-                    // InternalMetaTemplating.g:519:3: ( (lv_placeholder_3_0= rulePh ) )
-                    // InternalMetaTemplating.g:520:4: (lv_placeholder_3_0= rulePh )
+                    // InternalMetaTemplating.g:492:3: ( (lv_placeholder_3_0= rulePh ) )
+                    // InternalMetaTemplating.g:493:4: (lv_placeholder_3_0= rulePh )
                     {
-                    // InternalMetaTemplating.g:520:4: (lv_placeholder_3_0= rulePh )
-                    // InternalMetaTemplating.g:521:5: lv_placeholder_3_0= rulePh
+                    // InternalMetaTemplating.g:493:4: (lv_placeholder_3_0= rulePh )
+                    // InternalMetaTemplating.g:494:5: lv_placeholder_3_0= rulePh
                     {
 
                     					newCompositeNode(grammarAccess.getStatementAccess().getPlaceholderPhParserRuleCall_3_0());
@@ -1350,13 +1304,13 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalMetaTemplating.g:539:3: ( (lv_metaPlaceholder_4_0= ruleMetaPh ) )
+                    // InternalMetaTemplating.g:512:3: ( (lv_metaPlaceholder_4_0= ruleMetaPh ) )
                     {
-                    // InternalMetaTemplating.g:539:3: ( (lv_metaPlaceholder_4_0= ruleMetaPh ) )
-                    // InternalMetaTemplating.g:540:4: (lv_metaPlaceholder_4_0= ruleMetaPh )
+                    // InternalMetaTemplating.g:512:3: ( (lv_metaPlaceholder_4_0= ruleMetaPh ) )
+                    // InternalMetaTemplating.g:513:4: (lv_metaPlaceholder_4_0= ruleMetaPh )
                     {
-                    // InternalMetaTemplating.g:540:4: (lv_metaPlaceholder_4_0= ruleMetaPh )
-                    // InternalMetaTemplating.g:541:5: lv_metaPlaceholder_4_0= ruleMetaPh
+                    // InternalMetaTemplating.g:513:4: (lv_metaPlaceholder_4_0= ruleMetaPh )
+                    // InternalMetaTemplating.g:514:5: lv_metaPlaceholder_4_0= ruleMetaPh
                     {
 
                     					newCompositeNode(grammarAccess.getStatementAccess().getMetaPlaceholderMetaPhParserRuleCall_4_0());
@@ -1409,7 +1363,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRule"
-    // InternalMetaTemplating.g:562:1: entryRuleRule returns [EObject current=null] : iv_ruleRule= ruleRule EOF ;
+    // InternalMetaTemplating.g:535:1: entryRuleRule returns [EObject current=null] : iv_ruleRule= ruleRule EOF ;
     public final EObject entryRuleRule() throws RecognitionException {
         EObject current = null;
 
@@ -1417,8 +1371,8 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMetaTemplating.g:562:45: (iv_ruleRule= ruleRule EOF )
-            // InternalMetaTemplating.g:563:2: iv_ruleRule= ruleRule EOF
+            // InternalMetaTemplating.g:535:45: (iv_ruleRule= ruleRule EOF )
+            // InternalMetaTemplating.g:536:2: iv_ruleRule= ruleRule EOF
             {
              newCompositeNode(grammarAccess.getRuleRule()); 
             pushFollow(FOLLOW_1);
@@ -1445,7 +1399,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRule"
-    // InternalMetaTemplating.g:569:1: ruleRule returns [EObject current=null] : (otherlv_0= 'FORALL' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= ':' ( (lv_property_4_0= ruleProperty ) ) otherlv_5= 'TAGGED' ( (lv_tag_6_0= RULE_ID ) ) otherlv_7= ')' otherlv_8= '{' ( (lv_body_9_0= ruleInstructions ) )* otherlv_10= '}' ) ;
+    // InternalMetaTemplating.g:542:1: ruleRule returns [EObject current=null] : (otherlv_0= 'FORALL' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= ':' ( (lv_property_4_0= ruleProperty ) ) otherlv_5= 'TAGGED' ( (lv_tag_6_0= RULE_ID ) ) otherlv_7= ')' otherlv_8= '{' ( (lv_body_9_0= ruleInstructions ) )* otherlv_10= '}' ) ;
     public final EObject ruleRule() throws RecognitionException {
         EObject current = null;
 
@@ -1467,25 +1421,25 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMetaTemplating.g:575:2: ( (otherlv_0= 'FORALL' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= ':' ( (lv_property_4_0= ruleProperty ) ) otherlv_5= 'TAGGED' ( (lv_tag_6_0= RULE_ID ) ) otherlv_7= ')' otherlv_8= '{' ( (lv_body_9_0= ruleInstructions ) )* otherlv_10= '}' ) )
-            // InternalMetaTemplating.g:576:2: (otherlv_0= 'FORALL' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= ':' ( (lv_property_4_0= ruleProperty ) ) otherlv_5= 'TAGGED' ( (lv_tag_6_0= RULE_ID ) ) otherlv_7= ')' otherlv_8= '{' ( (lv_body_9_0= ruleInstructions ) )* otherlv_10= '}' )
+            // InternalMetaTemplating.g:548:2: ( (otherlv_0= 'FORALL' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= ':' ( (lv_property_4_0= ruleProperty ) ) otherlv_5= 'TAGGED' ( (lv_tag_6_0= RULE_ID ) ) otherlv_7= ')' otherlv_8= '{' ( (lv_body_9_0= ruleInstructions ) )* otherlv_10= '}' ) )
+            // InternalMetaTemplating.g:549:2: (otherlv_0= 'FORALL' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= ':' ( (lv_property_4_0= ruleProperty ) ) otherlv_5= 'TAGGED' ( (lv_tag_6_0= RULE_ID ) ) otherlv_7= ')' otherlv_8= '{' ( (lv_body_9_0= ruleInstructions ) )* otherlv_10= '}' )
             {
-            // InternalMetaTemplating.g:576:2: (otherlv_0= 'FORALL' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= ':' ( (lv_property_4_0= ruleProperty ) ) otherlv_5= 'TAGGED' ( (lv_tag_6_0= RULE_ID ) ) otherlv_7= ')' otherlv_8= '{' ( (lv_body_9_0= ruleInstructions ) )* otherlv_10= '}' )
-            // InternalMetaTemplating.g:577:3: otherlv_0= 'FORALL' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= ':' ( (lv_property_4_0= ruleProperty ) ) otherlv_5= 'TAGGED' ( (lv_tag_6_0= RULE_ID ) ) otherlv_7= ')' otherlv_8= '{' ( (lv_body_9_0= ruleInstructions ) )* otherlv_10= '}'
+            // InternalMetaTemplating.g:549:2: (otherlv_0= 'FORALL' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= ':' ( (lv_property_4_0= ruleProperty ) ) otherlv_5= 'TAGGED' ( (lv_tag_6_0= RULE_ID ) ) otherlv_7= ')' otherlv_8= '{' ( (lv_body_9_0= ruleInstructions ) )* otherlv_10= '}' )
+            // InternalMetaTemplating.g:550:3: otherlv_0= 'FORALL' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= ':' ( (lv_property_4_0= ruleProperty ) ) otherlv_5= 'TAGGED' ( (lv_tag_6_0= RULE_ID ) ) otherlv_7= ')' otherlv_8= '{' ( (lv_body_9_0= ruleInstructions ) )* otherlv_10= '}'
             {
-            otherlv_0=(Token)match(input,17,FOLLOW_10); 
+            otherlv_0=(Token)match(input,16,FOLLOW_10); 
 
             			newLeafNode(otherlv_0, grammarAccess.getRuleAccess().getFORALLKeyword_0());
             		
-            otherlv_1=(Token)match(input,18,FOLLOW_8); 
+            otherlv_1=(Token)match(input,17,FOLLOW_8); 
 
             			newLeafNode(otherlv_1, grammarAccess.getRuleAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalMetaTemplating.g:585:3: ( (lv_element_2_0= RULE_ID ) )
-            // InternalMetaTemplating.g:586:4: (lv_element_2_0= RULE_ID )
+            // InternalMetaTemplating.g:558:3: ( (lv_element_2_0= RULE_ID ) )
+            // InternalMetaTemplating.g:559:4: (lv_element_2_0= RULE_ID )
             {
-            // InternalMetaTemplating.g:586:4: (lv_element_2_0= RULE_ID )
-            // InternalMetaTemplating.g:587:5: lv_element_2_0= RULE_ID
+            // InternalMetaTemplating.g:559:4: (lv_element_2_0= RULE_ID )
+            // InternalMetaTemplating.g:560:5: lv_element_2_0= RULE_ID
             {
             lv_element_2_0=(Token)match(input,RULE_ID,FOLLOW_11); 
 
@@ -1507,15 +1461,15 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,19,FOLLOW_8); 
+            otherlv_3=(Token)match(input,18,FOLLOW_8); 
 
             			newLeafNode(otherlv_3, grammarAccess.getRuleAccess().getColonKeyword_3());
             		
-            // InternalMetaTemplating.g:607:3: ( (lv_property_4_0= ruleProperty ) )
-            // InternalMetaTemplating.g:608:4: (lv_property_4_0= ruleProperty )
+            // InternalMetaTemplating.g:580:3: ( (lv_property_4_0= ruleProperty ) )
+            // InternalMetaTemplating.g:581:4: (lv_property_4_0= ruleProperty )
             {
-            // InternalMetaTemplating.g:608:4: (lv_property_4_0= ruleProperty )
-            // InternalMetaTemplating.g:609:5: lv_property_4_0= ruleProperty
+            // InternalMetaTemplating.g:581:4: (lv_property_4_0= ruleProperty )
+            // InternalMetaTemplating.g:582:5: lv_property_4_0= ruleProperty
             {
 
             					newCompositeNode(grammarAccess.getRuleAccess().getPropertyPropertyParserRuleCall_4_0());
@@ -1542,15 +1496,15 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,20,FOLLOW_8); 
+            otherlv_5=(Token)match(input,19,FOLLOW_8); 
 
             			newLeafNode(otherlv_5, grammarAccess.getRuleAccess().getTAGGEDKeyword_5());
             		
-            // InternalMetaTemplating.g:630:3: ( (lv_tag_6_0= RULE_ID ) )
-            // InternalMetaTemplating.g:631:4: (lv_tag_6_0= RULE_ID )
+            // InternalMetaTemplating.g:603:3: ( (lv_tag_6_0= RULE_ID ) )
+            // InternalMetaTemplating.g:604:4: (lv_tag_6_0= RULE_ID )
             {
-            // InternalMetaTemplating.g:631:4: (lv_tag_6_0= RULE_ID )
-            // InternalMetaTemplating.g:632:5: lv_tag_6_0= RULE_ID
+            // InternalMetaTemplating.g:604:4: (lv_tag_6_0= RULE_ID )
+            // InternalMetaTemplating.g:605:5: lv_tag_6_0= RULE_ID
             {
             lv_tag_6_0=(Token)match(input,RULE_ID,FOLLOW_13); 
 
@@ -1572,31 +1526,31 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_7=(Token)match(input,21,FOLLOW_14); 
+            otherlv_7=(Token)match(input,20,FOLLOW_14); 
 
             			newLeafNode(otherlv_7, grammarAccess.getRuleAccess().getRightParenthesisKeyword_7());
             		
-            otherlv_8=(Token)match(input,22,FOLLOW_15); 
+            otherlv_8=(Token)match(input,21,FOLLOW_15); 
 
             			newLeafNode(otherlv_8, grammarAccess.getRuleAccess().getLeftCurlyBracketKeyword_8());
             		
-            // InternalMetaTemplating.g:656:3: ( (lv_body_9_0= ruleInstructions ) )*
+            // InternalMetaTemplating.g:629:3: ( (lv_body_9_0= ruleInstructions ) )*
             loop7:
             do {
                 int alt7=2;
                 int LA7_0 = input.LA(1);
 
-                if ( (LA7_0==RULE_ID||(LA7_0>=14 && LA7_0<=15)||LA7_0==17||LA7_0==24||LA7_0==28||LA7_0==30||LA7_0==34||LA7_0==36) ) {
+                if ( (LA7_0==RULE_ID||LA7_0==14||LA7_0==16||LA7_0==23||LA7_0==27||LA7_0==29||LA7_0==33||LA7_0==35) ) {
                     alt7=1;
                 }
 
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalMetaTemplating.g:657:4: (lv_body_9_0= ruleInstructions )
+            	    // InternalMetaTemplating.g:630:4: (lv_body_9_0= ruleInstructions )
             	    {
-            	    // InternalMetaTemplating.g:657:4: (lv_body_9_0= ruleInstructions )
-            	    // InternalMetaTemplating.g:658:5: lv_body_9_0= ruleInstructions
+            	    // InternalMetaTemplating.g:630:4: (lv_body_9_0= ruleInstructions )
+            	    // InternalMetaTemplating.g:631:5: lv_body_9_0= ruleInstructions
             	    {
 
             	    					newCompositeNode(grammarAccess.getRuleAccess().getBodyInstructionsParserRuleCall_9_0());
@@ -1629,7 +1583,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_10=(Token)match(input,23,FOLLOW_2); 
+            otherlv_10=(Token)match(input,22,FOLLOW_2); 
 
             			newLeafNode(otherlv_10, grammarAccess.getRuleAccess().getRightCurlyBracketKeyword_10());
             		
@@ -1656,7 +1610,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIterator"
-    // InternalMetaTemplating.g:683:1: entryRuleIterator returns [EObject current=null] : iv_ruleIterator= ruleIterator EOF ;
+    // InternalMetaTemplating.g:656:1: entryRuleIterator returns [EObject current=null] : iv_ruleIterator= ruleIterator EOF ;
     public final EObject entryRuleIterator() throws RecognitionException {
         EObject current = null;
 
@@ -1664,8 +1618,8 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMetaTemplating.g:683:49: (iv_ruleIterator= ruleIterator EOF )
-            // InternalMetaTemplating.g:684:2: iv_ruleIterator= ruleIterator EOF
+            // InternalMetaTemplating.g:656:49: (iv_ruleIterator= ruleIterator EOF )
+            // InternalMetaTemplating.g:657:2: iv_ruleIterator= ruleIterator EOF
             {
              newCompositeNode(grammarAccess.getIteratorRule()); 
             pushFollow(FOLLOW_1);
@@ -1692,7 +1646,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIterator"
-    // InternalMetaTemplating.g:690:1: ruleIterator returns [EObject current=null] : (otherlv_0= 'foreach' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= 'in' ( (lv_query_4_0= ruleQuery ) ) otherlv_5= ')' otherlv_6= '{' ( (lv_body_7_0= ruleInstructions ) )* otherlv_8= '}' ) ;
+    // InternalMetaTemplating.g:663:1: ruleIterator returns [EObject current=null] : (otherlv_0= 'foreach' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= 'in' ( (lv_query_4_0= ruleQuery ) ) otherlv_5= ')' otherlv_6= '{' ( (lv_body_7_0= ruleInstructions ) )* otherlv_8= '}' ) ;
     public final EObject ruleIterator() throws RecognitionException {
         EObject current = null;
 
@@ -1712,25 +1666,25 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMetaTemplating.g:696:2: ( (otherlv_0= 'foreach' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= 'in' ( (lv_query_4_0= ruleQuery ) ) otherlv_5= ')' otherlv_6= '{' ( (lv_body_7_0= ruleInstructions ) )* otherlv_8= '}' ) )
-            // InternalMetaTemplating.g:697:2: (otherlv_0= 'foreach' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= 'in' ( (lv_query_4_0= ruleQuery ) ) otherlv_5= ')' otherlv_6= '{' ( (lv_body_7_0= ruleInstructions ) )* otherlv_8= '}' )
+            // InternalMetaTemplating.g:669:2: ( (otherlv_0= 'foreach' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= 'in' ( (lv_query_4_0= ruleQuery ) ) otherlv_5= ')' otherlv_6= '{' ( (lv_body_7_0= ruleInstructions ) )* otherlv_8= '}' ) )
+            // InternalMetaTemplating.g:670:2: (otherlv_0= 'foreach' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= 'in' ( (lv_query_4_0= ruleQuery ) ) otherlv_5= ')' otherlv_6= '{' ( (lv_body_7_0= ruleInstructions ) )* otherlv_8= '}' )
             {
-            // InternalMetaTemplating.g:697:2: (otherlv_0= 'foreach' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= 'in' ( (lv_query_4_0= ruleQuery ) ) otherlv_5= ')' otherlv_6= '{' ( (lv_body_7_0= ruleInstructions ) )* otherlv_8= '}' )
-            // InternalMetaTemplating.g:698:3: otherlv_0= 'foreach' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= 'in' ( (lv_query_4_0= ruleQuery ) ) otherlv_5= ')' otherlv_6= '{' ( (lv_body_7_0= ruleInstructions ) )* otherlv_8= '}'
+            // InternalMetaTemplating.g:670:2: (otherlv_0= 'foreach' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= 'in' ( (lv_query_4_0= ruleQuery ) ) otherlv_5= ')' otherlv_6= '{' ( (lv_body_7_0= ruleInstructions ) )* otherlv_8= '}' )
+            // InternalMetaTemplating.g:671:3: otherlv_0= 'foreach' otherlv_1= '(' ( (lv_element_2_0= RULE_ID ) ) otherlv_3= 'in' ( (lv_query_4_0= ruleQuery ) ) otherlv_5= ')' otherlv_6= '{' ( (lv_body_7_0= ruleInstructions ) )* otherlv_8= '}'
             {
-            otherlv_0=(Token)match(input,24,FOLLOW_10); 
+            otherlv_0=(Token)match(input,23,FOLLOW_10); 
 
             			newLeafNode(otherlv_0, grammarAccess.getIteratorAccess().getForeachKeyword_0());
             		
-            otherlv_1=(Token)match(input,18,FOLLOW_8); 
+            otherlv_1=(Token)match(input,17,FOLLOW_8); 
 
             			newLeafNode(otherlv_1, grammarAccess.getIteratorAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalMetaTemplating.g:706:3: ( (lv_element_2_0= RULE_ID ) )
-            // InternalMetaTemplating.g:707:4: (lv_element_2_0= RULE_ID )
+            // InternalMetaTemplating.g:679:3: ( (lv_element_2_0= RULE_ID ) )
+            // InternalMetaTemplating.g:680:4: (lv_element_2_0= RULE_ID )
             {
-            // InternalMetaTemplating.g:707:4: (lv_element_2_0= RULE_ID )
-            // InternalMetaTemplating.g:708:5: lv_element_2_0= RULE_ID
+            // InternalMetaTemplating.g:680:4: (lv_element_2_0= RULE_ID )
+            // InternalMetaTemplating.g:681:5: lv_element_2_0= RULE_ID
             {
             lv_element_2_0=(Token)match(input,RULE_ID,FOLLOW_16); 
 
@@ -1752,15 +1706,15 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,25,FOLLOW_17); 
+            otherlv_3=(Token)match(input,24,FOLLOW_17); 
 
             			newLeafNode(otherlv_3, grammarAccess.getIteratorAccess().getInKeyword_3());
             		
-            // InternalMetaTemplating.g:728:3: ( (lv_query_4_0= ruleQuery ) )
-            // InternalMetaTemplating.g:729:4: (lv_query_4_0= ruleQuery )
+            // InternalMetaTemplating.g:701:3: ( (lv_query_4_0= ruleQuery ) )
+            // InternalMetaTemplating.g:702:4: (lv_query_4_0= ruleQuery )
             {
-            // InternalMetaTemplating.g:729:4: (lv_query_4_0= ruleQuery )
-            // InternalMetaTemplating.g:730:5: lv_query_4_0= ruleQuery
+            // InternalMetaTemplating.g:702:4: (lv_query_4_0= ruleQuery )
+            // InternalMetaTemplating.g:703:5: lv_query_4_0= ruleQuery
             {
 
             					newCompositeNode(grammarAccess.getIteratorAccess().getQueryQueryParserRuleCall_4_0());
@@ -1787,31 +1741,31 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,21,FOLLOW_14); 
+            otherlv_5=(Token)match(input,20,FOLLOW_14); 
 
             			newLeafNode(otherlv_5, grammarAccess.getIteratorAccess().getRightParenthesisKeyword_5());
             		
-            otherlv_6=(Token)match(input,22,FOLLOW_15); 
+            otherlv_6=(Token)match(input,21,FOLLOW_15); 
 
             			newLeafNode(otherlv_6, grammarAccess.getIteratorAccess().getLeftCurlyBracketKeyword_6());
             		
-            // InternalMetaTemplating.g:755:3: ( (lv_body_7_0= ruleInstructions ) )*
+            // InternalMetaTemplating.g:728:3: ( (lv_body_7_0= ruleInstructions ) )*
             loop8:
             do {
                 int alt8=2;
                 int LA8_0 = input.LA(1);
 
-                if ( (LA8_0==RULE_ID||(LA8_0>=14 && LA8_0<=15)||LA8_0==17||LA8_0==24||LA8_0==28||LA8_0==30||LA8_0==34||LA8_0==36) ) {
+                if ( (LA8_0==RULE_ID||LA8_0==14||LA8_0==16||LA8_0==23||LA8_0==27||LA8_0==29||LA8_0==33||LA8_0==35) ) {
                     alt8=1;
                 }
 
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalMetaTemplating.g:756:4: (lv_body_7_0= ruleInstructions )
+            	    // InternalMetaTemplating.g:729:4: (lv_body_7_0= ruleInstructions )
             	    {
-            	    // InternalMetaTemplating.g:756:4: (lv_body_7_0= ruleInstructions )
-            	    // InternalMetaTemplating.g:757:5: lv_body_7_0= ruleInstructions
+            	    // InternalMetaTemplating.g:729:4: (lv_body_7_0= ruleInstructions )
+            	    // InternalMetaTemplating.g:730:5: lv_body_7_0= ruleInstructions
             	    {
 
             	    					newCompositeNode(grammarAccess.getIteratorAccess().getBodyInstructionsParserRuleCall_7_0());
@@ -1844,7 +1798,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_8=(Token)match(input,23,FOLLOW_2); 
+            otherlv_8=(Token)match(input,22,FOLLOW_2); 
 
             			newLeafNode(otherlv_8, grammarAccess.getIteratorAccess().getRightCurlyBracketKeyword_8());
             		
@@ -1871,7 +1825,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQuery"
-    // InternalMetaTemplating.g:782:1: entryRuleQuery returns [EObject current=null] : iv_ruleQuery= ruleQuery EOF ;
+    // InternalMetaTemplating.g:755:1: entryRuleQuery returns [EObject current=null] : iv_ruleQuery= ruleQuery EOF ;
     public final EObject entryRuleQuery() throws RecognitionException {
         EObject current = null;
 
@@ -1879,8 +1833,8 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMetaTemplating.g:782:46: (iv_ruleQuery= ruleQuery EOF )
-            // InternalMetaTemplating.g:783:2: iv_ruleQuery= ruleQuery EOF
+            // InternalMetaTemplating.g:755:46: (iv_ruleQuery= ruleQuery EOF )
+            // InternalMetaTemplating.g:756:2: iv_ruleQuery= ruleQuery EOF
             {
              newCompositeNode(grammarAccess.getQueryRule()); 
             pushFollow(FOLLOW_1);
@@ -1907,7 +1861,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQuery"
-    // InternalMetaTemplating.g:789:1: ruleQuery returns [EObject current=null] : ( ( ( (lv_item_0_0= RULE_ID ) ) | ( (lv_ref_1_0= ruleMetaPh ) ) ) ( (lv_subQuery_2_0= ruleSubQuery ) )* ) ;
+    // InternalMetaTemplating.g:762:1: ruleQuery returns [EObject current=null] : ( ( ( (lv_item_0_0= RULE_ID ) ) | ( (lv_ref_1_0= ruleMetaPh ) ) ) ( (lv_subQuery_2_0= ruleSubQuery ) )* ) ;
     public final EObject ruleQuery() throws RecognitionException {
         EObject current = null;
 
@@ -1921,20 +1875,20 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMetaTemplating.g:795:2: ( ( ( ( (lv_item_0_0= RULE_ID ) ) | ( (lv_ref_1_0= ruleMetaPh ) ) ) ( (lv_subQuery_2_0= ruleSubQuery ) )* ) )
-            // InternalMetaTemplating.g:796:2: ( ( ( (lv_item_0_0= RULE_ID ) ) | ( (lv_ref_1_0= ruleMetaPh ) ) ) ( (lv_subQuery_2_0= ruleSubQuery ) )* )
+            // InternalMetaTemplating.g:768:2: ( ( ( ( (lv_item_0_0= RULE_ID ) ) | ( (lv_ref_1_0= ruleMetaPh ) ) ) ( (lv_subQuery_2_0= ruleSubQuery ) )* ) )
+            // InternalMetaTemplating.g:769:2: ( ( ( (lv_item_0_0= RULE_ID ) ) | ( (lv_ref_1_0= ruleMetaPh ) ) ) ( (lv_subQuery_2_0= ruleSubQuery ) )* )
             {
-            // InternalMetaTemplating.g:796:2: ( ( ( (lv_item_0_0= RULE_ID ) ) | ( (lv_ref_1_0= ruleMetaPh ) ) ) ( (lv_subQuery_2_0= ruleSubQuery ) )* )
-            // InternalMetaTemplating.g:797:3: ( ( (lv_item_0_0= RULE_ID ) ) | ( (lv_ref_1_0= ruleMetaPh ) ) ) ( (lv_subQuery_2_0= ruleSubQuery ) )*
+            // InternalMetaTemplating.g:769:2: ( ( ( (lv_item_0_0= RULE_ID ) ) | ( (lv_ref_1_0= ruleMetaPh ) ) ) ( (lv_subQuery_2_0= ruleSubQuery ) )* )
+            // InternalMetaTemplating.g:770:3: ( ( (lv_item_0_0= RULE_ID ) ) | ( (lv_ref_1_0= ruleMetaPh ) ) ) ( (lv_subQuery_2_0= ruleSubQuery ) )*
             {
-            // InternalMetaTemplating.g:797:3: ( ( (lv_item_0_0= RULE_ID ) ) | ( (lv_ref_1_0= ruleMetaPh ) ) )
+            // InternalMetaTemplating.g:770:3: ( ( (lv_item_0_0= RULE_ID ) ) | ( (lv_ref_1_0= ruleMetaPh ) ) )
             int alt9=2;
             int LA9_0 = input.LA(1);
 
             if ( (LA9_0==RULE_ID) ) {
                 alt9=1;
             }
-            else if ( (LA9_0==30) ) {
+            else if ( (LA9_0==29) ) {
                 alt9=2;
             }
             else {
@@ -1945,13 +1899,13 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
             }
             switch (alt9) {
                 case 1 :
-                    // InternalMetaTemplating.g:798:4: ( (lv_item_0_0= RULE_ID ) )
+                    // InternalMetaTemplating.g:771:4: ( (lv_item_0_0= RULE_ID ) )
                     {
-                    // InternalMetaTemplating.g:798:4: ( (lv_item_0_0= RULE_ID ) )
-                    // InternalMetaTemplating.g:799:5: (lv_item_0_0= RULE_ID )
+                    // InternalMetaTemplating.g:771:4: ( (lv_item_0_0= RULE_ID ) )
+                    // InternalMetaTemplating.g:772:5: (lv_item_0_0= RULE_ID )
                     {
-                    // InternalMetaTemplating.g:799:5: (lv_item_0_0= RULE_ID )
-                    // InternalMetaTemplating.g:800:6: lv_item_0_0= RULE_ID
+                    // InternalMetaTemplating.g:772:5: (lv_item_0_0= RULE_ID )
+                    // InternalMetaTemplating.g:773:6: lv_item_0_0= RULE_ID
                     {
                     lv_item_0_0=(Token)match(input,RULE_ID,FOLLOW_18); 
 
@@ -1977,13 +1931,13 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalMetaTemplating.g:817:4: ( (lv_ref_1_0= ruleMetaPh ) )
+                    // InternalMetaTemplating.g:790:4: ( (lv_ref_1_0= ruleMetaPh ) )
                     {
-                    // InternalMetaTemplating.g:817:4: ( (lv_ref_1_0= ruleMetaPh ) )
-                    // InternalMetaTemplating.g:818:5: (lv_ref_1_0= ruleMetaPh )
+                    // InternalMetaTemplating.g:790:4: ( (lv_ref_1_0= ruleMetaPh ) )
+                    // InternalMetaTemplating.g:791:5: (lv_ref_1_0= ruleMetaPh )
                     {
-                    // InternalMetaTemplating.g:818:5: (lv_ref_1_0= ruleMetaPh )
-                    // InternalMetaTemplating.g:819:6: lv_ref_1_0= ruleMetaPh
+                    // InternalMetaTemplating.g:791:5: (lv_ref_1_0= ruleMetaPh )
+                    // InternalMetaTemplating.g:792:6: lv_ref_1_0= ruleMetaPh
                     {
 
                     						newCompositeNode(grammarAccess.getQueryAccess().getRefMetaPhParserRuleCall_0_1_0());
@@ -2016,23 +1970,23 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalMetaTemplating.g:837:3: ( (lv_subQuery_2_0= ruleSubQuery ) )*
+            // InternalMetaTemplating.g:810:3: ( (lv_subQuery_2_0= ruleSubQuery ) )*
             loop10:
             do {
                 int alt10=2;
                 int LA10_0 = input.LA(1);
 
-                if ( (LA10_0==26) ) {
+                if ( (LA10_0==25) ) {
                     alt10=1;
                 }
 
 
                 switch (alt10) {
             	case 1 :
-            	    // InternalMetaTemplating.g:838:4: (lv_subQuery_2_0= ruleSubQuery )
+            	    // InternalMetaTemplating.g:811:4: (lv_subQuery_2_0= ruleSubQuery )
             	    {
-            	    // InternalMetaTemplating.g:838:4: (lv_subQuery_2_0= ruleSubQuery )
-            	    // InternalMetaTemplating.g:839:5: lv_subQuery_2_0= ruleSubQuery
+            	    // InternalMetaTemplating.g:811:4: (lv_subQuery_2_0= ruleSubQuery )
+            	    // InternalMetaTemplating.g:812:5: lv_subQuery_2_0= ruleSubQuery
             	    {
 
             	    					newCompositeNode(grammarAccess.getQueryAccess().getSubQuerySubQueryParserRuleCall_1_0());
@@ -2088,7 +2042,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSubQuery"
-    // InternalMetaTemplating.g:860:1: entryRuleSubQuery returns [EObject current=null] : iv_ruleSubQuery= ruleSubQuery EOF ;
+    // InternalMetaTemplating.g:833:1: entryRuleSubQuery returns [EObject current=null] : iv_ruleSubQuery= ruleSubQuery EOF ;
     public final EObject entryRuleSubQuery() throws RecognitionException {
         EObject current = null;
 
@@ -2096,8 +2050,8 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMetaTemplating.g:860:49: (iv_ruleSubQuery= ruleSubQuery EOF )
-            // InternalMetaTemplating.g:861:2: iv_ruleSubQuery= ruleSubQuery EOF
+            // InternalMetaTemplating.g:833:49: (iv_ruleSubQuery= ruleSubQuery EOF )
+            // InternalMetaTemplating.g:834:2: iv_ruleSubQuery= ruleSubQuery EOF
             {
              newCompositeNode(grammarAccess.getSubQueryRule()); 
             pushFollow(FOLLOW_1);
@@ -2124,73 +2078,134 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSubQuery"
-    // InternalMetaTemplating.g:867:1: ruleSubQuery returns [EObject current=null] : (otherlv_0= '.' ( ( (lv_item_1_0= RULE_ID ) ) | ( (lv_ref_2_0= ruleMetaPh ) ) ) (otherlv_3= '()' )? ) ;
+    // InternalMetaTemplating.g:840:1: ruleSubQuery returns [EObject current=null] : ( (otherlv_0= '.' ( ( (lv_methItem_1_0= RULE_ID ) ) | ( (lv_methRef_2_0= ruleMetaPh ) ) ) otherlv_3= '()' ) | (otherlv_4= '.' ( ( (lv_item_5_0= RULE_ID ) ) | ( (lv_ref_6_0= ruleMetaPh ) ) ) ) ) ;
     public final EObject ruleSubQuery() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
-        Token lv_item_1_0=null;
+        Token lv_methItem_1_0=null;
         Token otherlv_3=null;
-        EObject lv_ref_2_0 = null;
+        Token otherlv_4=null;
+        Token lv_item_5_0=null;
+        EObject lv_methRef_2_0 = null;
+
+        EObject lv_ref_6_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalMetaTemplating.g:873:2: ( (otherlv_0= '.' ( ( (lv_item_1_0= RULE_ID ) ) | ( (lv_ref_2_0= ruleMetaPh ) ) ) (otherlv_3= '()' )? ) )
-            // InternalMetaTemplating.g:874:2: (otherlv_0= '.' ( ( (lv_item_1_0= RULE_ID ) ) | ( (lv_ref_2_0= ruleMetaPh ) ) ) (otherlv_3= '()' )? )
+            // InternalMetaTemplating.g:846:2: ( ( (otherlv_0= '.' ( ( (lv_methItem_1_0= RULE_ID ) ) | ( (lv_methRef_2_0= ruleMetaPh ) ) ) otherlv_3= '()' ) | (otherlv_4= '.' ( ( (lv_item_5_0= RULE_ID ) ) | ( (lv_ref_6_0= ruleMetaPh ) ) ) ) ) )
+            // InternalMetaTemplating.g:847:2: ( (otherlv_0= '.' ( ( (lv_methItem_1_0= RULE_ID ) ) | ( (lv_methRef_2_0= ruleMetaPh ) ) ) otherlv_3= '()' ) | (otherlv_4= '.' ( ( (lv_item_5_0= RULE_ID ) ) | ( (lv_ref_6_0= ruleMetaPh ) ) ) ) )
             {
-            // InternalMetaTemplating.g:874:2: (otherlv_0= '.' ( ( (lv_item_1_0= RULE_ID ) ) | ( (lv_ref_2_0= ruleMetaPh ) ) ) (otherlv_3= '()' )? )
-            // InternalMetaTemplating.g:875:3: otherlv_0= '.' ( ( (lv_item_1_0= RULE_ID ) ) | ( (lv_ref_2_0= ruleMetaPh ) ) ) (otherlv_3= '()' )?
-            {
-            otherlv_0=(Token)match(input,26,FOLLOW_17); 
-
-            			newLeafNode(otherlv_0, grammarAccess.getSubQueryAccess().getFullStopKeyword_0());
-            		
-            // InternalMetaTemplating.g:879:3: ( ( (lv_item_1_0= RULE_ID ) ) | ( (lv_ref_2_0= ruleMetaPh ) ) )
-            int alt11=2;
-            int LA11_0 = input.LA(1);
-
-            if ( (LA11_0==RULE_ID) ) {
-                alt11=1;
-            }
-            else if ( (LA11_0==30) ) {
-                alt11=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 11, 0, input);
-
-                throw nvae;
-            }
-            switch (alt11) {
+            // InternalMetaTemplating.g:847:2: ( (otherlv_0= '.' ( ( (lv_methItem_1_0= RULE_ID ) ) | ( (lv_methRef_2_0= ruleMetaPh ) ) ) otherlv_3= '()' ) | (otherlv_4= '.' ( ( (lv_item_5_0= RULE_ID ) ) | ( (lv_ref_6_0= ruleMetaPh ) ) ) ) )
+            int alt13=2;
+            alt13 = dfa13.predict(input);
+            switch (alt13) {
                 case 1 :
-                    // InternalMetaTemplating.g:880:4: ( (lv_item_1_0= RULE_ID ) )
+                    // InternalMetaTemplating.g:848:3: (otherlv_0= '.' ( ( (lv_methItem_1_0= RULE_ID ) ) | ( (lv_methRef_2_0= ruleMetaPh ) ) ) otherlv_3= '()' )
                     {
-                    // InternalMetaTemplating.g:880:4: ( (lv_item_1_0= RULE_ID ) )
-                    // InternalMetaTemplating.g:881:5: (lv_item_1_0= RULE_ID )
+                    // InternalMetaTemplating.g:848:3: (otherlv_0= '.' ( ( (lv_methItem_1_0= RULE_ID ) ) | ( (lv_methRef_2_0= ruleMetaPh ) ) ) otherlv_3= '()' )
+                    // InternalMetaTemplating.g:849:4: otherlv_0= '.' ( ( (lv_methItem_1_0= RULE_ID ) ) | ( (lv_methRef_2_0= ruleMetaPh ) ) ) otherlv_3= '()'
                     {
-                    // InternalMetaTemplating.g:881:5: (lv_item_1_0= RULE_ID )
-                    // InternalMetaTemplating.g:882:6: lv_item_1_0= RULE_ID
-                    {
-                    lv_item_1_0=(Token)match(input,RULE_ID,FOLLOW_19); 
+                    otherlv_0=(Token)match(input,25,FOLLOW_17); 
 
-                    						newLeafNode(lv_item_1_0, grammarAccess.getSubQueryAccess().getItemIDTerminalRuleCall_1_0_0());
-                    					
+                    				newLeafNode(otherlv_0, grammarAccess.getSubQueryAccess().getFullStopKeyword_0_0());
+                    			
+                    // InternalMetaTemplating.g:853:4: ( ( (lv_methItem_1_0= RULE_ID ) ) | ( (lv_methRef_2_0= ruleMetaPh ) ) )
+                    int alt11=2;
+                    int LA11_0 = input.LA(1);
 
-                    						if (current==null) {
-                    							current = createModelElement(grammarAccess.getSubQueryRule());
-                    						}
-                    						setWithLastConsumed(
-                    							current,
-                    							"item",
-                    							lv_item_1_0,
-                    							"org.eclipse.xtext.common.Terminals.ID");
-                    					
+                    if ( (LA11_0==RULE_ID) ) {
+                        alt11=1;
+                    }
+                    else if ( (LA11_0==29) ) {
+                        alt11=2;
+                    }
+                    else {
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 11, 0, input);
+
+                        throw nvae;
+                    }
+                    switch (alt11) {
+                        case 1 :
+                            // InternalMetaTemplating.g:854:5: ( (lv_methItem_1_0= RULE_ID ) )
+                            {
+                            // InternalMetaTemplating.g:854:5: ( (lv_methItem_1_0= RULE_ID ) )
+                            // InternalMetaTemplating.g:855:6: (lv_methItem_1_0= RULE_ID )
+                            {
+                            // InternalMetaTemplating.g:855:6: (lv_methItem_1_0= RULE_ID )
+                            // InternalMetaTemplating.g:856:7: lv_methItem_1_0= RULE_ID
+                            {
+                            lv_methItem_1_0=(Token)match(input,RULE_ID,FOLLOW_19); 
+
+                            							newLeafNode(lv_methItem_1_0, grammarAccess.getSubQueryAccess().getMethItemIDTerminalRuleCall_0_1_0_0());
+                            						
+
+                            							if (current==null) {
+                            								current = createModelElement(grammarAccess.getSubQueryRule());
+                            							}
+                            							setWithLastConsumed(
+                            								current,
+                            								"methItem",
+                            								lv_methItem_1_0,
+                            								"org.eclipse.xtext.common.Terminals.ID");
+                            						
+
+                            }
+
+
+                            }
+
+
+                            }
+                            break;
+                        case 2 :
+                            // InternalMetaTemplating.g:873:5: ( (lv_methRef_2_0= ruleMetaPh ) )
+                            {
+                            // InternalMetaTemplating.g:873:5: ( (lv_methRef_2_0= ruleMetaPh ) )
+                            // InternalMetaTemplating.g:874:6: (lv_methRef_2_0= ruleMetaPh )
+                            {
+                            // InternalMetaTemplating.g:874:6: (lv_methRef_2_0= ruleMetaPh )
+                            // InternalMetaTemplating.g:875:7: lv_methRef_2_0= ruleMetaPh
+                            {
+
+                            							newCompositeNode(grammarAccess.getSubQueryAccess().getMethRefMetaPhParserRuleCall_0_1_1_0());
+                            						
+                            pushFollow(FOLLOW_19);
+                            lv_methRef_2_0=ruleMetaPh();
+
+                            state._fsp--;
+
+
+                            							if (current==null) {
+                            								current = createModelElementForParent(grammarAccess.getSubQueryRule());
+                            							}
+                            							set(
+                            								current,
+                            								"methRef",
+                            								lv_methRef_2_0,
+                            								"org.xtext.example.mydsl.MetaTemplating.MetaPh");
+                            							afterParserOrEnumRuleCall();
+                            						
+
+                            }
+
+
+                            }
+
+
+                            }
+                            break;
 
                     }
 
+                    otherlv_3=(Token)match(input,26,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_3, grammarAccess.getSubQueryAccess().getLeftParenthesisRightParenthesisKeyword_0_2());
+                    			
 
                     }
 
@@ -2198,66 +2213,110 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalMetaTemplating.g:899:4: ( (lv_ref_2_0= ruleMetaPh ) )
+                    // InternalMetaTemplating.g:899:3: (otherlv_4= '.' ( ( (lv_item_5_0= RULE_ID ) ) | ( (lv_ref_6_0= ruleMetaPh ) ) ) )
                     {
-                    // InternalMetaTemplating.g:899:4: ( (lv_ref_2_0= ruleMetaPh ) )
-                    // InternalMetaTemplating.g:900:5: (lv_ref_2_0= ruleMetaPh )
+                    // InternalMetaTemplating.g:899:3: (otherlv_4= '.' ( ( (lv_item_5_0= RULE_ID ) ) | ( (lv_ref_6_0= ruleMetaPh ) ) ) )
+                    // InternalMetaTemplating.g:900:4: otherlv_4= '.' ( ( (lv_item_5_0= RULE_ID ) ) | ( (lv_ref_6_0= ruleMetaPh ) ) )
                     {
-                    // InternalMetaTemplating.g:900:5: (lv_ref_2_0= ruleMetaPh )
-                    // InternalMetaTemplating.g:901:6: lv_ref_2_0= ruleMetaPh
-                    {
+                    otherlv_4=(Token)match(input,25,FOLLOW_17); 
 
-                    						newCompositeNode(grammarAccess.getSubQueryAccess().getRefMetaPhParserRuleCall_1_1_0());
-                    					
-                    pushFollow(FOLLOW_19);
-                    lv_ref_2_0=ruleMetaPh();
-
-                    state._fsp--;
-
-
-                    						if (current==null) {
-                    							current = createModelElementForParent(grammarAccess.getSubQueryRule());
-                    						}
-                    						set(
-                    							current,
-                    							"ref",
-                    							lv_ref_2_0,
-                    							"org.xtext.example.mydsl.MetaTemplating.MetaPh");
-                    						afterParserOrEnumRuleCall();
-                    					
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-            // InternalMetaTemplating.g:919:3: (otherlv_3= '()' )?
-            int alt12=2;
-            int LA12_0 = input.LA(1);
-
-            if ( (LA12_0==27) ) {
-                alt12=1;
-            }
-            switch (alt12) {
-                case 1 :
-                    // InternalMetaTemplating.g:920:4: otherlv_3= '()'
-                    {
-                    otherlv_3=(Token)match(input,27,FOLLOW_2); 
-
-                    				newLeafNode(otherlv_3, grammarAccess.getSubQueryAccess().getLeftParenthesisRightParenthesisKeyword_2());
+                    				newLeafNode(otherlv_4, grammarAccess.getSubQueryAccess().getFullStopKeyword_1_0());
                     			
+                    // InternalMetaTemplating.g:904:4: ( ( (lv_item_5_0= RULE_ID ) ) | ( (lv_ref_6_0= ruleMetaPh ) ) )
+                    int alt12=2;
+                    int LA12_0 = input.LA(1);
+
+                    if ( (LA12_0==RULE_ID) ) {
+                        alt12=1;
+                    }
+                    else if ( (LA12_0==29) ) {
+                        alt12=2;
+                    }
+                    else {
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 12, 0, input);
+
+                        throw nvae;
+                    }
+                    switch (alt12) {
+                        case 1 :
+                            // InternalMetaTemplating.g:905:5: ( (lv_item_5_0= RULE_ID ) )
+                            {
+                            // InternalMetaTemplating.g:905:5: ( (lv_item_5_0= RULE_ID ) )
+                            // InternalMetaTemplating.g:906:6: (lv_item_5_0= RULE_ID )
+                            {
+                            // InternalMetaTemplating.g:906:6: (lv_item_5_0= RULE_ID )
+                            // InternalMetaTemplating.g:907:7: lv_item_5_0= RULE_ID
+                            {
+                            lv_item_5_0=(Token)match(input,RULE_ID,FOLLOW_2); 
+
+                            							newLeafNode(lv_item_5_0, grammarAccess.getSubQueryAccess().getItemIDTerminalRuleCall_1_1_0_0());
+                            						
+
+                            							if (current==null) {
+                            								current = createModelElement(grammarAccess.getSubQueryRule());
+                            							}
+                            							setWithLastConsumed(
+                            								current,
+                            								"item",
+                            								lv_item_5_0,
+                            								"org.eclipse.xtext.common.Terminals.ID");
+                            						
+
+                            }
+
+
+                            }
+
+
+                            }
+                            break;
+                        case 2 :
+                            // InternalMetaTemplating.g:924:5: ( (lv_ref_6_0= ruleMetaPh ) )
+                            {
+                            // InternalMetaTemplating.g:924:5: ( (lv_ref_6_0= ruleMetaPh ) )
+                            // InternalMetaTemplating.g:925:6: (lv_ref_6_0= ruleMetaPh )
+                            {
+                            // InternalMetaTemplating.g:925:6: (lv_ref_6_0= ruleMetaPh )
+                            // InternalMetaTemplating.g:926:7: lv_ref_6_0= ruleMetaPh
+                            {
+
+                            							newCompositeNode(grammarAccess.getSubQueryAccess().getRefMetaPhParserRuleCall_1_1_1_0());
+                            						
+                            pushFollow(FOLLOW_2);
+                            lv_ref_6_0=ruleMetaPh();
+
+                            state._fsp--;
+
+
+                            							if (current==null) {
+                            								current = createModelElementForParent(grammarAccess.getSubQueryRule());
+                            							}
+                            							set(
+                            								current,
+                            								"ref",
+                            								lv_ref_6_0,
+                            								"org.xtext.example.mydsl.MetaTemplating.MetaPh");
+                            							afterParserOrEnumRuleCall();
+                            						
+
+                            }
+
+
+                            }
+
+
+                            }
+                            break;
+
+                    }
+
+
+                    }
+
 
                     }
                     break;
-
-            }
-
 
             }
 
@@ -2281,7 +2340,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePh"
-    // InternalMetaTemplating.g:929:1: entryRulePh returns [EObject current=null] : iv_rulePh= rulePh EOF ;
+    // InternalMetaTemplating.g:949:1: entryRulePh returns [EObject current=null] : iv_rulePh= rulePh EOF ;
     public final EObject entryRulePh() throws RecognitionException {
         EObject current = null;
 
@@ -2289,8 +2348,8 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMetaTemplating.g:929:43: (iv_rulePh= rulePh EOF )
-            // InternalMetaTemplating.g:930:2: iv_rulePh= rulePh EOF
+            // InternalMetaTemplating.g:949:43: (iv_rulePh= rulePh EOF )
+            // InternalMetaTemplating.g:950:2: iv_rulePh= rulePh EOF
             {
              newCompositeNode(grammarAccess.getPhRule()); 
             pushFollow(FOLLOW_1);
@@ -2317,7 +2376,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePh"
-    // InternalMetaTemplating.g:936:1: rulePh returns [EObject current=null] : (otherlv_0= '[[' ( (lv_property_1_0= ruleProperty ) ) ( (lv_metaProperty_2_0= ruleMetaProperty ) )? otherlv_3= ']]' ) ;
+    // InternalMetaTemplating.g:956:1: rulePh returns [EObject current=null] : (otherlv_0= '[[' ( (lv_property_1_0= ruleProperty ) ) ( (lv_metaProperty_2_0= ruleMetaProperty ) )? otherlv_3= ']]' ) ;
     public final EObject rulePh() throws RecognitionException {
         EObject current = null;
 
@@ -2332,21 +2391,21 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMetaTemplating.g:942:2: ( (otherlv_0= '[[' ( (lv_property_1_0= ruleProperty ) ) ( (lv_metaProperty_2_0= ruleMetaProperty ) )? otherlv_3= ']]' ) )
-            // InternalMetaTemplating.g:943:2: (otherlv_0= '[[' ( (lv_property_1_0= ruleProperty ) ) ( (lv_metaProperty_2_0= ruleMetaProperty ) )? otherlv_3= ']]' )
+            // InternalMetaTemplating.g:962:2: ( (otherlv_0= '[[' ( (lv_property_1_0= ruleProperty ) ) ( (lv_metaProperty_2_0= ruleMetaProperty ) )? otherlv_3= ']]' ) )
+            // InternalMetaTemplating.g:963:2: (otherlv_0= '[[' ( (lv_property_1_0= ruleProperty ) ) ( (lv_metaProperty_2_0= ruleMetaProperty ) )? otherlv_3= ']]' )
             {
-            // InternalMetaTemplating.g:943:2: (otherlv_0= '[[' ( (lv_property_1_0= ruleProperty ) ) ( (lv_metaProperty_2_0= ruleMetaProperty ) )? otherlv_3= ']]' )
-            // InternalMetaTemplating.g:944:3: otherlv_0= '[[' ( (lv_property_1_0= ruleProperty ) ) ( (lv_metaProperty_2_0= ruleMetaProperty ) )? otherlv_3= ']]'
+            // InternalMetaTemplating.g:963:2: (otherlv_0= '[[' ( (lv_property_1_0= ruleProperty ) ) ( (lv_metaProperty_2_0= ruleMetaProperty ) )? otherlv_3= ']]' )
+            // InternalMetaTemplating.g:964:3: otherlv_0= '[[' ( (lv_property_1_0= ruleProperty ) ) ( (lv_metaProperty_2_0= ruleMetaProperty ) )? otherlv_3= ']]'
             {
-            otherlv_0=(Token)match(input,28,FOLLOW_8); 
+            otherlv_0=(Token)match(input,27,FOLLOW_8); 
 
             			newLeafNode(otherlv_0, grammarAccess.getPhAccess().getLeftSquareBracketLeftSquareBracketKeyword_0());
             		
-            // InternalMetaTemplating.g:948:3: ( (lv_property_1_0= ruleProperty ) )
-            // InternalMetaTemplating.g:949:4: (lv_property_1_0= ruleProperty )
+            // InternalMetaTemplating.g:968:3: ( (lv_property_1_0= ruleProperty ) )
+            // InternalMetaTemplating.g:969:4: (lv_property_1_0= ruleProperty )
             {
-            // InternalMetaTemplating.g:949:4: (lv_property_1_0= ruleProperty )
-            // InternalMetaTemplating.g:950:5: lv_property_1_0= ruleProperty
+            // InternalMetaTemplating.g:969:4: (lv_property_1_0= ruleProperty )
+            // InternalMetaTemplating.g:970:5: lv_property_1_0= ruleProperty
             {
 
             					newCompositeNode(grammarAccess.getPhAccess().getPropertyPropertyParserRuleCall_1_0());
@@ -2373,19 +2432,19 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalMetaTemplating.g:967:3: ( (lv_metaProperty_2_0= ruleMetaProperty ) )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // InternalMetaTemplating.g:987:3: ( (lv_metaProperty_2_0= ruleMetaProperty ) )?
+            int alt14=2;
+            int LA14_0 = input.LA(1);
 
-            if ( (LA13_0==33) ) {
-                alt13=1;
+            if ( (LA14_0==32) ) {
+                alt14=1;
             }
-            switch (alt13) {
+            switch (alt14) {
                 case 1 :
-                    // InternalMetaTemplating.g:968:4: (lv_metaProperty_2_0= ruleMetaProperty )
+                    // InternalMetaTemplating.g:988:4: (lv_metaProperty_2_0= ruleMetaProperty )
                     {
-                    // InternalMetaTemplating.g:968:4: (lv_metaProperty_2_0= ruleMetaProperty )
-                    // InternalMetaTemplating.g:969:5: lv_metaProperty_2_0= ruleMetaProperty
+                    // InternalMetaTemplating.g:988:4: (lv_metaProperty_2_0= ruleMetaProperty )
+                    // InternalMetaTemplating.g:989:5: lv_metaProperty_2_0= ruleMetaProperty
                     {
 
                     					newCompositeNode(grammarAccess.getPhAccess().getMetaPropertyMetaPropertyParserRuleCall_2_0());
@@ -2415,7 +2474,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,29,FOLLOW_2); 
+            otherlv_3=(Token)match(input,28,FOLLOW_2); 
 
             			newLeafNode(otherlv_3, grammarAccess.getPhAccess().getRightSquareBracketRightSquareBracketKeyword_3());
             		
@@ -2442,7 +2501,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMetaPh"
-    // InternalMetaTemplating.g:994:1: entryRuleMetaPh returns [EObject current=null] : iv_ruleMetaPh= ruleMetaPh EOF ;
+    // InternalMetaTemplating.g:1014:1: entryRuleMetaPh returns [EObject current=null] : iv_ruleMetaPh= ruleMetaPh EOF ;
     public final EObject entryRuleMetaPh() throws RecognitionException {
         EObject current = null;
 
@@ -2450,8 +2509,8 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMetaTemplating.g:994:47: (iv_ruleMetaPh= ruleMetaPh EOF )
-            // InternalMetaTemplating.g:995:2: iv_ruleMetaPh= ruleMetaPh EOF
+            // InternalMetaTemplating.g:1014:47: (iv_ruleMetaPh= ruleMetaPh EOF )
+            // InternalMetaTemplating.g:1015:2: iv_ruleMetaPh= ruleMetaPh EOF
             {
              newCompositeNode(grammarAccess.getMetaPhRule()); 
             pushFollow(FOLLOW_1);
@@ -2478,7 +2537,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMetaPh"
-    // InternalMetaTemplating.g:1001:1: ruleMetaPh returns [EObject current=null] : (otherlv_0= '[' ( (lv_property_1_0= ruleProperty ) ) (otherlv_2= 'TAGINFO' ( (lv_tag_3_0= RULE_STRING ) ) )? otherlv_4= ']' ) ;
+    // InternalMetaTemplating.g:1021:1: ruleMetaPh returns [EObject current=null] : (otherlv_0= '[' ( (lv_property_1_0= ruleProperty ) ) (otherlv_2= 'TAGINFO' ( (lv_tag_3_0= RULE_STRING ) ) )? otherlv_4= ']' ) ;
     public final EObject ruleMetaPh() throws RecognitionException {
         EObject current = null;
 
@@ -2493,21 +2552,21 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMetaTemplating.g:1007:2: ( (otherlv_0= '[' ( (lv_property_1_0= ruleProperty ) ) (otherlv_2= 'TAGINFO' ( (lv_tag_3_0= RULE_STRING ) ) )? otherlv_4= ']' ) )
-            // InternalMetaTemplating.g:1008:2: (otherlv_0= '[' ( (lv_property_1_0= ruleProperty ) ) (otherlv_2= 'TAGINFO' ( (lv_tag_3_0= RULE_STRING ) ) )? otherlv_4= ']' )
+            // InternalMetaTemplating.g:1027:2: ( (otherlv_0= '[' ( (lv_property_1_0= ruleProperty ) ) (otherlv_2= 'TAGINFO' ( (lv_tag_3_0= RULE_STRING ) ) )? otherlv_4= ']' ) )
+            // InternalMetaTemplating.g:1028:2: (otherlv_0= '[' ( (lv_property_1_0= ruleProperty ) ) (otherlv_2= 'TAGINFO' ( (lv_tag_3_0= RULE_STRING ) ) )? otherlv_4= ']' )
             {
-            // InternalMetaTemplating.g:1008:2: (otherlv_0= '[' ( (lv_property_1_0= ruleProperty ) ) (otherlv_2= 'TAGINFO' ( (lv_tag_3_0= RULE_STRING ) ) )? otherlv_4= ']' )
-            // InternalMetaTemplating.g:1009:3: otherlv_0= '[' ( (lv_property_1_0= ruleProperty ) ) (otherlv_2= 'TAGINFO' ( (lv_tag_3_0= RULE_STRING ) ) )? otherlv_4= ']'
+            // InternalMetaTemplating.g:1028:2: (otherlv_0= '[' ( (lv_property_1_0= ruleProperty ) ) (otherlv_2= 'TAGINFO' ( (lv_tag_3_0= RULE_STRING ) ) )? otherlv_4= ']' )
+            // InternalMetaTemplating.g:1029:3: otherlv_0= '[' ( (lv_property_1_0= ruleProperty ) ) (otherlv_2= 'TAGINFO' ( (lv_tag_3_0= RULE_STRING ) ) )? otherlv_4= ']'
             {
-            otherlv_0=(Token)match(input,30,FOLLOW_8); 
+            otherlv_0=(Token)match(input,29,FOLLOW_8); 
 
             			newLeafNode(otherlv_0, grammarAccess.getMetaPhAccess().getLeftSquareBracketKeyword_0());
             		
-            // InternalMetaTemplating.g:1013:3: ( (lv_property_1_0= ruleProperty ) )
-            // InternalMetaTemplating.g:1014:4: (lv_property_1_0= ruleProperty )
+            // InternalMetaTemplating.g:1033:3: ( (lv_property_1_0= ruleProperty ) )
+            // InternalMetaTemplating.g:1034:4: (lv_property_1_0= ruleProperty )
             {
-            // InternalMetaTemplating.g:1014:4: (lv_property_1_0= ruleProperty )
-            // InternalMetaTemplating.g:1015:5: lv_property_1_0= ruleProperty
+            // InternalMetaTemplating.g:1034:4: (lv_property_1_0= ruleProperty )
+            // InternalMetaTemplating.g:1035:5: lv_property_1_0= ruleProperty
             {
 
             					newCompositeNode(grammarAccess.getMetaPhAccess().getPropertyPropertyParserRuleCall_1_0());
@@ -2534,26 +2593,26 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalMetaTemplating.g:1032:3: (otherlv_2= 'TAGINFO' ( (lv_tag_3_0= RULE_STRING ) ) )?
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            // InternalMetaTemplating.g:1052:3: (otherlv_2= 'TAGINFO' ( (lv_tag_3_0= RULE_STRING ) ) )?
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            if ( (LA14_0==31) ) {
-                alt14=1;
+            if ( (LA15_0==30) ) {
+                alt15=1;
             }
-            switch (alt14) {
+            switch (alt15) {
                 case 1 :
-                    // InternalMetaTemplating.g:1033:4: otherlv_2= 'TAGINFO' ( (lv_tag_3_0= RULE_STRING ) )
+                    // InternalMetaTemplating.g:1053:4: otherlv_2= 'TAGINFO' ( (lv_tag_3_0= RULE_STRING ) )
                     {
-                    otherlv_2=(Token)match(input,31,FOLLOW_6); 
+                    otherlv_2=(Token)match(input,30,FOLLOW_6); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getMetaPhAccess().getTAGINFOKeyword_2_0());
                     			
-                    // InternalMetaTemplating.g:1037:4: ( (lv_tag_3_0= RULE_STRING ) )
-                    // InternalMetaTemplating.g:1038:5: (lv_tag_3_0= RULE_STRING )
+                    // InternalMetaTemplating.g:1057:4: ( (lv_tag_3_0= RULE_STRING ) )
+                    // InternalMetaTemplating.g:1058:5: (lv_tag_3_0= RULE_STRING )
                     {
-                    // InternalMetaTemplating.g:1038:5: (lv_tag_3_0= RULE_STRING )
-                    // InternalMetaTemplating.g:1039:6: lv_tag_3_0= RULE_STRING
+                    // InternalMetaTemplating.g:1058:5: (lv_tag_3_0= RULE_STRING )
+                    // InternalMetaTemplating.g:1059:6: lv_tag_3_0= RULE_STRING
                     {
                     lv_tag_3_0=(Token)match(input,RULE_STRING,FOLLOW_23); 
 
@@ -2581,7 +2640,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,32,FOLLOW_2); 
+            otherlv_4=(Token)match(input,31,FOLLOW_2); 
 
             			newLeafNode(otherlv_4, grammarAccess.getMetaPhAccess().getRightSquareBracketKeyword_3());
             		
@@ -2608,7 +2667,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMetaProperty"
-    // InternalMetaTemplating.g:1064:1: entryRuleMetaProperty returns [EObject current=null] : iv_ruleMetaProperty= ruleMetaProperty EOF ;
+    // InternalMetaTemplating.g:1084:1: entryRuleMetaProperty returns [EObject current=null] : iv_ruleMetaProperty= ruleMetaProperty EOF ;
     public final EObject entryRuleMetaProperty() throws RecognitionException {
         EObject current = null;
 
@@ -2616,8 +2675,8 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMetaTemplating.g:1064:53: (iv_ruleMetaProperty= ruleMetaProperty EOF )
-            // InternalMetaTemplating.g:1065:2: iv_ruleMetaProperty= ruleMetaProperty EOF
+            // InternalMetaTemplating.g:1084:53: (iv_ruleMetaProperty= ruleMetaProperty EOF )
+            // InternalMetaTemplating.g:1085:2: iv_ruleMetaProperty= ruleMetaProperty EOF
             {
              newCompositeNode(grammarAccess.getMetaPropertyRule()); 
             pushFollow(FOLLOW_1);
@@ -2644,7 +2703,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMetaProperty"
-    // InternalMetaTemplating.g:1071:1: ruleMetaProperty returns [EObject current=null] : (otherlv_0= '.{' ( (lv_property_1_0= ruleProperty ) ) otherlv_2= '}' ) ;
+    // InternalMetaTemplating.g:1091:1: ruleMetaProperty returns [EObject current=null] : (otherlv_0= '.{' ( (lv_property_1_0= ruleProperty ) ) otherlv_2= '}' ) ;
     public final EObject ruleMetaProperty() throws RecognitionException {
         EObject current = null;
 
@@ -2657,21 +2716,21 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMetaTemplating.g:1077:2: ( (otherlv_0= '.{' ( (lv_property_1_0= ruleProperty ) ) otherlv_2= '}' ) )
-            // InternalMetaTemplating.g:1078:2: (otherlv_0= '.{' ( (lv_property_1_0= ruleProperty ) ) otherlv_2= '}' )
+            // InternalMetaTemplating.g:1097:2: ( (otherlv_0= '.{' ( (lv_property_1_0= ruleProperty ) ) otherlv_2= '}' ) )
+            // InternalMetaTemplating.g:1098:2: (otherlv_0= '.{' ( (lv_property_1_0= ruleProperty ) ) otherlv_2= '}' )
             {
-            // InternalMetaTemplating.g:1078:2: (otherlv_0= '.{' ( (lv_property_1_0= ruleProperty ) ) otherlv_2= '}' )
-            // InternalMetaTemplating.g:1079:3: otherlv_0= '.{' ( (lv_property_1_0= ruleProperty ) ) otherlv_2= '}'
+            // InternalMetaTemplating.g:1098:2: (otherlv_0= '.{' ( (lv_property_1_0= ruleProperty ) ) otherlv_2= '}' )
+            // InternalMetaTemplating.g:1099:3: otherlv_0= '.{' ( (lv_property_1_0= ruleProperty ) ) otherlv_2= '}'
             {
-            otherlv_0=(Token)match(input,33,FOLLOW_8); 
+            otherlv_0=(Token)match(input,32,FOLLOW_8); 
 
             			newLeafNode(otherlv_0, grammarAccess.getMetaPropertyAccess().getFullStopLeftCurlyBracketKeyword_0());
             		
-            // InternalMetaTemplating.g:1083:3: ( (lv_property_1_0= ruleProperty ) )
-            // InternalMetaTemplating.g:1084:4: (lv_property_1_0= ruleProperty )
+            // InternalMetaTemplating.g:1103:3: ( (lv_property_1_0= ruleProperty ) )
+            // InternalMetaTemplating.g:1104:4: (lv_property_1_0= ruleProperty )
             {
-            // InternalMetaTemplating.g:1084:4: (lv_property_1_0= ruleProperty )
-            // InternalMetaTemplating.g:1085:5: lv_property_1_0= ruleProperty
+            // InternalMetaTemplating.g:1104:4: (lv_property_1_0= ruleProperty )
+            // InternalMetaTemplating.g:1105:5: lv_property_1_0= ruleProperty
             {
 
             					newCompositeNode(grammarAccess.getMetaPropertyAccess().getPropertyPropertyParserRuleCall_1_0());
@@ -2698,7 +2757,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,23,FOLLOW_2); 
+            otherlv_2=(Token)match(input,22,FOLLOW_2); 
 
             			newLeafNode(otherlv_2, grammarAccess.getMetaPropertyAccess().getRightCurlyBracketKeyword_2());
             		
@@ -2725,7 +2784,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProperty"
-    // InternalMetaTemplating.g:1110:1: entryRuleProperty returns [EObject current=null] : iv_ruleProperty= ruleProperty EOF ;
+    // InternalMetaTemplating.g:1130:1: entryRuleProperty returns [EObject current=null] : iv_ruleProperty= ruleProperty EOF ;
     public final EObject entryRuleProperty() throws RecognitionException {
         EObject current = null;
 
@@ -2733,8 +2792,8 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMetaTemplating.g:1110:49: (iv_ruleProperty= ruleProperty EOF )
-            // InternalMetaTemplating.g:1111:2: iv_ruleProperty= ruleProperty EOF
+            // InternalMetaTemplating.g:1130:49: (iv_ruleProperty= ruleProperty EOF )
+            // InternalMetaTemplating.g:1131:2: iv_ruleProperty= ruleProperty EOF
             {
              newCompositeNode(grammarAccess.getPropertyRule()); 
             pushFollow(FOLLOW_1);
@@ -2761,7 +2820,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProperty"
-    // InternalMetaTemplating.g:1117:1: ruleProperty returns [EObject current=null] : ( ( (lv_property_0_0= RULE_ID ) ) ( (lv_subProperties_1_0= ruleSubProperty ) )* ) ;
+    // InternalMetaTemplating.g:1137:1: ruleProperty returns [EObject current=null] : ( ( (lv_property_0_0= RULE_ID ) ) ( (lv_subProperties_1_0= ruleSubProperty ) )* ) ;
     public final EObject ruleProperty() throws RecognitionException {
         EObject current = null;
 
@@ -2773,17 +2832,17 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMetaTemplating.g:1123:2: ( ( ( (lv_property_0_0= RULE_ID ) ) ( (lv_subProperties_1_0= ruleSubProperty ) )* ) )
-            // InternalMetaTemplating.g:1124:2: ( ( (lv_property_0_0= RULE_ID ) ) ( (lv_subProperties_1_0= ruleSubProperty ) )* )
+            // InternalMetaTemplating.g:1143:2: ( ( ( (lv_property_0_0= RULE_ID ) ) ( (lv_subProperties_1_0= ruleSubProperty ) )* ) )
+            // InternalMetaTemplating.g:1144:2: ( ( (lv_property_0_0= RULE_ID ) ) ( (lv_subProperties_1_0= ruleSubProperty ) )* )
             {
-            // InternalMetaTemplating.g:1124:2: ( ( (lv_property_0_0= RULE_ID ) ) ( (lv_subProperties_1_0= ruleSubProperty ) )* )
-            // InternalMetaTemplating.g:1125:3: ( (lv_property_0_0= RULE_ID ) ) ( (lv_subProperties_1_0= ruleSubProperty ) )*
+            // InternalMetaTemplating.g:1144:2: ( ( (lv_property_0_0= RULE_ID ) ) ( (lv_subProperties_1_0= ruleSubProperty ) )* )
+            // InternalMetaTemplating.g:1145:3: ( (lv_property_0_0= RULE_ID ) ) ( (lv_subProperties_1_0= ruleSubProperty ) )*
             {
-            // InternalMetaTemplating.g:1125:3: ( (lv_property_0_0= RULE_ID ) )
-            // InternalMetaTemplating.g:1126:4: (lv_property_0_0= RULE_ID )
+            // InternalMetaTemplating.g:1145:3: ( (lv_property_0_0= RULE_ID ) )
+            // InternalMetaTemplating.g:1146:4: (lv_property_0_0= RULE_ID )
             {
-            // InternalMetaTemplating.g:1126:4: (lv_property_0_0= RULE_ID )
-            // InternalMetaTemplating.g:1127:5: lv_property_0_0= RULE_ID
+            // InternalMetaTemplating.g:1146:4: (lv_property_0_0= RULE_ID )
+            // InternalMetaTemplating.g:1147:5: lv_property_0_0= RULE_ID
             {
             lv_property_0_0=(Token)match(input,RULE_ID,FOLLOW_18); 
 
@@ -2805,23 +2864,23 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalMetaTemplating.g:1143:3: ( (lv_subProperties_1_0= ruleSubProperty ) )*
-            loop15:
+            // InternalMetaTemplating.g:1163:3: ( (lv_subProperties_1_0= ruleSubProperty ) )*
+            loop16:
             do {
-                int alt15=2;
-                int LA15_0 = input.LA(1);
+                int alt16=2;
+                int LA16_0 = input.LA(1);
 
-                if ( (LA15_0==26) ) {
-                    alt15=1;
+                if ( (LA16_0==25) ) {
+                    alt16=1;
                 }
 
 
-                switch (alt15) {
+                switch (alt16) {
             	case 1 :
-            	    // InternalMetaTemplating.g:1144:4: (lv_subProperties_1_0= ruleSubProperty )
+            	    // InternalMetaTemplating.g:1164:4: (lv_subProperties_1_0= ruleSubProperty )
             	    {
-            	    // InternalMetaTemplating.g:1144:4: (lv_subProperties_1_0= ruleSubProperty )
-            	    // InternalMetaTemplating.g:1145:5: lv_subProperties_1_0= ruleSubProperty
+            	    // InternalMetaTemplating.g:1164:4: (lv_subProperties_1_0= ruleSubProperty )
+            	    // InternalMetaTemplating.g:1165:5: lv_subProperties_1_0= ruleSubProperty
             	    {
 
             	    					newCompositeNode(grammarAccess.getPropertyAccess().getSubPropertiesSubPropertyParserRuleCall_1_0());
@@ -2850,7 +2909,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop15;
+            	    break loop16;
                 }
             } while (true);
 
@@ -2877,7 +2936,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSubProperty"
-    // InternalMetaTemplating.g:1166:1: entryRuleSubProperty returns [EObject current=null] : iv_ruleSubProperty= ruleSubProperty EOF ;
+    // InternalMetaTemplating.g:1186:1: entryRuleSubProperty returns [EObject current=null] : iv_ruleSubProperty= ruleSubProperty EOF ;
     public final EObject entryRuleSubProperty() throws RecognitionException {
         EObject current = null;
 
@@ -2885,8 +2944,8 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMetaTemplating.g:1166:52: (iv_ruleSubProperty= ruleSubProperty EOF )
-            // InternalMetaTemplating.g:1167:2: iv_ruleSubProperty= ruleSubProperty EOF
+            // InternalMetaTemplating.g:1186:52: (iv_ruleSubProperty= ruleSubProperty EOF )
+            // InternalMetaTemplating.g:1187:2: iv_ruleSubProperty= ruleSubProperty EOF
             {
              newCompositeNode(grammarAccess.getSubPropertyRule()); 
             pushFollow(FOLLOW_1);
@@ -2913,75 +2972,148 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSubProperty"
-    // InternalMetaTemplating.g:1173:1: ruleSubProperty returns [EObject current=null] : (otherlv_0= '.' ( (lv_property_1_0= RULE_ID ) ) (otherlv_2= '()' )? ) ;
+    // InternalMetaTemplating.g:1193:1: ruleSubProperty returns [EObject current=null] : ( (otherlv_0= '.' ( (lv_method_1_0= RULE_ID ) ) otherlv_2= '()' ) | (otherlv_3= '.' ( (lv_property_4_0= RULE_ID ) ) ) ) ;
     public final EObject ruleSubProperty() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
-        Token lv_property_1_0=null;
+        Token lv_method_1_0=null;
         Token otherlv_2=null;
+        Token otherlv_3=null;
+        Token lv_property_4_0=null;
 
 
         	enterRule();
 
         try {
-            // InternalMetaTemplating.g:1179:2: ( (otherlv_0= '.' ( (lv_property_1_0= RULE_ID ) ) (otherlv_2= '()' )? ) )
-            // InternalMetaTemplating.g:1180:2: (otherlv_0= '.' ( (lv_property_1_0= RULE_ID ) ) (otherlv_2= '()' )? )
+            // InternalMetaTemplating.g:1199:2: ( ( (otherlv_0= '.' ( (lv_method_1_0= RULE_ID ) ) otherlv_2= '()' ) | (otherlv_3= '.' ( (lv_property_4_0= RULE_ID ) ) ) ) )
+            // InternalMetaTemplating.g:1200:2: ( (otherlv_0= '.' ( (lv_method_1_0= RULE_ID ) ) otherlv_2= '()' ) | (otherlv_3= '.' ( (lv_property_4_0= RULE_ID ) ) ) )
             {
-            // InternalMetaTemplating.g:1180:2: (otherlv_0= '.' ( (lv_property_1_0= RULE_ID ) ) (otherlv_2= '()' )? )
-            // InternalMetaTemplating.g:1181:3: otherlv_0= '.' ( (lv_property_1_0= RULE_ID ) ) (otherlv_2= '()' )?
-            {
-            otherlv_0=(Token)match(input,26,FOLLOW_8); 
+            // InternalMetaTemplating.g:1200:2: ( (otherlv_0= '.' ( (lv_method_1_0= RULE_ID ) ) otherlv_2= '()' ) | (otherlv_3= '.' ( (lv_property_4_0= RULE_ID ) ) ) )
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-            			newLeafNode(otherlv_0, grammarAccess.getSubPropertyAccess().getFullStopKeyword_0());
-            		
-            // InternalMetaTemplating.g:1185:3: ( (lv_property_1_0= RULE_ID ) )
-            // InternalMetaTemplating.g:1186:4: (lv_property_1_0= RULE_ID )
-            {
-            // InternalMetaTemplating.g:1186:4: (lv_property_1_0= RULE_ID )
-            // InternalMetaTemplating.g:1187:5: lv_property_1_0= RULE_ID
-            {
-            lv_property_1_0=(Token)match(input,RULE_ID,FOLLOW_19); 
+            if ( (LA17_0==25) ) {
+                int LA17_1 = input.LA(2);
 
-            					newLeafNode(lv_property_1_0, grammarAccess.getSubPropertyAccess().getPropertyIDTerminalRuleCall_1_0());
-            				
+                if ( (LA17_1==RULE_ID) ) {
+                    int LA17_2 = input.LA(3);
 
-            					if (current==null) {
-            						current = createModelElement(grammarAccess.getSubPropertyRule());
-            					}
-            					setWithLastConsumed(
-            						current,
-            						"property",
-            						lv_property_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
-            				
+                    if ( (LA17_2==26) ) {
+                        alt17=1;
+                    }
+                    else if ( (LA17_2==EOF||LA17_2==19||LA17_2==22||LA17_2==25||LA17_2==28||(LA17_2>=30 && LA17_2<=32)) ) {
+                        alt17=2;
+                    }
+                    else {
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 17, 2, input);
 
+                        throw nvae;
+                    }
+                }
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 17, 1, input);
+
+                    throw nvae;
+                }
             }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 17, 0, input);
 
-
+                throw nvae;
             }
-
-            // InternalMetaTemplating.g:1203:3: (otherlv_2= '()' )?
-            int alt16=2;
-            int LA16_0 = input.LA(1);
-
-            if ( (LA16_0==27) ) {
-                alt16=1;
-            }
-            switch (alt16) {
+            switch (alt17) {
                 case 1 :
-                    // InternalMetaTemplating.g:1204:4: otherlv_2= '()'
+                    // InternalMetaTemplating.g:1201:3: (otherlv_0= '.' ( (lv_method_1_0= RULE_ID ) ) otherlv_2= '()' )
                     {
-                    otherlv_2=(Token)match(input,27,FOLLOW_2); 
+                    // InternalMetaTemplating.g:1201:3: (otherlv_0= '.' ( (lv_method_1_0= RULE_ID ) ) otherlv_2= '()' )
+                    // InternalMetaTemplating.g:1202:4: otherlv_0= '.' ( (lv_method_1_0= RULE_ID ) ) otherlv_2= '()'
+                    {
+                    otherlv_0=(Token)match(input,25,FOLLOW_8); 
 
-                    				newLeafNode(otherlv_2, grammarAccess.getSubPropertyAccess().getLeftParenthesisRightParenthesisKeyword_2());
+                    				newLeafNode(otherlv_0, grammarAccess.getSubPropertyAccess().getFullStopKeyword_0_0());
+                    			
+                    // InternalMetaTemplating.g:1206:4: ( (lv_method_1_0= RULE_ID ) )
+                    // InternalMetaTemplating.g:1207:5: (lv_method_1_0= RULE_ID )
+                    {
+                    // InternalMetaTemplating.g:1207:5: (lv_method_1_0= RULE_ID )
+                    // InternalMetaTemplating.g:1208:6: lv_method_1_0= RULE_ID
+                    {
+                    lv_method_1_0=(Token)match(input,RULE_ID,FOLLOW_19); 
+
+                    						newLeafNode(lv_method_1_0, grammarAccess.getSubPropertyAccess().getMethodIDTerminalRuleCall_0_1_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getSubPropertyRule());
+                    						}
+                    						setWithLastConsumed(
+                    							current,
+                    							"method",
+                    							lv_method_1_0,
+                    							"org.eclipse.xtext.common.Terminals.ID");
+                    					
+
+                    }
+
+
+                    }
+
+                    otherlv_2=(Token)match(input,26,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_2, grammarAccess.getSubPropertyAccess().getLeftParenthesisRightParenthesisKeyword_0_2());
                     			
 
                     }
+
+
+                    }
                     break;
+                case 2 :
+                    // InternalMetaTemplating.g:1230:3: (otherlv_3= '.' ( (lv_property_4_0= RULE_ID ) ) )
+                    {
+                    // InternalMetaTemplating.g:1230:3: (otherlv_3= '.' ( (lv_property_4_0= RULE_ID ) ) )
+                    // InternalMetaTemplating.g:1231:4: otherlv_3= '.' ( (lv_property_4_0= RULE_ID ) )
+                    {
+                    otherlv_3=(Token)match(input,25,FOLLOW_8); 
 
-            }
+                    				newLeafNode(otherlv_3, grammarAccess.getSubPropertyAccess().getFullStopKeyword_1_0());
+                    			
+                    // InternalMetaTemplating.g:1235:4: ( (lv_property_4_0= RULE_ID ) )
+                    // InternalMetaTemplating.g:1236:5: (lv_property_4_0= RULE_ID )
+                    {
+                    // InternalMetaTemplating.g:1236:5: (lv_property_4_0= RULE_ID )
+                    // InternalMetaTemplating.g:1237:6: lv_property_4_0= RULE_ID
+                    {
+                    lv_property_4_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
+                    						newLeafNode(lv_property_4_0, grammarAccess.getSubPropertyAccess().getPropertyIDTerminalRuleCall_1_1_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getSubPropertyRule());
+                    						}
+                    						setWithLastConsumed(
+                    							current,
+                    							"property",
+                    							lv_property_4_0,
+                    							"org.eclipse.xtext.common.Terminals.ID");
+                    					
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
 
             }
 
@@ -3005,7 +3137,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEscapedString"
-    // InternalMetaTemplating.g:1213:1: entryRuleEscapedString returns [EObject current=null] : iv_ruleEscapedString= ruleEscapedString EOF ;
+    // InternalMetaTemplating.g:1258:1: entryRuleEscapedString returns [EObject current=null] : iv_ruleEscapedString= ruleEscapedString EOF ;
     public final EObject entryRuleEscapedString() throws RecognitionException {
         EObject current = null;
 
@@ -3013,8 +3145,8 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMetaTemplating.g:1213:54: (iv_ruleEscapedString= ruleEscapedString EOF )
-            // InternalMetaTemplating.g:1214:2: iv_ruleEscapedString= ruleEscapedString EOF
+            // InternalMetaTemplating.g:1258:54: (iv_ruleEscapedString= ruleEscapedString EOF )
+            // InternalMetaTemplating.g:1259:2: iv_ruleEscapedString= ruleEscapedString EOF
             {
              newCompositeNode(grammarAccess.getEscapedStringRule()); 
             pushFollow(FOLLOW_1);
@@ -3041,7 +3173,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEscapedString"
-    // InternalMetaTemplating.g:1220:1: ruleEscapedString returns [EObject current=null] : (otherlv_0= '@{' ( (lv_str_1_0= RULE_STRING ) ) otherlv_2= '}@' ) ;
+    // InternalMetaTemplating.g:1265:1: ruleEscapedString returns [EObject current=null] : (otherlv_0= '@{' ( (lv_str_1_0= RULE_STRING ) ) otherlv_2= '}@' ) ;
     public final EObject ruleEscapedString() throws RecognitionException {
         EObject current = null;
 
@@ -3053,21 +3185,21 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalMetaTemplating.g:1226:2: ( (otherlv_0= '@{' ( (lv_str_1_0= RULE_STRING ) ) otherlv_2= '}@' ) )
-            // InternalMetaTemplating.g:1227:2: (otherlv_0= '@{' ( (lv_str_1_0= RULE_STRING ) ) otherlv_2= '}@' )
+            // InternalMetaTemplating.g:1271:2: ( (otherlv_0= '@{' ( (lv_str_1_0= RULE_STRING ) ) otherlv_2= '}@' ) )
+            // InternalMetaTemplating.g:1272:2: (otherlv_0= '@{' ( (lv_str_1_0= RULE_STRING ) ) otherlv_2= '}@' )
             {
-            // InternalMetaTemplating.g:1227:2: (otherlv_0= '@{' ( (lv_str_1_0= RULE_STRING ) ) otherlv_2= '}@' )
-            // InternalMetaTemplating.g:1228:3: otherlv_0= '@{' ( (lv_str_1_0= RULE_STRING ) ) otherlv_2= '}@'
+            // InternalMetaTemplating.g:1272:2: (otherlv_0= '@{' ( (lv_str_1_0= RULE_STRING ) ) otherlv_2= '}@' )
+            // InternalMetaTemplating.g:1273:3: otherlv_0= '@{' ( (lv_str_1_0= RULE_STRING ) ) otherlv_2= '}@'
             {
-            otherlv_0=(Token)match(input,34,FOLLOW_6); 
+            otherlv_0=(Token)match(input,33,FOLLOW_6); 
 
             			newLeafNode(otherlv_0, grammarAccess.getEscapedStringAccess().getCommercialAtLeftCurlyBracketKeyword_0());
             		
-            // InternalMetaTemplating.g:1232:3: ( (lv_str_1_0= RULE_STRING ) )
-            // InternalMetaTemplating.g:1233:4: (lv_str_1_0= RULE_STRING )
+            // InternalMetaTemplating.g:1277:3: ( (lv_str_1_0= RULE_STRING ) )
+            // InternalMetaTemplating.g:1278:4: (lv_str_1_0= RULE_STRING )
             {
-            // InternalMetaTemplating.g:1233:4: (lv_str_1_0= RULE_STRING )
-            // InternalMetaTemplating.g:1234:5: lv_str_1_0= RULE_STRING
+            // InternalMetaTemplating.g:1278:4: (lv_str_1_0= RULE_STRING )
+            // InternalMetaTemplating.g:1279:5: lv_str_1_0= RULE_STRING
             {
             lv_str_1_0=(Token)match(input,RULE_STRING,FOLLOW_25); 
 
@@ -3089,7 +3221,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,35,FOLLOW_2); 
+            otherlv_2=(Token)match(input,34,FOLLOW_2); 
 
             			newLeafNode(otherlv_2, grammarAccess.getEscapedStringAccess().getRightCurlyBracketCommercialAtKeyword_2());
             		
@@ -3116,7 +3248,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEscaped"
-    // InternalMetaTemplating.g:1258:1: entryRuleEscaped returns [EObject current=null] : iv_ruleEscaped= ruleEscaped EOF ;
+    // InternalMetaTemplating.g:1303:1: entryRuleEscaped returns [EObject current=null] : iv_ruleEscaped= ruleEscaped EOF ;
     public final EObject entryRuleEscaped() throws RecognitionException {
         EObject current = null;
 
@@ -3124,8 +3256,8 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalMetaTemplating.g:1258:48: (iv_ruleEscaped= ruleEscaped EOF )
-            // InternalMetaTemplating.g:1259:2: iv_ruleEscaped= ruleEscaped EOF
+            // InternalMetaTemplating.g:1303:48: (iv_ruleEscaped= ruleEscaped EOF )
+            // InternalMetaTemplating.g:1304:2: iv_ruleEscaped= ruleEscaped EOF
             {
              newCompositeNode(grammarAccess.getEscapedRule()); 
             pushFollow(FOLLOW_1);
@@ -3152,7 +3284,7 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEscaped"
-    // InternalMetaTemplating.g:1265:1: ruleEscaped returns [EObject current=null] : (otherlv_0= '#' ( ( (lv_char_1_1= '#' | lv_char_1_2= '{' | lv_char_1_3= '}' | lv_char_1_4= '[' | lv_char_1_5= ']' | lv_char_1_6= ',' | lv_char_1_7= ';' | lv_char_1_8= '(' | lv_char_1_9= ')' | lv_char_1_10= ':' | lv_char_1_11= '<' | lv_char_1_12= '>' | lv_char_1_13= '\\'' ) ) ) ) ;
+    // InternalMetaTemplating.g:1310:1: ruleEscaped returns [EObject current=null] : (otherlv_0= '#' ( ( (lv_char_1_1= 'n' | lv_char_1_2= 's' | lv_char_1_3= 't' | lv_char_1_4= '#' | lv_char_1_5= '{' | lv_char_1_6= '}' | lv_char_1_7= '[' | lv_char_1_8= ']' | lv_char_1_9= ',' | lv_char_1_10= ';' | lv_char_1_11= '(' | lv_char_1_12= ')' | lv_char_1_13= ':' | lv_char_1_14= '<' | lv_char_1_15= '>' | lv_char_1_16= '\\'' ) ) ) ) ;
     public final EObject ruleEscaped() throws RecognitionException {
         EObject current = null;
 
@@ -3170,109 +3302,127 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
         Token lv_char_1_11=null;
         Token lv_char_1_12=null;
         Token lv_char_1_13=null;
+        Token lv_char_1_14=null;
+        Token lv_char_1_15=null;
+        Token lv_char_1_16=null;
 
 
         	enterRule();
 
         try {
-            // InternalMetaTemplating.g:1271:2: ( (otherlv_0= '#' ( ( (lv_char_1_1= '#' | lv_char_1_2= '{' | lv_char_1_3= '}' | lv_char_1_4= '[' | lv_char_1_5= ']' | lv_char_1_6= ',' | lv_char_1_7= ';' | lv_char_1_8= '(' | lv_char_1_9= ')' | lv_char_1_10= ':' | lv_char_1_11= '<' | lv_char_1_12= '>' | lv_char_1_13= '\\'' ) ) ) ) )
-            // InternalMetaTemplating.g:1272:2: (otherlv_0= '#' ( ( (lv_char_1_1= '#' | lv_char_1_2= '{' | lv_char_1_3= '}' | lv_char_1_4= '[' | lv_char_1_5= ']' | lv_char_1_6= ',' | lv_char_1_7= ';' | lv_char_1_8= '(' | lv_char_1_9= ')' | lv_char_1_10= ':' | lv_char_1_11= '<' | lv_char_1_12= '>' | lv_char_1_13= '\\'' ) ) ) )
+            // InternalMetaTemplating.g:1316:2: ( (otherlv_0= '#' ( ( (lv_char_1_1= 'n' | lv_char_1_2= 's' | lv_char_1_3= 't' | lv_char_1_4= '#' | lv_char_1_5= '{' | lv_char_1_6= '}' | lv_char_1_7= '[' | lv_char_1_8= ']' | lv_char_1_9= ',' | lv_char_1_10= ';' | lv_char_1_11= '(' | lv_char_1_12= ')' | lv_char_1_13= ':' | lv_char_1_14= '<' | lv_char_1_15= '>' | lv_char_1_16= '\\'' ) ) ) ) )
+            // InternalMetaTemplating.g:1317:2: (otherlv_0= '#' ( ( (lv_char_1_1= 'n' | lv_char_1_2= 's' | lv_char_1_3= 't' | lv_char_1_4= '#' | lv_char_1_5= '{' | lv_char_1_6= '}' | lv_char_1_7= '[' | lv_char_1_8= ']' | lv_char_1_9= ',' | lv_char_1_10= ';' | lv_char_1_11= '(' | lv_char_1_12= ')' | lv_char_1_13= ':' | lv_char_1_14= '<' | lv_char_1_15= '>' | lv_char_1_16= '\\'' ) ) ) )
             {
-            // InternalMetaTemplating.g:1272:2: (otherlv_0= '#' ( ( (lv_char_1_1= '#' | lv_char_1_2= '{' | lv_char_1_3= '}' | lv_char_1_4= '[' | lv_char_1_5= ']' | lv_char_1_6= ',' | lv_char_1_7= ';' | lv_char_1_8= '(' | lv_char_1_9= ')' | lv_char_1_10= ':' | lv_char_1_11= '<' | lv_char_1_12= '>' | lv_char_1_13= '\\'' ) ) ) )
-            // InternalMetaTemplating.g:1273:3: otherlv_0= '#' ( ( (lv_char_1_1= '#' | lv_char_1_2= '{' | lv_char_1_3= '}' | lv_char_1_4= '[' | lv_char_1_5= ']' | lv_char_1_6= ',' | lv_char_1_7= ';' | lv_char_1_8= '(' | lv_char_1_9= ')' | lv_char_1_10= ':' | lv_char_1_11= '<' | lv_char_1_12= '>' | lv_char_1_13= '\\'' ) ) )
+            // InternalMetaTemplating.g:1317:2: (otherlv_0= '#' ( ( (lv_char_1_1= 'n' | lv_char_1_2= 's' | lv_char_1_3= 't' | lv_char_1_4= '#' | lv_char_1_5= '{' | lv_char_1_6= '}' | lv_char_1_7= '[' | lv_char_1_8= ']' | lv_char_1_9= ',' | lv_char_1_10= ';' | lv_char_1_11= '(' | lv_char_1_12= ')' | lv_char_1_13= ':' | lv_char_1_14= '<' | lv_char_1_15= '>' | lv_char_1_16= '\\'' ) ) ) )
+            // InternalMetaTemplating.g:1318:3: otherlv_0= '#' ( ( (lv_char_1_1= 'n' | lv_char_1_2= 's' | lv_char_1_3= 't' | lv_char_1_4= '#' | lv_char_1_5= '{' | lv_char_1_6= '}' | lv_char_1_7= '[' | lv_char_1_8= ']' | lv_char_1_9= ',' | lv_char_1_10= ';' | lv_char_1_11= '(' | lv_char_1_12= ')' | lv_char_1_13= ':' | lv_char_1_14= '<' | lv_char_1_15= '>' | lv_char_1_16= '\\'' ) ) )
             {
-            otherlv_0=(Token)match(input,36,FOLLOW_26); 
+            otherlv_0=(Token)match(input,35,FOLLOW_26); 
 
             			newLeafNode(otherlv_0, grammarAccess.getEscapedAccess().getNumberSignKeyword_0());
             		
-            // InternalMetaTemplating.g:1277:3: ( ( (lv_char_1_1= '#' | lv_char_1_2= '{' | lv_char_1_3= '}' | lv_char_1_4= '[' | lv_char_1_5= ']' | lv_char_1_6= ',' | lv_char_1_7= ';' | lv_char_1_8= '(' | lv_char_1_9= ')' | lv_char_1_10= ':' | lv_char_1_11= '<' | lv_char_1_12= '>' | lv_char_1_13= '\\'' ) ) )
-            // InternalMetaTemplating.g:1278:4: ( (lv_char_1_1= '#' | lv_char_1_2= '{' | lv_char_1_3= '}' | lv_char_1_4= '[' | lv_char_1_5= ']' | lv_char_1_6= ',' | lv_char_1_7= ';' | lv_char_1_8= '(' | lv_char_1_9= ')' | lv_char_1_10= ':' | lv_char_1_11= '<' | lv_char_1_12= '>' | lv_char_1_13= '\\'' ) )
+            // InternalMetaTemplating.g:1322:3: ( ( (lv_char_1_1= 'n' | lv_char_1_2= 's' | lv_char_1_3= 't' | lv_char_1_4= '#' | lv_char_1_5= '{' | lv_char_1_6= '}' | lv_char_1_7= '[' | lv_char_1_8= ']' | lv_char_1_9= ',' | lv_char_1_10= ';' | lv_char_1_11= '(' | lv_char_1_12= ')' | lv_char_1_13= ':' | lv_char_1_14= '<' | lv_char_1_15= '>' | lv_char_1_16= '\\'' ) ) )
+            // InternalMetaTemplating.g:1323:4: ( (lv_char_1_1= 'n' | lv_char_1_2= 's' | lv_char_1_3= 't' | lv_char_1_4= '#' | lv_char_1_5= '{' | lv_char_1_6= '}' | lv_char_1_7= '[' | lv_char_1_8= ']' | lv_char_1_9= ',' | lv_char_1_10= ';' | lv_char_1_11= '(' | lv_char_1_12= ')' | lv_char_1_13= ':' | lv_char_1_14= '<' | lv_char_1_15= '>' | lv_char_1_16= '\\'' ) )
             {
-            // InternalMetaTemplating.g:1278:4: ( (lv_char_1_1= '#' | lv_char_1_2= '{' | lv_char_1_3= '}' | lv_char_1_4= '[' | lv_char_1_5= ']' | lv_char_1_6= ',' | lv_char_1_7= ';' | lv_char_1_8= '(' | lv_char_1_9= ')' | lv_char_1_10= ':' | lv_char_1_11= '<' | lv_char_1_12= '>' | lv_char_1_13= '\\'' ) )
-            // InternalMetaTemplating.g:1279:5: (lv_char_1_1= '#' | lv_char_1_2= '{' | lv_char_1_3= '}' | lv_char_1_4= '[' | lv_char_1_5= ']' | lv_char_1_6= ',' | lv_char_1_7= ';' | lv_char_1_8= '(' | lv_char_1_9= ')' | lv_char_1_10= ':' | lv_char_1_11= '<' | lv_char_1_12= '>' | lv_char_1_13= '\\'' )
+            // InternalMetaTemplating.g:1323:4: ( (lv_char_1_1= 'n' | lv_char_1_2= 's' | lv_char_1_3= 't' | lv_char_1_4= '#' | lv_char_1_5= '{' | lv_char_1_6= '}' | lv_char_1_7= '[' | lv_char_1_8= ']' | lv_char_1_9= ',' | lv_char_1_10= ';' | lv_char_1_11= '(' | lv_char_1_12= ')' | lv_char_1_13= ':' | lv_char_1_14= '<' | lv_char_1_15= '>' | lv_char_1_16= '\\'' ) )
+            // InternalMetaTemplating.g:1324:5: (lv_char_1_1= 'n' | lv_char_1_2= 's' | lv_char_1_3= 't' | lv_char_1_4= '#' | lv_char_1_5= '{' | lv_char_1_6= '}' | lv_char_1_7= '[' | lv_char_1_8= ']' | lv_char_1_9= ',' | lv_char_1_10= ';' | lv_char_1_11= '(' | lv_char_1_12= ')' | lv_char_1_13= ':' | lv_char_1_14= '<' | lv_char_1_15= '>' | lv_char_1_16= '\\'' )
             {
-            // InternalMetaTemplating.g:1279:5: (lv_char_1_1= '#' | lv_char_1_2= '{' | lv_char_1_3= '}' | lv_char_1_4= '[' | lv_char_1_5= ']' | lv_char_1_6= ',' | lv_char_1_7= ';' | lv_char_1_8= '(' | lv_char_1_9= ')' | lv_char_1_10= ':' | lv_char_1_11= '<' | lv_char_1_12= '>' | lv_char_1_13= '\\'' )
-            int alt17=13;
+            // InternalMetaTemplating.g:1324:5: (lv_char_1_1= 'n' | lv_char_1_2= 's' | lv_char_1_3= 't' | lv_char_1_4= '#' | lv_char_1_5= '{' | lv_char_1_6= '}' | lv_char_1_7= '[' | lv_char_1_8= ']' | lv_char_1_9= ',' | lv_char_1_10= ';' | lv_char_1_11= '(' | lv_char_1_12= ')' | lv_char_1_13= ':' | lv_char_1_14= '<' | lv_char_1_15= '>' | lv_char_1_16= '\\'' )
+            int alt18=16;
             switch ( input.LA(1) ) {
             case 36:
                 {
-                alt17=1;
-                }
-                break;
-            case 22:
-                {
-                alt17=2;
-                }
-                break;
-            case 23:
-                {
-                alt17=3;
-                }
-                break;
-            case 30:
-                {
-                alt17=4;
-                }
-                break;
-            case 32:
-                {
-                alt17=5;
+                alt18=1;
                 }
                 break;
             case 37:
                 {
-                alt17=6;
-                }
-                break;
-            case 12:
-                {
-                alt17=7;
-                }
-                break;
-            case 18:
-                {
-                alt17=8;
-                }
-                break;
-            case 21:
-                {
-                alt17=9;
-                }
-                break;
-            case 19:
-                {
-                alt17=10;
+                alt18=2;
                 }
                 break;
             case 38:
                 {
-                alt17=11;
+                alt18=3;
+                }
+                break;
+            case 35:
+                {
+                alt18=4;
+                }
+                break;
+            case 21:
+                {
+                alt18=5;
+                }
+                break;
+            case 22:
+                {
+                alt18=6;
+                }
+                break;
+            case 29:
+                {
+                alt18=7;
+                }
+                break;
+            case 31:
+                {
+                alt18=8;
                 }
                 break;
             case 39:
                 {
-                alt17=12;
+                alt18=9;
+                }
+                break;
+            case 12:
+                {
+                alt18=10;
+                }
+                break;
+            case 17:
+                {
+                alt18=11;
+                }
+                break;
+            case 20:
+                {
+                alt18=12;
+                }
+                break;
+            case 18:
+                {
+                alt18=13;
                 }
                 break;
             case 40:
                 {
-                alt17=13;
+                alt18=14;
+                }
+                break;
+            case 41:
+                {
+                alt18=15;
+                }
+                break;
+            case 42:
+                {
+                alt18=16;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 18, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt17) {
+            switch (alt18) {
                 case 1 :
-                    // InternalMetaTemplating.g:1280:6: lv_char_1_1= '#'
+                    // InternalMetaTemplating.g:1325:6: lv_char_1_1= 'n'
                     {
                     lv_char_1_1=(Token)match(input,36,FOLLOW_2); 
 
-                    						newLeafNode(lv_char_1_1, grammarAccess.getEscapedAccess().getCharNumberSignKeyword_1_0_0());
+                    						newLeafNode(lv_char_1_1, grammarAccess.getEscapedAccess().getCharNKeyword_1_0_0());
                     					
 
                     						if (current==null) {
@@ -3284,11 +3434,11 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalMetaTemplating.g:1291:6: lv_char_1_2= '{'
+                    // InternalMetaTemplating.g:1336:6: lv_char_1_2= 's'
                     {
-                    lv_char_1_2=(Token)match(input,22,FOLLOW_2); 
+                    lv_char_1_2=(Token)match(input,37,FOLLOW_2); 
 
-                    						newLeafNode(lv_char_1_2, grammarAccess.getEscapedAccess().getCharLeftCurlyBracketKeyword_1_0_1());
+                    						newLeafNode(lv_char_1_2, grammarAccess.getEscapedAccess().getCharSKeyword_1_0_1());
                     					
 
                     						if (current==null) {
@@ -3300,11 +3450,11 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalMetaTemplating.g:1302:6: lv_char_1_3= '}'
+                    // InternalMetaTemplating.g:1347:6: lv_char_1_3= 't'
                     {
-                    lv_char_1_3=(Token)match(input,23,FOLLOW_2); 
+                    lv_char_1_3=(Token)match(input,38,FOLLOW_2); 
 
-                    						newLeafNode(lv_char_1_3, grammarAccess.getEscapedAccess().getCharRightCurlyBracketKeyword_1_0_2());
+                    						newLeafNode(lv_char_1_3, grammarAccess.getEscapedAccess().getCharTKeyword_1_0_2());
                     					
 
                     						if (current==null) {
@@ -3316,11 +3466,11 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalMetaTemplating.g:1313:6: lv_char_1_4= '['
+                    // InternalMetaTemplating.g:1358:6: lv_char_1_4= '#'
                     {
-                    lv_char_1_4=(Token)match(input,30,FOLLOW_2); 
+                    lv_char_1_4=(Token)match(input,35,FOLLOW_2); 
 
-                    						newLeafNode(lv_char_1_4, grammarAccess.getEscapedAccess().getCharLeftSquareBracketKeyword_1_0_3());
+                    						newLeafNode(lv_char_1_4, grammarAccess.getEscapedAccess().getCharNumberSignKeyword_1_0_3());
                     					
 
                     						if (current==null) {
@@ -3332,11 +3482,11 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalMetaTemplating.g:1324:6: lv_char_1_5= ']'
+                    // InternalMetaTemplating.g:1369:6: lv_char_1_5= '{'
                     {
-                    lv_char_1_5=(Token)match(input,32,FOLLOW_2); 
+                    lv_char_1_5=(Token)match(input,21,FOLLOW_2); 
 
-                    						newLeafNode(lv_char_1_5, grammarAccess.getEscapedAccess().getCharRightSquareBracketKeyword_1_0_4());
+                    						newLeafNode(lv_char_1_5, grammarAccess.getEscapedAccess().getCharLeftCurlyBracketKeyword_1_0_4());
                     					
 
                     						if (current==null) {
@@ -3348,11 +3498,11 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalMetaTemplating.g:1335:6: lv_char_1_6= ','
+                    // InternalMetaTemplating.g:1380:6: lv_char_1_6= '}'
                     {
-                    lv_char_1_6=(Token)match(input,37,FOLLOW_2); 
+                    lv_char_1_6=(Token)match(input,22,FOLLOW_2); 
 
-                    						newLeafNode(lv_char_1_6, grammarAccess.getEscapedAccess().getCharCommaKeyword_1_0_5());
+                    						newLeafNode(lv_char_1_6, grammarAccess.getEscapedAccess().getCharRightCurlyBracketKeyword_1_0_5());
                     					
 
                     						if (current==null) {
@@ -3364,11 +3514,11 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalMetaTemplating.g:1346:6: lv_char_1_7= ';'
+                    // InternalMetaTemplating.g:1391:6: lv_char_1_7= '['
                     {
-                    lv_char_1_7=(Token)match(input,12,FOLLOW_2); 
+                    lv_char_1_7=(Token)match(input,29,FOLLOW_2); 
 
-                    						newLeafNode(lv_char_1_7, grammarAccess.getEscapedAccess().getCharSemicolonKeyword_1_0_6());
+                    						newLeafNode(lv_char_1_7, grammarAccess.getEscapedAccess().getCharLeftSquareBracketKeyword_1_0_6());
                     					
 
                     						if (current==null) {
@@ -3380,11 +3530,11 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalMetaTemplating.g:1357:6: lv_char_1_8= '('
+                    // InternalMetaTemplating.g:1402:6: lv_char_1_8= ']'
                     {
-                    lv_char_1_8=(Token)match(input,18,FOLLOW_2); 
+                    lv_char_1_8=(Token)match(input,31,FOLLOW_2); 
 
-                    						newLeafNode(lv_char_1_8, grammarAccess.getEscapedAccess().getCharLeftParenthesisKeyword_1_0_7());
+                    						newLeafNode(lv_char_1_8, grammarAccess.getEscapedAccess().getCharRightSquareBracketKeyword_1_0_7());
                     					
 
                     						if (current==null) {
@@ -3396,11 +3546,11 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // InternalMetaTemplating.g:1368:6: lv_char_1_9= ')'
+                    // InternalMetaTemplating.g:1413:6: lv_char_1_9= ','
                     {
-                    lv_char_1_9=(Token)match(input,21,FOLLOW_2); 
+                    lv_char_1_9=(Token)match(input,39,FOLLOW_2); 
 
-                    						newLeafNode(lv_char_1_9, grammarAccess.getEscapedAccess().getCharRightParenthesisKeyword_1_0_8());
+                    						newLeafNode(lv_char_1_9, grammarAccess.getEscapedAccess().getCharCommaKeyword_1_0_8());
                     					
 
                     						if (current==null) {
@@ -3412,11 +3562,11 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // InternalMetaTemplating.g:1379:6: lv_char_1_10= ':'
+                    // InternalMetaTemplating.g:1424:6: lv_char_1_10= ';'
                     {
-                    lv_char_1_10=(Token)match(input,19,FOLLOW_2); 
+                    lv_char_1_10=(Token)match(input,12,FOLLOW_2); 
 
-                    						newLeafNode(lv_char_1_10, grammarAccess.getEscapedAccess().getCharColonKeyword_1_0_9());
+                    						newLeafNode(lv_char_1_10, grammarAccess.getEscapedAccess().getCharSemicolonKeyword_1_0_9());
                     					
 
                     						if (current==null) {
@@ -3428,11 +3578,11 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 11 :
-                    // InternalMetaTemplating.g:1390:6: lv_char_1_11= '<'
+                    // InternalMetaTemplating.g:1435:6: lv_char_1_11= '('
                     {
-                    lv_char_1_11=(Token)match(input,38,FOLLOW_2); 
+                    lv_char_1_11=(Token)match(input,17,FOLLOW_2); 
 
-                    						newLeafNode(lv_char_1_11, grammarAccess.getEscapedAccess().getCharLessThanSignKeyword_1_0_10());
+                    						newLeafNode(lv_char_1_11, grammarAccess.getEscapedAccess().getCharLeftParenthesisKeyword_1_0_10());
                     					
 
                     						if (current==null) {
@@ -3444,11 +3594,11 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 12 :
-                    // InternalMetaTemplating.g:1401:6: lv_char_1_12= '>'
+                    // InternalMetaTemplating.g:1446:6: lv_char_1_12= ')'
                     {
-                    lv_char_1_12=(Token)match(input,39,FOLLOW_2); 
+                    lv_char_1_12=(Token)match(input,20,FOLLOW_2); 
 
-                    						newLeafNode(lv_char_1_12, grammarAccess.getEscapedAccess().getCharGreaterThanSignKeyword_1_0_11());
+                    						newLeafNode(lv_char_1_12, grammarAccess.getEscapedAccess().getCharRightParenthesisKeyword_1_0_11());
                     					
 
                     						if (current==null) {
@@ -3460,17 +3610,65 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 13 :
-                    // InternalMetaTemplating.g:1412:6: lv_char_1_13= '\\''
+                    // InternalMetaTemplating.g:1457:6: lv_char_1_13= ':'
                     {
-                    lv_char_1_13=(Token)match(input,40,FOLLOW_2); 
+                    lv_char_1_13=(Token)match(input,18,FOLLOW_2); 
 
-                    						newLeafNode(lv_char_1_13, grammarAccess.getEscapedAccess().getCharApostropheKeyword_1_0_12());
+                    						newLeafNode(lv_char_1_13, grammarAccess.getEscapedAccess().getCharColonKeyword_1_0_12());
                     					
 
                     						if (current==null) {
                     							current = createModelElement(grammarAccess.getEscapedRule());
                     						}
                     						setWithLastConsumed(current, "char", lv_char_1_13, null);
+                    					
+
+                    }
+                    break;
+                case 14 :
+                    // InternalMetaTemplating.g:1468:6: lv_char_1_14= '<'
+                    {
+                    lv_char_1_14=(Token)match(input,40,FOLLOW_2); 
+
+                    						newLeafNode(lv_char_1_14, grammarAccess.getEscapedAccess().getCharLessThanSignKeyword_1_0_13());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getEscapedRule());
+                    						}
+                    						setWithLastConsumed(current, "char", lv_char_1_14, null);
+                    					
+
+                    }
+                    break;
+                case 15 :
+                    // InternalMetaTemplating.g:1479:6: lv_char_1_15= '>'
+                    {
+                    lv_char_1_15=(Token)match(input,41,FOLLOW_2); 
+
+                    						newLeafNode(lv_char_1_15, grammarAccess.getEscapedAccess().getCharGreaterThanSignKeyword_1_0_14());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getEscapedRule());
+                    						}
+                    						setWithLastConsumed(current, "char", lv_char_1_15, null);
+                    					
+
+                    }
+                    break;
+                case 16 :
+                    // InternalMetaTemplating.g:1490:6: lv_char_1_16= '\\''
+                    {
+                    lv_char_1_16=(Token)match(input,42,FOLLOW_2); 
+
+                    						newLeafNode(lv_char_1_16, grammarAccess.getEscapedAccess().getCharApostropheKeyword_1_0_15());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getEscapedRule());
+                    						}
+                    						setWithLastConsumed(current, "char", lv_char_1_16, null);
                     					
 
                     }
@@ -3508,33 +3706,81 @@ public class InternalMetaTemplatingParser extends AbstractInternalAntlrParser {
     // Delegated rules
 
 
+    protected DFA13 dfa13 = new DFA13(this);
+    static final String dfa_1s = "\15\uffff";
+    static final String dfa_2s = "\2\uffff\1\5\6\uffff\1\5\3\uffff";
+    static final String dfa_3s = "\1\31\1\5\1\24\1\5\2\uffff\1\31\1\5\1\4\1\24\1\31\1\37\1\31";
+    static final String dfa_4s = "\1\31\1\35\1\32\1\5\2\uffff\1\37\1\5\1\4\1\32\3\37";
+    static final String dfa_5s = "\4\uffff\1\1\1\2\7\uffff";
+    static final String dfa_6s = "\15\uffff}>";
+    static final String[] dfa_7s = {
+            "\1\1",
+            "\1\2\27\uffff\1\3",
+            "\1\5\4\uffff\1\5\1\4",
+            "\1\6",
+            "",
+            "",
+            "\1\7\4\uffff\1\10\1\11",
+            "\1\12",
+            "\1\13",
+            "\1\5\4\uffff\1\5\1\4",
+            "\1\7\1\14\3\uffff\1\10\1\11",
+            "\1\11",
+            "\1\7\4\uffff\1\10\1\11"
+    };
+
+    static final short[] dfa_1 = DFA.unpackEncodedString(dfa_1s);
+    static final short[] dfa_2 = DFA.unpackEncodedString(dfa_2s);
+    static final char[] dfa_3 = DFA.unpackEncodedStringToUnsignedChars(dfa_3s);
+    static final char[] dfa_4 = DFA.unpackEncodedStringToUnsignedChars(dfa_4s);
+    static final short[] dfa_5 = DFA.unpackEncodedString(dfa_5s);
+    static final short[] dfa_6 = DFA.unpackEncodedString(dfa_6s);
+    static final short[][] dfa_7 = unpackEncodedStringArray(dfa_7s);
+
+    class DFA13 extends DFA {
+
+        public DFA13(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 13;
+            this.eot = dfa_1;
+            this.eof = dfa_2;
+            this.min = dfa_3;
+            this.max = dfa_4;
+            this.accept = dfa_5;
+            this.special = dfa_6;
+            this.transition = dfa_7;
+        }
+        public String getDescription() {
+            return "847:2: ( (otherlv_0= '.' ( ( (lv_methItem_1_0= RULE_ID ) ) | ( (lv_methRef_2_0= ruleMetaPh ) ) ) otherlv_3= '()' ) | (otherlv_4= '.' ( ( (lv_item_5_0= RULE_ID ) ) | ( (lv_ref_6_0= ruleMetaPh ) ) ) ) )";
+        }
+    }
  
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x000000145102C022L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000A28814022L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000002802L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000802L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000001000L});
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x000000145182C020L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000001450000020L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000220000000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000180000000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x000001F140EC1000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000008020L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000A28C14020L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000A28000020L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000002000002L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000110000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x00000000C0000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x000007F8A0761000L});
 
 }

@@ -14,6 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.SubQuery#getMethItem <em>Meth Item</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.SubQuery#getMethRef <em>Meth Ref</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.SubQuery#getItem <em>Item</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.SubQuery#getRef <em>Ref</em>}</li>
  * </ul>
@@ -24,6 +26,50 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface SubQuery extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Meth Item</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Meth Item</em>' attribute.
+   * @see #setMethItem(String)
+   * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getSubQuery_MethItem()
+   * @model
+   * @generated
+   */
+  String getMethItem();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.metaTemplating.SubQuery#getMethItem <em>Meth Item</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Meth Item</em>' attribute.
+   * @see #getMethItem()
+   * @generated
+   */
+  void setMethItem(String value);
+
+  /**
+   * Returns the value of the '<em><b>Meth Ref</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Meth Ref</em>' containment reference.
+   * @see #setMethRef(MetaPh)
+   * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getSubQuery_MethRef()
+   * @model containment="true"
+   * @generated
+   */
+  MetaPh getMethRef();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.metaTemplating.SubQuery#getMethRef <em>Meth Ref</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Meth Ref</em>' containment reference.
+   * @see #getMethRef()
+   * @generated
+   */
+  void setMethRef(MetaPh value);
+
   /**
    * Returns the value of the '<em><b>Item</b></em>' attribute.
    * <!-- begin-user-doc -->

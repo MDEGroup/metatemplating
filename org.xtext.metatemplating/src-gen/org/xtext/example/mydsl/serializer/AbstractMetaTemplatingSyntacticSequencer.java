@@ -10,8 +10,6 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
-import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.xtext.example.mydsl.services.MetaTemplatingGrammarAccess;
@@ -20,14 +18,10 @@ import org.xtext.example.mydsl.services.MetaTemplatingGrammarAccess;
 public abstract class AbstractMetaTemplatingSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected MetaTemplatingGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_SubProperty_LeftParenthesisRightParenthesisKeyword_2_q;
-	protected AbstractElementAlias match_SubQuery_LeftParenthesisRightParenthesisKeyword_2_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (MetaTemplatingGrammarAccess) access;
-		match_SubProperty_LeftParenthesisRightParenthesisKeyword_2_q = new TokenAlias(false, true, grammarAccess.getSubPropertyAccess().getLeftParenthesisRightParenthesisKeyword_2());
-		match_SubQuery_LeftParenthesisRightParenthesisKeyword_2_q = new TokenAlias(false, true, grammarAccess.getSubQueryAccess().getLeftParenthesisRightParenthesisKeyword_2());
 	}
 	
 	@Override
@@ -42,35 +36,8 @@ public abstract class AbstractMetaTemplatingSyntacticSequencer extends AbstractS
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_SubProperty_LeftParenthesisRightParenthesisKeyword_2_q.equals(syntax))
-				emit_SubProperty_LeftParenthesisRightParenthesisKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_SubQuery_LeftParenthesisRightParenthesisKeyword_2_q.equals(syntax))
-				emit_SubQuery_LeftParenthesisRightParenthesisKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else acceptNodes(getLastNavigableState(), syntaxNodes);
+			acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
-	/**
-	 * Ambiguous syntax:
-	 *     '()'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     property=ID (ambiguity) (rule end)
-	 */
-	protected void emit_SubProperty_LeftParenthesisRightParenthesisKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     '()'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     item=ID (ambiguity) (rule end)
-	 *     ref=MetaPh (ambiguity) (rule end)
-	 */
-	protected void emit_SubQuery_LeftParenthesisRightParenthesisKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 }

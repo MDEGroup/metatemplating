@@ -96,9 +96,9 @@ public class MetaTemplatingAdapterFactory extends AdapterFactoryImpl
         return createLibrariesAdapter();
       }
       @Override
-      public Adapter caseComment(Comment object)
+      public Adapter caseNote(Note object)
       {
-        return createCommentAdapter();
+        return createNoteAdapter();
       }
       @Override
       public Adapter caseInstructions(Instructions object)
@@ -248,16 +248,16 @@ public class MetaTemplatingAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.metaTemplating.Comment <em>Comment</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.metaTemplating.Note <em>Note</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.mydsl.metaTemplating.Comment
+   * @see org.xtext.example.mydsl.metaTemplating.Note
    * @generated
    */
-  public Adapter createCommentAdapter()
+  public Adapter createNoteAdapter()
   {
     return null;
   }
