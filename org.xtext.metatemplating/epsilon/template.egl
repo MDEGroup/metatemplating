@@ -1,55 +1,57 @@
 [%import "metaMetaEngine.eol";%]
-
-[*-Header*]
-[%if (s.header <> null) {%]
-	[%for (imp in s.header.imports) { %]
-[%=insStat("import \"" + imp.path + "\";")%]
-	[%}%]
-	[%for (lib in s.header.libs) { %]
-[%=insMetaStat(insStr("import \\\"") + " + " + lib.path + " + " + insStr("\\\";"))%]
-	[%}%]
-[%}%]
-
+[%if (s.header <> null) {
+	for (lib in s.header.libs) { %]
+[%=insStat("import \"" + lib.path + "\";")%]
+	[%}
+	for (imp in s.header.imports) { %]
+[%=insMetaStat(insStr("import \\\"") + " + " + insStr(imp.path) + " + " + insStr("\\\";"))%]
+	[%}
+}%]
 [%=insComment("Meta-template generated for " + fileName)%]
+[%=s.parseContent()%]
 
 [*-Content*]
-[%for (istr in s.content) { %]
-[%=istr.parseInstructions(0)%]
-[%}%]
+[%operation Any parseContent(): String {
+	var result = "";
+	for (istr in self.content) {
+		result += istr.parseInstructions(0);
+	}
+	return result;
+}%]
 
 [*-Instructions*]
 [%operation Any parseInstructions(id: Integer): String {
-	var out = "";
+	var result = "";
 	if (self.note <> null) {
-		out += insComment(strFromList(self.note.word)) + "\n";
+		result += insComment(strFromList(self.note.word)) + "\n";
 	}
 	if (self.statement <> null) {
-		out += self.statement.parseStatement();
+		result += self.statement.parseStatement();
 	}
 	if (self.iterator <> null) {
-		out += insLine(id, insMetaFor("'" + self.iterator.element + "'", self.iterator.query.parseQuery()));
+		result += insLine(id, insMetaFor("'" + self.iterator.element + "'", self.iterator.query.parseQuery()));
 		for (istr in self.iterator.body) {
-			out += istr.parseInstructions(id + 1);
+			result += istr.parseInstructions(id + 1);
 		}
-		out += insLine(id, insMetaEnd());
+		result += insLine(id, insMetaEnd());
 	}
 	if (self.rule <> null) {
-		out += insLine(id, insFor(self.rule.element, self.rule.property.parseProperty() + self.rule.tag.parseTagged()));
+		result += insLine(id, insFor(self.rule.element, self.rule.property.parseProperty() + self.rule.tag.parseTagged()));
 		for (istr in self.rule.body) {
-			out += istr.parseInstructions(id + 1);
+			result += istr.parseInstructions(id + 1);
 		}
-		out += insLine(id, insEnd());
+		result += insLine(id, insEnd());
 	}
-	return out;
+	return result;
 }%]
 
 [*-Property*]
 [%operation Any parseProperty(): String {
-	var out = self.property;
+	var result = self.property;
 	for (subp in self.subProperties) { 
-		out += subp.parseSubProperty();
+		result += subp.parseSubProperty();
 	}
-	return out;
+	return result;
 }%]
 
 [*-SubProperty*]
@@ -65,39 +67,39 @@
 
 [*-Query*]
 [%operation Any parseQuery(): String {
-	var out = "";
-	if (self.item <> null) out += self.item;
-	if (self.ref <> null) out += self.ref.parseMetaPh();
+	var result = "";
+	if (self.item <> null) result += "'" + self.item + "'";
+	if (self.ref <> null) result += self.ref.parseMetaPh();
 	for (subq in self.subQuery) {
-		out += subq.parseSubQuery();
+		result += subq.parseSubQuery();
 	}
-	return out;
+	return result;
 }%]
 
 [*-SubQuery*]
 [%operation Any parseSubQuery(): String {
-	var out = ".";
-	if (self.item <> null) out += self.item;
-	if (self.ref <> null) out += self.ref.parseMetaPh();
-	if (self.methItem <> null) out += self.methItem + '()';
-	if (self.methRef <> null) out += self.parseMetaPh() + '()';
-	return out;
+	var result = "";
+	if (self.item <> null) result += " + '." + self.item + "'";
+	if (self.ref <> null) result += " + '.' + " + self.ref.parseMetaPh();
+	if (self.methItem <> null) result += " + '." + self.methItem + "()'";
+	if (self.methRef <> null) result += " + '.' + " + self.parseMetaPh() + '()';
+	return result;
 }%]
 
 [*-MetaPh*]
 [%operation Any parseMetaPh(): String {
-	var out = self.property.parseProperty();
-	if (self.tag <> null) out += '.getExtraInfo(' + self.tag + ')';
-	return out;
+	var result = self.property.parseProperty();
+	if (self.tag <> null) result += '.getExtraInfo(' + self.tag + ')';
+	return result;
 }%]
 
 [*-Statement*]
 [%operation Any parseStatement(): String {
 	if (self.text <> null) return self.text;
 	if (self.char <> null) return self.char.parseEscaped();
-	if (self.string <> null) return self.string.string;
+	if (self.string <> null) return self.string.str;
 	if (self.placeholder <> null) return insMetaPh(self.placeholder.parsePh());
-	if (self.metaPlaceholder <> null) return self.metaPlaceholder.parseMetaPh();
+	if (self.metaPlaceholder <> null) return insPh(self.metaPlaceholder.parseMetaPh());
 }%]
 
 [*-Escaped*]
@@ -110,15 +112,15 @@
 
 [*-Ph*]
 [%operation Any parsePh(): String {
-	var out = "";
+	var result = "";
 	if (self.metaProperty == null) {
-		out += "'" + self.property.parseProperty() + "'";
+		result += "'" + self.property.parseProperty() + "'";
 	}
 	else {
-		out += "'" + self.property.parseProperty() + ".' + "
+		result += "'" + self.property.parseProperty() + ".' + "
 			+ self.metaProperty.parseMetaProperty();
 	} 
-	return out;
+	return result;
 }%]
 
 [*-MetaProperty*]
