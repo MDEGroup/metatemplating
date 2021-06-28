@@ -3,13 +3,86 @@
  */
 package org.xtext.example.mydsl.ui.outline;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
+import org.xtext.example.mydsl.metaTemplating.Filter;
+import org.xtext.example.mydsl.metaTemplating.Header;
+import org.xtext.example.mydsl.metaTemplating.Import;
+import org.xtext.example.mydsl.metaTemplating.Instructions;
+import org.xtext.example.mydsl.metaTemplating.Iterator;
+import org.xtext.example.mydsl.metaTemplating.Libraries;
+import org.xtext.example.mydsl.metaTemplating.MetaFilter;
+import org.xtext.example.mydsl.metaTemplating.Model;
+import org.xtext.example.mydsl.metaTemplating.Rule;
 
 /**
  * Customization of the default outline structure.
  *
- * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#outline
+ * See
+ * https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#outline
  */
 public class MetaTemplatingOutlineTreeProvider extends DefaultOutlineTreeProvider {
+	@Override
+	protected void _createNode(IOutlineNode parentNode, EObject modelElement) {
+		boolean ok = false;
 
+		// Admitted
+		if (modelElement instanceof Header)
+			ok = true;
+		else if (modelElement instanceof Import)
+			ok = true;
+		else if (modelElement instanceof Libraries)
+			ok = true;
+		else if (modelElement instanceof Rule)
+			ok = true;
+		else if (modelElement instanceof Iterator)
+			ok = true;
+
+		// Filter
+		if (ok)
+			super._createNode(parentNode, modelElement);
+
+		// Skip Nodes
+		if (modelElement instanceof Instructions) {
+			Instructions c = (Instructions) modelElement;
+			if (c.getRule() != null)
+				createNode(parentNode, c.getRule());
+			if (c.getIterator() != null)
+				createNode(parentNode, c.getIterator());
+			if (c.getMetaFilter() != null)
+				createNode(parentNode, c.getMetaFilter());
+			if (c.getFilter() != null)
+				createNode(parentNode, c.getFilter());
+		} else if (modelElement instanceof MetaFilter) {
+			createChildren(parentNode, modelElement);
+		} else if (modelElement instanceof Filter) {
+			createChildren(parentNode, modelElement);
+		}
+
+	}
+
+	@Override
+	protected void _createChildren(IOutlineNode parentNode, EObject modelElement) {
+		boolean ok = false;
+
+		// Admitted
+		if (modelElement instanceof Model)
+			ok = true;
+		else if (modelElement instanceof Header)
+			ok = true;
+		else if (modelElement instanceof Rule)
+			ok = true;
+		else if (modelElement instanceof Iterator)
+			ok = true;
+		else if (modelElement instanceof MetaFilter)
+			ok = true;
+		else if (modelElement instanceof Filter)
+			ok = true;
+
+		// Filter
+		if (ok)
+			super._createChildren(parentNode, modelElement);
+
+	}
 }

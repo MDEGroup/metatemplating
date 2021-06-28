@@ -6,11 +6,18 @@ package org.xtext.example.mydsl.ui.labeling;
 import com.google.inject.Inject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
+import org.xtext.example.mydsl.metaTemplating.Header;
+import org.xtext.example.mydsl.metaTemplating.Import;
+import org.xtext.example.mydsl.metaTemplating.Iterator;
+import org.xtext.example.mydsl.metaTemplating.Libraries;
+import org.xtext.example.mydsl.metaTemplating.Note;
+import org.xtext.example.mydsl.metaTemplating.Rule;
 
 /**
  * Provides labels for EObjects.
  * 
- * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#label-provider
+ * See
+ * https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#label-provider
  */
 public class MetaTemplatingLabelProvider extends DefaultEObjectLabelProvider {
 
@@ -20,12 +27,25 @@ public class MetaTemplatingLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	// Labels and icons can be computed like this:
-	
-//	String text(Greeting ele) {
-//		return "A greeting to " + ele.getName();
-//	}
-//
-//	String image(Greeting ele) {
-//		return "Greeting.gif";
-//	}
+
+	String text(Header ele) {
+		return "imports";
+	}
+
+	String text(Libraries ele) {
+		return "Library ('" + ele.getPath() + "')";
+	}
+
+	String text(Import ele) {
+		return "Import ('" + ele.getPath() + "')";
+	}
+
+	String text(Rule ele) {
+		return "Rule (" + ele.getElement() + ")";
+	}
+
+	String text(Iterator ele) {
+		return "iterator (" + ele.getElement() + ")";
+	}
+
 }
