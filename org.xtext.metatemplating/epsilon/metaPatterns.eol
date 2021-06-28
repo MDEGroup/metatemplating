@@ -1,0 +1,48 @@
+/*
+	Meta-Patterns annotation
+*/
+
+/* Delete all Tags */
+operation clearTags() {
+	var old_containers = new OrderedSet;
+	var old = new List;
+	
+	for (e in EModelElement.all) {		
+		for (a in e.getEAnnotations()) {
+			if (a.source == _source) {
+				old_containers.add(e);
+				old.add(a);
+			}
+		}		
+	}
+	
+	for (e in old_containers) {
+		e.getEAnnotations().removeAll(old);
+	}
+}
+
+/* Tag an element */
+operation Any tagElement(tag: String) {
+	self.tagElement(tag, null);
+}
+
+/* Tag an element with extra info */
+operation Any tagElement(tag: String, value: String) {	
+	var ann = null;
+	for (a in self.getEAnnotations()) {
+		if (a.source == _source) {
+			ann = a;
+		}
+	}
+	if (ann == null) {
+	ann = new EAnnotation;
+	ann.source = _source;
+	}
+	
+	var det = new EStringToStringMapEntry;
+	det.key = tag;
+	det.value = value;
+	ann.details.add(det);
+	
+	self.getEAnnotations().add(ann);
+}
