@@ -41,7 +41,7 @@ public class MetaTemplatingLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	String text(Rule ele) {
-		return "Rule (" + ele.getElement() + ")";
+		return "Rule (" + ele.getElement() + ") -> " + ele.getTag();
 	}
 
 	String text(Iterator ele) {

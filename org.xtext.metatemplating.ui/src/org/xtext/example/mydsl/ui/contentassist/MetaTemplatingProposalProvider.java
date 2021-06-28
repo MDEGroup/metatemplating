@@ -3,10 +3,106 @@
  */
 package org.xtext.example.mydsl.ui.contentassist;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.Keyword;
+import org.eclipse.xtext.RuleCall;
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 
 /**
- * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#content-assist
+ * See
+ * https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#content-assist
  * on how to customize the content assistant.
  */
 public class MetaTemplatingProposalProvider extends AbstractMetaTemplatingProposalProvider {
+
+	private List<String> excluded = Arrays.asList("IMPORT", "FORALL", "IF", "import", "foreach", "if");
+
+	@Override
+	public void complete_MetaPh(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("[metaPlaceholder]", context));
+		super.complete_MetaPh(model, ruleCall, context, acceptor);
+	}
+
+	@Override
+	public void complete_Ph(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("[[placeholder]]", context));
+		super.complete_Ph(model, ruleCall, context, acceptor);
+	}
+
+	@Override
+	public void complete_MetaProperty(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal(".{metaProperty}", context));
+		super.complete_MetaProperty(model, ruleCall, context, acceptor);
+	}
+
+	@Override
+	public void complete_Note(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("#* comment *#", context));
+		super.complete_Note(model, ruleCall, context, acceptor);
+	}
+
+	@Override
+	public void complete_EscapedString(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("@{\"string\"}@", context));
+		super.complete_EscapedString(model, ruleCall, context, acceptor);
+	}
+
+	@Override
+	public void complete_Libraries(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("IMPORT \"path\";", context));
+		super.complete_Libraries(model, ruleCall, context, acceptor);
+	}
+
+	@Override
+	public void complete_Import(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("import \"path\";", context));
+		super.complete_Import(model, ruleCall, context, acceptor);
+	}
+
+	@Override
+	public void complete_Rule(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("FORALL (name: collection TAGGED tag) {\n\n}", context));
+		super.complete_Rule(model, ruleCall, context, acceptor);
+	}
+
+	@Override
+	public void complete_Iterator(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("foreach (it in collection) {\n\n}", context));
+		super.complete_Iterator(model, ruleCall, context, acceptor);
+	}
+
+	@Override
+	public void complete_MetaFilter(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("IF (check) {\n\n} ELSE {\n\n}", context));
+		super.complete_MetaFilter(model, ruleCall, context, acceptor);
+	}
+
+	@Override
+	public void complete_Filter(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("if (check) {\n\n} else {\n\n}", context));
+		super.complete_Filter(model, ruleCall, context, acceptor);
+	}
+
+	@Override
+	public void completeKeyword(Keyword keyword, ContentAssistContext contentAssistContext,
+			ICompletionProposalAcceptor acceptor) {
+		if (!excluded.contains(keyword.getValue()))
+			super.completeKeyword(keyword, contentAssistContext, acceptor);
+	}
 }
