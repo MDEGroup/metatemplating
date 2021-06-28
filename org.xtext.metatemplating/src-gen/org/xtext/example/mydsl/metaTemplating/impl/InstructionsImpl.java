@@ -12,8 +12,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.xtext.example.mydsl.metaTemplating.Filter;
 import org.xtext.example.mydsl.metaTemplating.Instructions;
 import org.xtext.example.mydsl.metaTemplating.Iterator;
+import org.xtext.example.mydsl.metaTemplating.MetaFilter;
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
 import org.xtext.example.mydsl.metaTemplating.Note;
 import org.xtext.example.mydsl.metaTemplating.Rule;
@@ -29,6 +31,8 @@ import org.xtext.example.mydsl.metaTemplating.Statement;
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.InstructionsImpl#getNote <em>Note</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.InstructionsImpl#getStatement <em>Statement</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.InstructionsImpl#getFilter <em>Filter</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.InstructionsImpl#getMetaFilter <em>Meta Filter</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.InstructionsImpl#getIterator <em>Iterator</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.InstructionsImpl#getRule <em>Rule</em>}</li>
  * </ul>
@@ -56,6 +60,26 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
    * @ordered
    */
   protected Statement statement;
+
+  /**
+   * The cached value of the '{@link #getFilter() <em>Filter</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFilter()
+   * @generated
+   * @ordered
+   */
+  protected Filter filter;
+
+  /**
+   * The cached value of the '{@link #getMetaFilter() <em>Meta Filter</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetaFilter()
+   * @generated
+   * @ordered
+   */
+  protected MetaFilter metaFilter;
 
   /**
    * The cached value of the '{@link #getIterator() <em>Iterator</em>}' containment reference.
@@ -204,6 +228,106 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
    * @generated
    */
   @Override
+  public Filter getFilter()
+  {
+    return filter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetFilter(Filter newFilter, NotificationChain msgs)
+  {
+    Filter oldFilter = filter;
+    filter = newFilter;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.INSTRUCTIONS__FILTER, oldFilter, newFilter);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setFilter(Filter newFilter)
+  {
+    if (newFilter != filter)
+    {
+      NotificationChain msgs = null;
+      if (filter != null)
+        msgs = ((InternalEObject)filter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.INSTRUCTIONS__FILTER, null, msgs);
+      if (newFilter != null)
+        msgs = ((InternalEObject)newFilter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.INSTRUCTIONS__FILTER, null, msgs);
+      msgs = basicSetFilter(newFilter, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.INSTRUCTIONS__FILTER, newFilter, newFilter));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MetaFilter getMetaFilter()
+  {
+    return metaFilter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetMetaFilter(MetaFilter newMetaFilter, NotificationChain msgs)
+  {
+    MetaFilter oldMetaFilter = metaFilter;
+    metaFilter = newMetaFilter;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.INSTRUCTIONS__META_FILTER, oldMetaFilter, newMetaFilter);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMetaFilter(MetaFilter newMetaFilter)
+  {
+    if (newMetaFilter != metaFilter)
+    {
+      NotificationChain msgs = null;
+      if (metaFilter != null)
+        msgs = ((InternalEObject)metaFilter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.INSTRUCTIONS__META_FILTER, null, msgs);
+      if (newMetaFilter != null)
+        msgs = ((InternalEObject)newMetaFilter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.INSTRUCTIONS__META_FILTER, null, msgs);
+      msgs = basicSetMetaFilter(newMetaFilter, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.INSTRUCTIONS__META_FILTER, newMetaFilter, newMetaFilter));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Iterator getIterator()
   {
     return iterator;
@@ -312,6 +436,10 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
         return basicSetNote(null, msgs);
       case MetaTemplatingPackage.INSTRUCTIONS__STATEMENT:
         return basicSetStatement(null, msgs);
+      case MetaTemplatingPackage.INSTRUCTIONS__FILTER:
+        return basicSetFilter(null, msgs);
+      case MetaTemplatingPackage.INSTRUCTIONS__META_FILTER:
+        return basicSetMetaFilter(null, msgs);
       case MetaTemplatingPackage.INSTRUCTIONS__ITERATOR:
         return basicSetIterator(null, msgs);
       case MetaTemplatingPackage.INSTRUCTIONS__RULE:
@@ -334,6 +462,10 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
         return getNote();
       case MetaTemplatingPackage.INSTRUCTIONS__STATEMENT:
         return getStatement();
+      case MetaTemplatingPackage.INSTRUCTIONS__FILTER:
+        return getFilter();
+      case MetaTemplatingPackage.INSTRUCTIONS__META_FILTER:
+        return getMetaFilter();
       case MetaTemplatingPackage.INSTRUCTIONS__ITERATOR:
         return getIterator();
       case MetaTemplatingPackage.INSTRUCTIONS__RULE:
@@ -357,6 +489,12 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
         return;
       case MetaTemplatingPackage.INSTRUCTIONS__STATEMENT:
         setStatement((Statement)newValue);
+        return;
+      case MetaTemplatingPackage.INSTRUCTIONS__FILTER:
+        setFilter((Filter)newValue);
+        return;
+      case MetaTemplatingPackage.INSTRUCTIONS__META_FILTER:
+        setMetaFilter((MetaFilter)newValue);
         return;
       case MetaTemplatingPackage.INSTRUCTIONS__ITERATOR:
         setIterator((Iterator)newValue);
@@ -384,6 +522,12 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
       case MetaTemplatingPackage.INSTRUCTIONS__STATEMENT:
         setStatement((Statement)null);
         return;
+      case MetaTemplatingPackage.INSTRUCTIONS__FILTER:
+        setFilter((Filter)null);
+        return;
+      case MetaTemplatingPackage.INSTRUCTIONS__META_FILTER:
+        setMetaFilter((MetaFilter)null);
+        return;
       case MetaTemplatingPackage.INSTRUCTIONS__ITERATOR:
         setIterator((Iterator)null);
         return;
@@ -408,6 +552,10 @@ public class InstructionsImpl extends MinimalEObjectImpl.Container implements In
         return note != null;
       case MetaTemplatingPackage.INSTRUCTIONS__STATEMENT:
         return statement != null;
+      case MetaTemplatingPackage.INSTRUCTIONS__FILTER:
+        return filter != null;
+      case MetaTemplatingPackage.INSTRUCTIONS__META_FILTER:
+        return metaFilter != null;
       case MetaTemplatingPackage.INSTRUCTIONS__ITERATOR:
         return iterator != null;
       case MetaTemplatingPackage.INSTRUCTIONS__RULE:

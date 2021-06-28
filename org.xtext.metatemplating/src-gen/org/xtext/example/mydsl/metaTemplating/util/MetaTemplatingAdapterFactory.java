@@ -111,6 +111,16 @@ public class MetaTemplatingAdapterFactory extends AdapterFactoryImpl
         return createStatementAdapter();
       }
       @Override
+      public Adapter caseMetaFilter(MetaFilter object)
+      {
+        return createMetaFilterAdapter();
+      }
+      @Override
+      public Adapter caseFilter(Filter object)
+      {
+        return createFilterAdapter();
+      }
+      @Override
       public Adapter caseRule(Rule object)
       {
         return createRuleAdapter();
@@ -288,6 +298,36 @@ public class MetaTemplatingAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.metaTemplating.MetaFilter <em>Meta Filter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.metaTemplating.MetaFilter
+   * @generated
+   */
+  public Adapter createMetaFilterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl.metaTemplating.Filter <em>Filter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl.metaTemplating.Filter
+   * @generated
+   */
+  public Adapter createFilterAdapter()
   {
     return null;
   }

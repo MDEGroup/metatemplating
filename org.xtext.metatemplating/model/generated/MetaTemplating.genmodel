@@ -26,6 +26,8 @@
     <genClasses ecoreClass="MetaTemplating.ecore#//Instructions">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Instructions/note"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Instructions/statement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Instructions/filter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Instructions/metaFilter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Instructions/iterator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Instructions/rule"/>
     </genClasses>
@@ -35,6 +37,16 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Statement/string"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Statement/placeholder"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Statement/metaPlaceholder"/>
+    </genClasses>
+    <genClasses ecoreClass="MetaTemplating.ecore#//MetaFilter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//MetaFilter/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//MetaFilter/truebody"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//MetaFilter/falsebody"/>
+    </genClasses>
+    <genClasses ecoreClass="MetaTemplating.ecore#//Filter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Filter/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Filter/truebody"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MetaTemplating.ecore#//Filter/falsebody"/>
     </genClasses>
     <genClasses ecoreClass="MetaTemplating.ecore#//Rule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MetaTemplating.ecore#//Rule/element"/>

@@ -244,13 +244,31 @@ public interface MetaTemplatingPackage extends EPackage
   int INSTRUCTIONS__STATEMENT = 1;
 
   /**
+   * The feature id for the '<em><b>Filter</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INSTRUCTIONS__FILTER = 2;
+
+  /**
+   * The feature id for the '<em><b>Meta Filter</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INSTRUCTIONS__META_FILTER = 3;
+
+  /**
    * The feature id for the '<em><b>Iterator</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSTRUCTIONS__ITERATOR = 2;
+  int INSTRUCTIONS__ITERATOR = 4;
 
   /**
    * The feature id for the '<em><b>Rule</b></em>' containment reference.
@@ -259,7 +277,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INSTRUCTIONS__RULE = 3;
+  int INSTRUCTIONS__RULE = 5;
 
   /**
    * The number of structural features of the '<em>Instructions</em>' class.
@@ -268,7 +286,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INSTRUCTIONS_FEATURE_COUNT = 4;
+  int INSTRUCTIONS_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl.metaTemplating.impl.StatementImpl <em>Statement</em>}' class.
@@ -335,6 +353,98 @@ public interface MetaTemplatingPackage extends EPackage
   int STATEMENT_FEATURE_COUNT = 5;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.metaTemplating.impl.MetaFilterImpl <em>Meta Filter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.metaTemplating.impl.MetaFilterImpl
+   * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getMetaFilter()
+   * @generated
+   */
+  int META_FILTER = 7;
+
+  /**
+   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int META_FILTER__CONDITION = 0;
+
+  /**
+   * The feature id for the '<em><b>Truebody</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int META_FILTER__TRUEBODY = 1;
+
+  /**
+   * The feature id for the '<em><b>Falsebody</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int META_FILTER__FALSEBODY = 2;
+
+  /**
+   * The number of structural features of the '<em>Meta Filter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int META_FILTER_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.metaTemplating.impl.FilterImpl <em>Filter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.metaTemplating.impl.FilterImpl
+   * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getFilter()
+   * @generated
+   */
+  int FILTER = 8;
+
+  /**
+   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILTER__CONDITION = 0;
+
+  /**
+   * The feature id for the '<em><b>Truebody</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILTER__TRUEBODY = 1;
+
+  /**
+   * The feature id for the '<em><b>Falsebody</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILTER__FALSEBODY = 2;
+
+  /**
+   * The number of structural features of the '<em>Filter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILTER_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.mydsl.metaTemplating.impl.RuleImpl <em>Rule</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -342,7 +452,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getRule()
    * @generated
    */
-  int RULE = 7;
+  int RULE = 9;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' attribute.
@@ -397,7 +507,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getIterator()
    * @generated
    */
-  int ITERATOR = 8;
+  int ITERATOR = 10;
 
   /**
    * The feature id for the '<em><b>Element</b></em>' attribute.
@@ -443,7 +553,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getQuery()
    * @generated
    */
-  int QUERY = 9;
+  int QUERY = 11;
 
   /**
    * The feature id for the '<em><b>Item</b></em>' attribute.
@@ -489,7 +599,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getSubQuery()
    * @generated
    */
-  int SUB_QUERY = 10;
+  int SUB_QUERY = 12;
 
   /**
    * The feature id for the '<em><b>Meth Item</b></em>' attribute.
@@ -544,7 +654,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getPh()
    * @generated
    */
-  int PH = 11;
+  int PH = 13;
 
   /**
    * The feature id for the '<em><b>Property</b></em>' containment reference.
@@ -581,7 +691,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getMetaPh()
    * @generated
    */
-  int META_PH = 12;
+  int META_PH = 14;
 
   /**
    * The feature id for the '<em><b>Property</b></em>' containment reference.
@@ -618,7 +728,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getMetaProperty()
    * @generated
    */
-  int META_PROPERTY = 13;
+  int META_PROPERTY = 15;
 
   /**
    * The feature id for the '<em><b>Property</b></em>' containment reference.
@@ -646,7 +756,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 14;
+  int PROPERTY = 16;
 
   /**
    * The feature id for the '<em><b>Property</b></em>' attribute.
@@ -683,7 +793,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getSubProperty()
    * @generated
    */
-  int SUB_PROPERTY = 15;
+  int SUB_PROPERTY = 17;
 
   /**
    * The feature id for the '<em><b>Method</b></em>' attribute.
@@ -720,7 +830,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getEscapedString()
    * @generated
    */
-  int ESCAPED_STRING = 16;
+  int ESCAPED_STRING = 18;
 
   /**
    * The feature id for the '<em><b>Str</b></em>' attribute.
@@ -748,7 +858,7 @@ public interface MetaTemplatingPackage extends EPackage
    * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getEscaped()
    * @generated
    */
-  int ESCAPED = 17;
+  int ESCAPED = 19;
 
   /**
    * The feature id for the '<em><b>Char</b></em>' attribute.
@@ -929,6 +1039,28 @@ public interface MetaTemplatingPackage extends EPackage
   EReference getInstructions_Statement();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.metaTemplating.Instructions#getFilter <em>Filter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Filter</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.Instructions#getFilter()
+   * @see #getInstructions()
+   * @generated
+   */
+  EReference getInstructions_Filter();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.metaTemplating.Instructions#getMetaFilter <em>Meta Filter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Meta Filter</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.Instructions#getMetaFilter()
+   * @see #getInstructions()
+   * @generated
+   */
+  EReference getInstructions_MetaFilter();
+
+  /**
    * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.metaTemplating.Instructions#getIterator <em>Iterator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1014,6 +1146,92 @@ public interface MetaTemplatingPackage extends EPackage
    * @generated
    */
   EReference getStatement_MetaPlaceholder();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.metaTemplating.MetaFilter <em>Meta Filter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Meta Filter</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.MetaFilter
+   * @generated
+   */
+  EClass getMetaFilter();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.metaTemplating.MetaFilter#getCondition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condition</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.MetaFilter#getCondition()
+   * @see #getMetaFilter()
+   * @generated
+   */
+  EReference getMetaFilter_Condition();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.metaTemplating.MetaFilter#getTruebody <em>Truebody</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Truebody</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.MetaFilter#getTruebody()
+   * @see #getMetaFilter()
+   * @generated
+   */
+  EReference getMetaFilter_Truebody();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.metaTemplating.MetaFilter#getFalsebody <em>Falsebody</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Falsebody</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.MetaFilter#getFalsebody()
+   * @see #getMetaFilter()
+   * @generated
+   */
+  EReference getMetaFilter_Falsebody();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.metaTemplating.Filter <em>Filter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Filter</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.Filter
+   * @generated
+   */
+  EClass getFilter();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mydsl.metaTemplating.Filter#getCondition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condition</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.Filter#getCondition()
+   * @see #getFilter()
+   * @generated
+   */
+  EReference getFilter_Condition();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.metaTemplating.Filter#getTruebody <em>Truebody</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Truebody</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.Filter#getTruebody()
+   * @see #getFilter()
+   * @generated
+   */
+  EReference getFilter_Truebody();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.metaTemplating.Filter#getFalsebody <em>Falsebody</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Falsebody</em>'.
+   * @see org.xtext.example.mydsl.metaTemplating.Filter#getFalsebody()
+   * @see #getFilter()
+   * @generated
+   */
+  EReference getFilter_Falsebody();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.metaTemplating.Rule <em>Rule</em>}'.
@@ -1556,6 +1774,22 @@ public interface MetaTemplatingPackage extends EPackage
     EReference INSTRUCTIONS__STATEMENT = eINSTANCE.getInstructions_Statement();
 
     /**
+     * The meta object literal for the '<em><b>Filter</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INSTRUCTIONS__FILTER = eINSTANCE.getInstructions_Filter();
+
+    /**
+     * The meta object literal for the '<em><b>Meta Filter</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INSTRUCTIONS__META_FILTER = eINSTANCE.getInstructions_MetaFilter();
+
+    /**
      * The meta object literal for the '<em><b>Iterator</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1620,6 +1854,74 @@ public interface MetaTemplatingPackage extends EPackage
      * @generated
      */
     EReference STATEMENT__META_PLACEHOLDER = eINSTANCE.getStatement_MetaPlaceholder();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.metaTemplating.impl.MetaFilterImpl <em>Meta Filter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.metaTemplating.impl.MetaFilterImpl
+     * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getMetaFilter()
+     * @generated
+     */
+    EClass META_FILTER = eINSTANCE.getMetaFilter();
+
+    /**
+     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference META_FILTER__CONDITION = eINSTANCE.getMetaFilter_Condition();
+
+    /**
+     * The meta object literal for the '<em><b>Truebody</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference META_FILTER__TRUEBODY = eINSTANCE.getMetaFilter_Truebody();
+
+    /**
+     * The meta object literal for the '<em><b>Falsebody</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference META_FILTER__FALSEBODY = eINSTANCE.getMetaFilter_Falsebody();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.metaTemplating.impl.FilterImpl <em>Filter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.metaTemplating.impl.FilterImpl
+     * @see org.xtext.example.mydsl.metaTemplating.impl.MetaTemplatingPackageImpl#getFilter()
+     * @generated
+     */
+    EClass FILTER = eINSTANCE.getFilter();
+
+    /**
+     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FILTER__CONDITION = eINSTANCE.getFilter_Condition();
+
+    /**
+     * The meta object literal for the '<em><b>Truebody</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FILTER__TRUEBODY = eINSTANCE.getFilter_Truebody();
+
+    /**
+     * The meta object literal for the '<em><b>Falsebody</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FILTER__FALSEBODY = eINSTANCE.getFilter_Falsebody();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.metaTemplating.impl.RuleImpl <em>Rule</em>}' class.

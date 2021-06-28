@@ -33,6 +33,8 @@ Note:
 Instructions:	
 	note=Note |
 	statement=Statement |
+	filter=Filter |
+	metaFilter=MetaFilter |
 	iterator=Iterator | 
 	rule=Rule
 ;
@@ -40,6 +42,14 @@ Instructions:
 Statement:
 	text=ID | char=Escaped | string=EscapedString |
 	placeholder=Ph | metaPlaceholder=MetaPh
+;
+
+MetaFilter:
+	'IF' '(' condition=Property ')' '{' truebody+=Instructions* '}' ('ELSE' '{' falsebody+=Instructions* '}' )?
+;
+
+Filter:
+	'if' '(' condition=Query ')' '{' truebody+=Instructions* '}' ('else' '{' falsebody+=Instructions* '}' )?
 ;
 
 /* Rules */

@@ -12,11 +12,13 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.xtext.example.mydsl.metaTemplating.Escaped;
 import org.xtext.example.mydsl.metaTemplating.EscapedString;
+import org.xtext.example.mydsl.metaTemplating.Filter;
 import org.xtext.example.mydsl.metaTemplating.Header;
 import org.xtext.example.mydsl.metaTemplating.Import;
 import org.xtext.example.mydsl.metaTemplating.Instructions;
 import org.xtext.example.mydsl.metaTemplating.Iterator;
 import org.xtext.example.mydsl.metaTemplating.Libraries;
+import org.xtext.example.mydsl.metaTemplating.MetaFilter;
 import org.xtext.example.mydsl.metaTemplating.MetaPh;
 import org.xtext.example.mydsl.metaTemplating.MetaProperty;
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingFactory;
@@ -87,6 +89,20 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   private EClass statementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass metaFilterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass filterEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -399,7 +415,7 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EReference getInstructions_Iterator()
+  public EReference getInstructions_Filter()
   {
     return (EReference)instructionsEClass.getEStructuralFeatures().get(2);
   }
@@ -410,9 +426,31 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
    * @generated
    */
   @Override
-  public EReference getInstructions_Rule()
+  public EReference getInstructions_MetaFilter()
   {
     return (EReference)instructionsEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getInstructions_Iterator()
+  {
+    return (EReference)instructionsEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getInstructions_Rule()
+  {
+    return (EReference)instructionsEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -479,6 +517,94 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
   public EReference getStatement_MetaPlaceholder()
   {
     return (EReference)statementEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMetaFilter()
+  {
+    return metaFilterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMetaFilter_Condition()
+  {
+    return (EReference)metaFilterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMetaFilter_Truebody()
+  {
+    return (EReference)metaFilterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMetaFilter_Falsebody()
+  {
+    return (EReference)metaFilterEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFilter()
+  {
+    return filterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFilter_Condition()
+  {
+    return (EReference)filterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFilter_Truebody()
+  {
+    return (EReference)filterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFilter_Falsebody()
+  {
+    return (EReference)filterEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -928,6 +1054,8 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
     instructionsEClass = createEClass(INSTRUCTIONS);
     createEReference(instructionsEClass, INSTRUCTIONS__NOTE);
     createEReference(instructionsEClass, INSTRUCTIONS__STATEMENT);
+    createEReference(instructionsEClass, INSTRUCTIONS__FILTER);
+    createEReference(instructionsEClass, INSTRUCTIONS__META_FILTER);
     createEReference(instructionsEClass, INSTRUCTIONS__ITERATOR);
     createEReference(instructionsEClass, INSTRUCTIONS__RULE);
 
@@ -937,6 +1065,16 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
     createEReference(statementEClass, STATEMENT__STRING);
     createEReference(statementEClass, STATEMENT__PLACEHOLDER);
     createEReference(statementEClass, STATEMENT__META_PLACEHOLDER);
+
+    metaFilterEClass = createEClass(META_FILTER);
+    createEReference(metaFilterEClass, META_FILTER__CONDITION);
+    createEReference(metaFilterEClass, META_FILTER__TRUEBODY);
+    createEReference(metaFilterEClass, META_FILTER__FALSEBODY);
+
+    filterEClass = createEClass(FILTER);
+    createEReference(filterEClass, FILTER__CONDITION);
+    createEReference(filterEClass, FILTER__TRUEBODY);
+    createEReference(filterEClass, FILTER__FALSEBODY);
 
     ruleEClass = createEClass(RULE);
     createEAttribute(ruleEClass, RULE__ELEMENT);
@@ -1037,6 +1175,8 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
     initEClass(instructionsEClass, Instructions.class, "Instructions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getInstructions_Note(), this.getNote(), null, "note", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstructions_Statement(), this.getStatement(), null, "statement", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInstructions_Filter(), this.getFilter(), null, "filter", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInstructions_MetaFilter(), this.getMetaFilter(), null, "metaFilter", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstructions_Iterator(), this.getIterator(), null, "iterator", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstructions_Rule(), this.getRule(), null, "rule", null, 0, 1, Instructions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1046,6 +1186,16 @@ public class MetaTemplatingPackageImpl extends EPackageImpl implements MetaTempl
     initEReference(getStatement_String(), this.getEscapedString(), null, "string", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getStatement_Placeholder(), this.getPh(), null, "placeholder", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getStatement_MetaPlaceholder(), this.getMetaPh(), null, "metaPlaceholder", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(metaFilterEClass, MetaFilter.class, "MetaFilter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMetaFilter_Condition(), this.getProperty(), null, "condition", null, 0, 1, MetaFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMetaFilter_Truebody(), this.getInstructions(), null, "truebody", null, 0, -1, MetaFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMetaFilter_Falsebody(), this.getInstructions(), null, "falsebody", null, 0, -1, MetaFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(filterEClass, Filter.class, "Filter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFilter_Condition(), this.getQuery(), null, "condition", null, 0, 1, Filter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFilter_Truebody(), this.getInstructions(), null, "truebody", null, 0, -1, Filter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFilter_Falsebody(), this.getInstructions(), null, "falsebody", null, 0, -1, Filter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ruleEClass, Rule.class, "Rule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRule_Element(), ecorePackage.getEString(), "element", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

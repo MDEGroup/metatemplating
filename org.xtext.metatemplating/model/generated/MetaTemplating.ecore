@@ -28,6 +28,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="note" eType="#//Note" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="statement" eType="#//Statement"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filter" eType="#//Filter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metaFilter" eType="#//MetaFilter"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="iterator" eType="#//Iterator"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rule" eType="#//Rule" containment="true"/>
@@ -42,6 +46,22 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metaPlaceholder" eType="#//MetaPh"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MetaFilter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Property"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="truebody" upperBound="-1"
+        eType="#//Instructions" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="falsebody" upperBound="-1"
+        eType="#//Instructions" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Filter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Query"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="truebody" upperBound="-1"
+        eType="#//Instructions" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="falsebody" upperBound="-1"
+        eType="#//Instructions" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Rule">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="element" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -87,6 +87,24 @@ public interface MetaTemplatingFactory extends EFactory
   Statement createStatement();
 
   /**
+   * Returns a new object of class '<em>Meta Filter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Meta Filter</em>'.
+   * @generated
+   */
+  MetaFilter createMetaFilter();
+
+  /**
+   * Returns a new object of class '<em>Filter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Filter</em>'.
+   * @generated
+   */
+  Filter createFilter();
+
+  /**
    * Returns a new object of class '<em>Rule</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

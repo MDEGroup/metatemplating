@@ -175,17 +175,21 @@ public class MetaTemplatingGrammarAccess extends AbstractElementFinder.AbstractG
 		private final RuleCall cNoteNoteParserRuleCall_0_0 = (RuleCall)cNoteAssignment_0.eContents().get(0);
 		private final Assignment cStatementAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cStatementStatementParserRuleCall_1_0 = (RuleCall)cStatementAssignment_1.eContents().get(0);
-		private final Assignment cIteratorAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
-		private final RuleCall cIteratorIteratorParserRuleCall_2_0 = (RuleCall)cIteratorAssignment_2.eContents().get(0);
-		private final Assignment cRuleAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
-		private final RuleCall cRuleRuleParserRuleCall_3_0 = (RuleCall)cRuleAssignment_3.eContents().get(0);
+		private final Assignment cFilterAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final RuleCall cFilterFilterParserRuleCall_2_0 = (RuleCall)cFilterAssignment_2.eContents().get(0);
+		private final Assignment cMetaFilterAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
+		private final RuleCall cMetaFilterMetaFilterParserRuleCall_3_0 = (RuleCall)cMetaFilterAssignment_3.eContents().get(0);
+		private final Assignment cIteratorAssignment_4 = (Assignment)cAlternatives.eContents().get(4);
+		private final RuleCall cIteratorIteratorParserRuleCall_4_0 = (RuleCall)cIteratorAssignment_4.eContents().get(0);
+		private final Assignment cRuleAssignment_5 = (Assignment)cAlternatives.eContents().get(5);
+		private final RuleCall cRuleRuleParserRuleCall_5_0 = (RuleCall)cRuleAssignment_5.eContents().get(0);
 		
 		///* Instructions */
 		//Instructions:
-		//	note=Note | statement=Statement | iterator=Iterator | rule=Rule;
+		//	note=Note | statement=Statement | filter=Filter | metaFilter=MetaFilter | iterator=Iterator | rule=Rule;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//note=Note | statement=Statement | iterator=Iterator | rule=Rule
+		//note=Note | statement=Statement | filter=Filter | metaFilter=MetaFilter | iterator=Iterator | rule=Rule
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//note=Note
@@ -200,17 +204,29 @@ public class MetaTemplatingGrammarAccess extends AbstractElementFinder.AbstractG
 		//Statement
 		public RuleCall getStatementStatementParserRuleCall_1_0() { return cStatementStatementParserRuleCall_1_0; }
 		
+		//filter=Filter
+		public Assignment getFilterAssignment_2() { return cFilterAssignment_2; }
+		
+		//Filter
+		public RuleCall getFilterFilterParserRuleCall_2_0() { return cFilterFilterParserRuleCall_2_0; }
+		
+		//metaFilter=MetaFilter
+		public Assignment getMetaFilterAssignment_3() { return cMetaFilterAssignment_3; }
+		
+		//MetaFilter
+		public RuleCall getMetaFilterMetaFilterParserRuleCall_3_0() { return cMetaFilterMetaFilterParserRuleCall_3_0; }
+		
 		//iterator=Iterator
-		public Assignment getIteratorAssignment_2() { return cIteratorAssignment_2; }
+		public Assignment getIteratorAssignment_4() { return cIteratorAssignment_4; }
 		
 		//Iterator
-		public RuleCall getIteratorIteratorParserRuleCall_2_0() { return cIteratorIteratorParserRuleCall_2_0; }
+		public RuleCall getIteratorIteratorParserRuleCall_4_0() { return cIteratorIteratorParserRuleCall_4_0; }
 		
 		//rule=Rule
-		public Assignment getRuleAssignment_3() { return cRuleAssignment_3; }
+		public Assignment getRuleAssignment_5() { return cRuleAssignment_5; }
 		
 		//Rule
-		public RuleCall getRuleRuleParserRuleCall_3_0() { return cRuleRuleParserRuleCall_3_0; }
+		public RuleCall getRuleRuleParserRuleCall_5_0() { return cRuleRuleParserRuleCall_5_0; }
 	}
 	public class StatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MetaTemplating.Statement");
@@ -262,6 +278,148 @@ public class MetaTemplatingGrammarAccess extends AbstractElementFinder.AbstractG
 		
 		//MetaPh
 		public RuleCall getMetaPlaceholderMetaPhParserRuleCall_4_0() { return cMetaPlaceholderMetaPhParserRuleCall_4_0; }
+	}
+	public class MetaFilterElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MetaTemplating.MetaFilter");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cIFKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cConditionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cConditionPropertyParserRuleCall_2_0 = (RuleCall)cConditionAssignment_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cTruebodyAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cTruebodyInstructionsParserRuleCall_5_0 = (RuleCall)cTruebodyAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cELSEKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
+		private final Assignment cFalsebodyAssignment_7_2 = (Assignment)cGroup_7.eContents().get(2);
+		private final RuleCall cFalsebodyInstructionsParserRuleCall_7_2_0 = (RuleCall)cFalsebodyAssignment_7_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7_3 = (Keyword)cGroup_7.eContents().get(3);
+		
+		//MetaFilter:
+		//	'IF' '(' condition=Property ')' '{' truebody+=Instructions* '}' ('ELSE' '{' falsebody+=Instructions* '}')?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'IF' '(' condition=Property ')' '{' truebody+=Instructions* '}' ('ELSE' '{' falsebody+=Instructions* '}')?
+		public Group getGroup() { return cGroup; }
+		
+		//'IF'
+		public Keyword getIFKeyword_0() { return cIFKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//condition=Property
+		public Assignment getConditionAssignment_2() { return cConditionAssignment_2; }
+		
+		//Property
+		public RuleCall getConditionPropertyParserRuleCall_2_0() { return cConditionPropertyParserRuleCall_2_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
+		
+		//truebody+=Instructions*
+		public Assignment getTruebodyAssignment_5() { return cTruebodyAssignment_5; }
+		
+		//Instructions
+		public RuleCall getTruebodyInstructionsParserRuleCall_5_0() { return cTruebodyInstructionsParserRuleCall_5_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		
+		//('ELSE' '{' falsebody+=Instructions* '}')?
+		public Group getGroup_7() { return cGroup_7; }
+		
+		//'ELSE'
+		public Keyword getELSEKeyword_7_0() { return cELSEKeyword_7_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_7_1() { return cLeftCurlyBracketKeyword_7_1; }
+		
+		//falsebody+=Instructions*
+		public Assignment getFalsebodyAssignment_7_2() { return cFalsebodyAssignment_7_2; }
+		
+		//Instructions
+		public RuleCall getFalsebodyInstructionsParserRuleCall_7_2_0() { return cFalsebodyInstructionsParserRuleCall_7_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_7_3() { return cRightCurlyBracketKeyword_7_3; }
+	}
+	public class FilterElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MetaTemplating.Filter");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cIfKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cConditionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cConditionQueryParserRuleCall_2_0 = (RuleCall)cConditionAssignment_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cTruebodyAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cTruebodyInstructionsParserRuleCall_5_0 = (RuleCall)cTruebodyAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cElseKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
+		private final Assignment cFalsebodyAssignment_7_2 = (Assignment)cGroup_7.eContents().get(2);
+		private final RuleCall cFalsebodyInstructionsParserRuleCall_7_2_0 = (RuleCall)cFalsebodyAssignment_7_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7_3 = (Keyword)cGroup_7.eContents().get(3);
+		
+		//Filter:
+		//	'if' '(' condition=Query ')' '{' truebody+=Instructions* '}' ('else' '{' falsebody+=Instructions* '}')?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'if' '(' condition=Query ')' '{' truebody+=Instructions* '}' ('else' '{' falsebody+=Instructions* '}')?
+		public Group getGroup() { return cGroup; }
+		
+		//'if'
+		public Keyword getIfKeyword_0() { return cIfKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//condition=Query
+		public Assignment getConditionAssignment_2() { return cConditionAssignment_2; }
+		
+		//Query
+		public RuleCall getConditionQueryParserRuleCall_2_0() { return cConditionQueryParserRuleCall_2_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
+		
+		//truebody+=Instructions*
+		public Assignment getTruebodyAssignment_5() { return cTruebodyAssignment_5; }
+		
+		//Instructions
+		public RuleCall getTruebodyInstructionsParserRuleCall_5_0() { return cTruebodyInstructionsParserRuleCall_5_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		
+		//('else' '{' falsebody+=Instructions* '}')?
+		public Group getGroup_7() { return cGroup_7; }
+		
+		//'else'
+		public Keyword getElseKeyword_7_0() { return cElseKeyword_7_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_7_1() { return cLeftCurlyBracketKeyword_7_1; }
+		
+		//falsebody+=Instructions*
+		public Assignment getFalsebodyAssignment_7_2() { return cFalsebodyAssignment_7_2; }
+		
+		//Instructions
+		public RuleCall getFalsebodyInstructionsParserRuleCall_7_2_0() { return cFalsebodyInstructionsParserRuleCall_7_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_7_3() { return cRightCurlyBracketKeyword_7_3; }
 	}
 	public class RuleElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MetaTemplating.Rule");
@@ -816,6 +974,8 @@ public class MetaTemplatingGrammarAccess extends AbstractElementFinder.AbstractG
 	private final NoteElements pNote;
 	private final InstructionsElements pInstructions;
 	private final StatementElements pStatement;
+	private final MetaFilterElements pMetaFilter;
+	private final FilterElements pFilter;
 	private final RuleElements pRule;
 	private final IteratorElements pIterator;
 	private final QueryElements pQuery;
@@ -844,6 +1004,8 @@ public class MetaTemplatingGrammarAccess extends AbstractElementFinder.AbstractG
 		this.pNote = new NoteElements();
 		this.pInstructions = new InstructionsElements();
 		this.pStatement = new StatementElements();
+		this.pMetaFilter = new MetaFilterElements();
+		this.pFilter = new FilterElements();
 		this.pRule = new RuleElements();
 		this.pIterator = new IteratorElements();
 		this.pQuery = new QueryElements();
@@ -940,7 +1102,7 @@ public class MetaTemplatingGrammarAccess extends AbstractElementFinder.AbstractG
 	
 	///* Instructions */
 	//Instructions:
-	//	note=Note | statement=Statement | iterator=Iterator | rule=Rule;
+	//	note=Note | statement=Statement | filter=Filter | metaFilter=MetaFilter | iterator=Iterator | rule=Rule;
 	public InstructionsElements getInstructionsAccess() {
 		return pInstructions;
 	}
@@ -957,6 +1119,26 @@ public class MetaTemplatingGrammarAccess extends AbstractElementFinder.AbstractG
 	
 	public ParserRule getStatementRule() {
 		return getStatementAccess().getRule();
+	}
+	
+	//MetaFilter:
+	//	'IF' '(' condition=Property ')' '{' truebody+=Instructions* '}' ('ELSE' '{' falsebody+=Instructions* '}')?;
+	public MetaFilterElements getMetaFilterAccess() {
+		return pMetaFilter;
+	}
+	
+	public ParserRule getMetaFilterRule() {
+		return getMetaFilterAccess().getRule();
+	}
+	
+	//Filter:
+	//	'if' '(' condition=Query ')' '{' truebody+=Instructions* '}' ('else' '{' falsebody+=Instructions* '}')?;
+	public FilterElements getFilterAccess() {
+		return pFilter;
+	}
+	
+	public ParserRule getFilterRule() {
+		return getFilterAccess().getRule();
 	}
 	
 	///* Rules */

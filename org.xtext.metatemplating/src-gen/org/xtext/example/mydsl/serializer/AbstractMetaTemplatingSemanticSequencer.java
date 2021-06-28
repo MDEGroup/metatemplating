@@ -16,11 +16,13 @@ import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequence
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.xtext.example.mydsl.metaTemplating.Escaped;
 import org.xtext.example.mydsl.metaTemplating.EscapedString;
+import org.xtext.example.mydsl.metaTemplating.Filter;
 import org.xtext.example.mydsl.metaTemplating.Header;
 import org.xtext.example.mydsl.metaTemplating.Import;
 import org.xtext.example.mydsl.metaTemplating.Instructions;
 import org.xtext.example.mydsl.metaTemplating.Iterator;
 import org.xtext.example.mydsl.metaTemplating.Libraries;
+import org.xtext.example.mydsl.metaTemplating.MetaFilter;
 import org.xtext.example.mydsl.metaTemplating.MetaPh;
 import org.xtext.example.mydsl.metaTemplating.MetaProperty;
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
@@ -55,6 +57,9 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 			case MetaTemplatingPackage.ESCAPED_STRING:
 				sequence_EscapedString(context, (EscapedString) semanticObject); 
 				return; 
+			case MetaTemplatingPackage.FILTER:
+				sequence_Filter(context, (Filter) semanticObject); 
+				return; 
 			case MetaTemplatingPackage.HEADER:
 				sequence_Header(context, (Header) semanticObject); 
 				return; 
@@ -69,6 +74,9 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 				return; 
 			case MetaTemplatingPackage.LIBRARIES:
 				sequence_Libraries(context, (Libraries) semanticObject); 
+				return; 
+			case MetaTemplatingPackage.META_FILTER:
+				sequence_MetaFilter(context, (MetaFilter) semanticObject); 
 				return; 
 			case MetaTemplatingPackage.META_PH:
 				sequence_MetaPh(context, (MetaPh) semanticObject); 
@@ -157,6 +165,18 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 	
 	/**
 	 * Contexts:
+	 *     Filter returns Filter
+	 *
+	 * Constraint:
+	 *     (condition=Query truebody+=Instructions* falsebody+=Instructions*)
+	 */
+	protected void sequence_Filter(ISerializationContext context, Filter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Header returns Header
 	 *
 	 * Constraint:
@@ -190,7 +210,14 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 	 *     Instructions returns Instructions
 	 *
 	 * Constraint:
-	 *     (note=Note | statement=Statement | iterator=Iterator | rule=Rule)
+	 *     (
+	 *         note=Note | 
+	 *         statement=Statement | 
+	 *         filter=Filter | 
+	 *         metaFilter=MetaFilter | 
+	 *         iterator=Iterator | 
+	 *         rule=Rule
+	 *     )
 	 */
 	protected void sequence_Instructions(ISerializationContext context, Instructions semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -224,6 +251,18 @@ public abstract class AbstractMetaTemplatingSemanticSequencer extends AbstractDe
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getLibrariesAccess().getPathSTRINGTerminalRuleCall_1_0(), semanticObject.getPath());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     MetaFilter returns MetaFilter
+	 *
+	 * Constraint:
+	 *     (condition=Property truebody+=Instructions* falsebody+=Instructions*)
+	 */
+	protected void sequence_MetaFilter(ISerializationContext context, MetaFilter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

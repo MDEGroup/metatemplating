@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.Instructions#getNote <em>Note</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.Instructions#getStatement <em>Statement</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.Instructions#getFilter <em>Filter</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.Instructions#getMetaFilter <em>Meta Filter</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.Instructions#getIterator <em>Iterator</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.metaTemplating.Instructions#getRule <em>Rule</em>}</li>
  * </ul>
@@ -69,6 +71,50 @@ public interface Instructions extends EObject
    * @generated
    */
   void setStatement(Statement value);
+
+  /**
+   * Returns the value of the '<em><b>Filter</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Filter</em>' containment reference.
+   * @see #setFilter(Filter)
+   * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getInstructions_Filter()
+   * @model containment="true"
+   * @generated
+   */
+  Filter getFilter();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.metaTemplating.Instructions#getFilter <em>Filter</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Filter</em>' containment reference.
+   * @see #getFilter()
+   * @generated
+   */
+  void setFilter(Filter value);
+
+  /**
+   * Returns the value of the '<em><b>Meta Filter</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Meta Filter</em>' containment reference.
+   * @see #setMetaFilter(MetaFilter)
+   * @see org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage#getInstructions_MetaFilter()
+   * @model containment="true"
+   * @generated
+   */
+  MetaFilter getMetaFilter();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mydsl.metaTemplating.Instructions#getMetaFilter <em>Meta Filter</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Meta Filter</em>' containment reference.
+   * @see #getMetaFilter()
+   * @generated
+   */
+  void setMetaFilter(MetaFilter value);
 
   /**
    * Returns the value of the '<em><b>Iterator</b></em>' containment reference.

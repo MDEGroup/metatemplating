@@ -1,4 +1,5 @@
 [%import "metaMetaEngine.eol";%]
+[%=insStat('import "metaEngine.eol";')%]
 [%if (s.header <> null) {
 	for (lib in s.header.libs) { %]
 [%=insStat("import \"" + lib.path + "\";")%]
@@ -27,6 +28,34 @@
 	}
 	if (self.statement <> null) {
 		result += self.statement.parseStatement();
+	}
+	if (self.filter <> null) {
+		result += insLine(id, insMetaIf(self.filter.condition.parseQuery()));
+		for (istr in self.filter.truebody) {
+			result += istr.parseInstructions(id + 1);
+		}
+		
+		if (self.filter.falsebody <> null) {
+			result += insLine(id, insMetaElse());
+			for (istr in self.filter.falsebody) {
+				result += istr.parseInstructions(id + 1);
+			}
+		}
+		result += insLine(id, insMetaEnd());
+	}
+	if (self.metaFilter <> null) {
+		result += insLine(id, insIf(self.metaFilter.condition.parseProperty()));
+		for (istr in self.metaFilter.truebody) {
+			result += istr.parseInstructions(id + 1);
+		}		
+		
+		if (self.metaFilter.falsebody <> null) {
+			result += insLine(id, insElse());
+			for (istr in self.metaFilter.falsebody) {
+				result += istr.parseInstructions(id + 1);
+			}
+		}
+		result += insLine(id, insEnd());
 	}
 	if (self.iterator <> null) {
 		result += insLine(id, insMetaFor("'" + self.iterator.element + "'", self.iterator.query.parseQuery()));

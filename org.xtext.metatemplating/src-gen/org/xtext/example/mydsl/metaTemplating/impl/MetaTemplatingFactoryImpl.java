@@ -72,6 +72,8 @@ public class MetaTemplatingFactoryImpl extends EFactoryImpl implements MetaTempl
       case MetaTemplatingPackage.NOTE: return createNote();
       case MetaTemplatingPackage.INSTRUCTIONS: return createInstructions();
       case MetaTemplatingPackage.STATEMENT: return createStatement();
+      case MetaTemplatingPackage.META_FILTER: return createMetaFilter();
+      case MetaTemplatingPackage.FILTER: return createFilter();
       case MetaTemplatingPackage.RULE: return createRule();
       case MetaTemplatingPackage.ITERATOR: return createIterator();
       case MetaTemplatingPackage.QUERY: return createQuery();
@@ -170,6 +172,30 @@ public class MetaTemplatingFactoryImpl extends EFactoryImpl implements MetaTempl
   {
     StatementImpl statement = new StatementImpl();
     return statement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MetaFilter createMetaFilter()
+  {
+    MetaFilterImpl metaFilter = new MetaFilterImpl();
+    return metaFilter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Filter createFilter()
+  {
+    FilterImpl filter = new FilterImpl();
+    return filter;
   }
 
   /**
