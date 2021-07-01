@@ -22,19 +22,19 @@ operation insLine(st: String): String {
 }
 
 operation insComment(st: String): String {
-	return '[*'+st+'*]';
+	return '['+'*'+st+'*'+']';
 }
 
 operation insMarker(st: String): String {
-	return '\n[*-'+st+'*]';
+	return '\n['+'*-'+st+'*'+']';
 } 
 
 operation insStat(st: String): String {
-	return '[%'+st+'%]';
+	return '['+'%'+st+'%'+']';
 }
 
 operation insPh(ph: String): String {
-	return '[%='+ph+'%]';
+	return '['+'%='+ph+'%'+']';
 }
 
 operation insPhList(phlist: List, sep: String): String {

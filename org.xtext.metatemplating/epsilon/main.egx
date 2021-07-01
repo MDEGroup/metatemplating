@@ -2,6 +2,33 @@
 	Generation Engine
 */
 
+pre {
+	genMetatemplatesLibrary();
+	genPatternsLibrary();
+	genUtilityLibrary();
+}
+
+/* Meta-Templating functions library */
+operation genMetatemplatesLibrary() {
+	var t = TemplateFactory.load("metaEngine.eol"); 
+	t.generate("metaEngine.eol");
+}
+
+/* Meta-Patterns functions library */
+operation genPatternsLibrary() {
+	var t = TemplateFactory.load("metaPatterns.eol"); 
+	t.generate("metaPatterns.eol");
+}
+
+/* Utility library */
+operation genUtilityLibrary() {
+	var t = TemplateFactory.load("utility.eol"); 
+	t.generate("utility.eol");
+}
+
+/* 
+	Meta-Template main generator 
+*/
 rule MetaTemplateGeneration 
 	transform s : src!Model {
 
