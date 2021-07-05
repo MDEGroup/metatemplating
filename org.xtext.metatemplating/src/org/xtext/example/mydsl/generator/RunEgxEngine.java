@@ -26,9 +26,9 @@ public class RunEgxEngine {
 			String source = url.getFile();
 			source = source.substring(source.lastIndexOf("/") + 1, source.indexOf(".mt"));
 
-			factory.setOutputRoot(FileLocator.toFileURL(new URL(fsa.getURI("").toString())).getPath());
-			EgxModule module = new EgxModule(factory);
-			
+			factory.setOutputRoot(FileLocator.toFileURL(new URL(fsa.getURI("").toString())).getPath());			
+			EgxModule module = new EgxModule(factory);			
+
 			// Adding parameters
 			Variable parameters = new Variable("outputName", source + ".egl", EolPrimitiveType.String);
 			module.getContext().getFrameStack().put(parameters);
