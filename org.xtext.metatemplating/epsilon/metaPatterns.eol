@@ -39,10 +39,29 @@ operation Any tagElement(tag: String, value: String) {
 	ann.source = _source;
 	}
 	
-	var det = new EStringToStringMapEntry;
-	det.key = tag;
+	var det = null;
+	for (t in ann.details) {
+		if (t.key == tag) {
+			det = t;
+		}			
+	}
+	if (det == null) {
+		det = new EStringToStringMapEntry;
+		det.key = tag;		
+	}	
+	
 	det.value = value;
 	ann.details.add(det);
-	
+		
 	self.getEAnnotations().add(ann);
+}
+
+/* Check is a Tag already exists */
+operation Any hasTag(tag: String): Boolean {
+	for (ann in self.getEAnnotations()) {
+		for (det in ann.details) {
+			if (det.key == tag) return true;
+		}
+	}
+	return false;
 }
