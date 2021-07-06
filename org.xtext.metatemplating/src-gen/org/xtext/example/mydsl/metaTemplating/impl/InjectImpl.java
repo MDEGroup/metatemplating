@@ -10,50 +10,50 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.xtext.example.mydsl.metaTemplating.Escaped;
+import org.xtext.example.mydsl.metaTemplating.Inject;
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Escaped</b></em>'.
+ * An implementation of the model object '<em><b>Inject</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.EscapedImpl#getChar <em>Char</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.InjectImpl#getCode <em>Code</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
+public class InjectImpl extends MinimalEObjectImpl.Container implements Inject
 {
   /**
-   * The default value of the '{@link #getChar() <em>Char</em>}' attribute.
+   * The default value of the '{@link #getCode() <em>Code</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getChar()
+   * @see #getCode()
    * @generated
    * @ordered
    */
-  protected static final String CHAR_EDEFAULT = null;
+  protected static final String CODE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getChar() <em>Char</em>}' attribute.
+   * The cached value of the '{@link #getCode() <em>Code</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getChar()
+   * @see #getCode()
    * @generated
    * @ordered
    */
-  protected String char_ = CHAR_EDEFAULT;
+  protected String code = CODE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected EscapedImpl()
+  protected InjectImpl()
   {
     super();
   }
@@ -66,7 +66,7 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
   @Override
   protected EClass eStaticClass()
   {
-    return MetaTemplatingPackage.Literals.ESCAPED;
+    return MetaTemplatingPackage.Literals.INJECT;
   }
 
   /**
@@ -75,9 +75,9 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
    * @generated
    */
   @Override
-  public String getChar()
+  public String getCode()
   {
-    return char_;
+    return code;
   }
 
   /**
@@ -86,12 +86,12 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
    * @generated
    */
   @Override
-  public void setChar(String newChar)
+  public void setCode(String newCode)
   {
-    String oldChar = char_;
-    char_ = newChar;
+    String oldCode = code;
+    code = newCode;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.ESCAPED__CHAR, oldChar, char_));
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.INJECT__CODE, oldCode, code));
   }
 
   /**
@@ -104,8 +104,8 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.ESCAPED__CHAR:
-        return getChar();
+      case MetaTemplatingPackage.INJECT__CODE:
+        return getCode();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,8 +120,8 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.ESCAPED__CHAR:
-        setChar((String)newValue);
+      case MetaTemplatingPackage.INJECT__CODE:
+        setCode((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +137,8 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.ESCAPED__CHAR:
-        setChar(CHAR_EDEFAULT);
+      case MetaTemplatingPackage.INJECT__CODE:
+        setCode(CODE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +154,8 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.ESCAPED__CHAR:
-        return CHAR_EDEFAULT == null ? char_ != null : !CHAR_EDEFAULT.equals(char_);
+      case MetaTemplatingPackage.INJECT__CODE:
+        return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
     }
     return super.eIsSet(featureID);
   }
@@ -171,10 +171,10 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (char: ");
-    result.append(char_);
+    result.append(" (code: ");
+    result.append(code);
     result.append(')');
     return result.toString();
   }
 
-} //EscapedImpl
+} //InjectImpl

@@ -37,17 +37,24 @@ public class MetaTemplatingProposalProvider extends AbstractMetaTemplatingPropos
 	}
 
 	@Override
-	public void complete_MetaProperty(EObject model, RuleCall ruleCall, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
-		acceptor.accept(createCompletionProposal(".{metaProperty}", context));
-		super.complete_MetaProperty(model, ruleCall, context, acceptor);
-	}
-
-	@Override
 	public void complete_Note(EObject model, RuleCall ruleCall, ContentAssistContext context,
 			ICompletionProposalAcceptor acceptor) {
 		acceptor.accept(createCompletionProposal("#* comment *#", context));
 		super.complete_Note(model, ruleCall, context, acceptor);
+	}
+
+	@Override
+	public void complete_Inject(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("@[[\"code\"]]@", context));
+		super.complete_Inject(model, ruleCall, context, acceptor);
+	}
+
+	@Override
+	public void complete_MetaInject(EObject model, RuleCall ruleCall, ContentAssistContext context,
+			ICompletionProposalAcceptor acceptor) {
+		acceptor.accept(createCompletionProposal("@[\"code\"]@", context));
+		super.complete_MetaInject(model, ruleCall, context, acceptor);
 	}
 
 	@Override

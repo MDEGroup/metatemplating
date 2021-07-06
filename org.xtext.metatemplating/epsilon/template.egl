@@ -25,6 +25,7 @@
 	var result = "";
 	if (self.note <> null) {
 		result += insComment(strFromList(self.note.word)) + "\n";
+		result += insMetaComment('"' + strFromList(self.note.word) + '"') + "\n";
 	}
 	if (self.statement <> null) {
 		result += self.statement.parseStatement();
@@ -86,7 +87,23 @@
 [*-SubProperty*]
 [%operation Any parseSubProperty(): String {
 	if (self.property <> null) return '.' + self.property;
-	else if (self.method <> null) return '.' + self.method + '()';
+	else if (self.method <> null) {
+		if (self.params == null) {
+			return '.' + self.method + '()';
+		}
+		else {
+			return '.' + self.method + '(' + self.params.parseParameters() + ')';
+		}
+	} 
+}%]
+
+[*-Parameters*]
+[%operation Any parseParameters(): String {
+	var result = self.par;
+	for (p in self.params) {
+		result += ', ' + p.par;
+	}
+	return result;
 }%]
 
 [*-Tag*]
@@ -110,15 +127,29 @@
 	var result = "";
 	if (self.item <> null) result += " + '." + self.item + "'";
 	if (self.ref <> null) result += " + '.' + " + self.ref.parseMetaPh();
-	if (self.methItem <> null) result += " + '." + self.methItem + "()'";
-	if (self.methRef <> null) result += " + '.' + " + self.parseMetaPh() + '()';
+	if (self.methItem <> null) {
+		if (self.params == null) {
+			result += " + '." + self.methItem + "()'";
+		}
+		else {
+			result += " + '." + self.methItem + "(" + self.params.parseParameters() + ")'";
+		}
+	} 
+	if (self.methRef <> null) {
+		if (self.params == null) {
+			result += " + '.' + " + self.parseMetaPh() + '()';
+		}
+		else {
+			result += " + '.' + " + self.parseMetaPh() + '(' + self.params.parseParameters() + ')';
+		}
+	} 
 	return result;
 }%]
 
 [*-MetaPh*]
 [%operation Any parseMetaPh(): String {
 	var result = self.property.parseProperty();
-	if (self.tag <> null) result += '.getExtraInfo(' + self.tag + ')';
+	if (self.tag <> null) result += '.getExtraInfo("' + self.tag + '")';
 	return result;
 }%]
 
@@ -127,8 +158,20 @@
 	if (self.text <> null) return self.text;
 	if (self.char <> null) return self.char.parseEscaped();
 	if (self.string <> null) return self.string.str;
+	if (self.inject <> null) return self.inject.parseInject();
+	if (self.metaInject <> null) return self.metaInject.parseMetaInject();
 	if (self.placeholder <> null) return insMetaPh(self.placeholder.parsePh());
 	if (self.metaPlaceholder <> null) return insPh(self.metaPlaceholder.parseMetaPh());
+}%]
+
+[*-Inject*]
+[%operation Any parseInject(): String {
+	return insMetaStat('"' + self.code + '"');
+}%]
+
+[*-Meta Inject*]
+[%operation Any parseMetaInject(): String {
+	return insStat(self.code);
 }%]
 
 [*-Escaped*]
@@ -141,18 +184,30 @@
 
 [*-Ph*]
 [%operation Any parsePh(): String {
-	var result = "";
-	if (self.metaProperty == null) {
-		result += "'" + self.property.parseProperty() + "'";
+	return self.property.parsePhProperty();	
+}%]
+
+[*-PhProperty*]
+[%operation Any parsePhProperty(): String {
+	var result = "'" + self.property + "'";
+	for (subp in self.subProperties) { 
+		result += subp.parsePhSubProperty();
 	}
-	else {
-		result += "'" + self.property.parseProperty() + ".' + "
-			+ self.metaProperty.parseMetaProperty();
-	} 
 	return result;
 }%]
 
-[*-MetaProperty*]
-[%operation Any parseMetaProperty(): String {
-	return self.property.parseProperty();
+[*-PhSubProperty*]
+[%operation Any parsePhSubProperty(): String {
+	if (self.property <> null) return " + '." + self.property + "'";
+	else if (self.method <> null) {
+		if (self.params == null) {
+			return " + '." + self.method + "()'";
+		}
+		else {
+			return " + '." + self.method + "(" + self.params.parseParameters() + ")'";
+		}
+	}
+	else if (self.metaProperty <> null) {
+		return " + " + self.metaProperty.parseProperty();
+	} 
 }%]

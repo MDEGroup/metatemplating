@@ -20,61 +20,61 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
-import org.xtext.example.mydsl.metaTemplating.Property;
-import org.xtext.example.mydsl.metaTemplating.SubProperty;
+import org.xtext.example.mydsl.metaTemplating.Parameter;
+import org.xtext.example.mydsl.metaTemplating.SubParameter;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Property</b></em>'.
+ * An implementation of the model object '<em><b>Parameter</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.PropertyImpl#getProperty <em>Property</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.PropertyImpl#getSubProperties <em>Sub Properties</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.ParameterImpl#getPar <em>Par</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.ParameterImpl#getParams <em>Params</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class PropertyImpl extends MinimalEObjectImpl.Container implements Property
+public class ParameterImpl extends MinimalEObjectImpl.Container implements Parameter
 {
   /**
-   * The default value of the '{@link #getProperty() <em>Property</em>}' attribute.
+   * The default value of the '{@link #getPar() <em>Par</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getProperty()
+   * @see #getPar()
    * @generated
    * @ordered
    */
-  protected static final String PROPERTY_EDEFAULT = null;
+  protected static final String PAR_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getProperty() <em>Property</em>}' attribute.
+   * The cached value of the '{@link #getPar() <em>Par</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getProperty()
+   * @see #getPar()
    * @generated
    * @ordered
    */
-  protected String property = PROPERTY_EDEFAULT;
+  protected String par = PAR_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getSubProperties() <em>Sub Properties</em>}' containment reference list.
+   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSubProperties()
+   * @see #getParams()
    * @generated
    * @ordered
    */
-  protected EList<SubProperty> subProperties;
+  protected EList<SubParameter> params;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PropertyImpl()
+  protected ParameterImpl()
   {
     super();
   }
@@ -87,7 +87,7 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   @Override
   protected EClass eStaticClass()
   {
-    return MetaTemplatingPackage.Literals.PROPERTY;
+    return MetaTemplatingPackage.Literals.PARAMETER;
   }
 
   /**
@@ -96,9 +96,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * @generated
    */
   @Override
-  public String getProperty()
+  public String getPar()
   {
-    return property;
+    return par;
   }
 
   /**
@@ -107,12 +107,12 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * @generated
    */
   @Override
-  public void setProperty(String newProperty)
+  public void setPar(String newPar)
   {
-    String oldProperty = property;
-    property = newProperty;
+    String oldPar = par;
+    par = newPar;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.PROPERTY__PROPERTY, oldProperty, property));
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.PARAMETER__PAR, oldPar, par));
   }
 
   /**
@@ -121,13 +121,13 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * @generated
    */
   @Override
-  public EList<SubProperty> getSubProperties()
+  public EList<SubParameter> getParams()
   {
-    if (subProperties == null)
+    if (params == null)
     {
-      subProperties = new EObjectContainmentEList<SubProperty>(SubProperty.class, this, MetaTemplatingPackage.PROPERTY__SUB_PROPERTIES);
+      params = new EObjectContainmentEList<SubParameter>(SubParameter.class, this, MetaTemplatingPackage.PARAMETER__PARAMS);
     }
-    return subProperties;
+    return params;
   }
 
   /**
@@ -140,8 +140,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.PROPERTY__SUB_PROPERTIES:
-        return ((InternalEList<?>)getSubProperties()).basicRemove(otherEnd, msgs);
+      case MetaTemplatingPackage.PARAMETER__PARAMS:
+        return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -156,10 +156,10 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.PROPERTY__PROPERTY:
-        return getProperty();
-      case MetaTemplatingPackage.PROPERTY__SUB_PROPERTIES:
-        return getSubProperties();
+      case MetaTemplatingPackage.PARAMETER__PAR:
+        return getPar();
+      case MetaTemplatingPackage.PARAMETER__PARAMS:
+        return getParams();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -175,12 +175,12 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.PROPERTY__PROPERTY:
-        setProperty((String)newValue);
+      case MetaTemplatingPackage.PARAMETER__PAR:
+        setPar((String)newValue);
         return;
-      case MetaTemplatingPackage.PROPERTY__SUB_PROPERTIES:
-        getSubProperties().clear();
-        getSubProperties().addAll((Collection<? extends SubProperty>)newValue);
+      case MetaTemplatingPackage.PARAMETER__PARAMS:
+        getParams().clear();
+        getParams().addAll((Collection<? extends SubParameter>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -196,11 +196,11 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.PROPERTY__PROPERTY:
-        setProperty(PROPERTY_EDEFAULT);
+      case MetaTemplatingPackage.PARAMETER__PAR:
+        setPar(PAR_EDEFAULT);
         return;
-      case MetaTemplatingPackage.PROPERTY__SUB_PROPERTIES:
-        getSubProperties().clear();
+      case MetaTemplatingPackage.PARAMETER__PARAMS:
+        getParams().clear();
         return;
     }
     super.eUnset(featureID);
@@ -216,10 +216,10 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.PROPERTY__PROPERTY:
-        return PROPERTY_EDEFAULT == null ? property != null : !PROPERTY_EDEFAULT.equals(property);
-      case MetaTemplatingPackage.PROPERTY__SUB_PROPERTIES:
-        return subProperties != null && !subProperties.isEmpty();
+      case MetaTemplatingPackage.PARAMETER__PAR:
+        return PAR_EDEFAULT == null ? par != null : !PAR_EDEFAULT.equals(par);
+      case MetaTemplatingPackage.PARAMETER__PARAMS:
+        return params != null && !params.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -235,10 +235,10 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (property: ");
-    result.append(property);
+    result.append(" (par: ");
+    result.append(par);
     result.append(')');
     return result.toString();
   }
 
-} //PropertyImpl
+} //ParameterImpl

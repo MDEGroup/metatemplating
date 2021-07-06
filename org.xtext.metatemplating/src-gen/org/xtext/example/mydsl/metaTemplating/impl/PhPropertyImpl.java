@@ -20,24 +20,24 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
-import org.xtext.example.mydsl.metaTemplating.Property;
-import org.xtext.example.mydsl.metaTemplating.SubProperty;
+import org.xtext.example.mydsl.metaTemplating.PhProperty;
+import org.xtext.example.mydsl.metaTemplating.PhSubProperty;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Property</b></em>'.
+ * An implementation of the model object '<em><b>Ph Property</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.PropertyImpl#getProperty <em>Property</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.PropertyImpl#getSubProperties <em>Sub Properties</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.PhPropertyImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.PhPropertyImpl#getSubProperties <em>Sub Properties</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class PropertyImpl extends MinimalEObjectImpl.Container implements Property
+public class PhPropertyImpl extends MinimalEObjectImpl.Container implements PhProperty
 {
   /**
    * The default value of the '{@link #getProperty() <em>Property</em>}' attribute.
@@ -67,14 +67,14 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * @generated
    * @ordered
    */
-  protected EList<SubProperty> subProperties;
+  protected EList<PhSubProperty> subProperties;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PropertyImpl()
+  protected PhPropertyImpl()
   {
     super();
   }
@@ -87,7 +87,7 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   @Override
   protected EClass eStaticClass()
   {
-    return MetaTemplatingPackage.Literals.PROPERTY;
+    return MetaTemplatingPackage.Literals.PH_PROPERTY;
   }
 
   /**
@@ -112,7 +112,7 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     String oldProperty = property;
     property = newProperty;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.PROPERTY__PROPERTY, oldProperty, property));
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.PH_PROPERTY__PROPERTY, oldProperty, property));
   }
 
   /**
@@ -121,11 +121,11 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * @generated
    */
   @Override
-  public EList<SubProperty> getSubProperties()
+  public EList<PhSubProperty> getSubProperties()
   {
     if (subProperties == null)
     {
-      subProperties = new EObjectContainmentEList<SubProperty>(SubProperty.class, this, MetaTemplatingPackage.PROPERTY__SUB_PROPERTIES);
+      subProperties = new EObjectContainmentEList<PhSubProperty>(PhSubProperty.class, this, MetaTemplatingPackage.PH_PROPERTY__SUB_PROPERTIES);
     }
     return subProperties;
   }
@@ -140,7 +140,7 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.PROPERTY__SUB_PROPERTIES:
+      case MetaTemplatingPackage.PH_PROPERTY__SUB_PROPERTIES:
         return ((InternalEList<?>)getSubProperties()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -156,9 +156,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.PROPERTY__PROPERTY:
+      case MetaTemplatingPackage.PH_PROPERTY__PROPERTY:
         return getProperty();
-      case MetaTemplatingPackage.PROPERTY__SUB_PROPERTIES:
+      case MetaTemplatingPackage.PH_PROPERTY__SUB_PROPERTIES:
         return getSubProperties();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -175,12 +175,12 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.PROPERTY__PROPERTY:
+      case MetaTemplatingPackage.PH_PROPERTY__PROPERTY:
         setProperty((String)newValue);
         return;
-      case MetaTemplatingPackage.PROPERTY__SUB_PROPERTIES:
+      case MetaTemplatingPackage.PH_PROPERTY__SUB_PROPERTIES:
         getSubProperties().clear();
-        getSubProperties().addAll((Collection<? extends SubProperty>)newValue);
+        getSubProperties().addAll((Collection<? extends PhSubProperty>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -196,10 +196,10 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.PROPERTY__PROPERTY:
+      case MetaTemplatingPackage.PH_PROPERTY__PROPERTY:
         setProperty(PROPERTY_EDEFAULT);
         return;
-      case MetaTemplatingPackage.PROPERTY__SUB_PROPERTIES:
+      case MetaTemplatingPackage.PH_PROPERTY__SUB_PROPERTIES:
         getSubProperties().clear();
         return;
     }
@@ -216,9 +216,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.PROPERTY__PROPERTY:
+      case MetaTemplatingPackage.PH_PROPERTY__PROPERTY:
         return PROPERTY_EDEFAULT == null ? property != null : !PROPERTY_EDEFAULT.equals(property);
-      case MetaTemplatingPackage.PROPERTY__SUB_PROPERTIES:
+      case MetaTemplatingPackage.PH_PROPERTY__SUB_PROPERTIES:
         return subProperties != null && !subProperties.isEmpty();
     }
     return super.eIsSet(featureID);
@@ -241,4 +241,4 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     return result.toString();
   }
 
-} //PropertyImpl
+} //PhPropertyImpl

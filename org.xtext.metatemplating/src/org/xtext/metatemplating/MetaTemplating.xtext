@@ -22,7 +22,7 @@ Libraries:
 	'IMPORT' path=STRING ';'
 ;
 
-/* Comments */
+/* Notes */
 
 Note:
 	'#*' word+=ID+ '*#'
@@ -41,8 +41,11 @@ Instructions:
 
 Statement:
 	text=ID | char=Escaped | string=EscapedString |
+	inject=Inject | metaInject=MetaInject |
 	placeholder=Ph | metaPlaceholder=MetaPh
 ;
+
+/* Filters */
 
 MetaFilter:
 	'IF' '(' condition=Property ')' '{' truebody+=Instructions* '}' ('ELSE' '{' falsebody+=Instructions* '}' )?
@@ -58,6 +61,15 @@ Rule:
 	'FORALL' '(' element=ID ':' property=Property 'TAGGED' tag=ID ')' '{' body+=Instructions* '}'
 ;
 
+Property:
+	property=ID subProperties+=SubProperty*
+;
+
+SubProperty:	
+	'.' method=ID '(' params=Parameter? ')' | 
+	'.' property=ID 
+; 
+
 /* Iterators */
 	
 Iterator:
@@ -70,34 +82,49 @@ Query:
 ;
 
 SubQuery:
-	'.' (methItem=ID | methRef=MetaPh) '()' |
+	'.' (methItem=ID | methRef=MetaPh) '(' params=Parameter? ')' |
 	'.' (item=ID | ref=MetaPh)
 ;
 
-/* Placeholder */
+/* Placeholders */
 
 Ph:
-	'[[' property=Property (metaProperty=MetaProperty)? ']]'
+	'[[' property=PhProperty ']]'
 ;
 
 MetaPh:
-	'[' property=Property ('TAGINFO' tag=STRING)? ']'
+	'[' property=Property ('TAGINFO' tag=ID)? ']'
 ;
 
-MetaProperty:
-	'.{' property=Property '}'	
+PhProperty:
+	property=ID subProperties+=PhSubProperty*
 ;
 
-/* Properties */
-
-Property:
-	property=ID subProperties+=SubProperty*
-;
-
-SubProperty:	
-	'.' method=ID '()' | 
-	'.' property=ID 
+PhSubProperty:	
+	'.' method=ID '(' params=Parameter? ')' | 
+	'.' property=ID |
+	'.{' metaProperty=Property '}'
 ; 
+
+
+/* Parameters */
+
+Parameter:
+	par=ID params+=SubParameter*
+;
+
+SubParameter:
+	',' par=ID
+;
+
+/* Inject */
+Inject:
+	'@[['code=STRING']]@'
+;
+
+MetaInject:
+	'@['code=STRING']@'
+;
 
 /* Escaping */
 
@@ -106,5 +133,5 @@ EscapedString:
 ;
 
 Escaped:
-	'#' char=('n' | 's' | 't' | '#' | '{' | '}' | '[' | ']' | ',' | ';' | '(' | ')' | ':' | '<' | '>' | "'")
+	'#' char=('n' | 's' | 't' | '#' | '{' | '}' | '[' | ']' | ',' | '.' | ';' | '(' | ')' | ':' | '<' | '>' | "'")
 ;

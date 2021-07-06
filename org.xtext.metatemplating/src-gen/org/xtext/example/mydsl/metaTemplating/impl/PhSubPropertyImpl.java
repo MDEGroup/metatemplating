@@ -14,24 +14,26 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
 import org.xtext.example.mydsl.metaTemplating.Parameter;
-import org.xtext.example.mydsl.metaTemplating.SubProperty;
+import org.xtext.example.mydsl.metaTemplating.PhSubProperty;
+import org.xtext.example.mydsl.metaTemplating.Property;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Sub Property</b></em>'.
+ * An implementation of the model object '<em><b>Ph Sub Property</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.SubPropertyImpl#getMethod <em>Method</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.SubPropertyImpl#getParams <em>Params</em>}</li>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.SubPropertyImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.PhSubPropertyImpl#getMethod <em>Method</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.PhSubPropertyImpl#getParams <em>Params</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.PhSubPropertyImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.PhSubPropertyImpl#getMetaProperty <em>Meta Property</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class SubPropertyImpl extends MinimalEObjectImpl.Container implements SubProperty
+public class PhSubPropertyImpl extends MinimalEObjectImpl.Container implements PhSubProperty
 {
   /**
    * The default value of the '{@link #getMethod() <em>Method</em>}' attribute.
@@ -84,11 +86,21 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
   protected String property = PROPERTY_EDEFAULT;
 
   /**
+   * The cached value of the '{@link #getMetaProperty() <em>Meta Property</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetaProperty()
+   * @generated
+   * @ordered
+   */
+  protected Property metaProperty;
+
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected SubPropertyImpl()
+  protected PhSubPropertyImpl()
   {
     super();
   }
@@ -101,7 +113,7 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
   @Override
   protected EClass eStaticClass()
   {
-    return MetaTemplatingPackage.Literals.SUB_PROPERTY;
+    return MetaTemplatingPackage.Literals.PH_SUB_PROPERTY;
   }
 
   /**
@@ -126,7 +138,7 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
     String oldMethod = method;
     method = newMethod;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.SUB_PROPERTY__METHOD, oldMethod, method));
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.PH_SUB_PROPERTY__METHOD, oldMethod, method));
   }
 
   /**
@@ -151,7 +163,7 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
     params = newParams;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.SUB_PROPERTY__PARAMS, oldParams, newParams);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.PH_SUB_PROPERTY__PARAMS, oldParams, newParams);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -169,14 +181,14 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
     {
       NotificationChain msgs = null;
       if (params != null)
-        msgs = ((InternalEObject)params).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.SUB_PROPERTY__PARAMS, null, msgs);
+        msgs = ((InternalEObject)params).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.PH_SUB_PROPERTY__PARAMS, null, msgs);
       if (newParams != null)
-        msgs = ((InternalEObject)newParams).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.SUB_PROPERTY__PARAMS, null, msgs);
+        msgs = ((InternalEObject)newParams).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.PH_SUB_PROPERTY__PARAMS, null, msgs);
       msgs = basicSetParams(newParams, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.SUB_PROPERTY__PARAMS, newParams, newParams));
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.PH_SUB_PROPERTY__PARAMS, newParams, newParams));
   }
 
   /**
@@ -201,7 +213,57 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
     String oldProperty = property;
     property = newProperty;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.SUB_PROPERTY__PROPERTY, oldProperty, property));
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.PH_SUB_PROPERTY__PROPERTY, oldProperty, property));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Property getMetaProperty()
+  {
+    return metaProperty;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetMetaProperty(Property newMetaProperty, NotificationChain msgs)
+  {
+    Property oldMetaProperty = metaProperty;
+    metaProperty = newMetaProperty;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.PH_SUB_PROPERTY__META_PROPERTY, oldMetaProperty, newMetaProperty);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMetaProperty(Property newMetaProperty)
+  {
+    if (newMetaProperty != metaProperty)
+    {
+      NotificationChain msgs = null;
+      if (metaProperty != null)
+        msgs = ((InternalEObject)metaProperty).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.PH_SUB_PROPERTY__META_PROPERTY, null, msgs);
+      if (newMetaProperty != null)
+        msgs = ((InternalEObject)newMetaProperty).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetaTemplatingPackage.PH_SUB_PROPERTY__META_PROPERTY, null, msgs);
+      msgs = basicSetMetaProperty(newMetaProperty, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.PH_SUB_PROPERTY__META_PROPERTY, newMetaProperty, newMetaProperty));
   }
 
   /**
@@ -214,8 +276,10 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.SUB_PROPERTY__PARAMS:
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__PARAMS:
         return basicSetParams(null, msgs);
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__META_PROPERTY:
+        return basicSetMetaProperty(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -230,12 +294,14 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.SUB_PROPERTY__METHOD:
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__METHOD:
         return getMethod();
-      case MetaTemplatingPackage.SUB_PROPERTY__PARAMS:
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__PARAMS:
         return getParams();
-      case MetaTemplatingPackage.SUB_PROPERTY__PROPERTY:
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__PROPERTY:
         return getProperty();
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__META_PROPERTY:
+        return getMetaProperty();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -250,14 +316,17 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.SUB_PROPERTY__METHOD:
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__METHOD:
         setMethod((String)newValue);
         return;
-      case MetaTemplatingPackage.SUB_PROPERTY__PARAMS:
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__PARAMS:
         setParams((Parameter)newValue);
         return;
-      case MetaTemplatingPackage.SUB_PROPERTY__PROPERTY:
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__PROPERTY:
         setProperty((String)newValue);
+        return;
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__META_PROPERTY:
+        setMetaProperty((Property)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -273,14 +342,17 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.SUB_PROPERTY__METHOD:
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__METHOD:
         setMethod(METHOD_EDEFAULT);
         return;
-      case MetaTemplatingPackage.SUB_PROPERTY__PARAMS:
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__PARAMS:
         setParams((Parameter)null);
         return;
-      case MetaTemplatingPackage.SUB_PROPERTY__PROPERTY:
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__PROPERTY:
         setProperty(PROPERTY_EDEFAULT);
+        return;
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__META_PROPERTY:
+        setMetaProperty((Property)null);
         return;
     }
     super.eUnset(featureID);
@@ -296,12 +368,14 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.SUB_PROPERTY__METHOD:
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__METHOD:
         return METHOD_EDEFAULT == null ? method != null : !METHOD_EDEFAULT.equals(method);
-      case MetaTemplatingPackage.SUB_PROPERTY__PARAMS:
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__PARAMS:
         return params != null;
-      case MetaTemplatingPackage.SUB_PROPERTY__PROPERTY:
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__PROPERTY:
         return PROPERTY_EDEFAULT == null ? property != null : !PROPERTY_EDEFAULT.equals(property);
+      case MetaTemplatingPackage.PH_SUB_PROPERTY__META_PROPERTY:
+        return metaProperty != null;
     }
     return super.eIsSet(featureID);
   }
@@ -325,4 +399,4 @@ public class SubPropertyImpl extends MinimalEObjectImpl.Container implements Sub
     return result.toString();
   }
 
-} //SubPropertyImpl
+} //PhSubPropertyImpl

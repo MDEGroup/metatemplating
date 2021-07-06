@@ -10,50 +10,50 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.xtext.example.mydsl.metaTemplating.Escaped;
 import org.xtext.example.mydsl.metaTemplating.MetaTemplatingPackage;
+import org.xtext.example.mydsl.metaTemplating.SubParameter;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Escaped</b></em>'.
+ * An implementation of the model object '<em><b>Sub Parameter</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.EscapedImpl#getChar <em>Char</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl.metaTemplating.impl.SubParameterImpl#getPar <em>Par</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
+public class SubParameterImpl extends MinimalEObjectImpl.Container implements SubParameter
 {
   /**
-   * The default value of the '{@link #getChar() <em>Char</em>}' attribute.
+   * The default value of the '{@link #getPar() <em>Par</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getChar()
+   * @see #getPar()
    * @generated
    * @ordered
    */
-  protected static final String CHAR_EDEFAULT = null;
+  protected static final String PAR_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getChar() <em>Char</em>}' attribute.
+   * The cached value of the '{@link #getPar() <em>Par</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getChar()
+   * @see #getPar()
    * @generated
    * @ordered
    */
-  protected String char_ = CHAR_EDEFAULT;
+  protected String par = PAR_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected EscapedImpl()
+  protected SubParameterImpl()
   {
     super();
   }
@@ -66,7 +66,7 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
   @Override
   protected EClass eStaticClass()
   {
-    return MetaTemplatingPackage.Literals.ESCAPED;
+    return MetaTemplatingPackage.Literals.SUB_PARAMETER;
   }
 
   /**
@@ -75,9 +75,9 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
    * @generated
    */
   @Override
-  public String getChar()
+  public String getPar()
   {
-    return char_;
+    return par;
   }
 
   /**
@@ -86,12 +86,12 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
    * @generated
    */
   @Override
-  public void setChar(String newChar)
+  public void setPar(String newPar)
   {
-    String oldChar = char_;
-    char_ = newChar;
+    String oldPar = par;
+    par = newPar;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.ESCAPED__CHAR, oldChar, char_));
+      eNotify(new ENotificationImpl(this, Notification.SET, MetaTemplatingPackage.SUB_PARAMETER__PAR, oldPar, par));
   }
 
   /**
@@ -104,8 +104,8 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.ESCAPED__CHAR:
-        return getChar();
+      case MetaTemplatingPackage.SUB_PARAMETER__PAR:
+        return getPar();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,8 +120,8 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.ESCAPED__CHAR:
-        setChar((String)newValue);
+      case MetaTemplatingPackage.SUB_PARAMETER__PAR:
+        setPar((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +137,8 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.ESCAPED__CHAR:
-        setChar(CHAR_EDEFAULT);
+      case MetaTemplatingPackage.SUB_PARAMETER__PAR:
+        setPar(PAR_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +154,8 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
   {
     switch (featureID)
     {
-      case MetaTemplatingPackage.ESCAPED__CHAR:
-        return CHAR_EDEFAULT == null ? char_ != null : !CHAR_EDEFAULT.equals(char_);
+      case MetaTemplatingPackage.SUB_PARAMETER__PAR:
+        return PAR_EDEFAULT == null ? par != null : !PAR_EDEFAULT.equals(par);
     }
     return super.eIsSet(featureID);
   }
@@ -171,10 +171,10 @@ public class EscapedImpl extends MinimalEObjectImpl.Container implements Escaped
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (char: ");
-    result.append(char_);
+    result.append(" (par: ");
+    result.append(par);
     result.append(')');
     return result.toString();
   }
 
-} //EscapedImpl
+} //SubParameterImpl
